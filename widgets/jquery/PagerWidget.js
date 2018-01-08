@@ -246,8 +246,19 @@ AjaxSolr.PagerWidget = AjaxSolr.AbstractWidget.extend(
 
     $(this.target).empty();
 
-    this.renderLinks(this.windowedLinks());
-    this.renderHeader(perPage, offset, total);
+      if (this.no_init_results) {
+          //Added so initial *:* query doesn't show results
+          $('#pager-header').html($('<center><span style="color: #666;font-size: 14px;font-weight: 100;">Please enter query at left</span></center>'));
+
+          if (!((this.manager.store.get('q').value == '*:*') &&
+                  (this.manager.store.values('fq').length <= 0))) {  //Added so initial *:* query doesn't show results
+              this.renderLinks(this.windowedLinks());
+              this.renderHeader(perPage, offset, total);
+          }
+      } else {
+          this.renderLinks(this.windowedLinks());
+          this.renderHeader(perPage, offset, total);
+      }
   }
 });
 

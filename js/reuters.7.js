@@ -6,31 +6,37 @@ var Manager;
     Manager = new AjaxSolr.Manager({
       /*solrUrl: 'http://10.46.3.100:8980/solr/local_gazetteer/select?shards=10.46.3.100:8980/solr/airiti,10.46.3.100:8980/solr/local_gazetteer,10.46.3.100:8980/solr/AD&indent=true'*/
 	  /*solrUrl: 'http://10.46.3.100:8980/solr/local_gazetteer/'*/
-	  solrUrl: 'http://10.46.3.100:8980/solr/AD/select?shards=10.46.3.100:8980/solr/AD,10.46.3.100:8980/solr/airiti,10.46.3.100:8980/solr/local_gazetteer&indent=true'
+	  solrUrl: 'http://10.46.3.100:8980/solr/AD/select?shards=10.46.3.100:8980/solr/AD,10.46.3.100:8980/solr/airiti,10.46.3.100:8980/solr/local_gazetteer&indent=true&'
 	  
     });
     Manager.addWidget(new AjaxSolr.ResultWidget({
       id: 'result',
-      target: '#docs'
+      target: '#docs',
+      highlighting: true, //set to true to show contextual, highlighted snippets (from Solr highlighting); will also need to add highlighting params (below)
+      no_init_results: true //set true to NOT show full result set for init query *:*
     }));
-    Manager.addWidget(new AjaxSolr.PagerWidget({
-      id: 'pager',
-      target: '#pager',
-      prevLabel: '&lt;',
-      nextLabel: '&gt;',
-      innerWindow: 1,
-      renderHeader: function (perPage, offset, total) {
-        $('#pager-header').html($('<span></span>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
-      }
-    }));
-    var fields = [ 'text', 'title', 'author', 'keywords', 'person', 'spatial','date','hasModel', 'medium','edition' ];
-    for (var i = 0, l = fields.length; i < l; i++) {
-      Manager.addWidget(new AjaxSolr.TagcloudWidget({
-        id: fields[i],
-        target: '#' + fields[i],
-        field: fields[i]
+      Manager.addWidget(new AjaxSolr.PagerWidget({
+          id: 'pager',
+          target: '#pager',
+          no_init_results: true, //set true to NOT show full result set for init query *:*, i.e. don't show paging on init
+          prevLabel: '&lt;',
+          nextLabel: '&gt;',
+          innerWindow: 1,
+          renderHeader: function (perPage, offset, total) {
+              $('#pager-header').html($('<span></span>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
+          }
       }));
-    }
+    var fields = [ 'text', 'title', 'author', 'keywords', 'person', 'spatial','date','hasModel', 'medium','edition' ];
+      for (var i = 0, l = fields.length; i < l; i++) {
+          Manager.addWidget(new AjaxSolr.MultiSelectWidget({ //MultiSelectWidget instead of Tagcloudwidget
+              id: fields[i],
+              target: '#' + fields[i],
+              field: fields[i],
+              max_show: 10,
+              max_facets: 20,
+              sort_type: 'count' //possible values: 'range', 'lex', 'count'
+          }));
+      }
     Manager.addWidget(new AjaxSolr.CurrentSearchWidget({
       id: 'currentsearch',
       target: '#selection'
@@ -53,7 +59,7 @@ var Manager;
     Manager.store.addByValue('q', '*:*');
     var params = {
      facet: true,
-      'facet.field': ['title',  'author', 'hasModel','date','medium','spatial','edition' ],
+      'facet.field': ['title', 'author','hasModel','date','medium','spatial','edition' ],
       'facet.limit': 20,
       'facet.mincount': 1,
       'f.topics.facet.limit': 50,
@@ -63,7 +69,13 @@ var Manager;
       'facet.date.end': '1987-10-20T00:00:00.000Z/DAY+1DAY',
       'facet.date.gap': '+1DAY',
       'json.nl': 'map',
-	  'sort':'id asc'
+	  'sort':'id asc',
+      'hl':true,
+      'hl.fl':'text', //The field for which you want highlighting snippets
+      'hl.snippets': 4, //Change if you want more or less highlighting snippets
+        //Also for highlighting, can optionally set these params for how you want the highlighting to look (yellow background here; Solr default is <em>...</em>):
+      'hl.simple.pre': '<font style="background:#FFFF99">',
+      'hl.simple.post': '</font>'
     };
 	
     for (var name in params) {
