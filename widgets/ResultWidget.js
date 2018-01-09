@@ -86,7 +86,7 @@
                 cur_doc_highlighting_txt = this.getDocSnippets(highlighting,doc);
             }
             if (doc.hasModel=="Page") {
-                var output = '<div><h2><span>'+ 'book_id='+ doc.book_id + '</span>'+ '   '  + doc.hasModel + ' - '+ doc.position + '</h2>';
+                var output = '<div><h4><span>'+ 'book_id='+ doc.book_id + '</span>'+ '   '  + doc.hasModel + ' - '+ doc.position + '</h4>';
                  if (doc.text.length > 300) {
                     if (doc.text!=null) {
                         if (!(this.isBlank(cur_doc_highlighting_txt) || /^\s*\.*\s*$/.test(cur_doc_highlighting_txt))) {
@@ -101,7 +101,7 @@
             }
 
             else if (doc.hasModel=='Book') {
-                var output = '<div><h2>'  + doc.title +cur_doc_highlighting_txt+ '</h2>';
+                var output = '<div><h4>'  + doc.title +cur_doc_highlighting_txt+ '</h4>';
                 if (doc.author!=null) {snippet +=  '<br> <b>'+'Author = </b>' + doc.author+cur_doc_highlighting_txt;}
                 if (doc.title_transcription!=null) {snippet += '<br><b> ' +'Title transcription = </b>'+ doc.title_transcription+ cur_doc_highlighting_txt;}
                 if (doc.creator_transcription!=null) {snippet += '<br><b> ' +'Creator transcription = </b>'+doc.creator_transcription+cur_doc_highlighting_txt;}
@@ -113,7 +113,8 @@
                 if (doc.date!=null) {snippet +=  '<br><b> Date = </b>' + doc.date;}
             }
             else if (doc.hasModel=="Chapter") {
-                if (doc.title!=null) {snippet +=  doc.title+cur_doc_highlighting_txt;}
+                var output = '<div><h4>'  + doc.id + '</h4>';
+                if (doc.title!=null) {snippet +=  doc.title;}
             }
             else {
                 if (doc.id!=null) { snippet += doc.id+cur_doc_highlighting_txt;}
