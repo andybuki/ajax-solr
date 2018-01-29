@@ -25,7 +25,7 @@ AjaxSolr.AutocompleteWidget = AjaxSolr.AbstractTextWidget.extend({
         select: function(event, ui) {
           if (ui.item) {
             self.requestSent = true;
-            if (self.manager.store.addByValue('fq', ui.item.field + ':' + AjaxSolr.Parameter.escapeValue(ui.item.value))) {
+            if (self.manager.store.addByValue('fq', ui.item.field + '=' + AjaxSolr.Parameter.escapeValue(ui.item.value))) {
               self.doRequest();
             }
           }
@@ -48,6 +48,9 @@ AjaxSolr.AutocompleteWidget = AjaxSolr.AbstractTextWidget.extend({
       params.push('facet.field=' + this.fields[i]);
     }
     var values = this.manager.store.values('fq');
+    /*if (values='["hasModel:"Book""]') {
+        values = '["hasModel=Book"]';
+    }*/
     for (var i = 0; i < values.length; i++) {
       params.push('fq=' + encodeURIComponent(values[i]));
     }

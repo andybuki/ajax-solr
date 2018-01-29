@@ -5,8 +5,8 @@ var Manager;
   $(function () {
     Manager = new AjaxSolr.Manager({
       /*solrUrl: 'http://10.46.3.100:8980/solr/local_gazetteer/select?shards=10.46.3.100:8980/solr/airiti,10.46.3.100:8980/solr/local_gazetteer,10.46.3.100:8980/solr/AD&indent=true'*/
-	  /*solrUrl: 'http://10.46.3.100:8980/solr/local_gazetteer/'*/
-	  solrUrl: 'http://10.46.3.100:8980/solr/AD/select?shards=10.46.3.100:8980/solr/AD,10.46.3.100:8980/solr/airiti,10.46.3.100:8980/solr/local_gazetteer&indent=true&'
+        solrUrl: 'http://10.46.3.100:8982/solr/adam_metthew/'
+        /*solrUrl: 'http://10.46.3.100:8980/solr/AD/select?shards=10.46.3.100:8980/solr/AD,10.46.3.100:8980/solr/airiti&indent=true&'*/
 	  
     });
     Manager.addWidget(new AjaxSolr.ResultWidget({
@@ -26,7 +26,7 @@ var Manager;
               $('#pager-header').html($('<span></span>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
           }
       }));
-    var fields = [ 'text', 'title', 'author', 'keywords', 'person', 'spatial','date','hasModel', 'medium','edition' ];
+    var fields = ['text','date','hasModel','medium_facet', 'edition_facet', 'person_facet', 'spatial','author_facet', 'title_facet'];
       for (var i = 0, l = fields.length; i < l; i++) {
           Manager.addWidget(new AjaxSolr.MultiSelectWidget({ //MultiSelectWidget instead of Tagcloudwidget
               id: fields[i],
@@ -45,7 +45,7 @@ var Manager;
 	Manager.addWidget(new AjaxSolr.AutocompleteWidget({
       id: 'text',
       target: '#search',
-      fields: [ 'title', 'author','date' ]
+      fields: ['title','date','author']
     }));
 	
 	/*Manager.addWidget(new AjaxSolr.CalendarWidget({
@@ -59,23 +59,27 @@ var Manager;
     Manager.store.addByValue('q', '*:*');
     var params = {
      facet: true,
-      'facet.field': ['title', 'author','hasModel','date','medium','spatial','edition' ],
+      'facet.field': ['hasModel','date','medium_facet','edition_facet', 'person_facet', 'spatial' ,'author_facet', 'title_facet'],
       'facet.limit': 20,
       'facet.mincount': 1,
       'f.topics.facet.limit': 50,
       'f.countryCodes.facet.limit': -1,
-      'facet.date': 'date',
+      /*'facet.date': 'date',
       'facet.date.start': '1187-02-26T00:00:00.000Z/DAY',
       'facet.date.end': '1987-10-20T00:00:00.000Z/DAY+1DAY',
-      'facet.date.gap': '+1DAY',
+      'facet.date.gap': '+1DAY',*/
       'json.nl': 'map',
-	  'sort':'id asc',
+	  //'sort':'id asc',
       'hl':true,
       'hl.fl':'text', //The field for which you want highlighting snippets
       'hl.snippets': 4, //Change if you want more or less highlighting snippets
         //Also for highlighting, can optionally set these params for how you want the highlighting to look (yellow background here; Solr default is <em>...</em>):
       'hl.simple.pre': '<font style="background:#FFFF99">',
-      'hl.simple.post': '</font>'
+      'hl.simple.post': '</font>'/*,
+        group: true,
+        'group.field': 'position',
+        'group.ngroups': true*/
+
     };
 	
     for (var name in params) {

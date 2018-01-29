@@ -282,6 +282,8 @@ AjaxSolr.MultiSelectWidget = AjaxSolr.AbstractFacetWidget.extend({
       var facet = objectedItems[i].facet;
       var cur_facet_count = (typeof cur_facets_hash[facet] != 'undefined') ? cur_facets_hash[facet].count : 0;
 
+
+
       var checked_txt = '';
       if (this.check_state && this.check_state[facet]) {
 	  checked_txt = ' checked=true';
@@ -292,9 +294,37 @@ AjaxSolr.MultiSelectWidget = AjaxSolr.AbstractFacetWidget.extend({
 	   $('<input type=checkbox id="' + this.field + '_' + facet + '_checkbox"' + checked_txt + '></input>')
 	   .change(this.checkboxChange(facet))
 	  );
+
 	  $(this.target).append($('<span style="padding-left: 2px; font-size: small"></span>').text(facet));
+
+          if (this.field + '_' + facet + '_checkbox"'==null) {
+              $("#authorHide").hide();
+          }
+
 	  if (cur_facet_count != 0) {
-	      $(this.target).append($('<span style="font-size: x-small"></span>').text(' (' + cur_facet_count + ')'));
+	      $(this.target).append($('<span id="number" style="font-size: x-small"></span>').text(' (' + cur_facet_count + ')'));
+          $("#personHide").show();
+          $("#dateHide").show();
+          $("#mediumHide").show();
+          $("#authorHide").show();
+          $("#titleHide").show();
+          $("#spatialHide").show();
+          $("#editionHide").show();
+
+	  }
+	  if (cur_facet_count == 0){
+          //$(this.target).append($('<div class="person" style="display: none"></div>'));
+
+              $("#personHide").hide();
+              $("#dateHide").hide();
+              $("#mediumHide").hide();
+              $("#authorHide").hide();
+              $("#titleHide").hide();
+              $("#spatialHide").hide();
+              $("#editionHide").hide();
+          //$('author_' + facet + '_checkbox"').hide();
+
+
 	  }
 	  $(this.target).append($('<br>'));
       }
@@ -312,13 +342,37 @@ AjaxSolr.MultiSelectWidget = AjaxSolr.AbstractFacetWidget.extend({
 	   .change(this.checkboxChange(facet))
 	  );
 	  $('#' + show_more_div_id).append($('<span style="padding-left: 2px; font-size: small"></span>').text(facet));
+
+          if (this.field + '_' + facet + '_checkbox"'==null) {
+              $('author_' + facet + '_checkbox"').hide();
+          }
+
+	  if ('<span id="' + show_more_div_id==0) {
+          $("#spatialHide").hide();
+      }
+
 	  if (cur_facet_count != 0) {
-	      $('#' + show_more_div_id).append($('<span style="font-size: x-small"></span>').text(' (' + cur_facet_count + ')'));
+	      $('#' + show_more_div_id).append($('<span id="number" style="font-size: x-small"></span>').text(' (' + cur_facet_count + ')'));
 	  }
+	  if (cur_facet_count == null) {
+              //$('#' + show_more_div_id).append($('<div class="person" style="display: none"></div>'));
+          $("#personHide").hide();
+          $("#dateHide").hide();
+          $("#mediumHide").hide();
+          $("#authorHide").hide();
+          $("#titleHide").hide();
+          $("#spatialHide").hide();
+          $("#editionHide").hide();
+          //$('author_' + facet + '_checkbox"').hide();
+      }
+
 	  $('#' + show_more_div_id).append($('<br>'));
 	  num_hidden++;
       }
 
+      if ('#' + show_more_div_id==null){
+          $('author_' + facet + '_checkbox"').hide();
+      }
     }
 
     var ac_id = this.field + '_all_extra';

@@ -1,0 +1,49 @@
+{
+  "responseHeader":{
+    "status":0,
+    "QTime":0,
+    "params":{
+      "q":"hasModel:Book",
+      "fq":"book_id=17268",
+      "wt":"json"}},
+  "response":{"numFound":1,"start":0,"maxScore":7.204851,"docs":[
+    {
+      "id":"17268book",
+      "hasModel":"Book",
+      "book_id":"17268",
+      "title":"順寧府志 38卷",
+      "author":["（清）党蒙",
+        "（清）周宗洛"],
+      "title_transcription":["shun ning fu zhi",
+        "顺宁府志"],
+      "creator_transcription":["dang meng",
+        "zhou zong luo",
+        "党蒙",
+        "周宗洛"],
+      "medium":["电子文献",
+        "electronic"],
+      "date":"1908",
+      "edition":"清光緒刊本",
+      "temporal":"清 光緒 (1908-1908)",
+      "admin_level_1":"雲南",
+      "admin_level_2":"臨滄",
+      "admin_type":"府",
+      "spatial":"順寧府",
+      "tgaz_api":"http://maps.cga.harvard.edu/tgaz/placename/hvd_80516",
+      "chgis":"hvd_80516",
+      "latitude":24.591814,
+      "longitude":99.91098,
+      "language":"chi",
+      "url":"http://erf.sbb.spk-berlin.de/han/fangzhiku",
+      "responsibility":["（清）党蒙修 （清）周宗洛纂"],
+      "_version_":1582222508845694976,
+      "score":7.204851}]
+  },
+  "facet_counts":{
+    "facet_queries":{},
+    "facet_fields":{},
+    "facet_ranges":{},
+    "facet_intervals":{},
+    "facet_heatmaps":{}},
+  "highlighting":{
+    "17268book":{}}}

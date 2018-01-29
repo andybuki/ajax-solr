@@ -24,15 +24,18 @@
     <script src="widgets/AutocompleteWidget.js"></script>
     <script src="widgets/CountryCodeWidget.js"></script>
     <script src="widgets/CalendarWidget.js"></script>
+    <script src="js/jquery.jsonp.js"></script>
 </head>
 <body>
+<div id="header">
+    <!--<h1>Berlin Bibliothek</h1>-->
+    </br>
+    <img class="logo" src="images/logo.png">
+    <!--<h2>Browse Reuters business news from 1987</h2>-->
+</div>
+
 <div id="wrap">
-    <div id="header">
-        <!--<h1>Berlin Bibliothek</h1>-->
-        </br>
-        <img src="images/logo.png">
-        <!--<h2>Browse Reuters business news from 1987</h2>-->
-    </div>
+
 
     <div class="right">
         <div id="result">
@@ -54,41 +57,48 @@
             <input type="text" id="query" name="query" autocomplete="off">
         </ul>
 
-        <!--<h2>Top Topics</h2>
-        <div class="tagcloud" id="topics"></div>
-
-        <h2>Top Organisations</h2>
-        <div class="tagcloud" id="organisations"></div>
-
-        <h2>Top Keywords</h2>
-        <div class="tagcloud" id="keywords"></div>-->
-
         <h2>Has Model</h2>
         <div class="tagcloud" id="hasModel"></div>
 
-        <h2>Top Edition</h2>
-        <div class="tagcloud" id="edition"></div>
+        <div class="title" id="titleHide">
+            <h2>Top Title</h2>
+            <div class="tagcloud" id="title_facet"></div>
+        </div>
 
-        <h2>Top Spatial</h2>
-        <div class="tagcloud" id="spatial"></div>
+        <div class="author" id="authorHide">
+            <h2>Top Author</h2>
+            <div class="tagcloud" id="author_facet"></div>
+        </div>
 
-        <h2>Top Title</h2>
-        <div class="tagcloud" id="title"></div>
+        <div class="date" id="dateHide">
+            <h2>By Date</h2>
+            <div class="tagcloud" id="date"></div>
+        </div>
 
-        <h2>Top Author</h2>
-        <div class="tagcloud" id="author"></div>
+        <div class="spatial" id="spatialHide">
+            <h2>Top Spatial</h2>
+            <div class="tagcloud" id="spatial"></div>
+        </div>
 
-        <h2>Top Medium</h2>
-        <div class="tagcloud" id="medium"></div>
+        <div class="person" id="personHide">
+            <h2>Top Person</h2>
+            <div class="tagcloud" id="person_facet"></div>
+        </div>
 
-        <!--<h2>By Country</h2>
-        <div id="countries"></div>
-        <div id="preview"></div>-->
 
-        <h2>By Date</h2>
-        <div class="tagcloud" id="date"></div>
+        <div class="edition" id="editionHide">
+            <h2>Top Edition</h2>
+            <div class="tagcloud" id="edition_facet"></div>
+        </div>
+
+
+        <div class="medium" id="mediumHide">
+            <h2>Top Medium</h2>
+            <div class="tagcloud" id="medium_facet"></div>
+        </div>
 
         <div class="clear"></div>
+
     </div>
     <div class="clear"></div>
 </div>

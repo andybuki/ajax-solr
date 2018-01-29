@@ -30,7 +30,7 @@
             var self = this;
             return function () {
                 self.manager.store.remove('fq');
-                self.manager.store.addByValue('fq', facet_field + ':' + AjaxSolr.Parameter.escapeValue(facet_value));
+                self.manager.store.addByValue('fq', facet_field + '=' + AjaxSolr.Parameter.escapeValue(facet_value));
                 self.doRequest(0);
                 return false;
             };
@@ -46,6 +46,17 @@
             }
             for (var i = 0, l = this.manager.response.response.docs.length; i < l; i++) {
                 var doc = this.manager.response.response.docs[i];
+
+                if (this.manager.response.highlighting && this.manager.response.highlighting[doc.id]
+                        [this.manager.response.responseHeader.params['hl.fl']]) {
+                    // display this.manager.response.highlighting[doc.id]
+                    [this.manager.response.responseHeader.params['hl.fl']]
+                }
+                else {
+                    // display result without highlighting
+                }
+
+
                 $(this.target).append(this.template(doc,this.manager.response.highlighting));
 
                 var items = [];
@@ -59,6 +70,11 @@
                     $links.append($('<li></li>').append(items[j]));
                 }
             }
+            /*for (var i = 0, l = this.manager.response.grouped.position.groups.length; i < l; i++) {
+                for (var j = 0, m = this.manager.response.grouped.position.groups[i].doclist.docs.length; j < m; j++) {
+                    var doc = this.manager.response.grouped.position.groups[i].doclist.docs[j];
+                }
+            }*/
         },
 
         getDocSnippets: function(highlighting, doc) {
@@ -75,7 +91,7 @@
                     }
                 }
             }
-            var cur_doc_snippets_txt = '...' + all_snippets_arr.join('...') + '...';
+            var cur_doc_snippets_txt =  all_snippets_arr.join('');
             return(cur_doc_snippets_txt);
         },
 
@@ -85,43 +101,143 @@
             if (this.highlighting && highlighting) {
                 cur_doc_highlighting_txt = this.getDocSnippets(highlighting,doc);
             }
+            var output2 =doc.book_id;
+            var url2 =  this.manager.solrUrl+"select?fq=hasModel:Book&q=book_id:"+output2+"&wt=json&json.wrf=?&callback=?";
+            //var url2 =  this.manager.solrUrl+"select?q=hasModel:Book%20AND%20book_id:"+output2+"&wt=json&json.wrf=?&callback=?";
+            var url3 = this.manager.solrUrl+"select?fq=book_id="+doc.page_id+"&q=hasModel:Page&wt=json&rows=0&json.wrf=?&callback=?";
+            var titles = "";
+            var titles2 = "";
+            var data="";
+            var data2 ="";
+            var str = "link";
+
             if (doc.hasModel=="Page") {
-                var output = '<div><h4><span>'+ 'book_id='+ doc.book_id + '</span>'+ '   '  + doc.hasModel + ' - '+ doc.position + '</h4>';
-                 if (doc.text.length > 300) {
-                    if (doc.text!=null) {
-                        if (!(this.isBlank(cur_doc_highlighting_txt) || /^\s*\.*\s*$/.test(cur_doc_highlighting_txt))) {
-                            snippet += doc.text.substring(0, 300) + cur_doc_highlighting_txt;
-                            snippet += '<span style="display:none;">' + doc.text.substring(300)
-                            snippet += '</span> <a href="#" class="more">more</a>';
+                $.when($.getJSON(url2), $.getJSON(url3)).then(function(data,data2){
+                    if (data[0].response.docs[0].date!=0){
+                        data =  $('#titles').append('<h4>'+
+                            data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
+                    } else if (data[0].response.docs[0].issued!=null && data[0].response.docs[0].publisher=="Foreign Office"){
+                        data =  $('#titles').append('<h4>'+
+                            data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].issued+  ',  p.'+doc.position+'</h4>');
+                    } else if (data[0].response.docs[0].identifier!=null && data[0].response.docs[0].source=="Airiti eBook (lic.)") {
+                        var page = parseInt(doc.position);
+                        var combineLink = '&GoToPage='+page;
+                        var link2 = (data[0].response.docs[0].identifier).replace('http://www.airitibooks.com/detail.aspx?','http://www.airitibooks.com.airiti.erf.sbb.spk-berlin.de/pdfViewer/index.aspx?');
+                        var link = str.link(link2+combineLink);
+                        data =  $('#titles').append('<h4>'+
+                            data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].issued+  ',  p.'+doc.position+'</h4>');
+
+                        if (doc.text.length > 300) {
+                            if (doc.text!=null) {
+                                data2 += $('#titles').append(doc.text.substring(0, 300));
+                                data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
+                                data2 += $('#titles').append('</span> <a href="#" class="more">more</a>');
+                                data2 += $('#titles').append('</br>'+'<p id="link">' + link + '</p>');
+                            }
+                        } else {
+                            data2 += $('#titles').append(doc.text);
+                            data2 += $('#titles').append('</br>'+'<p id="link">' + link + '</p>');
+                        }
+
+                    } else {
+                        data =  $('#titles').append('<h4>'+
+                            data[0].response.docs[0].title + '.  ' +  ',  p.'+doc.position+'</h4>');
+                    }
+
+                    if (doc.image_url!=null) {
+                        var link = str.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Images/");
+                        if (doc.text.length > 300) {
+                            if (doc.text!=null) {
+                                data2 += $('#titles').append(doc.text.substring(0, 300)+cur_doc_highlighting_txt);
+                                data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300)+cur_doc_highlighting_txt);
+                                data2 += $('#titles').append('<br>'+doc.score);
+                                data2 += $('#titles').append('</span> <a href="#" class="more">more</a>');
+                                data2 += $('#titles').append('</br>'+'<p id="link">' + link + '</p>');
+                            }
+                        }
+
+                    } else if (doc.page_id!=null) {
+                        if (doc.text.length > 300) {
+                            if (doc.text!=null) {
+                                data2 += $('#titles').append(doc.text.substring(0, 300)+cur_doc_highlighting_txt);
+                                data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300)+cur_doc_highlighting_txt);
+                                data2 += $('#titles').append('<br>'+doc.score);
+                                data2 += $('#titles').append('</span> <a href="#" class="more">more</a>');
+                            }
+                        } else {
+                            data2 = $('#titles').append(doc.text)+cur_doc_highlighting_txt;
                         }
                     }
-                }else {
-                     if (doc.text!=null) { snippet += doc.text+cur_doc_highlighting_txt;}
-                 }
+                });
+                var output = '<div><span><span id="titles"></span></br>';
             }
 
             else if (doc.hasModel=='Book') {
-                var output = '<div><h4>'  + doc.title +cur_doc_highlighting_txt+ '</h4>';
-                if (doc.author!=null) {snippet +=  '<br> <b>'+'Author = </b>' + doc.author+cur_doc_highlighting_txt;}
-                if (doc.title_transcription!=null) {snippet += '<br><b> ' +'Title transcription = </b>'+ doc.title_transcription+ cur_doc_highlighting_txt;}
-                if (doc.creator_transcription!=null) {snippet += '<br><b> ' +'Creator transcription = </b>'+doc.creator_transcription+cur_doc_highlighting_txt;}
-                if (doc.medium!=null) {snippet +=  ' <br><b>' +'Medium = </b>'+ doc.medium+cur_doc_highlighting_txt;}
-                if (doc.keywords!=null) {snippet +=  ' <br><b>' +'Keywords = </b>'+ doc.keywords;}
-                if (doc.publisher!=null) {snippet +=  ' <br><b>' +'Publisher = </b>'+ doc.publisher;}
-                if (doc.source!=null) {snippet +=  ' <br><b>' +'Source = </b>'+ doc.source;}
-                if (doc.issued!=null) {snippet +=  '<br><b> IssueNumber = </b>' + doc.issued;}
-                if (doc.date!=null) {snippet +=  '<br><b> Date = </b>' + doc.date;}
+                var output = '<div><h4>'  + doc.title + '</h4>';
+                if (doc.author!=null) {
+                    snippet +=  '<b>'+'Author = </b>' + doc.author; +'<br>'}
+
+                //if (doc.title_transcription!=null) {snippet += '<br><b> ' +'Title transcription = </b>'+ doc.title_transcription;}
+                /*if (doc.creator_transcription!=null) {
+                    if (cur_doc_highlighting_txt!="......") {
+                        snippet += '<br><b> ' +'Creator transcription = </b>'+doc.creator_transcription+cur_doc_highlighting_txt;
+                    } else {
+                        snippet += '<br><b> ' +'Creator transcription = </b>'+doc.creator_transcription;
+                    }
+
+                }*/
+                //if (doc.medium!=null) {snippet +=  ' <br><b>' +'Medium = </b>'+ doc.medium}
+                //if (doc.keywords!=null) {snippet +=  ' <br><b>' +'Keywords = </b>'+ doc.keywords;}
+                if (doc.publisher!=null) {snippet +=  ' <b>' +'Edition = </b>'+ doc.publisher;}
+                if (doc.publication_name!=null) {snippet +=  ','+ doc.publication_name;}
+                if (doc.edition!=null) {snippet +=  ','+ doc.edition;}
+                //if (doc.source!=null) {snippet +=  ' <br><b>' +'Source = </b>'+ doc.source;}
+                //if (doc.issued!=null) {snippet +=  '<br><b> IssueNumber = </b>' + doc.issued;}
+                if (doc.date!=null) {snippet +=  '<br><b> Date = </b>' + doc.date;
+                    if (doc.issued!=null) {snippet +=  '/' + doc.issued;}
+                }
+                if (doc.date==null) {
+                    if (doc.issued!=null) {snippet += '<br><b> Date = </b>' + doc.issued;}
+                }
+
+                if (doc.responsibility!=null) {
+                    snippet +=  ' <br><b>' +'Note = </b>'+ doc.responsibility;
+                }
+
+                if (doc.series_title!=null) { snippet += ' <br><b>' +'Note = </b>'+ doc.series_title;
+                    if (doc.source!=null) {snippet +=  ' ,'+ doc.source;}
+                }
+
+                if (doc.series_title==null) {
+                    if (doc.source!=null) {snippet +=   ' <br><b>' +'Note = </b>'+ doc.source;}
+                }
+
+                if (doc.url!=null) {
+                    var str = "link";
+                    var link = str.link(doc.url);
+                    snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
+                }
+
+                if (doc.identifier!=null) {
+                    var str = "link";
+                    var link = str.link(doc.identifier).replace("http://www.airitibooks.com/detail.aspx?","http://erf.sbb.spk-berlin.de/han/airiti/www.airitibooks.com/Detail/Detail?");
+                    snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
+                }
             }
+
             else if (doc.hasModel=="Chapter") {
-                var output = '<div><h4>'  + doc.id + '</h4>';
-                if (doc.title!=null) {snippet +=  doc.title;}
+                $.when($.getJSON(url2), $.getJSON(url3)).then(function(data,data2) {
+                    data =  $('#titles').append('<h4>'+data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date+  ', '+doc.pageStart+'-'+doc.pageEnd +' p.</h4>');
+                    data2 = $('#titles').append(doc.title);
+                    //var output = '<div><h4>'  + doc.id + '</h4>';
+                    //if (doc.title!=null) {snippet +=  doc.title;}
+                });
+                var output = '<div><span><span id="titles"></span>';
             }
             else {
                 if (doc.id!=null) { snippet += doc.id+cur_doc_highlighting_txt;}
             }
 
-            //var output = '<div><h2>' + doc.title + '</h2>';
-            //output += '<p id="links_' + doc.id + '" class="links"></p>';
             output += '<p>' + snippet + '</p></div>';
             return output;
         },
@@ -129,7 +245,6 @@
         isBlank: function(str) {
             return (!str || /^\s*$/.test(str));
         },
-
 
         init: function () {
             $(document).on('click', 'a.more', function () {

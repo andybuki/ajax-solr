@@ -17,6 +17,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     }
 
     var fq = this.manager.store.values('fq');
+
     for (var i = 0, l = fq.length; i < l; i++) {
       if (fq[i].match(/[\[\{]\S+ TO \S+[\]\}]/)) {
         var field = fq[i].match(/^\w+:/)[0];
