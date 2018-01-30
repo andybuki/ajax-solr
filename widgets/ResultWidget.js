@@ -102,7 +102,7 @@
                 cur_doc_highlighting_txt = this.getDocSnippets(highlighting,doc);
             }
             var output2 =doc.book_id;
-            var url2 =  this.manager.solrUrl+"select?fq=hasModel:Book&q=book_id:"+output2+"&wt=json&json.wrf=?&callback=?";
+            var url2 =  this.manager.solrUrl+"select?fq=hasModel:Book&q=hasModel:Book%20and%20book_id:"+output2+"&wt=json&json.wrf=?&callback=?";
             //var url2 =  this.manager.solrUrl+"select?q=hasModel:Book%20AND%20book_id:"+output2+"&wt=json&json.wrf=?&callback=?";
             var url3 = this.manager.solrUrl+"select?fq=book_id="+doc.page_id+"&q=hasModel:Page&wt=json&rows=0&json.wrf=?&callback=?";
             var titles = "";
@@ -127,7 +127,7 @@
                         data =  $('#titles').append('<h4>'+
                             data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].issued+  ',  p.'+doc.position+'</h4>');
 
-                        if (doc.text.length > 300) {
+                        if (doc.text && doc.text.length > 300) {
                             if (doc.text!=null) {
                                 data2 += $('#titles').append(doc.text.substring(0, 300));
                                 data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
@@ -146,7 +146,7 @@
 
                     if (doc.image_url!=null) {
                         var link = str.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Images/");
-                        if (doc.text.length > 300) {
+                        if (doc.text && doc.text.length > 300) {
                             if (doc.text!=null) {
                                 data2 += $('#titles').append(doc.text.substring(0, 300)+cur_doc_highlighting_txt);
                                 data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300)+cur_doc_highlighting_txt);
@@ -157,7 +157,7 @@
                         }
 
                     } else if (doc.page_id!=null) {
-                        if (doc.text.length > 300) {
+                        if (doc.text && doc.text.length > 300) {
                             if (doc.text!=null) {
                                 data2 += $('#titles').append(doc.text.substring(0, 300)+cur_doc_highlighting_txt);
                                 data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300)+cur_doc_highlighting_txt);

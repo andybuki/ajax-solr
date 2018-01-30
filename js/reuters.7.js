@@ -5,8 +5,8 @@ var Manager;
   $(function () {
     Manager = new AjaxSolr.Manager({
       /*solrUrl: 'http://10.46.3.100:8980/solr/local_gazetteer/select?shards=10.46.3.100:8980/solr/airiti,10.46.3.100:8980/solr/local_gazetteer,10.46.3.100:8980/solr/AD&indent=true'*/
-        solrUrl: 'http://10.46.3.100:8982/solr/adam_metthew/'
-        /*solrUrl: 'http://10.46.3.100:8980/solr/AD/select?shards=10.46.3.100:8980/solr/AD,10.46.3.100:8980/solr/airiti&indent=true&'*/
+        /*solrUrl: 'http://10.46.3.100:8982/solr/adam_metthew/'*/
+        solrUrl: 'http://10.46.3.100:8982/solr/adam_metthew/select?shards=10.46.3.100:8982/solr/adam_metthew,10.46.3.100:8982/solr/local_gazeetter,10.46.3.100:8982/solr/airiti&indent=true&'
 	  
     });
     Manager.addWidget(new AjaxSolr.ResultWidget({
@@ -26,7 +26,7 @@ var Manager;
               $('#pager-header').html($('<span></span>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
           }
       }));
-    var fields = ['text','date','hasModel','medium_facet', 'edition_facet', 'person_facet', 'spatial','author_facet', 'title_facet'];
+    var fields = ['text','date','hasModel','medium_facet', 'edition_facet', 'person_facet', 'spatial_facet','author_facet', 'title_facet'];
       for (var i = 0, l = fields.length; i < l; i++) {
           Manager.addWidget(new AjaxSolr.MultiSelectWidget({ //MultiSelectWidget instead of Tagcloudwidget
               id: fields[i],
@@ -59,7 +59,7 @@ var Manager;
     Manager.store.addByValue('q', '*:*');
     var params = {
      facet: true,
-      'facet.field': ['hasModel','date','medium_facet','edition_facet', 'person_facet', 'spatial' ,'author_facet', 'title_facet'],
+      'facet.field': ['hasModel','date','medium_facet','edition_facet', 'person_facet', 'spatial_facet' ,'author_facet', 'title_facet'],
       'facet.limit': 20,
       'facet.mincount': 1,
       'f.topics.facet.limit': 50,
