@@ -150,7 +150,7 @@
                             if (doc.text!=null) {
                                 data2 += $('#titles').append(doc.text.substring(0, 300)+cur_doc_highlighting_txt);
                                 data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300)+cur_doc_highlighting_txt);
-                                data2 += $('#titles').append('<br>'+doc.score);
+                                //data2 += $('#titles').append('<br>'+doc.score);
                                 data2 += $('#titles').append('</span> <a href="#" class="more">more</a>');
                                 data2 += $('#titles').append('</br>'+'<p id="link">' + link + '</p>');
                             }
@@ -161,7 +161,7 @@
                             if (doc.text!=null) {
                                 data2 += $('#titles').append(doc.text.substring(0, 300)+cur_doc_highlighting_txt);
                                 data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300)+cur_doc_highlighting_txt);
-                                data2 += $('#titles').append('<br>'+doc.score);
+                                //data2 += $('#titles').append('<br>'+doc.score);
                                 data2 += $('#titles').append('</span> <a href="#" class="more">more</a>');
                             }
                         } else {
