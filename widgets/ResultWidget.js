@@ -38,6 +38,8 @@
 
         afterRequest: function () {
             $(this.target).empty();
+            var collections = $(this.manager.solrUrl);
+            var col = collections.selector;
             if (this.no_init_results) {
                 if ((this.manager.store.get('q').value == '*:*') &&
                     (this.manager.store.values('fq').length <= 0)) {
@@ -110,6 +112,16 @@
             var data="";
             var data2 ="";
             var str = "link";
+            var id = doc.id;
+            var rmbb= 'rmbb';
+            var locgaz = 'loc_gaz';
+            if (doc.id.indexOf(rmbb)){
+                data = "1";
+            } else if  (doc.id.indexOf(loc_gaz)) {
+                data = "1";
+            } else {
+                data = "1";
+            }
 
             if (doc.hasModel=="Page") {
                 $.when($.getJSON(url2), $.getJSON(url3)).then(function(data,data2){
@@ -148,8 +160,9 @@
                         var link = str.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Images/");
                         if (doc.text && doc.text.length > 300) {
                             if (doc.text!=null) {
-                                data2 += $('#titles').append(doc.text.substring(0, 300)+cur_doc_highlighting_txt);
-                                data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300)+cur_doc_highlighting_txt);
+                                data2 += $('#titles').append(doc.text.substring(0, 300));
+                                //data2 += $('#titles').append(doc.text.substring(0, 300)+cur_doc_highlighting_txt);
+                                data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
                                 //data2 += $('#titles').append('<br>'+doc.score);
                                 data2 += $('#titles').append('</span> <a href="#" class="more">more</a>');
                                 data2 += $('#titles').append('</br>'+'<p id="link">' + link + '</p>');
@@ -159,17 +172,34 @@
                     } else if (doc.page_id!=null) {
                         if (doc.text && doc.text.length > 300) {
                             if (doc.text!=null) {
-                                data2 += $('#titles').append(doc.text.substring(0, 300)+cur_doc_highlighting_txt);
-                                data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300)+cur_doc_highlighting_txt);
+                                data2 += $('#titles').append(doc.text.substring(0, 300));
+                                //data2 += $('#titles').append(doc.text.substring(0, 300)+cur_doc_highlighting_txt);
+                                data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
                                 //data2 += $('#titles').append('<br>'+doc.score);
                                 data2 += $('#titles').append('</span> <a href="#" class="more">more</a>');
                             }
                         } else {
-                            data2 = $('#titles').append(doc.text)+cur_doc_highlighting_txt;
+                            //data2 = $('#titles').append(doc.text)+cur_doc_highlighting_txt;
+                            data2 = $('#titles').append(doc.text);
                         }
                     }
                 });
                 var output = '<div><span><span id="titles"></span></br>';
+            }
+
+            else if (doc.hasModel=='Article') {
+                var rightDate = moment(doc.wholeDate.toString()).format("DD.MM.YYYY");
+                var output = '<div><h4>'  + doc.title + ",  "+rightDate+'</h4>';
+                if (doc.text!=null && doc.text.length > 300) {
+                    //output += (doc.text.substring(0, 300)+cur_doc_highlighting_txt);
+                    output += (doc.text.substring(0, 300));
+                    output += ('<span style="display:none;">' + doc.text.substring(300));
+                    output += ('</span> <a href="#" class="more">more</a>');
+                } else if (doc.text!=null && doc.text.length < 300) {
+                    //output += (doc.text+cur_doc_highlighting_txt);
+                    output += (doc.text);
+                }
+
             }
 
             else if (doc.hasModel=='Book') {

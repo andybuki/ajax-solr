@@ -3,11 +3,16 @@ var Manager;
 (function ($) {
 
   $(function () {
+   var collection =  ['airiti', 'AMD_FOChina', 'LocGaz', 'RMRB'];
+   //var atLeastOneIsChecked = $('#airiti':checkbox:checked).length > 0;
+      if($("#airiti").prop('checked') == true){
+          //do something
+      }
     Manager = new AjaxSolr.Manager({
       /*solrUrl: 'http://10.46.3.100:8980/solr/local_gazetteer/select?shards=10.46.3.100:8980/solr/airiti,10.46.3.100:8980/solr/local_gazetteer,10.46.3.100:8980/solr/AD&indent=true'*/
         /*solrUrl: 'http://10.46.3.100:8982/solr/adam_metthew/'*/
-        solrUrl: 'http://10.46.3.100:8982/solr/adam_metthew/select?shards=10.46.3.100:8982/solr/adam_metthew,10.46.3.100:8982/solr/local_gazeetter,10.46.3.100:8982/solr/airiti&indent=true&'
-	  
+        solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina/select?shards=10.46.3.100:8982/solr/AMD_FOChina,10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/airiti,10.46.3.100:8982/solr/RMRB&indent=true&'
+
     });
     Manager.addWidget(new AjaxSolr.ResultWidget({
       id: 'result',
@@ -26,7 +31,7 @@ var Manager;
               $('#pager-header').html($('<span></span>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
           }
       }));
-    var fields = ['text','date','hasModel','medium_facet','edition_facet','person_facet','spatial_facet','author_facet','title_facet','medium','edition','person','spatial','author','title'];
+    var fields = ['text','date','hasModel','medium_facet','edition_facet','person_facet','spatial_facet','author_facet','title_facet','medium','edition','person','spatial','author','title','collection'];
       for (var i = 0, l = fields.length; i < l; i++) {
           Manager.addWidget(new AjaxSolr.MultiSelectWidget({ //MultiSelectWidget instead of Tagcloudwidget
               id: fields[i],
@@ -59,7 +64,7 @@ var Manager;
     Manager.store.addByValue('q', '*:*');
     var params = {
      facet: true,
-      'facet.field': ['hasModel','date','medium_facet','edition_facet', 'person_facet', 'spatial_facet' ,'author_facet', 'title_facet'],
+      'facet.field': ['hasModel','date','medium_facet','edition_facet', 'person_facet', 'spatial_facet' ,'author_facet', 'title_facet','collection'],
       'facet.limit': 20,
       'facet.mincount': 1,
       'f.topics.facet.limit': 50,
