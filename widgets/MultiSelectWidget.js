@@ -303,25 +303,29 @@ AjaxSolr.MultiSelectWidget = AjaxSolr.AbstractFacetWidget.extend({
 
 	  if (cur_facet_count != 0) {
 	      $(this.target).append($('<span id="number" style="font-size: x-small"></span>').text(' (' + cur_facet_count + ')'));
-          $("#personHide").show();
+
+	      //$("#collectionHide").show();
+	      /*$("#personHide").show();
           $("#dateHide").show();
           $("#mediumHide").show();
           $("#authorHide").show();
           $("#titleHide").show();
           $("#spatialHide").show();
-          $("#editionHide").show();
+          $("#editionHide").show();*/
+
 
 	  }
 	  if (cur_facet_count == 0){
           //$(this.target).append($('<div class="person" style="display: none"></div>'));
-
-              $("#personHide").hide();
+             // $("#collectionHide").hide();
+              /*$("#personHide").hide();
               $("#dateHide").hide();
               $("#mediumHide").hide();
               $("#authorHide").hide();
               $("#titleHide").hide();
               $("#spatialHide").hide();
-              $("#editionHide").hide();
+              $("#editionHide").hide();*/
+
           //$('author_' + facet + '_checkbox"').hide();
 
 
@@ -356,13 +360,14 @@ AjaxSolr.MultiSelectWidget = AjaxSolr.AbstractFacetWidget.extend({
 	  }
 	  if (cur_facet_count == null) {
               //$('#' + show_more_div_id).append($('<div class="person" style="display: none"></div>'));
-          $("#personHide").hide();
+          /*$("#personHide").hide();
           $("#dateHide").hide();
           $("#mediumHide").hide();
           $("#authorHide").hide();
           $("#titleHide").hide();
           $("#spatialHide").hide();
           $("#editionHide").hide();
+          $("#collectionHide").hide();*/
           //$('author_' + facet + '_checkbox"').hide();
       }
 

@@ -3,11 +3,7 @@ var Manager;
 (function ($) {
 
   $(function () {
-   var collection =  ['airiti', 'AMD_FOChina', 'LocGaz', 'RMRB'];
-   //var atLeastOneIsChecked = $('#airiti':checkbox:checked).length > 0;
-      if($("#airiti").prop('checked') == true){
-          //do something
-      }
+
     Manager = new AjaxSolr.Manager({
       /*solrUrl: 'http://10.46.3.100:8980/solr/local_gazetteer/select?shards=10.46.3.100:8980/solr/airiti,10.46.3.100:8980/solr/local_gazetteer,10.46.3.100:8980/solr/AD&indent=true'*/
         /*solrUrl: 'http://10.46.3.100:8982/solr/adam_metthew/'*/
