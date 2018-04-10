@@ -6,8 +6,9 @@ var Manager;
 
     Manager = new AjaxSolr.Manager({
       /*solrUrl: 'http://10.46.3.100:8980/solr/local_gazetteer/select?shards=10.46.3.100:8980/solr/airiti,10.46.3.100:8980/solr/local_gazetteer,10.46.3.100:8980/solr/AD&indent=true'*/
-        /*solrUrl: 'http://10.46.3.100:8982/solr/adam_metthew/'*/
-        solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina/select?shards=10.46.3.100:8982/solr/AMD_FOChina,10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/airiti,10.46.3.100:8982/solr/RMRB&indent=true&'
+        solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina_nested/'
+        /*solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina/select?shards=10.46.3.100:8982/solr/AMD_FOChina_nested,10.46.3.100:8982/solr/airiti_nested,http://10.46.3.100:8982/solr/RMRB&indent=true&'*/
+        /*solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina/select?shards=10.46.3.100:8982/solr/AMD_FOChina,10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/airiti,10.46.3.100:8982/solr/RMRB&indent=true&'*/
 
     });
     Manager.addWidget(new AjaxSolr.ResultWidget({
@@ -27,7 +28,7 @@ var Manager;
               $('#pager-header').html($('<span></span>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
           }
       }));
-    var fields = ['text','date','hasModel','medium_facet','edition_facet','person_facet','spatial_facet','author_facet','title_facet','medium','edition','person','spatial','author','title','collection'];
+    var fields = ['text','hasModel','medium_facet','edition_facet','person_facet','spatial_facet','author_facet','title_facet','medium','edition','person','spatial','author','title','collection', 'date'];
       for (var i = 0, l = fields.length; i < l; i++) {
           Manager.addWidget(new AjaxSolr.MultiSelectWidget({ //MultiSelectWidget instead of Tagcloudwidget
               id: fields[i],
@@ -46,7 +47,7 @@ var Manager;
 	Manager.addWidget(new AjaxSolr.AutocompleteWidget({
       id: 'text',
       target: '#search',
-      fields: ['title','date','author','medium','edition','person','spatial']
+      fields: ['title','author','medium','edition','person','spatial']
     }));
 	
 	/*Manager.addWidget(new AjaxSolr.CalendarWidget({
@@ -60,7 +61,7 @@ var Manager;
     Manager.store.addByValue('q', '*:*');
     var params = {
      facet: true,
-      'facet.field': ['hasModel','date','medium_facet','edition_facet', 'person_facet', 'spatial_facet' ,'author_facet', 'title_facet','collection'],
+      'facet.field': ['hasModel','medium_facet','edition_facet', 'person_facet', 'spatial_facet' ,'author_facet', 'title_facet','collection', 'date'],
       'facet.limit': 20,
       'facet.mincount': 1,
       'f.topics.facet.limit': 50,
