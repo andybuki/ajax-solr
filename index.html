@@ -4,9 +4,12 @@
     <meta charset="utf-8">
     <title>AJAX Solr</title>
     <link rel="stylesheet" href="css/reuters.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/app.css">
+    <base target="_blank">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/reuters.js"></script>
     <script src="core/Core.js"></script>
     <script src="core/AbstractManager.js"></script>
@@ -26,13 +29,15 @@
     <script src="widgets/CountryCodeWidget.js"></script>
     <script src="widgets/CalendarWidget.js"></script>
     <script src="js/jquery.jsonp.js"></script>
+    <script src="js/show_hide.js"></script>
+
 </head>
 <body>
 <div id="header">
     <!--<h1>Berlin Bibliothek</h1>-->
     </br>
     <img class="logo" src="images/logo.png">
-    <!--<h2>Browse Reuters business news from 1987</h2>-->
+    <!--<h2>Browse Reuters business news from 1987 </div>-->
 </div>
 
 <div id="wrap">
@@ -49,64 +54,79 @@
     </div>
 
     <div class="left">
-        <h2>Current Selection</h2>
+        <div class="title2">Current Selection</div>
         <ul id="selection"></ul>
 
-        <h2>Search</h2>
+        <div class="title2">Search</div>
         <span id="search_help">(press ESC to close suggestions)</span>
         <ul id="search">
-            <input type="text" id="query" name="query" autocomplete="off">
+
+            <!--<form data-v-1a31d9e4="" class="form-inline">-->
+                <input data-v-1a31d9e4="" type="text" id="query" name="query" autocomplete="off">
+
+                <!--<button data-v-1a31d9e4="" type="submit" id="searchBtn" name="query" class="btn"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1152 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zM1664 1664q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"></path>  <!----><!--</svg><!----><!--</button>-->
+            <!--</form>-->
+                <a onclick="show_hidePopUpWindow('foo6');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: #b41815;"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>
+
         </ul>
 
         <div class="title" id="collectionHide">
-            <h2>Collection</h2>
+            <div class="title2">Collection </div>
             <div class="tagcloud" id="collection"></div>
         </div>
 
-        <h2>Has Model</h2>
+        <div class="title2">Has Model </div>
         <div class="tagcloud" id="hasModel"></div>
 
         <div class="title" id="titleHide">
-            <h2>Top Title</h2>
+            <div class="title2">Title </div>
             <div class="tagcloud" id="title_facet"></div>
         </div>
 
         <div class="author" id="authorHide">
-            <h2>Top Author</h2>
+            <div class="title2">Author </div>
             <div class="tagcloud" id="author_facet"></div>
         </div>
 
         <div class="date" id="dateHide">
-            <h2>By Date</h2>
+            <div class="title2">By Date </div>
             <div class="tagcloud" id="date"></div>
         </div>
 
         <div class="spatial" id="spatialHide">
-            <h2>Top Spatial</h2>
+            <div class="title2">Spatial </div>
             <div class="tagcloud" id="spatial_facet"></div>
         </div>
 
         <div class="person" id="personHide">
-            <h2>Top Person</h2>
+            <div class="title2">Person </div>
             <div class="tagcloud" id="person_facet"></div>
         </div>
 
 
         <div class="edition" id="editionHide">
-            <h2>Top Edition</h2>
+            <div class="title2">Edition </div>
             <div class="tagcloud" id="edition_facet"></div>
         </div>
 
 
-        <div class="medium" id="mediumHide">
-            <h2>Top Medium</h2>
-            <div class="tagcloud" id="medium_facet"></div>
+        <div class="language" id="languageHide">
+            <div class="title2">Language </div>
+            <div class="tagcloud" id="language"></div>
         </div>
 
         <div class="clear"></div>
 
+        <div class="menu2" id="foo6" style="display:none">
+            Fulltext search in print books (i)
+            CONTENT: CrossAsia is working on bridging the gap between printed materials in our stacks and electronic full text searches. Matching our collection with Duxiu fulltexts and allowing users to search in Duxiu fulltexts to find and borrow items from our printed collection is one way. The other way is producing our own fulltexts from printed books and offer them in our fulltext search. As a test case this collection includes 15 titles prepared in this way.
+            NOTE: To see your full hit page you have to borrow the book (via the link to our OPAC provided with the title) and find the correct page. Please note that the "page number" given for your search hit is the "image number", so you have to add a certain number to find the correct printed page. But the idea is to help you find books of interest for your research of general interest.
+        </div>
+
     </div>
     <div class="clear"></div>
 </div>
+
+
 </body>
 </html>

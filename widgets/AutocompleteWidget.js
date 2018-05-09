@@ -2,6 +2,7 @@
 
 AjaxSolr.AutocompleteWidget = AjaxSolr.AbstractTextWidget.extend({
   afterRequest: function () {
+      $(this.target).find('input').autocomplete();
     $(this.target).find('input').unbind().removeData('events').val('');
 
     var self = this;
@@ -43,7 +44,8 @@ AjaxSolr.AutocompleteWidget = AjaxSolr.AbstractTextWidget.extend({
       });
     } // end callback
 
-    var params = [ 'rows=0&facet=true&facet.limit=-1&facet.mincount=1&json.nl=map&hl=true&hl.fl=text' ];
+    var params = [ 'facet=true&facet.mincount=1&json.nl=map&hl=true&hl.fl=text' ];
+    //var params = [ 'rows=0&facet=true&facet.limit=-1&facet.mincount=1&json.nl=map&hl=true&hl.fl=text' ];
     for (var i = 0; i < this.fields.length; i++) {
       params.push('facet.field=' + this.fields[i]);
     }
