@@ -277,6 +277,16 @@ left side of the range
             var show_more_div_id = 'more_' + this.field;
             $(this.target).empty();
             var num_hidden = 0;
+            var ac_id = this.field + '_all_extra';
+            if (num_hidden > 0) {
+                //$('#' + show_more_div_id).append('Or search: ');
+                $('#' + show_more_div_id).append($('</br><input id="' + ac_id + '"></br>'));
+
+            } else {
+                //$(this.target).append('Or search: ');
+                $(this.target).append($('</br><input id="' + ac_id + '"></br>'));
+            }
+
             for (var i = 0; i < objectedItems.length; i++) {
                 //      if (typeof this.max_facets != 'undefined') {
                 //    if (i >= this.max_facets) { break; }
@@ -365,7 +375,6 @@ left side of the range
 
                         }
                     }
-
                     if (this.field==='title_facet') {
                         console.log(facet);
                         if (facet.length>40) {
@@ -377,11 +386,7 @@ left side of the range
                     } else {
                         $(this.target).append($('<span style="padding-left: 2px; font-size: small"></span>').text(facet));
                     }
-
-
                     //$(this.target).append($('<span style="padding-left: 2px; font-size: small"></span>').text(facet));
-
-
                     if (cur_facet_count != 0) {
                         $(this.target).append($('<span id="number" style="font-size: x-small"></span>').text(' (' + cur_facet_count + ')'));
 
@@ -396,9 +401,9 @@ left side of the range
 
 
                     } /*else {
-          $(this.target).append($('<input type="checkbox" id="\' + this.field + \'_\' + facet + \'_checkbox"\' onclick="return false;" disabled="disabled">'));
+                        $(this.target).append($('<input type="checkbox" id="\' + this.field + \'_\' + facet + \'_checkbox"\' onclick="return false;" disabled="disabled">'));
 
-      }*/
+                        }*/
 
                     if (cur_facet_count == 0){
 
@@ -458,17 +463,7 @@ left side of the range
                         $('#' + show_more_div_id).append($('<span id="number" style="font-size: x-small"></span>').text(' (' + cur_facet_count + ')'));
                     }
                     if (cur_facet_count == null) {
-                        //$('#' + show_more_div_id).append($('<div class="person" style="display: none"></div>'));
-                        /*$("#personHide").hide();
-                        $("#dateHide").hide();
-                        $("#mediumHide").hide();
-                        $("#authorHide").hide();
-                        $("#titleHide").hide();
-                        $("#spatialHide").hide();
-                        $("#editionHide").hide();
-                        $("#collectionHide").hide();*/
-                        //$('author_' + facet + '_checkbox"').hide();
-                        //$(this.target).append($('<input type="checkbox"  id="date_2010_checkbox" onclick="return false;" disabled="disabled">'));
+
                     }
 
                     $('#' + show_more_div_id).append($('<br>'));
@@ -483,13 +478,13 @@ left side of the range
             var ac_id = this.field + '_all_extra';
             if (num_hidden > 0) {
                 //$('#' + show_more_div_id).append('Or search: ');
-                $('#' + show_more_div_id).append($('<input id="' + ac_id + '">'));
+                //$('#' + show_more_div_id).append($('<input id="' + ac_id + '">'));
                 var more_or_less_txt = (this.display_style == 'none') ? '+more' : '-less';
                 $(this.target).append('<a id="' + show_more_div_id + '_txt" href="#">' + more_or_less_txt + '</a>');
                 $('#' + show_more_div_id + '_txt').click(this.toggleExtra(show_more_div_id));
             } else {
                 //$(this.target).append('Or search: ');
-                $(this.target).append($('<input id="' + ac_id + '">'));
+                //$(this.target).append($('<input id="' + ac_id + '">'));
             }
             $('#' + ac_id).autocomplete({
                 source: this.autocompleteAjaxFunction(),

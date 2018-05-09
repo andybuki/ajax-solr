@@ -29,7 +29,7 @@ var Manager;
                 target: '#' + fields[i],
                 field: fields[i],
                 max_show: 10,
-                max_facets: 100,
+                max_facets: 500,
                 sort_type: 'count' //possible values: 'range', 'lex', 'count'
             }));
         }
@@ -49,9 +49,9 @@ var Manager;
         var params = {
             facet: true,
             'facet.field': ['hasModel','medium_facet','edition_facet', 'person_facet', 'spatial_facet' ,'author_facet', 'title_facet','collection', 'date','language'],
-            'facet.limit': 50,
+            'facet.limit': 500,
             'facet.mincount': 1,
-            'f.topics.facet.limit': 70,
+            'f.topics.facet.limit': 500,
             'f.countryCodes.facet.limit': -1,
             /*'facet.date': 'date',
             'facet.date.start': '1187-02-26T00:00:00.000Z/DAY',
