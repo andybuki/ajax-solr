@@ -127,7 +127,6 @@ AjaxSolr.ResultWidget = AjaxSolr.AbstractWidget.extend({
                           data2 += $('#titles').append('</span> <a href="#" class="more"> ... more</a>');
                           data2 += $('#titles').append('</br><b>' +'collection: </b>'+ doc.collection);
                           data2 += $('#titles').append('</br>'+'<p id="link">' + link + '</p>');
-                          data2 += $('#titles').append('</br>'+'<p id="link">' + link + '</p>');
                           data2 += $('#titles').append(doc.score);
                       }
                   } else {
@@ -139,13 +138,14 @@ AjaxSolr.ResultWidget = AjaxSolr.AbstractWidget.extend({
 
               }
               else if (data[0].response.docs[0].collection=="Adam Matthew FO China"){
+                  var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
+                  var link = str.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Images/");
+
                   if (data[0].response.docs[0].date!=null) {
                       data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
                   } else {
                       data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + ',  p.'+doc.position+'</h4>');
                   }
-                  var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
-                  var link = str.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Images/");
                   if (doc.text && doc.text.length > 300) {
                       if (doc.text!=null) {
                          data2 += $('#titles').append(doc.text.substring(0, 300));
@@ -159,6 +159,7 @@ AjaxSolr.ResultWidget = AjaxSolr.AbstractWidget.extend({
                   } else {
                           data2 = $('#titles').append(doc.text);
                           data2 += $('#titles').append('</br><b>' +'collection: </b>'+ doc.collection);
+                          data2 += $('#titles').append('</br>'+'<p id="link">' + link + '</p>');
                           data2 += $('#titles').append(doc.score);
                   }
 

@@ -280,20 +280,18 @@ left side of the range
             var ac_id = this.field + '_all_extra';
             if (num_hidden > 0) {
                 //$('#' + show_more_div_id).append('Or search: ');
-                $('#' + show_more_div_id).append($('</br><input id="' + ac_id + '"></br>'));
+                $('#' + show_more_div_id).append($('<input id="' + ac_id + '">'+'<br>'));
 
             } else {
                 //$(this.target).append('Or search: ');
-                $(this.target).append($('</br><input id="' + ac_id + '"></br>'));
+                $(this.target).append($('<input id="' + ac_id + '">'+'<br>'));
             }
 
             for (var i = 0; i < objectedItems.length; i++) {
-                //      if (typeof this.max_facets != 'undefined') {
-                //    if (i >= this.max_facets) { break; }
-                //      }
                 var facet = objectedItems[i].facet;
+                var count ='undefined';
                 var cur_facet_count = (typeof cur_facets_hash[facet] != 'undefined') ? cur_facets_hash[facet].count : 0;
-
+                //console.log(facet+ "=" +cur_facet_count);
 
 
                 var checked_txt = '';
@@ -302,27 +300,16 @@ left side of the range
                 }
                 if ((typeof this.max_show == 'undefined') ||
                     (i < this.max_show)) {
+                    if (cur_facet_count != 0) {
                     $(this.target).append(
                         $('<input type=checkbox id="' + this.field + '_' + facet + '_checkbox"' + checked_txt + '></input>')
                             .change(this.checkboxChange(facet))
                     );
-                    //var txt5 = $(this.init_facets_hash)[0];
-                    //var txt2 = $(this.init_facets_hash).facet;
-                    //console.log(txt5);
-                    //console.log(txt2);
+                    }
 
                     var thechosenone="";
-                    /*$('.menu').each(function(index) {
-                        if ($(this).attr("id") == thechosenone) {
-                            $(this).toggle();
-                        }
-                        else {
-                            $(this).hide(600);
-                        }
-                    });*/
 
-
-                    if (this.field==='collection') {
+                    if (this.field==='collection' && cur_facet_count != 0) {
                         //console.log(facet);
                         if (facet ==="Renmin Ribao" ) {
                             $(this.target).append($('<span> </span> <a onclick="show_hidePopUpWindow(\'foo\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
@@ -375,54 +362,38 @@ left side of the range
 
                         }
                     }
-                    if (this.field==='title_facet') {
+                    if (this.field==='title_facet' && cur_facet_count != 0) {
                         console.log(facet);
+                        //console.log(cur_facet_count);
                         if (facet.length>40) {
                             var new_facet = facet.substring(0,40)+'...';
-                            $(this.target).append($('<span style="padding-left: 2px; font-size: small"></span>').text(new_facet));
+                            $(this.target).append($('<span class="text_facet" style="padding-left: 2px; font-size: small;"></span>').text(new_facet));
+                            $(this.target).append($('<br1>'));
                         } else {
-                            $(this.target).append($('<span style="padding-left: 2px; font-size: small"></span>').text(facet));
+                            $(this.target).append($('<span class="text_facet" style="padding-left: 2px; font-size: small;"></span>').text(facet));
                         }
+
+
                     } else {
-                        $(this.target).append($('<span style="padding-left: 2px; font-size: small"></span>').text(facet));
+                        //$(this.target).append($('<span class="text_facet" style="padding-left: 2px; font-size: small;"></span>').text(facet));
                     }
                     //$(this.target).append($('<span style="padding-left: 2px; font-size: small"></span>').text(facet));
+                    //console.log(cur_facet_count);
+
                     if (cur_facet_count != 0) {
+                        if (this.field!='title_facet') {
+                            $(this.target).append($('<span class="text_facet" style="padding-left: 2px; font-size: small;"></span>').text(facet));
+                        }
                         $(this.target).append($('<span id="number" style="font-size: x-small"></span>').text(' (' + cur_facet_count + ')'));
-
-                        //$("#collectionHide").show();
-                        /*$("#personHide").show();
-                          $("#dateHide").show();
-                          $("#mediumHide").show();
-                          $("#authorHide").show();
-                          $("#titleHide").show();
-                          $("#spatialHide").show();
-                          $("#editionHide").show();*/
-
-
-                    } /*else {
-                        $(this.target).append($('<input type="checkbox" id="\' + this.field + \'_\' + facet + \'_checkbox"\' onclick="return false;" disabled="disabled">'));
-
-                        }*/
+                        $(this.target).append($('<br>'));
+                    }
 
                     if (cur_facet_count == 0){
-
-                        //$(this.target).append($('<div class="person" style="display: none"></div>'));
-                        // $("#collectionHide").hide();
-                        /*$("#personHide").hide();
-                        $("#dateHide").hide();
-                        $("#mediumHide").hide();
-                        $("#authorHide").hide();
-                        $("#titleHide").hide();
-                        $("#spatialHide").hide();
-                        $("#editionHide").hide();*/
-                        // $(this.target).append($('<input type="checkbox" id="date_2010_checkbox" onclick="return false;" disabled="disabled">'));
-
-                        //$('author_' + facet + '_checkbox"').hide();
-
-
+                        //console.log(cur_facet_count);
+                        //$(this.target).append($('<span id="number" style="font-size: x-small"></span>').text(' (' + 0 + ')'));
+                        //$('#' + show_more_div_id).append($('<span style="display:none;"></span>').text(facet));
                     }
-                    $(this.target).append($('<br>'));
+
                 }
 
                 if ((typeof this.max_show != 'undefined') && (i == (this.max_show - 1))) {
@@ -434,45 +405,40 @@ left side of the range
 
                 if ((typeof this.max_show != 'undefined') &&
                     (i >= this.max_show)) {
-
-                    $('#' + show_more_div_id).append(
-                        $('<input type=checkbox id="' + this.field + '_' + facet + '_checkbox"' + checked_txt + '></input>')
-                            .change(this.checkboxChange(facet))
-                    );
-                    if (this.field==='title_facet') {
+                    if (cur_facet_count != 0) {
+                        $('#' + show_more_div_id).append(
+                            $('<input type=checkbox id="' + this.field + '_' + facet + '_checkbox"' + checked_txt + '></input>')
+                                .change(this.checkboxChange(facet))
+                        );
+                    }
+                    if (this.field==='title_facet' && cur_facet_count != 0) {
                         if (facet.length>40) {
                             var new_facet = facet.substring(0,40)+'...';
-                            $('#' + show_more_div_id).append($('<span style="padding-left: 2px; font-size: small"></span>').text(new_facet));
+                            $('#' + show_more_div_id).append($('<span class="text_facet" style="padding-left: 2px; font-size: small;"></span>').text(new_facet));
+                            //$(this.target).append($('<br>'));
                         } else {
-                            $('#' + show_more_div_id).append($('<span style="padding-left: 2px; font-size: small"></span>').text(facet));
+                            $('#' + show_more_div_id).append($('<span class="text_facet" style="padding-left: 2px; font-size: small;"></span>').text(facet));
                         }
                     } else {
-                        $('#' + show_more_div_id).append($('<span style="padding-left: 2px; font-size: small"></span>').text(facet));
+                        //$('#' + show_more_div_id).append($('<span class="text_facet" style="padding-left: 2px; font-size: small;"></span>').text(facet));
                     }
 
-
-                    if (this.field + '_' + facet + '_checkbox"'==null) {
-                        $('author_' + facet + '_checkbox"').hide();
-                    }
-
-                    if ('<span id="' + show_more_div_id==0) {
-                        //$("#spatialHide").hide();
-                    }
 
                     if (cur_facet_count != 0) {
+                        if ( this.field!='title_facet') {
+                            $('#' + show_more_div_id).append($('<span class="text_facet" style="padding-left: 2px; font-size: small;"></span>').text(facet));
+                        }
                         $('#' + show_more_div_id).append($('<span id="number" style="font-size: x-small"></span>').text(' (' + cur_facet_count + ')'));
                     }
-                    if (cur_facet_count == null) {
+                    if (cur_facet_count == 0) {
 
                     }
-
-                    $('#' + show_more_div_id).append($('<br>'));
+                    if (cur_facet_count != 0) {
+                        $('#' + show_more_div_id).append($('<br>'));
+                    }
                     num_hidden++;
                 }
 
-                if ('#' + show_more_div_id==null){
-                    $('author_' + facet + '_checkbox"').hide();
-                }
             }
 
             var ac_id = this.field + '_all_extra';
