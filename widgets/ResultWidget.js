@@ -4,8 +4,8 @@
         start: 0,
 
         beforeRequest: function () {
-            //$(this.target).html($('<img>').attr('src', 'images/ajax-loader.gif'));
-            $(this.target).html($('<img>').attr('src', 'fileadmin/misc/ajax-solr_repositoryB/images/ajax-loader.gif'));
+            $(this.target).html($('<img>').attr('src', 'images/ajax-loader.gif'));
+            //$(this.target).html($('<img>').attr('src', 'fileadmin/misc/ajax-solr_repositoryB/images/ajax-loader.gif'));
         },
 
         facetLinks: function (facet_field, facet_values) {
@@ -39,9 +39,27 @@
 
         afterRequest: function () {
             $(this.target).empty();
+            //var collections = $(this.manager.solrUrl);
+            //var col = collections.selector;
+            if (this.no_init_results) {
+                if ((this.manager.store.get('q').value == '*:*') &&
+                    (this.manager.store.values('fq').length <= 0)) {
+                    return;
+                } //Added so initial *:* query doesn't show results
+            }
             for (var i = 0, l = this.manager.response.response.docs.length; i < l; i++) {
                 var doc = this.manager.response.response.docs[i];
-                $(this.target).append(this.template(doc));
+
+                if (this.manager.response.highlighting && this.manager.response.highlighting[doc.id]
+                        [this.manager.response.responseHeader.params['hl.fl']]) {
+                    // display this.manager.response.highlighting[doc.id]
+                    [this.manager.response.responseHeader.params['hl.fl']]
+                }
+                else {
+                    // display result without highlighting
+                }
+
+                $(this.target).append(this.template(doc,this.manager.response.highlighting));
 
                 var items = [];
                 /*items = items.concat(this.facetLinks('topics', doc.topics));
@@ -57,13 +75,32 @@
         },
 
         getDocSnippets: function(highlighting, doc) {
-
             var id_val = doc['id']; //Change if your documents have different ID field name
-            var cur_doc_highlighting = highlighting[id_val];
+            var cur_doc_highlighting_title = highlighting[id_val];
             var all_snippets_arr = [];
-            if (typeof cur_doc_highlighting != 'undefined') {
-                for (var snip_k in cur_doc_highlighting) {
-                    var cur_snippets = cur_doc_highlighting[snip_k];
+            if (typeof cur_doc_highlighting_title != 'undefined') {
+                for (var snip_k in cur_doc_highlighting_title) {
+                    var cur_snippets = cur_doc_highlighting_title[snip_k];
+                    for (var snip_i=0; snip_i < cur_snippets.length; snip_i++) {
+                        var cur_snippet_txt = cur_snippets[snip_i];
+                        all_snippets_arr.push(cur_snippet_txt);
+                    }
+                }
+            }
+
+            var cur_doc_snippets_txt =  all_snippets_arr.join('');
+            console.log(cur_doc_snippets_txt)
+            return(cur_doc_snippets_txt);
+        },
+
+        getDocSnippets2: function(highlighting, doc) {
+            var id_val = doc['id']; //Change if your documents have different ID field name
+            var cur_doc_highlighting_text = highlighting[id_val].text;
+
+            var all_snippets_arr = [];
+            if (typeof cur_doc_highlighting_text != 'undefined') {
+                for (var snip_k in cur_doc_highlighting_text) {
+                    var cur_snippets = cur_doc_highlighting_text[snip_k];
                     for (var snip_i=0; snip_i < cur_snippets.length; snip_i++) {
                         var cur_snippet_txt = cur_snippets[snip_i];
                         all_snippets_arr.push(cur_snippet_txt);
@@ -71,16 +108,20 @@
                 }
             }
             var cur_doc_snippets_txt =  all_snippets_arr.join('');
+            console.log(cur_doc_snippets_txt)
             return(cur_doc_snippets_txt);
         },
 
         template: function (doc,highlighting) {
 
             var snippet = '';
-            var cur_doc_highlighting_txt;
+            var cur_doc_highlighting_title;
+            var cur_doc_highlighting_text;
             if (this.highlighting && highlighting) {
-                cur_doc_highlighting_txt = this.getDocSnippets(highlighting,doc);
+                cur_doc_highlighting_title = this.getDocSnippets(highlighting,doc);
+                cur_doc_highlighting_text = this.getDocSnippets2(highlighting,doc);
             }
+
             var output2 =doc.book_id;
             var url2 =  this.manager.solrUrl+"select?fq=hasModel:Book&q=hasModel:Book%20and%20book_id:"+output2+"&wt=json&json.wrf=?&callback=?";
             //var url2 =  this.manager.solrUrl+"select?q=hasModel:Book%20AND%20book_id:"+output2+"&wt=json&json.wrf=?&callback=?";
@@ -111,18 +152,31 @@
                     if (data[0].response.docs[0].collection=="Local Gazetteer"){
                         var test = data[0].response;
                         if (data[0].response.docs[0].date!=0) {
-                            data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title +" ,"+ data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
+                            if (cur_doc_highlighting_title=='') {
+                                data = $('#titles').append('<h4>' + data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date + ',  p.' + doc.position + '</h4>');
+                            }else {
+                                data = $('#titles').append('<h4>' + cur_doc_highlighting_title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date + ',  p.' + doc.position + '</h4>');
+                            }
                         } else {
-                            data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + " ,"+ data[0].response.docs[0].author +'.  ' +  ',  p.'+doc.position+'</h4>');
+                            if (cur_doc_highlighting_title=='') {
+                                data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + " ,"+ data[0].response.docs[0].author +'.  ' +  ',  p.'+doc.position+'</h4>');
+                            }else {
+                                data =  $('#titles').append('<h4>'+ cur_doc_highlighting_title + " ,"+ data[0].response.docs[0].author +'.  ' +  ',  p.'+doc.position+'</h4>');
+                            }
                         }
 
                         var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="13.714285714285714" height="16" viewBox="0 0 1536 1792" class="fa-icon"><path d="M768 768q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1536q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1152q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 0q208 0 385 34.5t280 93.5 103 128v128q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-128q0-69 103-128t280-93.5 385-34.5z"></path>';
                         var link = str.link("http://erf.sbb.spk-berlin.de/han/fangzhiku/");
                         if (doc.text && doc.text.length > 300) {
                             if (doc.text!=null) {
-                                data2 += $('#titles').append(doc.text.substring(0, 300));
-                                //data2 += $('#titles').append(doc.text.substring(0, 300)+cur_doc_highlighting_txt);
-                                data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
+                                if (cur_doc_highlighting_text=='') {
+                                    data2 += $('#titles').append(doc.text.substring(0, 300));
+                                    data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
+
+                                }else {
+                                    data2 += $('#titles').append(cur_doc_highlighting_text.substring(0, 300));
+                                    data2 += $('#titles').append('<span style="display:none;">' + cur_doc_highlighting_text.substring(300));
+                                }
 
                                 data2 += $('#titles').append('</span> <a href="#" class="more"> ... more</a>');
                                 data2 += $('#titles').append('</br>' +'collection: '+ doc.collection);
@@ -130,7 +184,12 @@
                                 data2 += $('#titles').append('<br>'+doc.score);
                             }
                         } else {
-                            data2 = $('#titles').append(doc.text);
+                            if (cur_doc_highlighting_text=='') {
+                                data2 = $('#titles').append(doc.text);
+                            } else {
+                                data2 = $('#titles').append(cur_doc_highlighting_text);
+                            }
+
                             data2 += $('#titles').append('</br>' +'collection: '+ doc.collection);
                             data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
                             data2 += $('#titles').append('<br>'+doc.score);
@@ -142,9 +201,17 @@
                         var link = str.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Images/");
 
                         if (data[0].response.docs[0].date!=null) {
-                            data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
+                            if (cur_doc_highlighting_title=='') {
+                                data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
+                            } else {
+                                data =  $('#titles').append('<h4>'+ cur_doc_highlighting_title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
+                            }
                         } else {
-                            data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + ',  p.'+doc.position+'</h4>');
+                            if (cur_doc_highlighting_title=='') {
+                                data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + ',  p.'+doc.position+'</h4>');
+                            } else {
+                                data =  $('#titles').append('<h4>'+ cur_doc_highlighting_title + '.  ' + ',  p.'+doc.position+'</h4>');
+                            }
                         }
                         if (doc.text && doc.text.length > 300) {
                             if (doc.text!=null) {
@@ -171,9 +238,12 @@
                         var link2 = (data[0].response.docs[0].identifier).toString();
                         var newLink=link2.replace('http://www.airitibooks.com/detail.aspx?','http://www.airitibooks.com.airiti.erf.sbb.spk-berlin.de/pdfViewer/index.aspx?');
                         var link = str.link(newLink+combineLink);
-                        data =  $('#titles').append('<h4>'+
-                            data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
-
+                        if (cur_doc_highlighting_title=='') {
+                            data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
+                        }
+                        else {
+                            data =  $('#titles').append('<h4>'+ cur_doc_highlighting_title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
+                        }
                         if (doc.text && doc.text.length > 300) {
                             if (doc.text!=null) {
                                 data2 += $('#titles').append(doc.text.substring(0, 300));
@@ -192,7 +262,12 @@
 
                     }
                     else if(data[0].response.docs[0].collection=="Xuxiu") {
-                        data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' +   ',  p.'+doc.position+'</h4>');
+                        if (cur_doc_highlighting_title=='') {
+                            data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' +   ',  p.'+doc.position+'</h4>');
+                        }
+                        else {
+                            data =  $('#titles').append('<h4>'+ cur_doc_highlighting_title + '.  ' +   ',  p.'+doc.position+'</h4>');
+                        }
                         var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
                         /*var test = data[0].response;
                         var test2 =data2[0].response;
@@ -226,7 +301,12 @@
             else if (doc.hasModel=='Article') {
                 var rightDate = moment(doc.wholeDate.toString()).format("DD.MM.YYYY");
                 //var output = '<div><h4>'  + doc.title + ",  "+rightDate+'</h4>';
-                var output = '<div><h4>'  +"Title: "+ doc.title + ",  p."+doc.page+'</h4>';
+                if (cur_doc_highlighting_title=='') {
+                    var output = '<div><h4>'  +"Title: "+ doc.title + ",  p."+doc.page+'</h4>';
+                } else {
+                    var output = '<div><h4>'  +"Title: "+ /*doc.title +*/cur_doc_highlighting_title+ ",  p."+doc.page+'</h4>';
+                }
+
                 var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="13.714285714285714" height="16" viewBox="0 0 1536 1792" class="fa-icon"><path d="M768 768q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1536q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1152q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 0q208 0 385 34.5t280 93.5 103 128v128q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-128q0-69 103-128t280-93.5 385-34.5z"></path>';
                 var link = str.link("http://erf.sbb.spk-berlin.de/han/RenminRibao1/");
                 if (doc.text!=null && doc.text.length > 300) {
@@ -240,8 +320,13 @@
                         output += ("note: " + doc.description + "</br>");
                     }
                     output += ("collection: "+doc.collection+"</br></br>");
-                    output += (doc.text.substring(0, 300));
-                    output += ('<span style="display:none;">' + doc.text.substring(300));
+                    if (cur_doc_highlighting_text=='') {
+                        output += (doc.text.substring(0, 300));
+                        output += ('<span style="display:none;">' + doc.text.substring(300));
+                    } else {
+                        output += (cur_doc_highlighting_text.substring(0, 300));
+                        output += ('<span style="display:none;">' + cur_doc_highlighting_text.substring(300));
+                    }
                     output += ('</span> <a href="#" class="more"> ... more</a>');
                     output += ('</br>'+'<span id="link">' + link + "</span>");
                     output += ('<br>'+doc.score);
@@ -255,7 +340,11 @@
                         output += ("note: " + doc.description + "</br>");
                     }
                     output += ("collection: "+doc.collection+"</br></br>");
-                    output += (doc.text);
+                    if (cur_doc_highlighting_text=='') {
+                        output += (doc.text);
+                    }else { output += (cur_doc_highlighting_text);}
+
+
                     output += ('</br>'+'<span id="link">' + link + '</span>');
                     output += ('<br>'+doc.score);
                 }
@@ -263,9 +352,19 @@
             }
             else if (doc.hasModel=='Book') {
                 if (doc.responsibility!==undefined) {
-                    var output = '<div><h4>Title: ' + doc.title + ", " + doc.responsibility + '</h4>';
+                    if (cur_doc_highlighting_title=='') {
+                        var output = '<div><h4>Title: ' + doc.title + ", " + doc.responsibility + '</h4>';
+                    } else {
+                        var output = '<div><h4>Title: ' + cur_doc_highlighting_title+", " + doc.responsibility + '</h4>';
+                    }
                 }else {
-                    var output = '<div><h4>Title: ' + doc.title   + '</h4>';
+                    if (cur_doc_highlighting_title=='') {
+                        var output = '<div><h4>Title: ' + doc.title   +  '</h4>';
+                    }
+                    else {
+                        var output = '<div><h4>Title: ' + cur_doc_highlighting_title+ '</h4>';
+                    }
+
                 }
                 if (doc.collection=="Local Gazetteer"){
                     if (doc.author!=null) {
@@ -459,11 +558,20 @@
             }
             else if (doc.hasModel=="Chapter") {
                 $.when($.getJSON(url2), $.getJSON(url3)).then(function(data,data2) {
-                    var str = "Go to database";
+                    var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="13.714285714285714" height="16" viewBox="0 0 1536 1792" class="fa-icon"><path d="M768 768q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1536q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1152q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 0q208 0 385 34.5t280 93.5 103 128v128q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-128q0-69 103-128t280-93.5 385-34.5z"></path>';
                     var link = str.link("http://erf.sbb.spk-berlin.de/han/fangzhiku");
-                    data =  $('#titles').append('<h4>'+data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date+  ', '+doc.pageStart+'-'+doc.pageEnd +' p.</h4>');
-                    data2 = $('#titles').append(doc.title);
-                    data2 += $('#titles').append('</br>'+'<p id="link">' + link + '</p>');
+                    if (cur_doc_highlighting_title=='') {
+                        data = $('#titles').append('<h4>' + data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date + ', ' + doc.pageStart + '-' + doc.pageEnd + ' p.</h4>');
+                    }else {
+                        data = $('#titles').append('<h4>' + cur_doc_highlighting_title + '.  ' + data[0].response.docs[0].date + ', ' + doc.pageStart + '-' + doc.pageEnd + ' p.</h4>');
+                    }
+                    if (cur_doc_highlighting_title=='') {
+                        data2 = $('#titles').append(doc.title);
+                    }else {
+                        data2 = $('#titles').append(cur_doc_highlighting_title);
+                    }
+
+                    data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
                     data2 += $('#titles').append('<br>'+doc.score);
                     //var output = '<div><h4>'  + doc.id + '</h4>';
                     //if (doc.title!=null) {snippet +=  doc.title;}
@@ -471,7 +579,7 @@
                 var output = '<div><span><span id="titles"></span>';
             }
             else {
-                if (doc.id!=null) { snippet += doc.id+cur_doc_highlighting_txt;}
+                if (doc.id!=null) { snippet += doc.id;}
             }
 
 

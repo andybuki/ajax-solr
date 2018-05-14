@@ -291,8 +291,6 @@ left side of the range
                 var facet = objectedItems[i].facet;
                 var count ='undefined';
                 var cur_facet_count = (typeof cur_facets_hash[facet] != 'undefined') ? cur_facets_hash[facet].count : 0;
-                //console.log(facet+ "=" +cur_facet_count);
-
 
                 var checked_txt = '';
                 if (this.check_state && this.check_state[facet]) {
@@ -363,8 +361,6 @@ left side of the range
                         }
                     }
                     if (this.field==='title_facet' && cur_facet_count != 0) {
-                        console.log(facet);
-                        //console.log(cur_facet_count);
                         if (facet.length>40) {
                             var new_facet = facet.substring(0,40)+'...';
                             $(this.target).append($('<span class="text_facet" style="padding-left: 2px; font-size: small;"></span>').text(new_facet));
@@ -377,6 +373,24 @@ left side of the range
                     } else {
                         //$(this.target).append($('<span class="text_facet" style="padding-left: 2px; font-size: small;"></span>').text(facet));
                     }
+
+                    if (cur_facet_count == 0) {
+                        if (this.field==='person_facet'){document.getElementById('personHide').style.display = "none";}
+                        if (this.field==='spatial_facet'){document.getElementById('spatialHide').style.display = "none";}
+                        //if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "none";}
+                        if (this.field==='edition_facet'){document.getElementById('editionHide').style.display = "none";}
+                        //if (this.field==='date'){document.getElementById('dateHide').style.display = "none";}
+                        if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "none";}
+
+                    } else if (cur_facet_count != 0) {
+                        if (this.field==='person_facet'){document.getElementById('personHide').style.display = "block";}
+                        if (this.field==='spatial_facet'){document.getElementById('spatialHide').style.display = "block";}
+                        //if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "block";}
+                        if (this.field==='edition_facet'){document.getElementById('editionHide').style.display = "block";}
+                        //if (this.field==='date'){document.getElementById('dateHide').style.display = "block";}
+                        if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "block";}
+                    }
+
                     //$(this.target).append($('<span style="padding-left: 2px; font-size: small"></span>').text(facet));
                     //console.log(cur_facet_count);
 
@@ -423,6 +437,22 @@ left side of the range
                         //$('#' + show_more_div_id).append($('<span class="text_facet" style="padding-left: 2px; font-size: small;"></span>').text(facet));
                     }
 
+                    if (cur_facet_count == 0) {
+                        if (this.field==='person_facet'){document.getElementById('personHide').style.display = "none";}
+                        if (this.field==='spatial_facet'){document.getElementById('spatialHide').style.display = "none";}
+                        //if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "none";}
+                        if (this.field==='edition_facet'){document.getElementById('editionHide').style.display = "none";}
+                        //if (this.field==='date'){document.getElementById('dateHide').style.display = "none";}
+                        if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "none";}
+
+                    } else if (cur_facet_count != 0) {
+                        if (this.field==='person_facet'){document.getElementById('personHide').style.display = "block";}
+                        if (this.field==='spatial_facet'){document.getElementById('spatialHide').style.display = "block";}
+                        //if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "block";}
+                        if (this.field==='edition_facet'){document.getElementById('editionHide').style.display = "block";}
+                        //if (this.field==='date'){document.getElementById('dateHide').style.display = "block";}
+                        if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "block";}
+                    }
 
                     if (cur_facet_count != 0) {
                         if ( this.field!='title_facet') {
@@ -432,6 +462,7 @@ left side of the range
                     }
                     if (cur_facet_count == 0) {
 
+
                     }
                     if (cur_facet_count != 0) {
                         $('#' + show_more_div_id).append($('<br>'));
@@ -440,7 +471,7 @@ left side of the range
                 }
 
             }
-
+            //console.log(facet);
             var ac_id = this.field + '_all_extra';
             if (num_hidden > 0) {
                 //$('#' + show_more_div_id).append('Or search: ');

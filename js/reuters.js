@@ -10,7 +10,8 @@ var Manager;
         });
         Manager.addWidget(new AjaxSolr.ResultWidget({
             id: 'result',
-            target: '#docs'
+            target: '#docs',
+            highlighting: true,
         }));
         Manager.addWidget(new AjaxSolr.PagerWidget({
             id: 'pager',
@@ -29,7 +30,7 @@ var Manager;
                 target: '#' + fields[i],
                 field: fields[i],
                 max_show: 10,
-                max_facets: 200,
+                max_facets: 80,
                 sort_type: 'count' //possible values: 'range', 'lex', 'count'
             }));
         }
@@ -49,9 +50,9 @@ var Manager;
         var params = {
             facet: true,
             'facet.field': ['hasModel','medium_facet','edition_facet', 'person_facet', 'spatial_facet' ,'author_facet', 'title_facet','collection', 'date','language'],
-            'facet.limit': 200,
+            'facet.limit': 80,
             'facet.mincount': 1,
-            'f.topics.facet.limit': 200,
+            'f.topics.facet.limit': 80,
             'f.countryCodes.facet.limit': -1,
             /*'facet.date': 'date',
             'facet.date.start': '1187-02-26T00:00:00.000Z/DAY',
@@ -63,7 +64,7 @@ var Manager;
             //'hits.q':'{!terms f=book_id v=$row.book_id}',
             //'sort':'id asc',
             'hl':true,
-            'hl.fl':'text', //The field for which you want highlighting snippets
+            'hl.fl':'text,title,author,medium,date', //The field for which you want highlighting snippets
             'hl.snippets': 4, //Change if you want more or less highlighting snippets
             //Also for highlighting, can optionally set these params for how you want the highlighting to look (yellow background here; Solr default is <em>...</em>):
             'hl.simple.pre': '<font style="background:#FFFF99">',
