@@ -64,7 +64,7 @@ var Manager;
             //'hits.q':'{!terms f=book_id v=$row.book_id}',
             //'sort':'id asc',
             'hl':true,
-            'hl.fl':'text,title,author,medium,date', //The field for which you want highlighting snippets
+            'hl.fl':'text', //The field for which you want highlighting snippets
             'hl.snippets': 4, //Change if you want more or less highlighting snippets
             //Also for highlighting, can optionally set these params for how you want the highlighting to look (yellow background here; Solr default is <em>...</em>):
             'hl.simple.pre': '<font style="background:#FFFF99">',

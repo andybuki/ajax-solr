@@ -280,3 +280,7 @@ p {
   color: #222222;
 }
 
+#link a {
+  target-name:new;
+  target-new:tab;
+}

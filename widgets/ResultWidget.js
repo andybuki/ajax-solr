@@ -4,8 +4,8 @@
         start: 0,
 
         beforeRequest: function () {
-            $(this.target).html($('<img>').attr('src', 'images/ajax-loader.gif'));
-            //$(this.target).html($('<img>').attr('src', 'fileadmin/misc/ajax-solr_repositoryB/images/ajax-loader.gif'));
+            //$(this.target).html($('<img>').attr('src', 'images/ajax-loader.gif'));
+            $(this.target).html($('<img>').attr('src', 'fileadmin/misc/ajax-solr_repositoryB/images/ajax-loader.gif'));
         },
 
         facetLinks: function (facet_field, facet_values) {
@@ -14,7 +14,7 @@
                 for (var i = 0, l = facet_values.length; i < l; i++) {
                     if (facet_values[i] !== undefined) {
                         links.push(
-                            $('<a href="#"></a>')
+                            $('<a target="_blank" href="#"></a>')
                                 .text(facet_values[i])
                                 .click(this.facetHandler(facet_field, facet_values[i]))
                         );
@@ -76,7 +76,8 @@
 
         getDocSnippets: function(highlighting, doc) {
             var id_val = doc['id']; //Change if your documents have different ID field name
-            var cur_doc_highlighting_title = highlighting[id_val];
+            var cur_doc_highlighting_title = highlighting[id_val].text;
+            //var cur_doc_highlighting_title = highlighting[id_val].text;
             var all_snippets_arr = [];
             if (typeof cur_doc_highlighting_title != 'undefined') {
                 for (var snip_k in cur_doc_highlighting_title) {
@@ -87,20 +88,19 @@
                     }
                 }
             }
-
             var cur_doc_snippets_txt =  all_snippets_arr.join('');
             console.log(cur_doc_snippets_txt)
             return(cur_doc_snippets_txt);
         },
 
-        getDocSnippets2: function(highlighting, doc) {
+        /*getDocSnippets2: function(highlighting, doc) {
             var id_val = doc['id']; //Change if your documents have different ID field name
-            var cur_doc_highlighting_text = highlighting[id_val].text;
+            var cur_doc_highlighting_title = highlighting[id_val].text;
 
             var all_snippets_arr = [];
-            if (typeof cur_doc_highlighting_text != 'undefined') {
-                for (var snip_k in cur_doc_highlighting_text) {
-                    var cur_snippets = cur_doc_highlighting_text[snip_k];
+            if (typeof cur_doc_highlighting_title != 'undefined') {
+                for (var snip_k in cur_doc_highlighting_title) {
+                    var cur_snippets = cur_doc_highlighting_title[snip_k];
                     for (var snip_i=0; snip_i < cur_snippets.length; snip_i++) {
                         var cur_snippet_txt = cur_snippets[snip_i];
                         all_snippets_arr.push(cur_snippet_txt);
@@ -110,16 +110,15 @@
             var cur_doc_snippets_txt =  all_snippets_arr.join('');
             console.log(cur_doc_snippets_txt)
             return(cur_doc_snippets_txt);
-        },
+        },*/
 
         template: function (doc,highlighting) {
-
             var snippet = '';
             var cur_doc_highlighting_title;
-            var cur_doc_highlighting_text;
+            var cur_doc_highlighting_title;
             if (this.highlighting && highlighting) {
                 cur_doc_highlighting_title = this.getDocSnippets(highlighting,doc);
-                cur_doc_highlighting_text = this.getDocSnippets2(highlighting,doc);
+                //cur_doc_highlighting_title = this.getDocSnippets2(highlighting,doc);
             }
 
             var output2 =doc.book_id;
@@ -152,30 +151,24 @@
                     if (data[0].response.docs[0].collection=="Local Gazetteer"){
                         var test = data[0].response;
                         if (data[0].response.docs[0].date!=0) {
-                            if (cur_doc_highlighting_title=='') {
                                 data = $('#titles').append('<h4>' + data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date + ',  p.' + doc.position + '</h4>');
-                            }else {
-                                data = $('#titles').append('<h4>' + cur_doc_highlighting_title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date + ',  p.' + doc.position + '</h4>');
-                            }
                         } else {
-                            if (cur_doc_highlighting_title=='') {
                                 data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + " ,"+ data[0].response.docs[0].author +'.  ' +  ',  p.'+doc.position+'</h4>');
-                            }else {
-                                data =  $('#titles').append('<h4>'+ cur_doc_highlighting_title + " ,"+ data[0].response.docs[0].author +'.  ' +  ',  p.'+doc.position+'</h4>');
-                            }
                         }
 
                         var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="13.714285714285714" height="16" viewBox="0 0 1536 1792" class="fa-icon"><path d="M768 768q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1536q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1152q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 0q208 0 385 34.5t280 93.5 103 128v128q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-128q0-69 103-128t280-93.5 385-34.5z"></path>';
                         var link = str.link("http://erf.sbb.spk-berlin.de/han/fangzhiku/");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
                         if (doc.text && doc.text.length > 300) {
                             if (doc.text!=null) {
-                                if (cur_doc_highlighting_text=='') {
+                                if (cur_doc_highlighting_title=='') {
                                     data2 += $('#titles').append(doc.text.substring(0, 300));
                                     data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
 
                                 }else {
-                                    data2 += $('#titles').append(cur_doc_highlighting_text.substring(0, 300));
-                                    data2 += $('#titles').append('<span style="display:none;">' + cur_doc_highlighting_text.substring(300));
+                                    data2 += $('#titles').append(cur_doc_highlighting_title.substring(0, 300));
+                                    data2 += $('#titles').append('<span style="display:none;">' + cur_doc_highlighting_title.substring(300));
                                 }
 
                                 data2 += $('#titles').append('</span> <a href="#" class="more"> ... more</a>');
@@ -184,10 +177,10 @@
                                 data2 += $('#titles').append('<br>'+doc.score);
                             }
                         } else {
-                            if (cur_doc_highlighting_text=='') {
+                            if (cur_doc_highlighting_title=='') {
                                 data2 = $('#titles').append(doc.text);
                             } else {
-                                data2 = $('#titles').append(cur_doc_highlighting_text);
+                                data2 = $('#titles').append(cur_doc_highlighting_title);
                             }
 
                             data2 += $('#titles').append('</br>' +'collection: '+ doc.collection);
@@ -199,32 +192,34 @@
                     else if (data[0].response.docs[0].collection=="Adam Matthew FO China"){
                         var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
                         var link = str.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Images/");
-
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
                         if (data[0].response.docs[0].date!=null) {
-                            if (cur_doc_highlighting_title=='') {
                                 data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
-                            } else {
-                                data =  $('#titles').append('<h4>'+ cur_doc_highlighting_title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
-                            }
+
                         } else {
-                            if (cur_doc_highlighting_title=='') {
                                 data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + ',  p.'+doc.position+'</h4>');
-                            } else {
-                                data =  $('#titles').append('<h4>'+ cur_doc_highlighting_title + '.  ' + ',  p.'+doc.position+'</h4>');
-                            }
                         }
                         if (doc.text && doc.text.length > 300) {
                             if (doc.text!=null) {
-                                data2 += $('#titles').append(doc.text.substring(0, 300));
-                                //data2 += $('#titles').append(doc.text.substring(0, 300)+cur_doc_highlighting_txt);
-                                data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
+                                if (cur_doc_highlighting_title=='') {
+                                    data2 += $('#titles').append(doc.text.substring(0, 300));
+                                    data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
+                                } else {
+                                    data2 += $('#titles').append(cur_doc_highlighting_title.substring(0, 300));
+                                    data2 += $('#titles').append('<span style="display:none;">' + cur_doc_highlighting_title.substring(300));
+                                }
                                 data2 += $('#titles').append('</span> <a href="#" class="more"> ... more</a>');
                                 data2 += $('#titles').append('</br>' +'collection: '+ doc.collection);
                                 data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
                                 data2 += $('#titles').append('<br>'+doc.score);
                             }
                         } else {
-                            data2 = $('#titles').append(doc.text);
+                            if (cur_doc_highlighting_title=='') {
+                                data2 = $('#titles').append(doc.text);
+                            } else {
+                                data2 = $('#titles').append(cur_doc_highlighting_title);
+                            }
                             data2 += $('#titles').append('</br>' +'collection: '+ doc.collection);
                             data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
                             data2 += $('#titles').append('<br>'+doc.score);
@@ -237,13 +232,13 @@
                         var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
                         var link2 = (data[0].response.docs[0].identifier).toString();
                         var newLink=link2.replace('http://www.airitibooks.com/detail.aspx?','http://www.airitibooks.com.airiti.erf.sbb.spk-berlin.de/pdfViewer/index.aspx?');
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
                         var link = str.link(newLink+combineLink);
-                        if (cur_doc_highlighting_title=='') {
-                            data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
-                        }
-                        else {
-                            data =  $('#titles').append('<h4>'+ cur_doc_highlighting_title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
-                        }
+
+                        data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
+
+
                         if (doc.text && doc.text.length > 300) {
                             if (doc.text!=null) {
                                 data2 += $('#titles').append(doc.text.substring(0, 300));
@@ -262,13 +257,11 @@
 
                     }
                     else if(data[0].response.docs[0].collection=="Xuxiu") {
-                        if (cur_doc_highlighting_title=='') {
-                            data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' +   ',  p.'+doc.position+'</h4>');
-                        }
-                        else {
-                            data =  $('#titles').append('<h4>'+ cur_doc_highlighting_title + '.  ' +   ',  p.'+doc.position+'</h4>');
-                        }
+
+                        data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' +   ',  p.'+doc.position+'</h4>');
+
                         var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
+
                         /*var test = data[0].response;
                         var test2 =data2[0].response;
                         var vor_link1 = (data[0].response.docs[0].identifier[0]).replace("type=\"CrossAsia Link\" ","");
@@ -282,12 +275,44 @@
                                 data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
                                 data2 += $('#titles').append('</span> <a href="#" class="more"> ... more</a>');
                                 data2 += $('#titles').append('</br>' +'collection: '+ doc.collection);
+
+                                /*$('a[href^="http://"]')
+                                    .not('a[href*='+ location.hostname +']')
+                                    .attr('target','_blank');
+
+                                var vor_link2 = data[0].response.docs[0].identifier;
+                                var http="type=\"CrossAsia Link\" http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!";
+                                if (vor_link1.includes(http)) {
+                                    var link_replace = vor_link1.replace("type=\"CrossAsia Link\" ","");
+                                    var link = str.link(link_replace);
+                                    data2 +=  ' <br>'+ '<span id="link">'+ link+'</span>';
+                                } else if (vor_link2.includes(http)) {
+                                    var link_replace = vor_link2.replace("type=\"CrossAsia Link\" ","");
+                                    var link = str.link(link_replace);
+                                    data2 +=  ' <br>'+ '<span id="link">'+ link+'</span>';
+                                }*/
+
                                 data2 += $('#titles').append('<br>'+doc.score);
 
                             }
                         } else {
                             data2 = $('#titles').append(doc.text);
                             data2 += $('#titles').append('</br>' +'collection: '+ doc.collection);
+                            /*$('a[href^="http://"]')
+                                .not('a[href*='+ location.hostname +']')
+                                .attr('target','_blank');
+                            var vor_link1 = data[0].response.docs[0].identifier[0];
+                            var vor_link2 = data[0].response.docs[0].identifier[1];
+                            var http="type=\"CrossAsia Link\" http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!";
+                            if (vor_link1.includes(http)) {
+                                var link_replace = vor_link1.replace("type=\"CrossAsia Link\" ","");
+                                var link = str.link(link_replace);
+                                data2 +=  ' <br>'+ '<span id="link">'+ link+'</span>';
+                            } else if (vor_link2.includes(http)) {
+                                var link_replace = vor_link2.replace("type=\"CrossAsia Link\" ","");
+                                var link = str.link(link_replace);
+                                data2 +=  ' <br>'+ '<span id="link">'+ link+'</span>';
+                            }*/
                             data2 += $('#titles').append('<br>'+doc.score);
                         }
                     }
@@ -304,10 +329,12 @@
                 if (cur_doc_highlighting_title=='') {
                     var output = '<div><h4>'  +"Title: "+ doc.title + ",  p."+doc.page+'</h4>';
                 } else {
-                    var output = '<div><h4>'  +"Title: "+ /*doc.title +*/cur_doc_highlighting_title+ ",  p."+doc.page+'</h4>';
+                    var output = '<div><h4>'  +"Title: "+ doc.title + ",  p."+doc.page+'</h4>';
                 }
 
                 var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="13.714285714285714" height="16" viewBox="0 0 1536 1792" class="fa-icon"><path d="M768 768q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1536q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1152q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 0q208 0 385 34.5t280 93.5 103 128v128q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-128q0-69 103-128t280-93.5 385-34.5z"></path>';
+                $('a[href^="http://"]')
+                    .attr('target','_blank');
                 var link = str.link("http://erf.sbb.spk-berlin.de/han/RenminRibao1/");
                 if (doc.text!=null && doc.text.length > 300) {
                     //output += (doc.text.substring(0, 300)+cur_doc_highlighting_txt);
@@ -320,12 +347,12 @@
                         output += ("note: " + doc.description + "</br>");
                     }
                     output += ("collection: "+doc.collection+"</br></br>");
-                    if (cur_doc_highlighting_text=='') {
+                    if (cur_doc_highlighting_title=='') {
                         output += (doc.text.substring(0, 300));
                         output += ('<span style="display:none;">' + doc.text.substring(300));
                     } else {
-                        output += (cur_doc_highlighting_text.substring(0, 300));
-                        output += ('<span style="display:none;">' + cur_doc_highlighting_text.substring(300));
+                        output += (cur_doc_highlighting_title.substring(0, 300));
+                        output += ('<span style="display:none;">' + cur_doc_highlighting_title.substring(300));
                     }
                     output += ('</span> <a href="#" class="more"> ... more</a>');
                     output += ('</br>'+'<span id="link">' + link + "</span>");
@@ -340,9 +367,9 @@
                         output += ("note: " + doc.description + "</br>");
                     }
                     output += ("collection: "+doc.collection+"</br></br>");
-                    if (cur_doc_highlighting_text=='') {
+                    if (cur_doc_highlighting_title=='') {
                         output += (doc.text);
-                    }else { output += (cur_doc_highlighting_text);}
+                    }else { output += (cur_doc_highlighting_title);}
 
 
                     output += ('</br>'+'<span id="link">' + link + '</span>');
@@ -352,19 +379,9 @@
             }
             else if (doc.hasModel=='Book') {
                 if (doc.responsibility!==undefined) {
-                    if (cur_doc_highlighting_title=='') {
-                        var output = '<div><h4>Title: ' + doc.title + ", " + doc.responsibility + '</h4>';
-                    } else {
-                        var output = '<div><h4>Title: ' + cur_doc_highlighting_title+", " + doc.responsibility + '</h4>';
-                    }
+                    var output = '<div><h4>Title: ' + doc.title + ", " + doc.responsibility + '</h4>';
                 }else {
-                    if (cur_doc_highlighting_title=='') {
-                        var output = '<div><h4>Title: ' + doc.title   +  '</h4>';
-                    }
-                    else {
-                        var output = '<div><h4>Title: ' + cur_doc_highlighting_title+ '</h4>';
-                    }
-
+                    var output = '<div><h4>Title: ' + doc.title   +  '</h4>';
                 }
                 if (doc.collection=="Local Gazetteer"){
                     if (doc.author!=null) {
@@ -402,12 +419,16 @@
 
                         var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="13.714285714285714" height="16" viewBox="0 0 1536 1792" class="fa-icon"><path d="M768 768q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1536q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1152q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 0q208 0 385 34.5t280 93.5 103 128v128q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-128q0-69 103-128t280-93.5 385-34.5z"></path>';
                         var link = str.link("http://erf.sbb.spk-berlin.de/han/fangzhiku");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
                         snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
                     }
 
                     if (doc.identifier!=null) {
                         var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="13.714285714285714" height="16" viewBox="0 0 1536 1792" class="fa-icon"><path d="M768 768q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1536q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1152q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 0q208 0 385 34.5t280 93.5 103 128v128q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-128q0-69 103-128t280-93.5 385-34.5z"></path>';
                         var link = str.link("http://erf.sbb.spk-berlin.de/han/fangzhiku");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
                         snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
                     }
                 }
@@ -450,6 +471,8 @@
 
                     if (doc.identifier!=null) {
                         var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
                         var vor_link1 = doc.identifier[0];
                         var vor_link2 = doc.identifier[1];
                         var http="type=\"CrossAsia Link\" http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!";
@@ -505,6 +528,8 @@
                         var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
                         var link = str.link(doc.identifier).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Details/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Details/");
                         //var link = str.link(doc.identifier).replace("http://www.airitibooks.com/detail.aspx?","http://erf.sbb.spk-berlin.de/han/airiti/www.airitibooks.com/Detail/Detail?");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
                         snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
                     }
 
@@ -543,12 +568,17 @@
                     if (doc.url!=null) {
                         var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
                         var link = str.link(doc.url);
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
                         snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
                     }
 
                     if (doc.identifier!=null) {
                         var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
+
                         var link = str.link(doc.identifier).replace("http://www.airitibooks.com/detail.aspx?","http://erf.sbb.spk-berlin.de/han/airiti/www.airitibooks.com/Detail/Detail?");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
                         snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
                     }
 
@@ -559,12 +589,12 @@
             else if (doc.hasModel=="Chapter") {
                 $.when($.getJSON(url2), $.getJSON(url3)).then(function(data,data2) {
                     var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="13.714285714285714" height="16" viewBox="0 0 1536 1792" class="fa-icon"><path d="M768 768q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1536q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1152q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 0q208 0 385 34.5t280 93.5 103 128v128q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-128q0-69 103-128t280-93.5 385-34.5z"></path>';
+                    $('a[href^="http://"]')
+                        .attr('target','_blank');
                     var link = str.link("http://erf.sbb.spk-berlin.de/han/fangzhiku");
-                    if (cur_doc_highlighting_title=='') {
-                        data = $('#titles').append('<h4>' + data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date + ', ' + doc.pageStart + '-' + doc.pageEnd + ' p.</h4>');
-                    }else {
-                        data = $('#titles').append('<h4>' + cur_doc_highlighting_title + '.  ' + data[0].response.docs[0].date + ', ' + doc.pageStart + '-' + doc.pageEnd + ' p.</h4>');
-                    }
+
+                    data = $('#titles').append('<h4>' + data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date + ', ' + doc.pageStart + '-' + doc.pageEnd + ' p.</h4>');
+
                     if (cur_doc_highlighting_title=='') {
                         data2 = $('#titles').append(doc.title);
                     }else {
