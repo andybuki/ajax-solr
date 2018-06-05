@@ -291,6 +291,7 @@ left side of the range
                 var facet = objectedItems[i].facet;
                 var count ='undefined';
                 var cur_facet_count = (typeof cur_facets_hash[facet] != 'undefined') ? cur_facets_hash[facet].count : 0;
+                var all_facet_cout = objectedItems.length;
 
                 var checked_txt = '';
                 if (this.check_state && this.check_state[facet]) {
@@ -310,26 +311,28 @@ left side of the range
                     if (this.field==='collection' && cur_facet_count != 0) {
                         //console.log(facet);
                         if (facet ==="Renmin Ribao" ) {
-                            $(this.target).append($('<span> </span> <a onclick="show_hidePopUpWindow(\'foo\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                            $(this.target).append($('<span> </span> <a onclick="show_hidePopUpWindow(\'foo\');">' +
+                                '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                '<path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
-                                '<div class="menu" id="foo" style="display:none">人民日报 : People\'s Daily (i)\n' +
-                                'CONTENT: Fulltexts of all articles from the inception of the People\'s Daily in 1946 to end of August 2009. Articles will be shown as individual hits, the issue of that certain day, will be the concatenated title or . To see the image-PDF of the issue you will have go to the database (http://erf.sbb.spk-berlin.de/han/RenminRibao1/) and open the issue via the calendar browse function provided in the database.\n</div>'));
+                                '<div class="menu" id="foo" style="display:none"><a onclick="show_hidePopUpWindow(\'foo\');"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>人民日报 : People\'s Daily (i)</b>\n' +
+                                '<br><b>CONTENT:</b> Fulltexts of all articles from the inception of the People\'s Daily in 1946 to end of August 2009. Articles will be shown as individual hits, the issue of that certain day, will be the concatenated title or . To see the image-PDF of the issue you will have go to the <a href="http://erf.sbb.spk-berlin.de/han/RenminRibao1/">database</a> and open the issue via the calendar browse function provided in the database.\n</div>'));
                         }
 
                         if (facet==="Airiti") {
                             $(this.target).append($('<span> </span> <a onclick="show_hidePopUpWindow(\'foo2\');"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></i></a>' +
                                 '' +
-                                '<div class="menu" id="foo2" style="display:none">Airiti eBooks (i)\n' +
-                                'CONTENT:  Currently 75 titles of the Airiti eBook platform have been licenced and are available for fulltext search. The corpus of licenced titles will be update yearly. For the Airiti ebook database go to 華藝中文電子書 : airitiBooks (LINK:http://erf.sbb.spk-berlin.de/han/airiti/www.airitibooks.com/)\n' +
-                                'NOTE: To see your hit page, please follow the link provided next to the fulltext hit. Due to the licence agreement it is only possible to open one double-page (window) per book at the same time. If you can\'t find the hit on the pages shown, please check the previous or subsequent pages, or perform a search within the book.\n</div>'));
+                                '<div class="menu" id="foo2" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo2\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Airiti eBooks (i)</b>\n' +
+                                '<br><b>CONTENT:</b>  Currently 75 titles of the Airiti eBook platform have been licenced and are available for fulltext search. The corpus of licenced titles will be update yearly. For the Airiti ebook database go to 華藝中文電子書 : airitiBooks <a href="http://erf.sbb.spk-berlin.de/han/airiti/www.airitibooks.com/">LINK</a>\n' +
+                                '<br><b>NOTE:</b> To see your hit page, please follow the link provided next to the fulltext hit. Due to the licence agreement it is only possible to open one double-page (window) per book at the same time. If you can\'t find the hit on the pages shown, please check the previous or subsequent pages, or perform a search within the book.\n</div>'));
 
                         }
 
                         if (facet==="Adam Matthew FO China") {
                             $(this.target).append($('<span> </span> <a onclick="show_hidePopUpWindow(\'foo3\');"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
-                                '<div class="menu" id="foo3" style="display:none">Foreign Office Files China (i)\n' +
-                                'CONTENT: Collection of files held by The National Archives, Kew, the official archive of the United Kingdom. It contains diplomatic correspondence, letters, reports, surveys, material from newspapers, statistical analyses, published pamphlets, ephemera, military papers, profiles of prominent individuals, maps and many other types of document. \n' +
+                                '<div class="menu" id="foo3" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo3\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Foreign Office Files China (i)</b>\n' +
+                                '<br><b>CONTENT:</b> Collection of files held by The National Archives, Kew, the official archive of the United Kingdom. It contains diplomatic correspondence, letters, reports, surveys, material from newspapers, statistical analyses, published pamphlets, ephemera, military papers, profiles of prominent individuals, maps and many other types of document. \n' +
                                 'The collection is divided into the six parts: \n' +
                                 '1919-1929: Kuomintang, CCP and the Third International \n' +
                                 '1930-1937: The Long March, civil war in China and the Manchurian Crisis \n' +
@@ -337,28 +340,66 @@ left side of the range
                                 '1949-1956: The Communist revolution \n' +
                                 '1957-1966: The Great Leap Forward \n' +
                                 '1967-1980: The Cultural Revolution\n' +
-                                'NOTE: The full text was done by OCR from partly handwritten material, thus the text is often of minor quality.</div>'));
+                                '<br><b>NOTE:</b> The full text was done by OCR from partly handwritten material, thus the text is often of minor quality.</div>'));
 
                         }
 
                         if (facet==="Local Gazetteer") {
-                            $(this.target).append($('<span> </span> <a onclick="show_hidePopUpWindow(\'foo4\');"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                            $(this.target).append($('<span> </span> <a onclick="show_hidePopUpWindow(\'foo4\');"> ' +
+                                '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                '<path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
-                                '<div class="menu" id="foo4" style="display:none">Local Gazetters (i)\n' +
-                                'CONTENT: This collection currently contains only the first 2000 titles (with about 2,5 mio. pages) of the Erudition database 中國方志庫. \n' +
-                                'NOTE: For the Erudition corpus currently no link to the book title in the database is possible. To see your hit page in the database please call-up the Erudition database (link provided with the title), search for your book (title as given in the hit) and go the image/page given for your hit page.\n</div>'));
+                                '<div class="menu" id="foo4" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo4\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Local Gazetters (i)</b>\n' +
+                                '<br><b>CONTENT:</b> This collection currently contains only the first 2000 titles (with about 2,5 mio. pages) of the Erudition database 中國方志庫. \n' +
+                                '<br><b>NOTE:</b> For the Erudition corpus currently no link to the book title in the database is possible. To see your hit page in the database please call-up the Erudition database (link provided with the title), search for your book (title as given in the hit) and go the image/page given for your hit page.\n</div>'));
 
                         }
 
                         if (facet==='Xuxiu') {
                             //console.log(facet);
-                            $(this.target).append($('<span> </span> <a onclick="show_hidePopUpWindow(\'foo5\');">   <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                            $(this.target).append($('<span> </span> <a onclick="show_hidePopUpWindow(\'foo5\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
-                                '<div class="menu" id="foo5" style="display:none">Xuxiu Siku Quanshu 續修四庫全書 (i)\n' +
-                                'CONTENT: With over 5000 titles the \'Sequel to the Siku quanshu\', continues emperor Qianlong\'s project of the late 18th century. The Xuxiu Siku quanshu project ran from the 1920ies on aiming to collect titles produced after the finishing of the Siku quanshu collection (SKQS) in 1782, to reproduce editions better and less corrupted than those included in the SKQS, to include novels and other literary styles considered too lowly by the SKQS editors asf. In 1942 the project came to a full stop with over 30 thousand book abstracts written. In 1949 the drafts of these abstracts went into the possession of the library of the Chinese Academy of Science (中科院) in Beijing; finally in 1996 these abstracts were published in 37 volumes under the title 续修四库全书总目提要 (稿本); between 1995 and 2002 facsimiles of over 5213 titles of the Xuxiu SKQS were published in 1800 volumes by Shanghai guji chubanshe. The publishing of a fulltext database of all titles from the Shanghai edition (and 100+ additional titles) can be considered another milestone for everyone working in one or the other way on historical China. \n' +
-                                'NOTE: No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the \'book\' link in the title data) and then go to the page number given in the page hit.\n</div>'));
+                                '<div class="menu" id="foo5" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo5\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Xuxiu Siku Quanshu 續修四庫全書 (i)</b>\n' +
+                                '<br><b>CONTENT:</b> With over 5000 titles the \'Sequel to the Siku quanshu\', continues emperor Qianlong\'s project of the late 18th century. The Xuxiu Siku quanshu project ran from the 1920ies on aiming to collect titles produced after the finishing of the Siku quanshu collection (SKQS) in 1782, to reproduce editions better and less corrupted than those included in the SKQS, to include novels and other literary styles considered too lowly by the SKQS editors asf. In 1942 the project came to a full stop with over 30 thousand book abstracts written. In 1949 the drafts of these abstracts went into the possession of the library of the Chinese Academy of Science (中科院) in Beijing; finally in 1996 these abstracts were published in 37 volumes under the title 续修四库全书总目提要 (稿本); between 1995 and 2002 facsimiles of over 5213 titles of the Xuxiu SKQS were published in 1800 volumes by Shanghai guji chubanshe. The publishing of a fulltext database of all titles from the Shanghai edition (and 100+ additional titles) can be considered another milestone for everyone working in one or the other way on historical China. \n' +
+                                '<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the \'book\' link in the title data) and then go to the page number given in the page hit.\n</div>'));
 
                         }
+                        if (facet==='Adam Matthew - China America Pacific') {
+                            $(this.target).append($('<span> </span> <a onclick="show_hidePopUpWindow(\'foo6\');"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                '' +
+                                '<div class="menu" id="foo6" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo6\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Adam Matthew - China America Pacific (i)</b>\n'
+                                +
+                                '<br><b>CONTENT:</b> Collection of archival material held by different American institutions and libraries like the American Philosophical Society Library, Boston Athenæum, Bridgeman Art Library, California Historical Society, Hagley Museum and Library, Massachusetts Historical Society, Hawaiian Historical Society etc. It contains material related to the trading and cultural relationships that emerged between China, America and the Pacific region between the 18th and early 20th centuries like manuscript sources, rare printed texts, visual images, objects and maps.\n' +
+                                '\n' +
+                                '<br><b>NOTE:</b> The full text was done by OCR from partly handwritten material, thus the text is often of minor quality. For each hit in the search links to the bibliographical unit and to the individual page are provided.\n'+
+                                '</div>'));
+
+                        }
+                        if (facet==='Adam Matthew - China Trade & Politics') {
+                            $(this.target).append($('<span> </span> <a onclick="show_hidePopUpWindow(\'foo7\');"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                '' +
+                                '<div class="menu" id="foo7" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo7\');"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Adam Matthew - China Trade & Politics (i)</b>\n'
+                                +'<br><b>CONTENT:</b> The collection contains a wide variety of sources in English relating to China and the West, 1793-1980, such as maps, color paintings, photographs, papers of key individuals involved in the Chinese Maritime Customs service, records of major diplomatic missions to China ranging from the late 18th to the 20th century (Macartney, Amherst to Nixon), papers of missionaries, as well as the Chinese Recorder and Missionary Journal (1867-1941) and North China Mission resp. North China Shantung Mission quarterly paper (1893-1936).\n' +
+                                '\n' +
+                                '<br><b>NOTE:</b> The full text was done by OCR from partly handwritten material, thus the text is often of minor quality. For each hit in the search links to the bibliographical unit and to the individual page are provided.\n'+
+                                '</div>'));
+
+                        }
+                        if (facet==='Adam Matthew - Meiji Japan') {
+                            $(this.target).append($('<span> </span> <a onclick="show_hidePopUpWindow(\'foo8\');"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                '' +
+                                '<div class="menu" id="foo8" style="display:none"><a onclick="show_hidePopUpWindow(\'foo8\');"> ' +
+                                '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                '<path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg>' +
+                                '</a>' +
+                                '<b>Adam Matthew - Meiji Japan </b>' +
+                                '<br><b>CONTENT:</b> The collection contains the diaries and correspondence of Edward S Morse (1838-1925), one of the first Americans to live in Japan for a longer period while teaching science at the Imperial University of Tokyo. A polymath especially interested in the fields natural history, ethnography and art history, he was an accomplished draughtsman and his drawings and sketches enliven his diaries and letters. In addition to preserving the household records of a samurai family and many accounts of the tea ceremony, Morse made notes on subjects as diverse as shop signs, fireworks, hairpins, agricultural tools, artists’ studios, music, games, printing, carpentry, the Ainu, gardens, household construction, art and architecture. His correspondence include exchanges with Alexander and Louis Agassiz, William Sturgis Bigelow, Charles Darwin, Ernest Fenollosa, Yukichi Fukuzawa, Isabella Stewart Gardner, John M Gould, Oliver Wendell Holmes, Ernest Ingersoll, Hiroyuki Kato, Percival Lowell, The Museum of Fine Arts in Boston, Charles Eliot Norton, Frederick Putnam, Hideo Takamine, Seiichi Tejima, Charles Townsend, Charles Weld and Yu Kil-chun.\n' +
+                                '\n' +
+                                '<br><b>NOTE:</b> As all items in this collection are either handwritten or images, none of them has provided fulltext yet. Thus only the metadata can be searched.\n'+
+                                '</div>'));
+
+                        }
+
                     }
                     if (this.field==='title_facet' && cur_facet_count != 0) {
                         if (facet.length>40) {
@@ -374,21 +415,32 @@ left side of the range
                         //$(this.target).append($('<span class="text_facet" style="padding-left: 2px; font-size: small;"></span>').text(facet));
                     }
 
-                    if (cur_facet_count == 0) {
-                        if (this.field==='person_facet'){document.getElementById('personHide').style.display = "none";}
-                        if (this.field==='spatial_facet'){document.getElementById('spatialHide').style.display = "none";}
-                        //if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "none";}
-                        if (this.field==='edition_facet'){document.getElementById('editionHide').style.display = "none";}
-                        //if (this.field==='date'){document.getElementById('dateHide').style.display = "none";}
-                        if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "none";}
-
-                    } else if (cur_facet_count != 0) {
+                    if (Object.values(returned_facets).length>0) {
                         if (this.field==='person_facet'){document.getElementById('personHide').style.display = "block";}
                         if (this.field==='spatial_facet'){document.getElementById('spatialHide').style.display = "block";}
-                        //if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "block";}
+                        if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "block";}
                         if (this.field==='edition_facet'){document.getElementById('editionHide').style.display = "block";}
-                        //if (this.field==='date'){document.getElementById('dateHide').style.display = "block";}
                         if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "block";}
+                        if (this.field==='date'){document.getElementById('dateHide').style.display = "block";}
+                        if (this.field==='language'){document.getElementById('languageHide').style.display = "block";}
+                    } else {
+                        if (this.field==='person_facet'){document.getElementById('personHide').style.display = "none";}
+                        if (this.field==='spatial_facet'){document.getElementById('spatialHide').style.display = "none";}
+                        if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "none";}
+                        if (this.field==='date'){document.getElementById('dateHide').style.display = "none";}
+                        if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "none";}
+                        if (this.field==='edition_facet'){document.getElementById('editionHide').style.display = "none";}
+                        if (this.field==='language'){document.getElementById('languageHide').style.display = "none";}
+                    }
+
+                    if (Object.values(returned_facets).length<10) {
+                        if (this.field==='person_facet'){document.getElementById('person_facet_all_extra').style.display = "none";}
+                        if (this.field==='spatial_facet'){document.getElementById('spatial_facet_all_extra').style.display = "none";}
+                        //if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "none";}
+                        if (this.field==='date'){document.getElementById('date_all_extra').style.display = "none";}
+                        if (this.field==='author_facet'){document.getElementById('author_facet_all_extra').style.display = "none";}
+                        if (this.field==='edition_facet'){document.getElementById('edition_facet_all_extra').style.display = "none";}
+                        if (this.field==='language'){document.getElementById('language_all_extra').style.display = "none";}
                     }
 
                     //$(this.target).append($('<span style="padding-left: 2px; font-size: small"></span>').text(facet));
@@ -437,22 +489,36 @@ left side of the range
                         //$('#' + show_more_div_id).append($('<span class="text_facet" style="padding-left: 2px; font-size: small;"></span>').text(facet));
                     }
 
-                    if (cur_facet_count == 0) {
-                        if (this.field==='person_facet'){document.getElementById('personHide').style.display = "none";}
-                        if (this.field==='spatial_facet'){document.getElementById('spatialHide').style.display = "none";}
-                        //if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "none";}
-                        if (this.field==='edition_facet'){document.getElementById('editionHide').style.display = "none";}
-                        //if (this.field==='date'){document.getElementById('dateHide').style.display = "none";}
-                        if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "none";}
+                    //console.log(this.field+":"+Object.keys(returned_facets)+":"+Object.values(returned_facets).length);
 
-                    } else if (cur_facet_count != 0) {
+                    if (Object.values(returned_facets).length>0) {
                         if (this.field==='person_facet'){document.getElementById('personHide').style.display = "block";}
                         if (this.field==='spatial_facet'){document.getElementById('spatialHide').style.display = "block";}
-                        //if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "block";}
+                        if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "block";}
                         if (this.field==='edition_facet'){document.getElementById('editionHide').style.display = "block";}
-                        //if (this.field==='date'){document.getElementById('dateHide').style.display = "block";}
                         if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "block";}
+                        if (this.field==='date'){document.getElementById('dateHide').style.display = "block";}
+                        if (this.field==='language'){document.getElementById('languageHide').style.display = "block";}
+                    } else {
+                        if (this.field==='person_facet'){document.getElementById('personHide').style.display = "none";}
+                        if (this.field==='spatial_facet'){document.getElementById('spatialHide').style.display = "none";}
+                        if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "none";}
+                        if (this.field==='date'){document.getElementById('dateHide').style.display = "none";}
+                        if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "none";}
+                        if (this.field==='edition_facet'){document.getElementById('editionHide').style.display = "none";}
+                        if (this.field==='language'){document.getElementById('languageHide').style.display = "none";}
                     }
+
+                    if (Object.values(returned_facets).length<10) {
+                        if (this.field==='person_facet'){document.getElementById('person_facet_all_extra').style.display = "none";}
+                        if (this.field==='spatial_facet'){document.getElementById('spatial_facet_all_extra').style.display = "none";}
+                        //if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "none";}
+                        if (this.field==='date'){document.getElementById('date_all_extra').style.display = "none";}
+                        if (this.field==='author_facet'){document.getElementById('author_facet_all_extra').style.display = "none";}
+                        if (this.field==='edition_facet'){document.getElementById('edition_facet_all_extra').style.display = "none";}
+                        if (this.field==='language'){document.getElementById('language_all_extra').style.display = "none";}
+                    }
+
 
                     if (cur_facet_count != 0) {
                         if ( this.field!='title_facet') {
@@ -460,29 +526,50 @@ left side of the range
                         }
                         $('#' + show_more_div_id).append($('<span id="number" style="font-size: x-small"></span>').text(' (' + cur_facet_count + ')'));
                     }
-                    if (cur_facet_count == 0) {
+                    /*if (cur_facet_count == 0) {
 
 
-                    }
+                    }*/
                     if (cur_facet_count != 0) {
                         $('#' + show_more_div_id).append($('<br>'));
                     }
+
                     num_hidden++;
                 }
 
             }
             //console.log(facet);
             var ac_id = this.field + '_all_extra';
-            if (num_hidden > 0) {
+            var returned_facets2 = returned_facets;
+
+            //var count2 = returned_facets2[facet].count;
+            var count3 = (returned_facets2[facet]);
+
+            //var returned_facets3 = returned_facets.length;
+            //console.log(this.field+":"+Object.keys(returned_facets)+":"+Object.values(returned_facets).length);
+
+            if (Object.values(returned_facets).length >10) {
                 //$('#' + show_more_div_id).append('Or search: ');
                 //$('#' + show_more_div_id).append($('<input id="' + ac_id + '">'));
                 var more_or_less_txt = (this.display_style == 'none') ? '+more' : '-less';
+
+
                 $(this.target).append('<a id="' + show_more_div_id + '_txt" href="#">' + more_or_less_txt + '</a>');
                 $('#' + show_more_div_id + '_txt').click(this.toggleExtra(show_more_div_id));
-            } else {
+
+            }  else {
+                //$(this.target).append(ac_id).style.display = "none";
                 //$(this.target).append('Or search: ');
                 //$(this.target).append($('<input id="' + ac_id + '">'));
             }
+
+            if (Object.values(returned_facets).length < 10){
+                var more_or_less_txt = (this.display_style == 'none') ? '' : '';
+                $(this.target).append('<a id="' + show_more_div_id + '_txt" href="#">' + more_or_less_txt + '</a>');
+                $('#' + show_more_div_id + '_txt').click(this.toggleExtra(show_more_div_id));
+
+            }
+
             $('#' + ac_id).autocomplete({
                 source: this.autocompleteAjaxFunction(),
                 minLength: 1,

@@ -5,7 +5,7 @@ var Manager;
     $(function () {
         Manager = new AjaxSolr.Manager({
             //solrUrl: 'http://10.46.3.100:8982/solr/LocGaz/select?shards=10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/Xuxiu,10.46.3.100:8982/solr/airiti_nested,10.46.3.100:8982/solr/RMRB&indent=true&'
-            solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina/select?shards=10.46.3.100:8982/solr/AMD_FOChina,10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/Xuxiu,10.46.3.100:8982/solr/airiti_nested,10.46.3.100:8982/solr/RMRB&indent=true&'
+            solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina/select?shards=10.46.3.100:8982/solr/AMD_FOChina,10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/Xuxiu,10.46.3.100:8982/solr/airiti_nested,10.46.3.100:8982/solr/RMRB,10.46.3.100:8982/solr/China_Trade,10.46.3.100:8982/solr/ChinaAmericaPacific,10.46.3.100:8982/solr/MeijiJapan_small&indent=true&'
             //solrUrl: 'http://10.46.3.100:8982/solr/RMRB/'
         });
         Manager.addWidget(new AjaxSolr.ResultWidget({
@@ -23,14 +23,14 @@ var Manager;
                 $('#pager-header').html($('<span></span>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
             }
         }));
-        var fields = ['text','hasModel','medium_facet','edition_facet','person_facet','spatial_facet','author_facet','title_facet','medium','edition','person','spatial','author','title','collection', 'date', 'language'];
+        var fields = ['text','hasModel','medium','edition','person','spatial','author','title','collection', 'date','language','medium_facet','edition_facet','person_facet','spatial_facet','author_facet','title_facet'];
         for (var i = 0, l = fields.length; i < l; i++) {
             Manager.addWidget(new AjaxSolr.MultiSelectWidget({ //MultiSelectWidget instead of Tagcloudwidget
                 id: fields[i],
                 target: '#' + fields[i],
                 field: fields[i],
                 max_show: 10,
-                max_facets: 80,
+                max_facets: 1000,
                 sort_type: 'count' //possible values: 'range', 'lex', 'count'
             }));
         }
@@ -42,7 +42,7 @@ var Manager;
         Manager.addWidget(new AjaxSolr.AutocompleteWidget({
             id: 'text',
             target: '#search',
-            fields: ['title_facet','author','medium','edition','person','spatial']
+            fields: ['title_facet','author_facet','medium','edition','person','spatial']
         }));
 
         Manager.init();
@@ -50,9 +50,11 @@ var Manager;
         var params = {
             facet: true,
             'facet.field': ['hasModel','medium_facet','edition_facet', 'person_facet', 'spatial_facet' ,'author_facet', 'title_facet','collection', 'date','language'],
-            'facet.limit': 80,
+            'facet.limit': 50,
             'facet.mincount': 1,
-            'f.topics.facet.limit': 80,
+            'f.date.facet.limit': 1000,
+            'f.author_facet.facet.limit': 1000,
+            'f.person_facet.facet.limit': 300,
             'f.countryCodes.facet.limit': -1,
             /*'facet.date': 'date',
             'facet.date.start': '1187-02-26T00:00:00.000Z/DAY',
@@ -81,5 +83,6 @@ var Manager;
 
         Manager.doRequest();
     });
+
 
 })(jQuery);

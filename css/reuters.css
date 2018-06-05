@@ -23,7 +23,7 @@ a:hover {
 }
 
 #wrap {
-  width: 1150px;
+  width: 1100px;
   margin: 0px auto;
 }
 .clear {
@@ -108,7 +108,7 @@ a:hover {
 
 .left {
   float: left;
-  width: 410px;
+  width: 390px;
   padding: 0 0 10px 10px;
 }
 .left .title2 {
@@ -128,7 +128,7 @@ a:hover {
   font-size: 80%;
 }
 .tagcloud {
-  padding: 10px 15px 0;
+  padding: 0px 15px 0px 10px;
 }
 .tagcloud_item {
   float: left;
@@ -229,7 +229,7 @@ section.range-slider input:last-of-type::-moz-range-track {
 section.range-slider input[type=range]::-moz-focus-outer {
   border: 0;
 }
-#collection_all_extra, #hasModel_all_extra, #language_all_extra
+#collection_all_extra, #hasModel_all_extra, #language_all_extra, #title_facet_all_extra
 { display: none;}
 
 
@@ -238,23 +238,23 @@ label { display: block; }
 .box { width:350px; }
 
 .menu {
-  color:#999; text-decoration:none;
-
+  color:#000000;
+  text-decoration:none;
   background: white;
-  width: 300px;
+  width: 400px;
   padding: 10px;
   border: solid black 1px;
   z-index: 100;
   position: fixed;
-  top:450px;
+  top:400px;
 }
 
 .menu2 {
   left: 194px;
-  color: #999;
+  color: #000000;
   text-decoration: none;
   background: white;
-  width: 300px;
+  width: 400px;
   padding: 10px;
   border: solid black 1px;
   z-index: 100;
@@ -276,11 +276,52 @@ p {
 
 .ui-widget-content {
   border: 1px solid #aaaaaa;
-  background: #ffffff url(images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x;
+  background: #ffffff url(/fileadmin/misc/ajax-solr_repositoryB/images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x;
   color: #222222;
+}
+
+.ui-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+  outline: none;
+}
+
+.ui-autocomplete {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: default;
+}
+
+.ui-front {
+  z-index: 100;
+}
+
+.ui-menu .ui-menu-item {
+  position: relative;
+  margin: 0;
+  padding: 3px 1em 3px .4em;
+  cursor: pointer;
+  min-height: 0;
+  list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
 }
 
 #link a {
   target-name:new;
   target-new:tab;
 }
+
+.fa-icon {
+  target-name:new;
+  target-new:tab;
+}
+
+#close_button{
+  position:absolute;
+  right:2px;
+  top:2px;
+}
+
+.ui-helper-hidden-accessible { display:none; }

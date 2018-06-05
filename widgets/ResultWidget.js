@@ -4,8 +4,8 @@
         start: 0,
 
         beforeRequest: function () {
-            //$(this.target).html($('<img>').attr('src', 'images/ajax-loader.gif'));
-            $(this.target).html($('<img>').attr('src', 'fileadmin/misc/ajax-solr_repositoryB/images/ajax-loader.gif'));
+            $(this.target).html($('<img>').attr('src', 'images/ajax-loader.gif'));
+            //$(this.target).html($('<img>').attr('src', 'fileadmin/misc/ajax-solr_repositoryB/images/ajax-loader.gif'));
         },
 
         facetLinks: function (facet_field, facet_values) {
@@ -89,7 +89,7 @@
                 }
             }
             var cur_doc_snippets_txt =  all_snippets_arr.join('');
-            console.log(cur_doc_snippets_txt)
+            //console.log(cur_doc_snippets_txt)
             return(cur_doc_snippets_txt);
         },
 
@@ -172,7 +172,7 @@
                                 }
 
                                 data2 += $('#titles').append('</span> <a href="#" class="more"> ... more</a>');
-                                data2 += $('#titles').append('</br>' +'collection: '+ doc.collection);
+                                data2 += $('#titles').append('</br>' +'<b>collection:</b> '+ doc.collection);
                                 data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
                                 data2 += $('#titles').append('<br>'+doc.score);
                             }
@@ -183,7 +183,7 @@
                                 data2 = $('#titles').append(cur_doc_highlighting_title);
                             }
 
-                            data2 += $('#titles').append('</br>' +'collection: '+ doc.collection);
+                            data2 += $('#titles').append('</br>' +'<b>collection:</b> '+ doc.collection);
                             data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
                             data2 += $('#titles').append('<br>'+doc.score);
                         }
@@ -210,6 +210,115 @@
                                     data2 += $('#titles').append('<span style="display:none;">' + cur_doc_highlighting_title.substring(300));
                                 }
                                 data2 += $('#titles').append('</span> <a href="#" class="more"> ... more</a>');
+                                data2 += $('#titles').append('</br>' +'<b>collection:</b> '+ doc.collection);
+                                data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
+                                data2 += $('#titles').append('<br>'+doc.score);
+                            }
+                        } else {
+                            if (cur_doc_highlighting_title=='') {
+                                data2 = $('#titles').append(doc.text);
+                            } else {
+                                data2 = $('#titles').append(cur_doc_highlighting_title);
+                            }
+                            data2 += $('#titles').append('</br>' +'<b>collection:</b> '+ doc.collection);
+                            data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
+                            data2 += $('#titles').append('<br>'+doc.score);
+                        }
+
+                    }
+                    else if (data[0].response.docs[0].collection=="Adam Matthew - China America Pacific") {
+                        var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
+                        var link = str.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Images/");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+                        if (data[0].response.docs[0].date!=null) {
+                            data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
+
+                        } else {
+                            data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + ',  p.'+doc.position+'</h4>');
+                        }
+                        if (doc.text && doc.text.length > 300) {
+                            if (doc.text!=null) {
+                                if (cur_doc_highlighting_title=='') {
+                                    data2 += $('#titles').append(doc.text.substring(0, 300));
+                                    data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
+                                } else {
+                                    data2 += $('#titles').append(cur_doc_highlighting_title.substring(0, 300));
+                                    data2 += $('#titles').append('<span style="display:none;">' + cur_doc_highlighting_title.substring(300));
+                                }
+                                data2 += $('#titles').append('</span> <a href="#" class="more"> ... more</a>');
+                                data2 += $('#titles').append('</br>' +'<b>collection:</b> '+ doc.collection);
+                                data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
+                                data2 += $('#titles').append('<br>'+doc.score);
+                            }
+                        } else {
+                            if (cur_doc_highlighting_title=='') {
+                                data2 = $('#titles').append(doc.text);
+                            } else {
+                                data2 = $('#titles').append(cur_doc_highlighting_title);
+                            }
+                            data2 += $('#titles').append('</br>' +'<b>collection:</b> '+ doc.collection);
+                            data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
+                            data2 += $('#titles').append('<br>'+doc.score);
+                        }
+                    }
+                    else if (data[0].response.docs[0].collection=="Adam Matthew - China Trade & Politics") {
+                        var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
+                        var link = str.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Images/");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+                        if (data[0].response.docs[0].date!=null) {
+                            data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
+
+                        } else {
+                            data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + ',  p.'+doc.position+'</h4>');
+                        }
+                        if (doc.text && doc.text.length > 300) {
+                            if (doc.text!=null) {
+                                if (cur_doc_highlighting_title=='') {
+                                    data2 += $('#titles').append(doc.text.substring(0, 300));
+                                    data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
+                                } else {
+                                    data2 += $('#titles').append(cur_doc_highlighting_title.substring(0, 300));
+                                    data2 += $('#titles').append('<span style="display:none;">' + cur_doc_highlighting_title.substring(300));
+                                }
+                                data2 += $('#titles').append('</span> <a href="#" class="more"> ... more</a>');
+                                data2 += $('#titles').append('</br>' +'<b>collection:</b> '+ doc.collection);
+                                data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
+                                data2 += $('#titles').append('<br>'+doc.score);
+                            }
+                        } else {
+                            if (cur_doc_highlighting_title=='') {
+                                data2 = $('#titles').append(doc.text);
+                            } else {
+                                data2 = $('#titles').append(cur_doc_highlighting_title);
+                            }
+                            data2 += $('#titles').append('</br>' +'<b>collection:</b> '+ doc.collection);
+                            data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
+                            data2 += $('#titles').append('<br>'+doc.score);
+                        }
+                    }
+                    /*else if (data[0].response.docs[0].collection=="Adam Matthew - Meiji Japan") {
+                        var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
+                        var link = str.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Images/");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+                        if (data[0].response.docs[0].date!=null) {
+                            data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date+  ',  p.'+doc.position+'</h4>');
+
+                        } else {
+                            data =  $('#titles').append('<h4>'+ data[0].response.docs[0].title + '.  ' + ',  p.'+doc.position+'</h4>');
+                        }
+                        if (doc.text && doc.text.length > 300) {
+                            if (doc.text!=null) {
+                                if (cur_doc_highlighting_title=='') {
+                                    data2 += $('#titles').append(doc.text.substring(0, 300));
+                                    data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
+                                } else {
+                                    data2 += $('#titles').append(cur_doc_highlighting_title.substring(0, 300));
+                                    data2 += $('#titles').append('<span style="display:none;">' + cur_doc_highlighting_title.substring(300));
+                                }
+                                data2 += $('#titles').append('</span> <a href="#" class="more"> ... more</a>');
                                 data2 += $('#titles').append('</br>' +'collection: '+ doc.collection);
                                 data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
                                 data2 += $('#titles').append('<br>'+doc.score);
@@ -224,8 +333,7 @@
                             data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
                             data2 += $('#titles').append('<br>'+doc.score);
                         }
-
-                    }
+                    }*/
                     else if (data[0].response.docs[0].collection=="Airiti") {
                         var page = parseInt(doc.position);
                         var combineLink = '&GoToPage='+page;
@@ -244,13 +352,13 @@
                                 data2 += $('#titles').append(doc.text.substring(0, 300));
                                 data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
                                 data2 += $('#titles').append('</span> <a href="#" class="more"> ... more</a>');
-                                data2 += $('#titles').append('</br>' +'collection: '+ doc.collection);
+                                data2 += $('#titles').append('</br>' +'<b>collection:</b> '+ doc.collection);
                                 data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
                                 data2 += $('#titles').append('<br>'+doc.score);
                             }
                         } else {
                             data2 += $('#titles').append(doc.text);
-                            data2 += $('#titles').append('</br>' +'collection: '+ doc.collection);
+                            data2 += $('#titles').append('</br>' +'<b>collection:</b> '+ doc.collection);
                             data2 += $('#titles').append('</br>'+'<span id="link">' + link + '</span>');
                             data2 += $('#titles').append('<br>'+doc.score);
                         }
@@ -274,7 +382,7 @@
                                 //data2 += $('#titles').append(doc.text.substring(0, 300)+cur_doc_highlighting_txt);
                                 data2 += $('#titles').append('<span style="display:none;">' + doc.text.substring(300));
                                 data2 += $('#titles').append('</span> <a href="#" class="more"> ... more</a>');
-                                data2 += $('#titles').append('</br>' +'collection: '+ doc.collection);
+                                data2 += $('#titles').append('</br>' +'<b>collection:</b> '+ doc.collection);
 
                                 /*$('a[href^="http://"]')
                                     .not('a[href*='+ location.hostname +']')
@@ -297,7 +405,7 @@
                             }
                         } else {
                             data2 = $('#titles').append(doc.text);
-                            data2 += $('#titles').append('</br>' +'collection: '+ doc.collection);
+                            data2 += $('#titles').append('</br>' +'<b>collection:</b> '+ doc.collection);
                             /*$('a[href^="http://"]')
                                 .not('a[href*='+ location.hostname +']')
                                 .attr('target','_blank');
@@ -316,6 +424,7 @@
                             data2 += $('#titles').append('<br>'+doc.score);
                         }
                     }
+
                     else {
                         data =  $('#titles').append('<h4>'+
                             data[0].response.docs[0].title + '.  ' +  ',  p.'+doc.position+'</h4>');
@@ -346,7 +455,7 @@
                     if (doc.description!==undefined) {
                         output += ("note: " + doc.description + "</br>");
                     }
-                    output += ("collection: "+doc.collection+"</br></br>");
+                    output += ("<b>collection:</b> "+doc.collection+"</br></br>");
                     if (cur_doc_highlighting_title=='') {
                         output += (doc.text.substring(0, 300));
                         output += ('<span style="display:none;">' + doc.text.substring(300));
@@ -366,7 +475,7 @@
                     if (doc.description!==undefined) {
                         output += ("note: " + doc.description + "</br>");
                     }
-                    output += ("collection: "+doc.collection+"</br></br>");
+                    output += ("<b>collection:</b> "+doc.collection+"</br></br>");
                     if (cur_doc_highlighting_title=='') {
                         output += (doc.text);
                     }else { output += (cur_doc_highlighting_title);}
@@ -413,7 +522,7 @@
                     }
 
 
-                    snippet +=   ' <br>' +'collection: '+ doc.collection;
+                    snippet +=   ' <br>' +'<b>collection:</b> '+ doc.collection;
                     snippet += '<br>'+doc.score;
                     if (doc.url!=null) {
 
@@ -460,7 +569,7 @@
                         if (doc.source!=null) {snippet +=   ' <br><b>' +'note: </b>'+ doc.source;}
                     }
 
-                    snippet +=   ' <br>' +'collection: '+ doc.collection;
+                    snippet +=   ' <br>' +'<b>collection:</b> '+ doc.collection;
                     snippet += '<br>'+doc.score;
                     if (doc.url!=null) {
 
@@ -516,7 +625,7 @@
                         if (doc.source!=null) {snippet +=   ' <br><b>' +'note: </b>'+ doc.source;}
                     }
 
-                    snippet +=   ' <br>' +'collection: '+ doc.collection;
+                    snippet +=   ' <br>' +'<b>collection:</b> '+ doc.collection;
                     snippet += '<br>'+doc.score;
                     if (doc.url!=null) {
                         var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
@@ -533,6 +642,147 @@
                         snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
                     }
 
+                }
+                else if (doc.collection=="Adam Matthew - China America Pacific") {
+                    if (doc.author!=null) {
+                        snippet +=  '<b>'+'author: </b>' + doc.author;}
+
+                    if (doc.publisher!=null) {snippet +=  ' <b>' +'edition: </b>'+ doc.publisher;}
+                    if (doc.publication_name!=null) {snippet +=  ','+ doc.publication_name;}
+                    if (doc.edition!=null) {snippet +=  ','+ doc.edition;}
+                    //if (doc.source!=null) {snippet +=  ' <br><b>' +'Source = </b>'+ doc.source;}
+                    //if (doc.issued!=null) {snippet +=  '<br><b> IssueNumber = </b>' + doc.issued;}
+                    if (doc.date!=null) {snippet +=  '<br><b> date: </b>' + doc.date;
+                        if (doc.issued!=null) {snippet +=  '/' + doc.issued;}
+                    }
+                    if (doc.date==null) {
+                        if (doc.issued!=null) {snippet += '<br><b> date: </b>' + doc.issued;}
+                    }
+
+                    if (doc.responsibility!=null) {
+                        snippet +=  ' <br><b>' +'note: </b>'+ doc.responsibility;
+                    }
+
+                    if (doc.series_title!=null) { snippet += ' <br><b>' +'note: </b>'+ doc.series_title;
+                        if (doc.source!=null) {snippet +=  ' ,'+ doc.source;}
+                    }
+
+                    if (doc.series_title==null) {
+                        if (doc.source!=null) {snippet +=   ' <br><b>' +'note: </b>'+ doc.source;}
+                    }
+
+                    snippet +=   ' <br>' +'<b>collection:</b> '+ doc.collection;
+                    snippet += '<br>'+doc.score;
+                    if (doc.url!=null) {
+                        var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
+                        var link = str.link(doc.url);
+                        snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
+                    }
+
+                    if (doc.identifier!=null) {
+                        var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
+                        var link = str.link(doc.identifier).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Details/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Details/");
+                        //var link = str.link(doc.identifier).replace("http://www.airitibooks.com/detail.aspx?","http://erf.sbb.spk-berlin.de/han/airiti/www.airitibooks.com/Detail/Detail?");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+                        snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
+                    }
+
+                }
+                else if (doc.collection=="Adam Matthew - China Trade & Politics") {
+                    if (doc.author!=null) {
+                        snippet +=  '<b>'+'author: </b>' + doc.author; }
+                    if (doc.publisher!=null) {snippet +=  ' <b>' +'edition: </b>'+ doc.publisher;}
+                    if (doc.publication_name!=null) {snippet +=  ','+ doc.publication_name;}
+                    if (doc.edition!=null) {snippet +=  ' <b>' +'edition: </b>'+ doc.edition;}
+                    //if (doc.source!=null) {snippet +=  ' <br><b>' +'Source = </b>'+ doc.source;}
+                    //if (doc.issued!=null) {snippet +=  '<br><b> IssueNumber = </b>' + doc.issued;}
+                    if (doc.date!=null) {snippet +=  '<br><b> date: </b>' + doc.date;
+                        if (doc.issued!=null) {snippet +=  '/' + doc.issued;}
+                    }
+                    if (doc.date==null) {
+                        if (doc.issued!=null) {snippet += '<br><b> date: </b>' + doc.issued;}
+                    }
+
+                    if (doc.responsibility!=null) {
+                        snippet +=  ' <br><b>' +'note: </b>'+ doc.responsibility;
+                    }
+
+                    if (doc.series_title!=null) { snippet += ' <br><b>' +'note: </b>'+ doc.series_title;
+                        if (doc.source!=null) {snippet +=  ' ,'+ doc.source;}
+                    }
+
+                    if (doc.series_title==null) {
+                        if (doc.source!=null) {snippet +=   ' <br><b>' +'note: </b>'+ doc.source;}
+                    }
+
+                    snippet +=   ' <br>' +'<b>collection:</b> '+ doc.collection;
+                    snippet += '<br>'+doc.score;
+                    if (doc.url!=null) {
+                        var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
+                        var link = str.link(doc.url);
+                        snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
+                    }
+
+                    if (doc.identifier!=null) {
+                        var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
+                        var link = str.link(doc.identifier).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Details/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Details/");
+                        //var link = str.link(doc.identifier).replace("http://www.airitibooks.com/detail.aspx?","http://erf.sbb.spk-berlin.de/han/airiti/www.airitibooks.com/Detail/Detail?");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+                        snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
+                    }
+                }
+                else if (doc.collection=="Adam Matthew - Meiji Japan") {
+                    if (doc.author!=null) {
+                        snippet +=  '<b>'+'author: </b>' + doc.author;}
+
+                    if (doc.publisher!=null) {snippet +=  ' <b>' +'edition: </b>'+ doc.publisher;}
+
+                    if (doc.publication_name!=null) {snippet +=  ','+ doc.publication_name;}
+
+                    if (doc.edition!=null) {snippet +=' <b>' +'edition: </b>'  + doc.edition;}
+                    //if (doc.source!=null) {snippet +=  ' <br><b>' +'Source = </b>'+ doc.source;}
+                    //if (doc.issued!=null) {snippet +=  '<br><b> IssueNumber = </b>' + doc.issued;}
+                    if (doc.date!=null) {snippet +=  '<br><b> date: </b>' + doc.date;
+                        if (doc.issued!=null) {snippet +=  '/' + doc.issued;}
+                    }
+                    if (doc.date==null) {
+                        if (doc.issued!=null) {snippet += '<br><b> date: </b>' + doc.issued;}
+                    }
+
+                    if (doc.responsibility!=null) {
+                        snippet +=  ' <br><b>' +'note: </b>'+ doc.responsibility;
+                    }
+
+                    if (doc.series_title!=null) { snippet += ' <br><b>' +'note: </b>'+ doc.series_title;
+                        if (doc.source!=null) {snippet +=  ' ,'+ doc.source;}
+                    }
+
+                    if (doc.medium!=null) { snippet += ' <br><b>' +'medium: </b>'+ doc.medium;
+
+                    }
+
+                    if (doc.series_title==null) {
+                        if (doc.source!=null) {snippet +=   ' <br><b>' +'note: </b>'+ doc.source;}
+                    }
+
+                    snippet +=   ' <br>' +'<b>collection:</b> '+ doc.collection;
+                    snippet += '<br>'+doc.score;
+                    if (doc.url!=null) {
+                        var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
+                        var link = str.link(doc.url);
+                        snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
+                    }
+
+                    if (doc.identifier!=null) {
+                        var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
+                        var link = str.link(doc.identifier).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Details/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Details/");
+                        //var link = str.link(doc.identifier).replace("http://www.airitibooks.com/detail.aspx?","http://erf.sbb.spk-berlin.de/han/airiti/www.airitibooks.com/Detail/Detail?");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+                        snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
+                    }
                 }
                 else if (doc.collection=="Airiti") {
                     if (doc.author!=null) {
@@ -563,7 +813,7 @@
                         if (doc.source!=null) {snippet +=   ' <br><b>' +'note: </b>'+ doc.source;}
                     }
 
-                    snippet +=   ' <br>' +'collection: '+ doc.collection;
+                    snippet +=   ' <br>' +'<b>collection:</b> '+ doc.collection;
                     snippet += '<br>'+doc.score;
                     if (doc.url!=null) {
                         var str = '<svg data-v-114fcf88="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
@@ -582,7 +832,8 @@
                         snippet +=  ' <br>'+ '<span id="link">'+ link+'</span>';
                     }
 
-                } else {
+                }
+                else {
 
                 }
             }

@@ -28,7 +28,7 @@ var Manager;
               $('#pager-header').html($('<span></span>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
           }
       }));
-    var fields = ['text','hasModel','medium_facet','edition_facet','person_facet','spatial_facet','author_facet','title_facet','medium','edition','person','spatial','author','title','collection', 'date'];
+    var fields = ['text','hasModel','medium','edition','person','spatial','author','title','collection', 'date','medium_facet','edition_facet','person_facet','spatial_facet','author_facet','title_facet'];
       for (var i = 0, l = fields.length; i < l; i++) {
           Manager.addWidget(new AjaxSolr.MultiSelectWidget({ //MultiSelectWidget instead of Tagcloudwidget
               id: fields[i],
