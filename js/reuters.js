@@ -5,8 +5,8 @@ var Manager;
     $(function () {
         Manager = new AjaxSolr.Manager({
             //solrUrl: 'http://10.46.3.100:8982/solr/LocGaz/select?shards=10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/Xuxiu,10.46.3.100:8982/solr/airiti_nested,10.46.3.100:8982/solr/RMRB&indent=true&'
-            solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina/select?shards=10.46.3.100:8982/solr/AMD_FOChina,10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/Xuxiu,10.46.3.100:8982/solr/airiti_nested,10.46.3.100:8982/solr/RMRB,10.46.3.100:8982/solr/China_Trade,10.46.3.100:8982/solr/ChinaAmericaPacific,10.46.3.100:8982/solr/MeijiJapan_small&indent=true&'
-            //solrUrl: 'http://10.46.3.100:8982/solr/RMRB/'
+            solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina/select?shards=10.46.3.100:8982/solr/AMD_FOChina,10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/Xuxiu,10.46.3.100:8982/solr/airiti_nested,10.46.3.100:8982/solr/RMRB,10.46.3.100:8982/solr/China_Trade,10.46.3.100:8982/solr/ChinaAmericaPacific,10.46.3.100:8982/solr/MeijiJapan_small,10.46.3.100:8982/solr/CNKI&indent=true&'
+            //solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina/'
         });
         Manager.addWidget(new AjaxSolr.ResultWidget({
             id: 'result',
@@ -42,7 +42,7 @@ var Manager;
         Manager.addWidget(new AjaxSolr.AutocompleteWidget({
             id: 'text',
             target: '#search',
-            fields: ['title_facet','author_facet','medium','edition','person','spatial']
+            fields: ['title_facet','author_facet','medium','edition_facet','person_facet','spatial_facet']
         }));
 
         Manager.init();
@@ -66,10 +66,17 @@ var Manager;
             //'hits.q':'{!terms f=book_id v=$row.book_id}',
             //'sort':'id asc',
             'hl':true,
-            'hl.fl':'text', //The field for which you want highlighting snippets
+
+            'hl.fl':'text,title',
+            'f.text.hl.alternateField':'text',
+            'hl.maxAlternateFieldLength':40,
+            'hl.fragsize':25,
+            'hl.usePhraseHighlighter':true,
+            //The field for which you want highlighting snippets
             'hl.snippets': 4, //Change if you want more or less highlighting snippets
             //Also for highlighting, can optionally set these params for how you want the highlighting to look (yellow background here; Solr default is <em>...</em>):
             'hl.simple.pre': '<font style="background:#FFFF99">',
+            //'hl.method':'unified',
             'hl.simple.post': '</font>'/*,
         group: true,
         'group.field': 'position',
