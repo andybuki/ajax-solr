@@ -85,10 +85,15 @@ AjaxSolr.PagerWidget = AjaxSolr.AbstractWidget.extend(
     var windowTo = this.currentPage + this.innerWindow;
 
     // If the window is truncated on one side, make the other side longer
-    if (windowTo > this.totalPages) {
+    /*if (windowTo > this.totalPages) {
       windowFrom = Math.max(0, windowFrom - (windowTo - this.totalPages));
       windowTo = this.totalPages;
+    }*/
+    if (windowTo > 10) {
+          windowFrom = Math.max(0, windowFrom - (windowTo - 10));
+          windowTo = 10;
     }
+
     if (windowFrom < 1) {
       windowTo = Math.min(this.totalPages, windowTo + (1 - windowFrom));
       windowFrom = 1;
@@ -249,7 +254,7 @@ AjaxSolr.PagerWidget = AjaxSolr.AbstractWidget.extend(
 
       if (this.no_init_results) {
           //Added so initial *:* query doesn't show results
-          $('#pager-header').html($('<center><span style="color: #666;font-size: 14px;font-weight: 100;">Please enter query at left</span></center>'));
+          $('#pager-header').html($('<center><span style="color: #666;font-size: 18px;font-weight: 200;">Please enter query at left</span></center>'));
 
           if (!((this.manager.store.get('q').value == '*:*') &&
                   (this.manager.store.values('fq').length <= 0))) {  //Added so initial *:* query doesn't show results
