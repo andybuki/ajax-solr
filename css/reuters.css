@@ -74,7 +74,7 @@ a:hover {
 }
 .right h4 {
   padding: 15px 0 5px 0;
-  color: #B4241B;
+  color: white;
   font-size: 16px;
   font-weight: 100;
   letter-spacing: 0px;
@@ -84,6 +84,8 @@ a:hover {
 }
 #navigation {
   border-bottom: 1px solid #000;
+  position: relative;
+  top: 1px;
 }
 #pager,
 #pager-header {
@@ -316,6 +318,8 @@ p {
 .fa-icon {
   target-name:new;
   target-new:tab;
+  position: relative;
+  top: 3px;
 }
 
 #close_button{
@@ -325,3 +329,94 @@ p {
 }
 
 .ui-helper-hidden-accessible { display:none; }
+
+.textpadding {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  display: block;
+  font-size: 14px;
+}
+
+.smallText {
+  padding-left: 10px;
+  font-size: 10px;
+  width: 200px;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.paragraph {
+//position: relative;
+//left: 20px;
+}
+
+.book {
+//border-style: solid;
+//border-width: 1px;
+}
+
+#titles {
+//border-style: solid;
+//border-width: 1px;
+}
+
+.books {
+  border-collapse: collapse;
+}
+
+.books  {
+  border-bottom: 1px solid #ddd;
+  /*padding: 5px;*/
+}
+
+.books  tr:hover {background-color: #ddd;}
+
+.books  th {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  text-align: left;
+  color: black;
+  justify-content:center;
+  align-items:center;
+}
+
+.collection {
+  border-collapse: collapse;
+}
+
+.collection  {
+  border-bottom: 1px solid #ddd;
+  /*padding: 5px;*/
+}
+
+.collection  tr:hover {background-color: #ddd;}
+
+.collection  th {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  text-align: left;
+  color: black;
+  justify-content:center;
+  align-items:center;
+}
+
+
+.text {
+  padding-left: 10px;
+  width: 120px;
+  overflow: hidden;
+  white-space: nowrap;
+
+}
+
+.text2 {
+  width: 100px;
+  overflow: hidden;
+  //white-space: nowrap;
+}
+
+.collection tr { border: none; }
+.collection tr th {
+  border-top:  solid 1px #ddd;
+}
