@@ -39,8 +39,8 @@
                 constructor: function (attributes) {
                     AjaxSolr.PagerWidget.__super__.constructor.apply(this, arguments);
                     AjaxSolr.extend(this, {
-                        innerWindow: 4,
-                        outerWindow: 1,
+                        innerWindow: 8,
+                        outerWindow: 4,
                         prevLabel: '&laquo; Previous',
                         nextLabel: 'Next &raquo;',
                         separator: ' ',

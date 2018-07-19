@@ -6,7 +6,8 @@ var Manager;
         Manager = new AjaxSolr.Manager({
             //solrUrl: 'http://10.46.3.100:8982/solr/LocGaz/select?shards=10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/Xuxiu,10.46.3.100:8982/solr/airiti_nested,10.46.3.100:8982/solr/RMRB&indent=true&'
             solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina/select?shards=10.46.3.100:8982/solr/AMD_FOChina,10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/Xuxiu,10.46.3.100:8982/solr/airiti_nested,10.46.3.100:8982/solr/RMRB,10.46.3.100:8982/solr/China_Trade,10.46.3.100:8982/solr/ChinaAmericaPacific,10.46.3.100:8982/solr/MeijiJapan_small,10.46.3.100:8982/solr/CNKI&indent=true&'
-            //solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina/'
+            //solrUrl: 'http://b-app66.sbb.spk-berlin.de:8985/solr/ajax-loc-gaz/select?shards=b-app66.sbb.spk-berlin.de:8985/solr/ajax-loc-gaz,http://b-app66.sbb.spk-berlin.de:8985/solr/ajax-amd,b-app66.sbb.spk-berlin.de:8985/solr/ajax-xuxiu,b-app66.sbb.spk-berlin.de:8985/solr/ajax-airiti,b-app66.sbb.spk-berlin.de:8985/solr/ajax-rmrb,b-app66.sbb.spk-berlin.de:8985/solr/ajax-china-trade,b-app66.sbb.spk-berlin.de:8985/solr/ajax-china-pacific,b-app66.sbb.spk-berlin.de:8985/solr/ajax-meiji-japan,b-app66.sbb.spk-berlin.de:8985/solr/ajax-cnki&indent=true&'
+            //solrUrl: 'http://b-app66.sbb.spk-berlin.de:8985/solr/ajax-cnki/'
         });
         Manager.addWidget(new AjaxSolr.ResultWidget({
             id: 'result',
@@ -62,11 +63,11 @@ var Manager;
             'facet.date.gap': '+1DAY',*/
             'json.nl': 'map',
             //'fq':'hasModel:Book',
-            //'fl':'id,book_id,title,author,date,hits:[subquery]',
+            //'fl':'hits:[subquery]',
             //'hits.q':'{!terms f=book_id v=$row.book_id}',
             //'sort':'id asc',
             'hl':true,
-
+            //'fl':'hits:[subquery]&hits.q={!terms%20f=book_id%20&v=$row.book_id}',
             'hl.fl':'text,title',
             'f.text.hl.alternateField':'text',
             'hl.maxAlternateFieldLength':40,
