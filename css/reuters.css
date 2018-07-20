@@ -383,8 +383,7 @@ p {
 .collection  tr:hover {background-color: #ddd;}
 
 .collection  th {
-  padding-top: 4px;
-  padding-bottom: 4px;
+
   text-align: left;
   color: black;
   justify-content:center;
@@ -404,9 +403,20 @@ p {
   vertical-align: text-top;
 }
 
+.textFirst {
+
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 14px;
+  position: relative;
+  vertical-align: text-top;
+  right: 2px;
+}
+
 .text2 {
   overflow: hidden;
-  width:450px;
+  width:500px;
   font-size: 14px;
   position: relative;
   vertical-align: text-top;
@@ -421,7 +431,15 @@ p {
   right: 2px;
 }
 
-
+.text5 {
+  overflow: hidden;
+  width:500px;
+  font-size: 14px;
+  position: relative;
+  vertical-align: text-top;
+  overflow-wrap: break-word;
+  right:11px;
+}
 
 .collection tr { border: none; }
 
@@ -456,6 +474,7 @@ p {
   bottom: 0px;
 }
 
+
 .line2{
   width:600px;
   color: darkgray;
@@ -475,13 +494,9 @@ p {
   width:600px;
   color: darkgray;
   opacity: 0.5;
-  bottom: 12px;
+  bottom: 5px;
   position: relative;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
-hr {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 0;
-  border-top: 1px solid #eee;
-}
