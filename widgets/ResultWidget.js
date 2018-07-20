@@ -473,7 +473,13 @@
                         var output = '<table class="books"><th colspan="3"><span class="texttitle">' + cur_doc_highlighting_title  +", "   + doc.date +'</span></th></tr>';
                     }
 
-                }else {
+                }else if (doc.issued!=null){
+                    if  (cur_doc_highlighting_title=='') {
+                        var output = '<table class="books"><tr><th colspan="3"><span class="texttitle">' + doc.title +  ", "+ doc.issued+'</span></th></tr>';
+                    } else {
+                        var output = '<table class="books"><th colspan="3"><span class="texttitle">' + cur_doc_highlighting_title  +", "   + doc.issued +'</span></th></tr>';
+                    }
+                } else {
                     if  (cur_doc_highlighting_title=='') {
                         var output = '<table class="books"><tr><th colspan="3"><span class="texttitle">' + doc.title + " "+" "+  '</span></th></tr>';
                     }else {
@@ -519,9 +525,7 @@
 
                     if (doc.author!=null) {snippet_xuxiu +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.author; + '</span></td></tr>'}
 
-                    if (doc.date!=null && doc.issued!=null) {snippet_xuxiu +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'/'+doc.issued+'</span></td></tr>';}
-                    if (doc.date==null) {snippet_xuxiu +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
-                    if (doc.issued==null) {snippet_xuxiu +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'</span></td></tr>';}
+                    if (doc.issued!=null) {snippet_xuxiu +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
 
                     if (doc.edition!=null) {snippet_xuxiu +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
                     if (doc.series_title!=null) {snippet_xuxiu +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
@@ -640,10 +644,7 @@
 
                 else if (doc.collection=="Adam Matthew - Meiji Japan") {
 
-
-                    if (doc.date!=null && doc.issued!=null) {snippet_meiji +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'/'+doc.issued+'</span></td></tr>';}
-                    if (doc.date==null) {snippet_meiji +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
-                    if (doc.issued==null) {snippet_meiji +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'</span></td></tr>';}
+                    if (doc.date!=null) {snippet_meiji +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'</span></td></tr>';}
 
                     if (doc.edition!=null) {snippet_meiji +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
                     if (doc.medium!=null) {snippet_meiji +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">medium: </td><td colspan="2"><span class="text2">' + doc.medium; + '</span></td></tr>'}
