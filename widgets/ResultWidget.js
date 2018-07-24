@@ -160,11 +160,11 @@
                         }
 
                         if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
-                            data_loc_gaz_pages += $('#docs').append('<tr><td colspan="1"><span class="text">citation: </span></td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
+                            data_loc_gaz_pages += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
                         } else if (data[0].response.docs[0].date!=null) {
-                            data_loc_gaz_pages += $('#docs').append('<tr><td colspan="1"><span class="text">citation: </span></td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                            data_loc_gaz_pages += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
                         } else {
-                            data_loc_gaz_pages +=  $('#docs').append('<tr><td colspan="1"><span class="text">citation: </span></td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ,"+ data[0].response.docs[0].author +'.  ' +  '</b>,  p.'+doc.position+'</span></td></tr>');
+                            data_loc_gaz_pages +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ,"+ data[0].response.docs[0].author +'.  ' +  '</b>,  p.'+doc.position+'</span></td></tr>');
                         }
 
                         data_loc_gaz_chapter +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
@@ -380,6 +380,8 @@
                             else {
                                 data_cnki_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">' + "..."+cur_doc_highlighting_title + "..." + '</span></th></tr>');
                             }
+                        } else {
+                            data_cnki_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">' + "NO TEXT" + '</span></th></tr>');
                         }
 
                         if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
@@ -421,9 +423,9 @@
                 }
 
                 if (cur_doc_highlighting_title=='') {
-                    snippet_rmrb += '<tr><td colspan="1"><span class="text">citation:  '+'</span></td><td colspan="2"><span class="text2"><b>' + doc.title  + '</b>'+",  p."+doc.page+'</span></td></tr>';
+                    snippet_rmrb += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title  + '</b>'+",  p."+doc.page+'</span></td></tr>';
                 } else {
-                    snippet_rmrb += '<tr><td colspan="1"><span class="text">citation:  '+'</span></td><td colspan="2"><span class="text2"><b>' + cur_doc_highlighting_title +'</b>' + ",  p."+doc.page+'</span></td></tr>';
+                    snippet_rmrb += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + cur_doc_highlighting_title +'</b>' + ",  p."+doc.page+'</span></td></tr>';
                 }
 
                 if (doc.author!=null) {snippet_rmrb +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.author; + '</span></td></tr>'}
@@ -726,12 +728,12 @@
                     }
 
                     if (cur_doc_highlighting_title=='') {
-                        data_loc_gaz_chapter += $("#docs").append('<tr><td colspan="1"><span class="text">citation: </span></td>' +
+                        data_loc_gaz_chapter += $("#docs").append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' +
                             '<td colspan="2"><span class="text2">' + data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date + ', ' + doc.pageStart + '-' + doc.pageEnd + ' p. </span></td></tr>'
                         );
 
                     } else {
-                        data_loc_gaz_chapter += $("#docs").append('<tr><td colspan="1"><span class="text">citation: </span></td>' +
+                        data_loc_gaz_chapter += $("#docs").append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' +
                             '<td colspan="2"><span class="text2">' + cur_doc_highlighting_title + '.  ' + data[0].response.docs[0].date + ', ' + doc.pageStart + '-' + doc.pageEnd + ' p. </span></td></tr>'
                         );
                     }
