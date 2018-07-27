@@ -377,7 +377,7 @@
                         pages +=data_xuxiu_pages;
                     }
 
-                    else if(data[0].response.docs[0].collection=="Local Gazeteer (Diaolong)") {
+                    else if(data[0].response.docs[0].collection=="Local Gazetteer (Diaolong)") {
                         $('a[href^="http://"]')
                             .attr('target','_blank');
 
@@ -631,7 +631,7 @@
                     output +=  snippet_xuxiu + '</table><hr class="line"></div>';
                 }
 
-                else if (doc.collection=="Local Gazeteer (Diaolong)") {
+                else if (doc.collection=="Local Gazetteer (Diaolong)") {
 
                     if (doc.creator!=null) {snippet_dfz +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.creator; + '</span></td></tr>'}
 

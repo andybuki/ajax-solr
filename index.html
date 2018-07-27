@@ -31,6 +31,12 @@
     <script src="js/jquery.jsonp.js"></script>
     <script src="js/show_hide.js"></script>
 
+    <script>
+        $( function() {
+            $( "#foo100" ).draggable();
+        } );
+    </script>
+
 </head>
 <body>
 <div id="header">
@@ -121,10 +127,17 @@
         <div class="clear"></div>
 
         <div class="menu2" id="foo100" style="display:none">
-            <a onclick="show_hidePopUpWindow('foo100');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a>
-            <b>Fulltext search in print books (i)</b>
-            <br><b>CONTENT:</b> CrossAsia is working on bridging the gap between printed materials in our stacks and electronic full text searches. Matching our collection with Duxiu fulltexts and allowing users to search in Duxiu fulltexts to find and borrow items from our printed collection is one way. The other way is producing our own fulltexts from printed books and offer them in our fulltext search. As a test case this collection includes 15 titles prepared in this way.
-            <br><b>NOTE:</b> To see your full hit page you have to borrow the book (via the link to our OPAC provided with the title) and find the correct page. Please note that the "page number" given for your search hit is the "image number", so you have to add a certain number to find the correct printed page. But the idea is to help you find books of interest for your research of general interest.
+            <a onclick="show_hidePopUpWindow('foo100');"><!--<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----><!--</svg>--></a>
+            <b>CrossAsia Fulltext Search (Beta version, type B)</b><br>
+            <br> In this second version of the CrossAsia Fulltext Search metadata and fulltexts are searched at the same time. You can use the filter "Type of Object" to reduce your result set or presetting your search to the contents of the "Pages" or the metadata of the "Books" or "Chapters" or to the content - and metadata - of "Articles".
+            <br>The list of resources included in this search can be viewed from the list of filters directly underneath the search slot
+            <br><br><b>FEATURES:</b>
+            <br>- searching metadata and fulltext at the same time
+            <br>- ranking of search hits by Solr score (note: be aware that if you do not enclose your search term in "" texts with a high frequency of one word/character of your search term will score higher than those where your two search words/characters appear next to each other)
+            <br>- for each hit two types of link are provided: one - in red - for authenticated CrossAsia users, another one - in grey - for all other users who will then need to enter their individual authorization or access the ressource from within a subscriber's IP range. Please note that not all databases provide links to directly call-up a specific page of a ressource, some even do not have direct links to an item in their database (for example Erudition Local Gazetteers or Renmin ribao).
+            <br>
+            <br>For feedback, questions etc. please contact: <a href="mailto:x-asia@sbb.spk-berlin.de">x-asia@sbb.spk-berlin.de</a>
+
         </div>
 
     </div>
