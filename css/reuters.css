@@ -85,12 +85,18 @@ a:hover {
 #navigation {
   border-bottom: 1px solid #000;
   position: relative;
-  top: 1px;
+  top: 10px;
+  padding-bottom: 5px;
 }
 #pager,
 #pager-header {
   display: inline;
+  font-size: 16px;
 }
+#pager a {
+  font-size: 14px;
+}
+
 #pager li,
 .links li {
   list-style-type: none;
@@ -248,7 +254,7 @@ label { display: block; }
   color:#000000;
   text-decoration:none;
   background: white;
-  width: 400px;
+  width: 480px;
   padding: 10px;
   border: solid black 1px;
   z-index: 100;
@@ -261,7 +267,7 @@ label { display: block; }
   color: #000000;
   text-decoration: none;
   background: white;
-  width: 400px;
+  width: 480px;
   padding: 10px;
   border: solid black 1px;
   z-index: 100;
@@ -343,7 +349,7 @@ p {
   padding-top: 5px;
   padding-bottom: 10px;
   display: block;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .smallText {
@@ -363,6 +369,8 @@ p {
 
 .books {
   border-collapse: collapse;
+  position:relative;
+  top:10px;
 }
 
 .books  tr:hover {background-color: #ddd;}
@@ -379,6 +387,8 @@ p {
 .collection {
   border-collapse: collapse;
 }
+
+
 
 .collection  tr:hover {background-color: #ddd;}
 
@@ -487,16 +497,18 @@ p {
   width:600px;
   color: darkgray;
   opacity: 0.5;
-
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: -5px;
 }
 
 .line3{
   width:600px;
   color: darkgray;
   opacity: 0.5;
-  bottom: 5px;
+  top: 4px;
   position: relative;
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
