@@ -64,7 +64,7 @@ left side of the range
                         var field_facet_counts = data.facet_counts.facet_fields[self.field];
                         var matches_arr = [];
                         var match_regex = new RegExp(req.term,"i");
-                        $.map(field_facet_counts, function(v,i) { if (i.match(match_regex)) { matches_arr.push; }});
+                        $.map(field_facet_counts, function(v,i) { if (i.match(match_regex)) { matches_arr.push(i); }});
                         matches_arr.sort(function(a,b) { return(field_facet_counts[b] - field_facet_counts[a]); });
                         resp(matches_arr);
                     };
