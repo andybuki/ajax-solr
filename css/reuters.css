@@ -242,7 +242,7 @@ section.range-slider input:last-of-type::-moz-range-track {
 section.range-slider input[type=range]::-moz-focus-outer {
   border: 0;
 }
-#collection_all_extra, #hasModel_all_extra, #language_all_extra, #title_facet_all_extra
+#collection_all_extra, #hasModel_all_extra, #language_all_extra, #title_facet_all_extra, #author_facet_all_extra, #spatial_facet_all_extra,#date_all_extra, #edition_facet_all_extra, #person_facet_all_extra
 { display: none;}
 
 
@@ -453,10 +453,10 @@ p {
 
 .collection tr { border: none; }
 
-#collection, #hasModel, #title_facet, #language {
+#collection, #hasModel, #title_facet, #language, #date, #author_facet, #person_facet, #spatial_facet, #edition_facet {
   position: relative;
   bottom: 17px;
- }
+}
 
 #authorHide {
   position: relative;
@@ -511,4 +511,3 @@ p {
   margin-top: 5px;
   margin-bottom: 15px;
 }
-
