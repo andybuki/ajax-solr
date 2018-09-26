@@ -423,6 +423,26 @@ left side of the range
                                 '</div>'));
 
                         }
+                        if (facet==='Beschreibung') {
+                            $(this.target).append($('<span> </span> <a onclick="show_hidePopUpWindow(\'foo1\');"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                '' +
+                                '<div class="menu" id="foo1" style="display:none"><a onclick="show_hidePopUpWindow(\'foo1\');"> ' +
+                                '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                '<path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg>' +
+                                '</a>' +
+                                '<b>CrossAsia Fulltext Search (Beta version, type B)</b><br>'+
+                                '<br> In this second version of the CrossAsia Fulltext Search metadata and fulltexts are searched at the same time. You can use the filter "Type of Object" to reduce your result set or presetting your search to the contents of the "Pages" or the metadata of the "Books" or "Chapters" or to the content - and metadata - of "Articles".'+
+                                '<br>The list of resources included in this search can be viewed from the list of filters directly underneath the search slot'+
+                                '\n' +
+                                '<br><br><b>FEATURES:</b>'+
+                                '<br>- searching metadata and fulltext at the same time'+
+                                '<br>- ranking of search hits by Solr score (note: be aware that if you do not enclose your search term in "" texts with a high frequency of one word/character of your search term will score higher than those where your two search words/characters appear next to each other)'+
+                                '<br>- for each hit two types of link are provided: one - in red - for authenticated CrossAsia users, another one - in grey - for all other users who will then need to enter their individual authorization or access the ressource from within a subscriber\'s IP range. Please note that not all databases provide links to directly call-up a specific page of a ressource, some even do not have direct links to an item in their database (for example Erudition Local Gazetteers or Renmin ribao).\n'+
+                                '<br>'+
+                                '<br>For feedback, questions etc. please contact: <a href="mailto:x-asia@sbb.spk-berlin.de">x-asia@sbb.spk-berlin.de</a>'+
+                                '</div>'));
+
+                        }
 
                     }
 
@@ -435,6 +455,7 @@ left side of the range
                     $( "#foo3" ).draggable();
                     $( "#foo4" ).draggable();
                     $( "#foo2" ).draggable();
+                     $( "#foo1" ).draggable();
                     $( "#foo" ).draggable();*/
 
                     if (this.field==='title_facet' && cur_facet_count != 0) {
