@@ -524,9 +524,11 @@
                         snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+" .In: "+doc["journal-title"]+" ,vol."+doc["publication-volume"]+", no."+doc["volume-number"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
                     } else if (doc.author!=null && doc["journal-title"] !=null && doc["publication-volume"]!=null) {
                         snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+" .In: "+doc["journal-title"]+" ,vol."+doc["publication-volume"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
+                    } else if (doc.author!=null && doc["journal-title"] !=null && doc["volume-number"]!=null) {
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+" .In: "+doc["journal-title"]+" , no."+doc["volume-number"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
                     } else if (doc.author!=null && doc["journal-title"] !=null) {
                         snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+" .In: "+doc["journal-title"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
-                    } else {
+                    }else {
                         snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +","+ " .In: "+doc["journal-title"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
                     }
 
