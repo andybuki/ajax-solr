@@ -168,8 +168,10 @@
                             data_loc_gaz_pages += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
                         } else if (data[0].response.docs[0].date!=null) {
                             data_loc_gaz_pages += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else if (data[0].response.docs[0].author!=null && data[0].response.docs[0].date!=null) {
+                            data_loc_gaz_pages += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
                         } else {
-                            data_loc_gaz_pages +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ,"+ data[0].response.docs[0].author +'.  ' +  '</b>,  p.'+doc.position+'</span></td></tr>');
+                            data_loc_gaz_pages +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ,"+ '</b>,  p.'+doc.position+'</span></td></tr>');
                         }
 
                         data_loc_gaz_chapter +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
@@ -266,7 +268,7 @@
                     else if (data[0].response.docs[0].collection=="Adam Matthew - China Trade & Politics") {
                         var link = pageIcon.link(doc.image_url).replace("http://www.china.amdigital.co.uk/Documents/Images","http://erf.sbb.spk-berlin.de:80/han/ChinaTradePoliticsCulture1793-1980/www.china.amdigital.co.uk/Documents/Images/");
                         var link2 = pageIcon.link(doc.image_url).replace("http://www.china.amdigital.co.uk/Documents/Images/","http://www.china.amdigital.co.uk/Documents/Images/");
-                        $('a[href^="http://"]')
+                         $('a[href^="http://"]')
                             .attr('target','_blank');
 
                         if (doc.text!=null) {
@@ -368,9 +370,11 @@
                                 data_xuxiu_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
                             }
                         }
-                        data_xuxiu_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
 
-                        data_xuxiu_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+
+                        data_xuxiu_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].author+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
+
+                        data_xuxiu_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ data[0].response.docs[0]["series_title"]+'</span></td></tr>');
                         data_xuxiu_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
                         data_xuxiu_pages +=   $("#docs").append('<tr>' +
                             '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link5 + '</span>&nbsp;&nbsp;&nbsp;' +
@@ -441,14 +445,15 @@
                             data_cnki_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">' + "NO TEXT" + '</span></th></tr>');
                         }
 
-                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
-                            data_cnki_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' +  data[0].response.docs[0].date+'/'+ data[0].response.docs[0].issued+ '</b>'+',  p.'+doc.position+'</span></td></tr>');
+                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null && data[0].response.docs[0].alternative!=null && data[0].response.docs[0].responsibility!=null) {
+                            data_cnki_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ':  '+ data[0].response.docs[0].alternative+', '+ data[0].response.docs[0].responsibility+'(' +  data[0].response.docs[0].date+','+ data[0].response.docs[0].issued+ ')</b>'+',  p.'+doc.position+'</span></td></tr>');
                         } else if (data[0].response.docs[0].date!=null) {
                             data_cnki_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' +'</b>'+ data[0].response.docs[0].date+  ',  p.'+doc.position+'</span></td></tr>');
                         } else {
                             data_cnki_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' +'</b>'+   ',  p.'+doc.position+'</span></td></tr>');
                         }
-
+                        data_cnki_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">author: </span></td><td colspan="2"><span class="text2"> '+ data[0].response.docs[0].author+'</span></td></tr>');
+                        data_cnki_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">issued: </span></td><td colspan="2"><span class="text2"> '+ data[0].response.docs[0].issued+'</span></td></tr>');
                         data_cnki_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
                         data_cnki_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
                         data_cnki_pages +=   $("#docs").append('<tr>' +
@@ -511,25 +516,31 @@
                 }
                 else if (doc.collection=="Missionary, Sinology, and Literary Periodicals (1817-1949)") {
                     var range = doc["page-range"];
-                    var link = databaseIcon.link(doc["electronic-url"]);
+                    var link = pageIcon.link(doc["electronic-url"]);
                     var transform = doc["electronic-url"].replace("http://","")
-                    var link2 =  databaseIcon.link("http://erf.sbb.spk-berlin.de/han/galecfer/"+transform);
+                    var link2 =  pageIcon.link("http://erf.sbb.spk-berlin.de/han/galecfer/"+transform);
 
                     if (cur_doc_highlighting_title == '') {
                         snippet_gale += ('<table class="books"><tr><th colspan="3"><span class="texttitle">' + "..." + doc.text + "..." + ' </span></th></tr>');
                     } else {
                         snippet_gale += ('<table class="books"><tr><th colspan="3"><span class="texttitle">' + "..." + cur_doc_highlighting_title + "..." + ' </span></th></tr>');
                     }
-                    if (doc.author!=null && doc["journal-title"] !=null && doc["publication-volume"]!=null && doc["volume-number"]!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+" .In: "+doc["journal-title"]+" ,vol."+doc["publication-volume"]+", no."+doc["volume-number"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
-                    } else if (doc.author!=null && doc["journal-title"] !=null && doc["publication-volume"]!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+" .In: "+doc["journal-title"]+" ,vol."+doc["publication-volume"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
-                    } else if (doc.author!=null && doc["journal-title"] !=null && doc["volume-number"]!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+" .In: "+doc["journal-title"]+" , no."+doc["volume-number"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
-                    } else if (doc.author!=null && doc["journal-title"] !=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+" .In: "+doc["journal-title"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
-                    }else {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +","+ " .In: "+doc["journal-title"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
+                    if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null && doc["publication-volume"]!=null && doc["volume-number"]!=null) {
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+" ,vol."+doc["publication-volume"]+", no."+doc["volume-number"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
+                    } else if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null && doc["publication-volume"]!=null) {
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+" ,vol."+doc["publication-volume"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
+                    } else if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null && doc["volume-number"]!=null) {
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+", no."+doc["volume-number"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
+                    } else if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null) {
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+ '</span></td></tr>';
+                    }else if (doc.title!=null && doc.author!=null) {
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+ '</span></td></tr>';
+                    } else if (doc.title!=null) {
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title +  '</span></td></tr>';
+                    }else if (doc.author!=null) {
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2">' +doc.author+'.'+")"+ '</span></td></tr>';
+                    } else {
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2">In:'+doc["journal-title"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
                     }
 
                     if (doc.date != null) {
@@ -541,8 +552,8 @@
                         snippet_gale += '<tr><td colspan="1"><span class="text">' + 'format: </span></td><td colspan="2"><span class="text2">' + doc["format"] + '</span></td></tr>';
                     }
 
-                    if (doc["series-title"] != null) {
-                        snippet_gale += '<tr><td colspan="1"><span class="text">' + 'series-title: </span></td><td colspan="2"><span class="text2">' + doc["series-title"] + '</span></td></tr>';
+                    if (doc["description"] != null) {
+                        snippet_gale += '<tr><td colspan="1"><span class="text">' + 'note: </span></td><td colspan="2"><span class="text2">' + doc["description"] + '</span></td></tr>';
                     }
 
                     snippet_gale += '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> ' + doc.collection + '</span></td></tr>';
@@ -658,7 +669,7 @@
                         snippet_xuxiu +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2"><span class="text2">' + note2; + '</span></td></tr>'
                     }
 
-                    snippet_xuxiu +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    snippet_xuxiu +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc["series_title"]+'</span></td></tr>';
                     snippet_xuxiu +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     if (doc.identifier!=null) {
@@ -840,10 +851,12 @@
                 else if (doc.collection=="CNKI_eBooks") {
 
                     if (doc.author!=null) {snippet_cnki +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.author; + '</span></td></tr>'}
+                    if (doc.alternative!=null) {snippet_cnki +=  '<tr><td colspan="1"><span class="text">'+'alternative: </span></td><td colspan="2"><span class="text2">' + doc.alternative; + '</span></td></tr>'}
                     if (doc.date!=null) {snippet_cnki +=  '<tr><td colspan="1"><span class="text">'+'date: </span></td><td colspan="2"><span class="text2">' + doc.date; + '</span></td></tr>'}
                     if (doc.series_title!=null) {snippet_cnki +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
                     if (doc.publisher!=null) {snippet_cnki +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
-
+                    if (doc.alternative!=null) {snippet_cnki +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">alternative: </td><td colspan="2"><span class="text2">' + doc.alternative; + '</span></td></tr>'}
+                    if (doc.responsibility!=null) {snippet_cnki +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">responsibility: </td><td colspan="2"><span class="text2">' + doc.responsibility; + '</span></td></tr>'}
                     snippet_cnki +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
                     snippet_cnki +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
 

@@ -5,7 +5,7 @@ var Manager;
     $(function () {
         Manager = new AjaxSolr.Manager({
             //solrUrl: '/solr/ajax-loc-gaz/select?shards=localhost:8995/solr/ajax-loc-gaz,localhost:8995/solr/ajax-amd&indent=true&'
-            solrUrl: '/solr/ajax-loc-gaz/select?shards=localhost:8995/solr/ajax-loc-gaz,localhost:8995/solr/ajax-amd,localhost:8995/solr/ajax-xuxiu,localhost:8995/solr/ajax-rmrb,localhost:8995/solr/ajax-airiti,localhost:8995/solr/ajax-china-trade,localhost:8995/solr/ajax-china-pacific,localhost:8995/solr/ajax-meiji-japan,localhost:8995/solr/ajax-dfz,localhost:8995/solr/ajax-gale-cfer,localhost:8995/solr/ajax-cnki&indent=true&'
+            solrUrl: '/solr/ajax-loc-gaz/select?shards=localhost:8995/solr/ajax-loc-gaz,localhost:8995/solr/ajax-amd,localhost:8995/solr/ajax-xuxiu,localhost:8995/solr/ajax-rmrb,localhost:8995/solr/ajax-airiti,localhost:8995/solr/ajax-china-trade,localhost:8995/solr/ajax-china-pacific,localhost:8995/solr/ajax-meiji-japan,localhost:8995/solr/ajax-dfz,localhost:8995/solr/ajax-gale-cfer,localhost:8995/solr/ajax-cnki&indent=true&rows=20&'
             //solrUrl: '/solr/ajax-china-pacific/,localhost:8995/solr/ajax-gale-cfer'
             //solrUrl: 'http://10.46.3.100:8982/solr/LocGaz/select?shards=10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/Xuxiu,10.46.3.100:8982/solr/airiti_nested,10.46.3.100:8982/solr/RMRB&indent=true&'
             //solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina/select?shards=10.46.3.100:8982/solr/AMD_FOChina,10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/Xuxiu,10.46.3.100:8982/solr/airiti_nested,10.46.3.100:8982/solr/RMRB,10.46.3.100:8982/solr/China_Trade,10.46.3.100:8982/solr/ChinaAmericaPacific,10.46.3.100:8982/solr/MeijiJapan_small,10.46.3.100:8982/solr/CNKI&indent=true&'

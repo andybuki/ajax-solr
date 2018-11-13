@@ -182,6 +182,8 @@ left side of the range
         afterRequest: function () {
 
             var returned_facets = this.manager.response.facet_counts.facet_fields[this.field];
+            //console.log(Object.keys(returned_facets).length);
+
 
             if (returned_facets === undefined) {
                 returned_facets = {};
@@ -316,7 +318,8 @@ left side of the range
                                 '<path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
                                 '<div class="menu" id="foo" style="display:none"><a onclick="show_hidePopUpWindow(\'foo\');"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>人民日报 : People\'s Daily </b>\n' +
-                                '<br><b>CONTENT:</b> Fulltexts of all articles from the inception of the People\'s Daily in 1946 to end of August 2009. Articles will be shown as individual hits, the issue of that certain day, will be the concatenated title or . To see the image-PDF of the issue you will have go to the <a href="http://erf.sbb.spk-berlin.de/han/RenminRibao1/">database</a> and open the issue via the calendar browse function provided in the database.\n</div>'));
+                                '<br><b>CONTENT:</b> Fulltexts of all articles from the inception of the People\'s Daily in 1946 to end of August 2009. Articles will be shown as individual hits of the issue of a certain day.\n' +
+                                '<br><b>NOTE:</b> To see the image-PDF of the issue you will have go to the database (http://erf.sbb.spk-berlin.de/han/RenminRibao1/) and open the issue via the calendar browse function provided in the database.\n</div>'));
                         }
 
                         if (facet==="Airiti") {
@@ -350,7 +353,7 @@ left side of the range
                                 '<path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
                                 '<div class="menu" id="foo4" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo4\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Local Gazetters </b>\n' +
-                                '<br><b>CONTENT:</b> This collection currently contains only the first 2000 titles (with about 2,5 mio. pages) of the Erudition database 中國方志庫. \n' +
+                                '<br><b>CONTENT:</b> This collection currently contains the first two batches of the Erudition database 中國方志庫 of together 3,997 local gazetteer titles with about 4,65 mio. pages. \n' +
                                 '<br><b>NOTE:</b> For the Erudition corpus currently no link to the book title in the database is possible. To see your hit page in the database please call-up the Erudition database (link provided with the title), search for your book (title as given in the hit) and go the image/page given for your hit page.\n</div>'));
 
                         }
@@ -360,9 +363,9 @@ left side of the range
                                 '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);">' +
                                 '<path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
-                                '<div class="menu" id="foo4" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo4\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Local Gazetters </b>\n' +
-                                '<br><b>CONTENT:</b> This collection currently contains only the first 2000 titles (with about 2,5 mio. pages) of the Erudition database 中國方志庫. \n' +
-                                '<br><b>NOTE:</b> For the Erudition corpus currently no link to the book title in the database is possible. To see your hit page in the database please call-up the Erudition database (link provided with the title), search for your book (title as given in the hit) and go the image/page given for your hit page.\n</div>'));
+                                '<div class="menu" id="foo4" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo4\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Missionary, Sinology, and Literary Periodicals (1817-1949) </b>\n' +
+                                '<br><b>CONTENT:</b> The resource contains the main English-language periodicals published in or about China covering the period from 1817 until the founding of the People’s Republic of China in 1949. The journals feature photographs and articles the on the founding and development of Christian higher education in China. \n' +
+                                '<br><b>NOTE:</b> The fulltexts are not split into the actual pages, but contain the whole article. The links provided thus open the article at the start page and the search term may appear only on a later page. To get to the correct page please use the “Search within – Article” to left of the article display in the database. \n</div>'));
 
                         }
 
@@ -371,7 +374,7 @@ left side of the range
                             $(this.target).append($('<span> </span> <a onclick="show_hidePopUpWindow(\'foo45\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
                                 '<div class="menu" id="foo45" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo45\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Local Gazetteers (Diaolong) </b>\n' +
-                                '<br><b>CONTENT:</b> Containing 2194 titles this collection of historical local gazetteers covers the period from Song to Republican times grouped into 31 regional areas. The names of these areas and their sub-regions will appear as subject/spatial for filtering your search results. \n' +
+                                '<br><b>CONTENT:</b> Containing 2194 titles in the first and 1935 in the sequel collection this resource of historical local gazetteers covers the period from Song to Republican times grouped into 31 regional areas. The names of these areas and their sub-regions appear as subject/spatial for filtering the search results. \n' +
                                 '<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the \'book\' link) and then go to the page number given in the page hit. \n</div>'));
 
                         }
@@ -456,18 +459,6 @@ left side of the range
                         }
 
                     }
-
-                    /*$( "#foo45" ).draggable();
-                    $( "#foo9" ).draggable();
-                    $( "#foo8" ).draggable();
-                    $( "#foo7" ).draggable();
-                    $( "#foo6" ).draggable();
-                    $( "#foo5" ).draggable();
-                    $( "#foo3" ).draggable();
-                    $( "#foo4" ).draggable();
-                    $( "#foo2" ).draggable();
-                     $( "#foo1" ).draggable();
-                    $( "#foo" ).draggable();*/
 
                     if (this.field==='title_facet' && cur_facet_count != 0) {
                         if (facet.length>40) {
@@ -606,20 +597,26 @@ left side of the range
                 }
 
             }
-            //console.log(facet);
+            //console.log(this.field);
+            //console.log("2"+title_facet.count);
             var ac_id = this.field + '_all_extra';
             var returned_facets2 = returned_facets;
 
-            //var count2 = returned_facets2[facet].count;
+            var count2 = ac_id[facet];
             var count3 = (returned_facets2[facet]);
+            //console.log(count3);
+
 
             //var returned_facets3 = returned_facets.length;
             //console.log(this.field+":"+Object.keys(returned_facets)+":"+Object.values(returned_facets).length);
 
-            if (Object.values(returned_facets).length >10) {
+            if (Object.values(returned_facets).length >12) {
+                //console.log(this.field+"-"+count3);
+                //console.log(Object.values(returned_facets).length);
+                //console.log(Object.keys(returned_facets).length);
                 //$('#' + show_more_div_id).append('Or search: ');
                 //$('#' + show_more_div_id).append($('<input id="' + ac_id + '">'));
-                var more_or_less_txt = (this.display_style == 'none') ? '+more' : '-less';
+                var more_or_less_txt = (this.display_style == 'none') ? '+more('+(Object.keys(returned_facets).length)+')' : '-less';
 
 
                 $(this.target).append('<a id="' + show_more_div_id + '_txt" href="#">' + more_or_less_txt + '</a>');
@@ -631,7 +628,7 @@ left side of the range
                 //$(this.target).append($('<input id="' + ac_id + '">'));
             }
 
-            if (Object.values(returned_facets).length < 10){
+            if (Object.values(returned_facets).length < 12){
                 var more_or_less_txt = (this.display_style == 'none') ? '' : '';
                 $(this.target).append('<a id="' + show_more_div_id + '_txt" href="#">' + more_or_less_txt + '</a>');
                 $('#' + show_more_div_id + '_txt').click(this.toggleExtra(show_more_div_id));
