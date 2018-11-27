@@ -48,9 +48,65 @@
         <!--<span id="search_help">(press ESC to close suggestions)</span>-->
         <ul id="search">
 
-            <input data-v-1a31d9e4="" type="text" id="query" name="query" autocomplete="off">
+            <input data-v-1a31d9e4="" type="text" id="query" name="query" autocomplete="off" class="searchline">
 
-            <a onclick="calltext();"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: #b41815;"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>
+            <button onclick="searchButton();"  id="query2" name="query" class="ui-autocomplete-input" value="send">
+                <svg data-v-78d1bf6c="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon">
+                    <path d="M1152 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zM1664 1664q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"></path>  <!----></svg>
+            </button>
+
+            <a onclick="calltext();" onmouseover="" style="cursor: pointer;">
+                <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: #b41815;"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg>
+            </a>
+
+            <script type="text/javascript">
+                function sleep(milliseconds) {
+                    var start = new Date().getTime();
+                    for (var i = 0; i < 1e7; i++) {
+                        if ((new Date().getTime() - start) > milliseconds){
+                            break;
+                        }
+                    }
+                }
+
+                function searchButton(){
+                    var queryValue = $('#query').val();
+                    var value = decodeURI(queryValue);
+                    Manager.store.addByValue('q', value);
+                    Manager.doRequest();
+                }
+
+                function search(){
+                    var queryValue = $('#query').val();
+                    var value = decodeURI(queryValue);
+                    Manager.store.addByValue('q', value);
+                    sleep(2000);
+                    Manager.doRequest();
+                }
+
+                function getUrlParam(name) {
+                    this.name = name;
+                    this.result = "";
+                    if(location.search) {
+                        params = window.location.search.substring(1);
+                        params.split("&").forEach(function(part) {
+                            item = part.split("=");
+                            if(item[0] === this.name) return this.result = decodeURIComponent(item[1].replace(/\+/g, " "));
+                        })
+                    }
+                    return this.result;
+                }
+
+                $(document).ready(function() {
+                    query = getUrlParam("query");
+                    if (query) {
+                        $('#query').val(query);
+                        search();
+                        window.history.pushState({}, document.title, document.location.pathname + document.location.search.replace(/&?query=[^&]*/g, "").replace(/\?$/, " "));
+                    }
+                });
+
+            </script>
             <script>
                 function calltext() {
                     var x = document.getElementById("call");
@@ -61,7 +117,6 @@
                     }
                 }
             </script>
-
         </ul>
 
         <div class="title" id="collectionHide">

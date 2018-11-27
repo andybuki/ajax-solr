@@ -1,7 +1,7 @@
 * {
-  padding: 0;
-  margin: 0;
-}
+   padding: 0;
+   margin: 0;
+ }
 
 body {
   background: #fff url(../images/header.gif) repeat-x;
@@ -129,7 +129,7 @@ a:hover {
   font-size: 13px;
 }
 #search input {
-  width: 310px;
+  /*width: 310px;*/
   position: relative;
   left: 10px;
   margin-right: 10px;
@@ -510,4 +510,31 @@ p {
   position: relative;
   margin-top: 5px;
   margin-bottom: 15px;
+}
+
+.container .columnContent.left ul {
+  line-height: 1.0;
+}
+
+#query2{
+  background-color: #b41815;
+  border-color: #861210;
+  color: #fff;
+  border: none;
+}
+
+.ui-autocomplete-input {
+  padding: 0px 10px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
+
+.searchline {
+  height: 30px;
+  padding: 2px 10px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
