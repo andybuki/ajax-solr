@@ -100,6 +100,8 @@
             var snippet_cnki = '';
             var snippet_shiliao = '';
             var snippet_jiyao = '';
+            var snippet_cibtc = '';
+
             $('a[href^="http://"]')
                 .attr('target','_blank');
             var cur_doc_highlighting_title;
@@ -134,6 +136,7 @@
             var data_cnki_pages ="";
             var data_dl_shiliao ="";
             var data_dl_jiyao ="";
+            var data_cibtc ="";
             var data_loc_gaz_chapter2 ="";
 
 
@@ -526,9 +529,6 @@
                         var vor_link1 = (data[0].response.docs[0].identifier[0]);
                         var vor_link2 = (data[0].response.docs[0].identifier[1]);
                         var vor_link3 = (data[0].response.docs[0].identifier[2]);
-                        console.log("1"+ vor_link1);
-                        console.log("2"+vor_link2);
-                        console.log("3"+vor_link3);
 
                         var http="http://hunteq.com/ancientc/ancientkm?!!";
 
@@ -575,6 +575,48 @@
                             '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link2 + '</span></td>'+
                             '</tr>');
                         pages +=data_dl_shiliao;
+                    }
+
+                    else if(data[0].response.docs[0].collection=="Fulltext search in print books") {
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+
+                        var vor_link1 = (data[0].response.docs[0].identifier[0]);
+                        var http="http://gso.gbv.de/DB=1.97/PPNSET?PPN=";
+
+                        if (vor_link1.includes(http)) {
+                            var link_replace = vor_link1.replace("http://gso.gbv.de/DB=1.97/PPNSET?PPN=","http://erf.sbb.spk-berlin.de/han/cibtc/gso.gbv.de/DB=1.97/PPNSET?PPN=");
+                            var link5 = bookIcon.link(link_replace);
+                            var provider_link = vor_link1.replace("","").replace("http://erf.sbb.spk-berlin.de/han/cibtc/gso.gbv.de/DB=1.97/PPNSET?PPN=","http://gso.gbv.de/DB=1.97/PPNSET?PPN=");
+                            var provider_link2 = bookIcon.link(provider_link);
+                        }
+
+                        if (doc.text!=null) {
+                            if (cur_doc_highlighting_title=='') {
+                                data_cibtc += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
+                            }
+                            else {
+                                data_cibtc += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
+                            }
+                        }
+                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
+                            data_cibtc += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else if (data[0].response.docs[0].date!=null) {
+                            data_cibtc += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else if (data[0].response.docs[0].author!=null && data[0].response.docs[0].date!=null) {
+                            data_cibtc += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else {
+                            data_cibtc +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ""+ '</b>,  p.'+doc.position+'</span></td></tr>');
+                        }
+                        //data_dl_shiliao =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
+
+                        data_cibtc +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_dl_shiliao +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_cibtc +=   $("#docs").append('<tr>' +
+                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link5 + '</span>&nbsp;&nbsp;&nbsp;' +
+                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link2 + '</span></td>'+
+                            '</tr>');
+                        pages +=data_cibtc;
                     }
 
                     else {
@@ -1117,6 +1159,37 @@
                         }
                     }
                     output +=  snippet_shiliao + '</table><hr class="line"></div>';
+                }
+
+                else if (doc.collection=="Fulltext search in print books"){
+
+                    if (doc.creator!=null) {snippet_cibtc +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.creator +', '+ doc.extent+'pp.' +'</span></td></tr>'}
+
+                    if (doc.note!=null) {
+                        var note = doc.note.toString();
+                        var note2 = note.replace("type=\"statement of responsibility\"","").replace("[","").replace("]","");
+                        snippet_cibtc +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2"><span class="text2">' + note2; + '</span></td></tr>'
+                    }
+
+                    snippet_cibtc +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+
+                    if (doc.identifier!=null) {
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+                        var vor_link1 = doc.identifier[0];
+
+                        var http="http://gso.gbv.de/DB=1.97/PPNSET?PPN=";
+                        if (vor_link1.includes(http)) {
+                            var link_replace = vor_link1.replace("http://gso.gbv.de/DB=1.97/PPNSET?PPN=","http://erf.sbb.spk-berlin.de/han/cibtc/gso.gbv.de/DB=1.97/PPNSET?PPN=");
+                            var link = bookIcon.link(link_replace);
+                            var provider_link = bookIcon.link(vor_link1);
+                            snippet_cibtc +=  '<tr>' +
+                                '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
+                                '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link + '</span></td>'+
+                                '</tr>';
+                        }
+                    }
+                    output +=  snippet_cibtc + '</table><hr class="line"></div>';
                 }
 
                 else {}
