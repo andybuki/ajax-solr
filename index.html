@@ -76,15 +76,15 @@
                     Manager.doRequest();
                 }
 
-                function search(){
+                /*function search(){
                     var queryValue = $('#query').val();
                     var value = decodeURI(queryValue);
                     Manager.store.addByValue('q', value);
                     sleep(2000);
                     Manager.doRequest();
-                }
+                }*/
 
-                function getUrlParam(name) {
+                /*function getUrlParam(name) {
                     this.name = name;
                     this.result = "";
                     if(location.search) {
@@ -95,16 +95,9 @@
                         })
                     }
                     return this.result;
-                }
+                }*/
 
-                $(document).ready(function() {
-                    query = getUrlParam("query");
-                    if (query) {
-                        $('#query').val(query);
-                        search();
-                        window.history.pushState({}, document.title, document.location.pathname + document.location.search.replace(/&?query=[^&]*/g, "").replace(/\?$/, " "));
-                    }
-                });
+
 
             </script>
             <script>

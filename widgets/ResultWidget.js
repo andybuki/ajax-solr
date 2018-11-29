@@ -80,7 +80,7 @@
                 }
             }
             var cur_doc_snippets_txt =  all_snippets_arr.join('');
-            console.log(cur_doc_snippets_txt.length)
+            //console.log(cur_doc_snippets_txt.length)
             return(cur_doc_snippets_txt);
         },
 

@@ -506,7 +506,7 @@ left side of the range
                     }
 
                     if (this.field==='more_collection' && cur_facet_count != 0) {
-                        console.log("test3");
+                        //console.log("test3");
                     }
 
                     if (this.field==='title_facet' && cur_facet_count != 0) {
@@ -522,7 +522,6 @@ left side of the range
                     }
 
                     if (Object.values(returned_facets).length>0) {
-                        console.log('Fac1'+returned_facets);
                         if (this.field==='person_facet'){document.getElementById('personHide').style.display = "block";}
                         if (this.field==='spatial_facet'){document.getElementById('spatialHide').style.display = "block";}
                         if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "block";}
@@ -541,7 +540,6 @@ left side of the range
                     }
 
                     if (Object.values(returned_facets).length<10) {
-                        console.log('Fac2'+returned_facets);
                         if (this.field==='person_facet'){document.getElementById('person_facet_all_extra').style.display = "none";}
                         if (this.field==='spatial_facet'){document.getElementById('spatial_facet_all_extra').style.display = "none";}
                         //if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "none";}
@@ -556,12 +554,11 @@ left side of the range
 
                     if (cur_facet_count != 0) {
                         if  (this.field==='more_collection') {
-                            console.log('test2');
+
                             ///$('#' + 'collection').append($('<a class="click" id="airiti2" onclick="show_hidePopUpWindow(\'foo1\');" onmouseover="" style="cursor: pointer;"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></i></a>'));
                         }
 
                         if  (this.field==='collection') {
-                            console.log('test6');
                             //$('.' + 'click').append($('<span></span><a class="click" id="airiti2" onclick="show_hidePopUpWindow(\'foo1\');" onmouseover="" style="cursor: pointer;"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></i></a>'));
                         }
 
@@ -682,7 +679,7 @@ left side of the range
                 //}
                 $(this.target).append('<a id="' + show_more_div_id + '_txt" href="#">' + more_or_less_txt + '</a>');
                 if  (this.field==='collection') {
-                    console.log('test4');
+                    //console.log('test4');
                     //$('.' + 'click').append($('<a class="click" id="airiti2" onclick="show_hidePopUpWindow(\'foo1\');" onmouseover="" style="cursor: pointer;"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></i></a>'));
                 }
                 $('#' + show_more_div_id + '_txt').click(this.toggleExtra(show_more_div_id));

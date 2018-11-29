@@ -47,51 +47,117 @@ var Manager;
             fields: ['title_facet','author_facet','medium','edition_facet','person_facet','spatial_facet']
         }));
 
+        function getUrlParam(name) {
+            this.name = name;
+            this.result = "";
+            if(location.search) {
+                params = window.location.search.substring(1);
+                params.split("&").forEach(function(part) {
+                    item = part.split("=");
+                    if(item[0] === this.name) return this.result = decodeURIComponent(item[1].replace(/\+/g, " "));
+                })
+            }
+            return this.result;
+        }
+
+
         Manager.init();
-        Manager.store.addByValue('q', '*:*');
-        var params = {
-            facet: true,
-            'facet.field': ['hasModel','medium_facet','edition_facet', 'person_facet', 'spatial_facet' ,'author_facet', 'title_facet','collection', 'date','language'],
-            'facet.limit': 2000,
-            'facet.mincount': 1,
-            'f.date.facet.limit': 500,
-            'f.author_facet.facet.limit': 1000,
-            'f.person_facet.facet.limit': 500,
-            'f.spatial_facet.facet.limit': 500,
-            /*'f.countryCodes.facet.limit': -1,
-            'facet.date': 'date',
-            'facet.date.start': '1187-02-26T00:00:00.000Z/DAY',
-            'facet.date.end': '1987-10-20T00:00:00.000Z/DAY+1DAY',
-            'facet.date.gap': '+1DAY',*/
-            'json.nl': 'map',
-            //'fq':'hasModel:Book',
-            //'fl':'hits:[subquery]',
-            //'hits.q':'{!terms f=book_id v=$row.book_id}',
-            //'sort':'id asc',
-            'hl':true,
-            //'fl':'hits:[subquery]&hits.q={!terms%20f=book_id%20&v=$row.book_id}',
-            'hl.fl':'text',
-            'f.text.hl.alternateField':'text',
-            'hl.maxAlternateFieldLength':40,
-            'hl.fragsize':25,
-            'hl.usePhraseHighlighter':true,
-            //The field for which you want highlighting snippets
-            'hl.snippets': 4, //Change if you want more or less highlighting snippets
-            //Also for highlighting, can optionally set these params for how you want the highlighting to look (yellow background here; Solr default is <em>...</em>):
-            'hl.simple.pre': '<font style="background:#FFFF99">',
-            //'hl.method':'unified',
-            'hl.simple.post': '</font>'/*,
+        query = getUrlParam("query");
+        if (query) {
+            $('#query').val(query);
+            var queryValue = $('#query').val();
+            var value = decodeURI(queryValue);
+            Manager.store.addByValue('q', value);
+            var params = {
+                facet: true,
+                'facet.field': ['hasModel','medium_facet','edition_facet', 'person_facet', 'spatial_facet' ,'author_facet', 'title_facet','collection', 'date','language'],
+                'facet.limit': 2000,
+                'facet.mincount': 1,
+                'f.date.facet.limit': 500,
+                'f.author_facet.facet.limit': 1000,
+                'f.person_facet.facet.limit': 500,
+                'f.spatial_facet.facet.limit': 500,
+                /*'f.countryCodes.facet.limit': -1,
+                'facet.date': 'date',
+                'facet.date.start': '1187-02-26T00:00:00.000Z/DAY',
+                'facet.date.end': '1987-10-20T00:00:00.000Z/DAY+1DAY',
+                'facet.date.gap': '+1DAY',*/
+                'json.nl': 'map',
+                //'fq':'hasModel:Book',
+                //'fl':'hits:[subquery]',
+                //'hits.q':'{!terms f=book_id v=$row.book_id}',
+                //'sort':'id asc',
+                'hl':true,
+                //'fl':'hits:[subquery]&hits.q={!terms%20f=book_id%20&v=$row.book_id}',
+                'hl.fl':'text',
+                'f.text.hl.alternateField':'text',
+                'hl.maxAlternateFieldLength':40,
+                'hl.fragsize':25,
+                'hl.usePhraseHighlighter':true,
+                //The field for which you want highlighting snippets
+                'hl.snippets': 4, //Change if you want more or less highlighting snippets
+                //Also for highlighting, can optionally set these params for how you want the highlighting to look (yellow background here; Solr default is <em>...</em>):
+                'hl.simple.pre': '<font style="background:#FFFF99">',
+                //'hl.method':'unified',
+                'hl.simple.post': '</font>'/*,
         group: true,
         'group.field': 'position',
         'group.ngroups': true*/
 
-        };
+            };
 
-        for (var name in params) {
-            Manager.store.addByValue(name, params[name]);
+            for (var name in params) {
+                Manager.store.addByValue(name, params[name]);
+            }
+            Manager.doRequest();
+            window.history.pushState({}, document.title, document.location.pathname + document.location.search.replace(/&?query=[^&]*/g, "").replace(/\?$/, " "));
+        } else {
+            Manager.store.addByValue('q', '*:*');
+            var params = {
+                facet: true,
+                'facet.field': ['hasModel','medium_facet','edition_facet', 'person_facet', 'spatial_facet' ,'author_facet', 'title_facet','collection', 'date','language'],
+                'facet.limit': 2000,
+                'facet.mincount': 1,
+                'f.date.facet.limit': 500,
+                'f.author_facet.facet.limit': 1000,
+                'f.person_facet.facet.limit': 500,
+                'f.spatial_facet.facet.limit': 500,
+                /*'f.countryCodes.facet.limit': -1,
+                'facet.date': 'date',
+                'facet.date.start': '1187-02-26T00:00:00.000Z/DAY',
+                'facet.date.end': '1987-10-20T00:00:00.000Z/DAY+1DAY',
+                'facet.date.gap': '+1DAY',*/
+                'json.nl': 'map',
+                //'fq':'hasModel:Book',
+                //'fl':'hits:[subquery]',
+                //'hits.q':'{!terms f=book_id v=$row.book_id}',
+                //'sort':'id asc',
+                'hl':true,
+                //'fl':'hits:[subquery]&hits.q={!terms%20f=book_id%20&v=$row.book_id}',
+                'hl.fl':'text',
+                'f.text.hl.alternateField':'text',
+                'hl.maxAlternateFieldLength':40,
+                'hl.fragsize':25,
+                'hl.usePhraseHighlighter':true,
+                //The field for which you want highlighting snippets
+                'hl.snippets': 4, //Change if you want more or less highlighting snippets
+                //Also for highlighting, can optionally set these params for how you want the highlighting to look (yellow background here; Solr default is <em>...</em>):
+                'hl.simple.pre': '<font style="background:#FFFF99">',
+                //'hl.method':'unified',
+                'hl.simple.post': '</font>'/*,
+        group: true,
+        'group.field': 'position',
+        'group.ngroups': true*/
+
+            };
+
+            for (var name in params) {
+                Manager.store.addByValue(name, params[name]);
+            }
+
+            Manager.doRequest();
         }
 
-        Manager.doRequest();
     });
 
 
