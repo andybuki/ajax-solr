@@ -39,11 +39,9 @@
 </div>
 
 <div id="wrap">
-
     <div class="left col-md-4 col-lg-4">
         <div class="title2">Current Selection</div>
         <ul id="selection"></ul>
-
         <div class="title2">Search</div>
         <!--<span id="search_help">(press ESC to close suggestions)</span>-->
         <ul id="search">
@@ -60,14 +58,6 @@
             </a>
 
             <script type="text/javascript">
-                function sleep(milliseconds) {
-                    var start = new Date().getTime();
-                    for (var i = 0; i < 1e7; i++) {
-                        if ((new Date().getTime() - start) > milliseconds){
-                            break;
-                        }
-                    }
-                }
 
                 function searchButton(){
                     var queryValue = $('#query').val();
@@ -75,29 +65,6 @@
                     Manager.store.addByValue('q', value);
                     Manager.doRequest();
                 }
-
-                /*function search(){
-                    var queryValue = $('#query').val();
-                    var value = decodeURI(queryValue);
-                    Manager.store.addByValue('q', value);
-                    sleep(2000);
-                    Manager.doRequest();
-                }*/
-
-                /*function getUrlParam(name) {
-                    this.name = name;
-                    this.result = "";
-                    if(location.search) {
-                        params = window.location.search.substring(1);
-                        params.split("&").forEach(function(part) {
-                            item = part.split("=");
-                            if(item[0] === this.name) return this.result = decodeURIComponent(item[1].replace(/\+/g, " "));
-                        })
-                    }
-                    return this.result;
-                }*/
-
-
 
             </script>
             <script>
@@ -109,6 +76,7 @@
                         x.style.display = "none";
                     }
                 }
+
             </script>
         </ul>
 

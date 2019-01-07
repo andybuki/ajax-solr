@@ -101,6 +101,8 @@
             var snippet_shiliao = '';
             var snippet_jiyao = '';
             var snippet_cibtc = '';
+            var snippet_japan = '';
+            var snippet_clasic_japan = '';
 
             $('a[href^="http://"]')
                 .attr('target','_blank');
@@ -137,6 +139,8 @@
             var data_dl_shiliao ="";
             var data_dl_jiyao ="";
             var data_cibtc ="";
+            var data_japan ="";
+            var data_clasic_japan ="";
             var data_loc_gaz_chapter2 ="";
 
 
@@ -225,6 +229,40 @@
                             '</tr>');
 
                         pages +=data_ad_me_pages;
+                    }
+
+                    else if (data[0].response.docs[0].collection=="Adam Matthew FO Japan"){
+                        var link = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://erf.sbb.spk-berlin.de/han/fojapan/www.archivesdirect.amdigital.co.uk/Documents/Images/");
+                        var link2 = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk/Documents/Images/");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+
+                        if (doc.text!=null) {
+                            if (cur_doc_highlighting_title=='') {
+                                data_japan += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text+"..."+'</span></th></tr>');
+                            } else {
+                                var firstvariable = "<font style=\"background:#FFFF99\">";
+                                var secondvariable = "<\/font>";
+                                data_japan += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title+'</span></th></tr>');
+                            }
+                        }
+
+                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
+                            data_japan =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued +  '</b>'+',  p.'+doc.position+'</span></td></tr>');
+                        } else if (data[0].response.docs[0].date!=null) {
+                            data_japan =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date +  '</b>'+',  p.'+doc.position+'</span></td></tr>');
+                        } else {
+                            data_japan =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + '</b>'+',  p.'+doc.position+'</span></td></tr>');
+                        }
+
+                        data_japan +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_ad_me_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_japan +=   $("#docs").append('<tr>' +
+                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
+                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + link2 + '</span></td>'+
+                            '</tr>');
+
+                        pages +=data_japan;
                     }
 
                     else if (data[0].response.docs[0].collection=="Adam Matthew - China America Pacific") {
@@ -419,7 +457,7 @@
                                 data_dfz_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
                             }
                         }
-                        data_dfz_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
+                        data_dfz_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].author+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
 
                         data_dfz_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
                         //data_dfz_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
@@ -522,6 +560,57 @@
                         pages +=data_dl_jiyao;
                     }
 
+                    else if(data[0].response.docs[0].collection=="Classical Works of Japan") {
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+
+                        var vor_link1 = (data[0].response.docs[0].identifier[0]);
+                        var vor_link2 = (data[0].response.docs[0].identifier[1]);
+
+                        var http="http://hunteq.com/ancientc/ancientkm?!!";
+
+                        if (vor_link1.includes(http)) {
+                            var link_replace = vor_link1.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!");
+                            var link5 = bookIcon.link(link_replace);
+                            var provider_link = vor_link1.replace("","").replace("http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
+                            var provider_link2 = bookIcon.link(provider_link);
+                        } else  {
+                            var link_replace = vor_link2.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!");
+                            var link5 = bookIcon.link(link_replace);
+                            var provider_link = vor_link2.replace("","").replace("http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
+                            var provider_link2 = bookIcon.link(provider_link);
+                        }
+
+                        if (doc.text!=null) {
+                            if (cur_doc_highlighting_title=='') {
+                                data_clasic_japan += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
+                            }
+                            else {
+                                data_clasic_japan += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
+                            }
+                        }
+
+                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
+                            data_clasic_japan += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else if (data[0].response.docs[0].date!=null) {
+                            data_clasic_japan += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else if (data[0].response.docs[0].author!=null && data[0].response.docs[0].date!=null) {
+                            data_clasic_japan += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else {
+                            data_clasic_japan +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ""+ '</b>,  p.'+doc.position+'</span></td></tr>');
+                        }
+
+                        //data_clasic_japan =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
+
+                        data_clasic_japan +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_clasic_japan +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_clasic_japan +=   $("#docs").append('<tr>' +
+                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link5 + '</span>&nbsp;&nbsp;&nbsp;' +
+                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link2 + '</span></td>'+
+                            '</tr>');
+                        pages +=data_clasic_japan;
+                    }
+
                     else if(data[0].response.docs[0].collection=="Qingdai shiliao") {
                         $('a[href^="http://"]')
                             .attr('target','_blank');
@@ -543,9 +632,9 @@
                             var provider_link = vor_link2.replace("","").replace("http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
                             var provider_link2 = bookIcon.link(provider_link);
                         } else if (vor_link3.includes(http)) {
-                            var link_replace = vor_link2.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!");
+                            var link_replace = vor_link3.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!");
                             var link5 = bookIcon.link(link_replace);
-                            var provider_link = vor_link2.replace("","").replace("http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
+                            var provider_link = vor_link3.replace("","").replace("http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
                             var provider_link2 = bookIcon.link(provider_link);
                         }
 
@@ -928,6 +1017,33 @@
                     output +=  snippet_ad_me + '</table><hr class="line"></div>';
                 }
 
+                else if (doc.collection=="Adam Matthew FO Japan") {
+
+                    if (doc.date!=null && doc.issued!=null) {snippet_japan +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'/'+doc.issued+'</span></td></tr>';}
+                    if (doc.date==null) {snippet_japan +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
+                    if (doc.issued==null) {snippet_japan +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'</span></td></tr>';}
+
+                    if (doc.edition!=null) {snippet_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
+                    if (doc.series_title!=null) {snippet_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
+                    if (doc.publisher!=null) {snippet_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
+
+                    snippet_japan +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_japan +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+
+                    if (doc.identifier!=null) {
+
+                        var link = bookIcon.link(doc.identifier).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Details/","http://erf.sbb.spk-berlin.de/han/fojapan/www.archivesdirect.amdigital.co.uk/Documents/Details/");
+                        var link2 = bookIcon.link(doc.identifier).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Details/","http://www.archivesdirect.amdigital.co.uk/Documents/Details/");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+                        snippet_japan +=  '<tr>' +
+                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
+                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + link2 + '</span></td>'+
+                            '</tr>';
+                    }
+                    output +=  snippet_japan + '</table><hr class="line"></div>';
+                }
+
                 else if (doc.collection=="Adam Matthew - China America Pacific") {
 
                     if (doc.publication_name!=null) {snippet_pacific +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.publication_name; + '</span></td></tr>'}
@@ -1083,6 +1199,7 @@
                         var vor_link1 = doc.identifier[0];
                         var vor_link2 = doc.identifier[1];
                         var http="type=\"CrossAsia Link\" http://erf.sbb.spk-berlin.de/han/daozangjiyao/hunteq.com/ancientc/ancientkm?!!";
+
                         if (vor_link1.includes(http)) {
                             var link_replace = vor_link1.replace("type=\"CrossAsia Link\" ","");
                             var short_link = vor_link1.replace("type=\"CrossAsia Link\" http://erf.sbb.spk-berlin.de/han/daozangjiyao/","http://www.");
@@ -1096,7 +1213,7 @@
 
                         } else if (vor_link2.includes(http)) {
                             var link_replace = vor_link2.replace("type=\"CrossAsia Link\" ","");
-                            var short_link = vor_link1.replace("type=\"CrossAsia Link\" http://erf.sbb.spk-berlin.de/han/daozangjiyao/","http://www.");
+                            var short_link = vor_link2.replace("type=\"CrossAsia Link\" http://erf.sbb.spk-berlin.de/han/daozangjiyao/","http://www.");
                             var intern_link = bookIcon.link(short_link);
                             var link = bookIcon.link(link_replace);
                             snippet_jiyao +=  '<tr>' +
@@ -1149,9 +1266,9 @@
                                 '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link + '</span></td>'+
                                 '</tr>';
                         } else if (vor_link3.includes(http)) {
-                            var link_replace = vor_link2.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!");
+                            var link_replace = vor_link3.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!");
                             var link = bookIcon.link(link_replace);
-                            var provider_link = bookIcon.link(vor_link2);
+                            var provider_link = bookIcon.link(vor_link3);
                             snippet_shiliao +=  '<tr>' +
                                 '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
                                 '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link + '</span></td>'+
@@ -1159,6 +1276,50 @@
                         }
                     }
                     output +=  snippet_shiliao + '</table><hr class="line"></div>';
+                }
+
+                else if (doc.collection=="Classical Works of Japan"){
+
+                    if (doc.creator!=null) {snippet_clasic_japan +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.creator; + '</span></td></tr>'}
+                    if (doc.issued!=null) {snippet_clasic_japan +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
+                    if (doc.edition!=null) {snippet_clasic_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
+                    if (doc.series_title!=null) {snippet_clasic_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
+                    if (doc.publisher!=null) {snippet_clasic_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
+                    if (doc.note!=null) {
+                        var note = doc.note.toString();
+                        var note2 = note.replace("type=\"statement of responsibility\"","").replace("[","").replace("]","");
+                        snippet_clasic_japan +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2"><span class="text2">' + note2; + '</span></td></tr>'
+                    }
+
+                    snippet_clasic_japan +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_clasic_japan +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+
+                    if (doc.identifier!=null) {
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+                        var vor_link1 = doc.identifier[0];
+                        var vor_link2 = doc.identifier[1];
+                        var http="http://hunteq.com/ancientc/ancientkm?!!";
+                        if (vor_link1.includes(http)) {
+                            var link_replace = vor_link1.replace("http://hunteq.com/ancientc/ancientkm?!!" ,"http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!");
+                            var link = bookIcon.link(link_replace);
+                            var provider_link = bookIcon.link(vor_link1);
+                            snippet_clasic_japan +=  '<tr>' +
+                                '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
+                                '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link + '</span></td>'+
+                                '</tr>';
+
+                        } else if (vor_link2.includes(http)) {
+                            var link_replace = vor_link2.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!");
+                            var link = bookIcon.link(link_replace);
+                            var provider_link = bookIcon.link(vor_link2);
+                            snippet_clasic_japan +=  '<tr>' +
+                                '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
+                                '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link + '</span></td>'+
+                                '</tr>';
+                        }
+                    }
+                    output +=  snippet_clasic_japan + '</table><hr class="line"></div>';
                 }
 
                 else if (doc.collection=="Fulltext search in print books"){

@@ -254,12 +254,14 @@ label { display: block; }
   color:#000000;
   text-decoration:none;
   background: white;
-  width: 480px;
+  min-width: 580px;
   padding: 10px;
   border: solid black 1px;
   z-index: 100;
   position: fixed;
-  top:400px;
+  top:200px;
+  overflow-y: scroll;
+  max-width: 50%;
 }
 
 .menu2 {
@@ -267,12 +269,14 @@ label { display: block; }
   color: #000000;
   text-decoration: none;
   background: white;
-  width: 480px;
+  min-width: 580px;
   padding: 10px;
   border: solid black 1px;
   z-index: 100;
   position: fixed;
-  top: 373px;
+  top: 173px;
+  overflow-y: scroll;
+  max-width: 50%;
 }
 
 .menunone1 {
