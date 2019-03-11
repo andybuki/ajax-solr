@@ -5,7 +5,7 @@ var Manager;
     $(function () {
         Manager = new AjaxSolr.Manager({
             //solrUrl: '/solr/ajax-loc-gaz/select?shards=localhost:8995/solr/ajax-loc-gaz,localhost:8995/solr/ajax-amd&indent=true&'
-            solrUrl: '/solr/ajax-loc-gaz/select?shards=localhost:8995/solr/ajax-loc-gaz,localhost:8995/solr/ajax-amd,localhost:8995/solr/ajax-xuxiu,localhost:8995/solr/ajax-rmrb,localhost:8995/solr/ajax-airiti,localhost:8995/solr/ajax-china-trade,localhost:8995/solr/ajax-china-pacific,localhost:8995/solr/ajax-meiji-japan,localhost:8995/solr/ajax-dfz,localhost:8995/solr/ajax-gale-cfer,localhost:8995/solr/ajax-cnki,localhost:8995/solr/ajax-dl-jiyao,localhost:8995/solr/ajax-cibtc,localhost:8995/solr/ajax-japan,localhost:8995/solr/ajax-riben,localhost:8995/solr/ajax-dl-shiliao&indent=true&rows=20&'
+            solrUrl: '/solr/ajax-loc-gaz/select?shards=localhost:8995/solr/ajax-loc-gaz,localhost:8995/solr/ajax-amd,localhost:8995/solr/ajax-xuxiu,localhost:8995/solr/ajax-rmrb,localhost:8995/solr/ajax-airiti,localhost:8995/solr/ajax-china-trade,localhost:8995/solr/ajax-china-pacific,localhost:8995/solr/ajax-meiji-japan,localhost:8995/solr/ajax-dfz,localhost:8995/solr/ajax-gale-cfer,localhost:8995/solr/ajax-cnki,localhost:8995/solr/ajax-dl-jiyao,localhost:8995/solr/ajax-cibtc,localhost:8995/solr/ajax-japan,localhost:8995/solr/ajax-riben,localhost:8995/solr/ajax-eastview_CCG,localhost:8995/solr/ajax-dl-shiliao&indent=true&rows=20&'
             //solrUrl: '/solr/ajax-china-pacific/,localhost:8995/solr/ajax-gale-cfer'
             //solrUrl: 'http://10.46.3.100:8982/solr/LocGaz/select?shards=10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/Xuxiu,10.46.3.100:8982/solr/airiti_nested,10.46.3.100:8982/solr/RMRB&indent=true&'
             //solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina/select?shards=10.46.3.100:8982/solr/AMD_FOChina,10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/Xuxiu,10.46.3.100:8982/solr/airiti_nested,10.46.3.100:8982/solr/RMRB,10.46.3.100:8982/solr/China_Trade,10.46.3.100:8982/solr/ChinaAmericaPacific,10.46.3.100:8982/solr/MeijiJapan_small,10.46.3.100:8982/solr/CNKI&indent=true&'
@@ -70,12 +70,12 @@ var Manager;
             var params = {
                 facet: true,
                 'facet.field': ['hasModel','medium_facet','edition_facet', 'person_facet', 'spatial_facet' ,'author_facet', 'title_facet','collection', 'date','language'],
-                'facet.limit': 2000,
+                'facet.limit': 1600,
                 'facet.mincount': 1,
-                'f.date.facet.limit': 500,
-                'f.author_facet.facet.limit': 1000,
-                'f.person_facet.facet.limit': 500,
-                'f.spatial_facet.facet.limit': 500,
+                'f.date.facet.limit': 400,
+                'f.author_facet.facet.limit': 800,
+                'f.person_facet.facet.limit': 400,
+                'f.spatial_facet.facet.limit': 400,
                 'json.nl': 'map',
                 'hl':true,
                 'hl.fl':'text',

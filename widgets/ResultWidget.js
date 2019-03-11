@@ -102,6 +102,7 @@
             var snippet_jiyao = '';
             var snippet_cibtc = '';
             var snippet_japan = '';
+            var snippet_ccg = '';
             var snippet_clasic_japan = '';
 
             $('a[href^="http://"]')
@@ -140,6 +141,7 @@
             var data_dl_jiyao ="";
             var data_cibtc ="";
             var data_japan ="";
+            var data_ccg ="";
             var data_clasic_japan ="";
             var data_loc_gaz_chapter2 ="";
 
@@ -664,6 +666,47 @@
                             '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link2 + '</span></td>'+
                             '</tr>');
                         pages +=data_dl_shiliao;
+                    }
+
+                    else if(data[0].response.docs[0].collection=="China Comprehensive Gazetteers : 中國綜合方誌庫") {
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+
+                        var vor_link1 = (data[0].response.docs[0].identifier[0]);
+                        var vor_link2 = (data[0].response.docs[0].identifier[1]);
+
+
+                        var http="http://erf.sbb.spk-berlin.de/han/evplg/";
+                        var link5 = bookIcon.link(vor_link2);
+                        var provider_link2 = bookIcon.link(vor_link1);
+
+
+                        if (doc.text!=null) {
+                            if (cur_doc_highlighting_title=='') {
+                                data_ccg += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
+                            }
+                            else {
+                                data_ccg += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
+                            }
+                        }
+                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
+                            data_ccg += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else if (data[0].response.docs[0].date!=null) {
+                            data_ccg += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else if (data[0].response.docs[0].author!=null && data[0].response.docs[0].date!=null) {
+                            data_ccg += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else {
+                            data_ccg +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ""+ '</b>,  p.'+doc.position+'</span></td></tr>');
+                        }
+                        //data_dl_shiliao =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
+
+                        data_ccg +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_dl_shiliao +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_ccg +=   $("#docs").append('<tr>' +
+                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link5 + '</span>&nbsp;&nbsp;&nbsp;' +
+                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link2 + '</span></td>'+
+                            '</tr>');
+                        pages +=data_ccg;
                     }
 
                     else if(data[0].response.docs[0].collection=="Fulltext search in print books") {
@@ -1320,6 +1363,41 @@
                         }
                     }
                     output +=  snippet_clasic_japan + '</table><hr class="line"></div>';
+                }
+
+                else if (doc.collection=="China Comprehensive Gazetteers : 中國綜合方誌庫"){
+
+                    if (doc.author!=null) {snippet_ccg +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.author; + '</span></td></tr>'}
+                    if (doc.date!=null) {snippet_ccg +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'</span></td></tr>';}
+                    if (doc.edition!=null) {snippet_ccg +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
+                    if (doc.subject!=null) {snippet_ccg +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">subject: </td><td colspan="2"><span class="text2">' + doc.subject; + '</span></td></tr>'}
+                    if (doc.temporal!=null) {snippet_ccg +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">temporal: </td><td colspan="2"><span class="text2">' + doc.temporal; + '</span></td></tr>'}
+                    if (doc.note!=null) {
+                        var note = doc.note.toString();
+                        var note2 = note.replace("type=\"statement of responsibility\"","").replace("[","").replace("]","");
+                        snippet_ccg +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2"><span class="text2">' + note2; + '</span></td></tr>'
+                    }
+
+                    snippet_ccg +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_clasic_japan +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+
+                    if (doc.identifier!=null) {
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+                        var vor_link1 = doc.identifier[0];
+                        var vor_link2 = doc.identifier[1];
+
+                        var http="http://erf.sbb.spk-berlin.de/han/evplg/";
+                        var provider_link = bookIcon.link(vor_link1);
+                        var provider_link2 = bookIcon.link(vor_link2);
+                            snippet_ccg +=  '<tr>' +
+                                '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + provider_link2 + '</span>&nbsp;&nbsp;&nbsp;' +
+                                '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link + '</span></td>'+
+                                '</tr>';
+
+
+                    }
+                    output +=  snippet_ccg + '</table><hr class="line"></div>';
                 }
 
                 else if (doc.collection=="Fulltext search in print books"){

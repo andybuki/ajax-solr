@@ -260,7 +260,7 @@ label { display: block; }
   z-index: 100;
   position: fixed;
   top:200px;
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   max-width: 50%;
 }
 
@@ -275,7 +275,7 @@ label { display: block; }
   z-index: 100;
   position: fixed;
   top: 173px;
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   max-width: 50%;
 }
 
