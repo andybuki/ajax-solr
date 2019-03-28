@@ -472,7 +472,7 @@ left side of the range
                                 '</div>'));
 
                         }
-                        if (facet==='China Comprehensive Gazetteers : 中國綜合方誌庫') {
+                        if (facet==='China Comprehensive Gazetteers') {
                             $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo93\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
                                 '<div class="menu" id="foo93" style="display:none"><a onclick="show_hidePopUpWindow(\'foo93\');"> ' +

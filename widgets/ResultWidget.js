@@ -668,7 +668,7 @@
                         pages +=data_dl_shiliao;
                     }
 
-                    else if(data[0].response.docs[0].collection=="China Comprehensive Gazetteers : 中國綜合方誌庫") {
+                    else if(data[0].response.docs[0].collection=="China Comprehensive Gazetteers") {
                         $('a[href^="http://"]')
                             .attr('target','_blank');
 
@@ -1365,7 +1365,7 @@
                     output +=  snippet_clasic_japan + '</table><hr class="line"></div>';
                 }
 
-                else if (doc.collection=="China Comprehensive Gazetteers : 中國綜合方誌庫"){
+                else if (doc.collection=="China Comprehensive Gazetteers"){
 
                     if (doc.author!=null) {snippet_ccg +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.author; + '</span></td></tr>'}
                     if (doc.date!=null) {snippet_ccg +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'</span></td></tr>';}
