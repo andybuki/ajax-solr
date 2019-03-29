@@ -51,7 +51,7 @@
                 var doc = this.manager.response.response.docs[i];
 
                 if (this.manager.response.highlighting && this.manager.response.highlighting[doc.id]
-                        [this.manager.response.responseHeader.params['hl.fl']]) {
+                    [this.manager.response.responseHeader.params['hl.fl']]) {
                     // display this.manager.response.highlighting[doc.id]
                     [this.manager.response.responseHeader.params['hl.fl']]
                 }
@@ -165,109 +165,7 @@
 
             if (doc.hasModel=="Page") {
                 $.when($.getJSON(url), $.getJSON(url2)).then(function(data,data2){
-                    if (data[0].response.docs[0].collection=="Local Gazetteer"){
-                        $('a[href^="http://"]')
-                            .attr('target','_blank');
-
-                        if (doc.text!=null) {
-                            if (cur_doc_highlighting_title=='') {
-                                data_loc_gaz_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text +"..."+'</span></th></tr>');
-                            }else {
-                                data_loc_gaz_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title+"..."+'</span></th></tr>');
-                            }
-                        }
-
-                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
-                            data_loc_gaz_pages += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
-                        } else if (data[0].response.docs[0].date!=null) {
-                            data_loc_gaz_pages += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
-                        } else if (data[0].response.docs[0].author!=null && data[0].response.docs[0].date!=null) {
-                            data_loc_gaz_pages += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
-                        } else {
-                            data_loc_gaz_pages +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ,"+ '</b>,  p.'+doc.position+'</span></td></tr>');
-                        }
-
-                        data_loc_gaz_chapter +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                        //data_loc_gaz_chapter +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
-
-                        data_loc_gaz_chapter +=   $("#docs").append('<tr>' +
-                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link_locgaz + '</span>&nbsp;&nbsp;&nbsp;' +
-                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + link_locgaz2 + '</span></td>'+
-                            '</tr>');
-
-                        pages +=data_loc_gaz_pages;
-
-                    }
-
-                    else if (data[0].response.docs[0].collection=="Adam Matthew FO China"){
-                        var link = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://erf.sbb.spk-berlin.de/han/OfficeFilesChina/www.archivesdirect.amdigital.co.uk/Documents/Images/");
-                        var link2 = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk/Documents/Images/");
-                        $('a[href^="http://"]')
-                            .attr('target','_blank');
-
-                        if (doc.text!=null) {
-                            if (cur_doc_highlighting_title=='') {
-                                data_ad_me_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text+"..."+'</span></th></tr>');
-                            } else {
-                                var firstvariable = "<font style=\"background:#FFFF99\">";
-                                var secondvariable = "<\/font>";
-                                data_ad_me_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title+'</span></th></tr>');
-                            }
-                        }
-
-                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
-                            data_ad_me_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued +  '</b>'+',  p.'+doc.position+'</span></td></tr>');
-                        } else if (data[0].response.docs[0].date!=null) {
-                            data_ad_me_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date +  '</b>'+',  p.'+doc.position+'</span></td></tr>');
-                        } else {
-                            data_ad_me_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + '</b>'+',  p.'+doc.position+'</span></td></tr>');
-                        }
-
-                        data_ad_me_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                        //data_ad_me_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
-                        data_ad_me_pages +=   $("#docs").append('<tr>' +
-                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
-                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + link2 + '</span></td>'+
-                            '</tr>');
-
-                        pages +=data_ad_me_pages;
-                    }
-
-                    else if (data[0].response.docs[0].collection=="Adam Matthew FO Japan"){
-                        var link = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://erf.sbb.spk-berlin.de/han/fojapan/www.archivesdirect.amdigital.co.uk/Documents/Images/");
-                        var link2 = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk/Documents/Images/");
-                        $('a[href^="http://"]')
-                            .attr('target','_blank');
-
-                        if (doc.text!=null) {
-                            if (cur_doc_highlighting_title=='') {
-                                data_japan += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text+"..."+'</span></th></tr>');
-                            } else {
-                                var firstvariable = "<font style=\"background:#FFFF99\">";
-                                var secondvariable = "<\/font>";
-                                data_japan += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title+'</span></th></tr>');
-                            }
-                        }
-
-                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
-                            data_japan =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued +  '</b>'+',  p.'+doc.position+'</span></td></tr>');
-                        } else if (data[0].response.docs[0].date!=null) {
-                            data_japan =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date +  '</b>'+',  p.'+doc.position+'</span></td></tr>');
-                        } else {
-                            data_japan =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + '</b>'+',  p.'+doc.position+'</span></td></tr>');
-                        }
-
-                        data_japan +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                        //data_ad_me_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
-                        data_japan +=   $("#docs").append('<tr>' +
-                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
-                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + link2 + '</span></td>'+
-                            '</tr>');
-
-                        pages +=data_japan;
-                    }
-
-                    else if (data[0].response.docs[0].collection=="Adam Matthew - China America Pacific") {
+                    if (data[0].response.docs[0].collection==="Adam Matthew - China America Pacific") {
                         var link = pageIcon.link(doc.image_url).replace("http://www.cap.amdigital.co.uk/Documents/Images/","http://erf.sbb.spk-berlin.de/han/ChinaAmericaPacific/www.cap.amdigital.co.uk/Documents/Images/");
                         var link2 = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.cap.amdigital.co.uk/Documents/Images/");
                         $('a[href^="http://"]')
@@ -281,11 +179,11 @@
                             }
 
                             if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null && data[0].response.docs[0].author!=null) {
-                                data_pacific_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  '+data[0].response.docs[0].author +',' + data[0].response.docs[0].date+'/'+ data[0].response.docs[0].issued+ '</b>' +',  p.'+doc.position+'</span></td></tr>');
+                                data_pacific_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  '+data[0].response.docs[0].author +',' + data[0].response.docs[0].date+'/'+ data[0].response.docs[0].issued+ '</b>' +',  p.'+doc.position+'</span></td></tr>');
                             } else if (data[0].response.docs[0].date!=null && data[0].response.docs[0].author!=null) {
-                                data_pacific_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' +data[0].response.docs[0].author +',' + data[0].response.docs[0].date+  '</b>'+',  p.'+doc.position+'</span></td></tr>');
+                                data_pacific_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' +data[0].response.docs[0].author +',' + data[0].response.docs[0].date+  '</b>'+',  p.'+doc.position+'</span></td></tr>');
                             } else {
-                                data_pacific_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  '  + '</b>'+',  p.'+doc.position+'</span></td></tr>');
+                                data_pacific_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  '  + '</b>'+',  p.'+doc.position+'</span></td></tr>');
                             }
                         }
 
@@ -302,8 +200,8 @@
                             }
                         }
 
-                        data_pacific_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                        //data_pacific_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_pacific_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_pacific_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>');
                         data_pacific_pages +=   $("#docs").append('<tr>' +
                             '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
                             '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + link2 + '</span></td>'+
@@ -312,10 +210,10 @@
                         pages +=data_pacific_pages;
                     }
 
-                    else if (data[0].response.docs[0].collection=="Adam Matthew - China Trade & Politics") {
+                    else if (data[0].response.docs[0].collection==="Adam Matthew - China Trade & Politics") {
                         var link = pageIcon.link(doc.image_url).replace("http://www.china.amdigital.co.uk/Documents/Images","http://erf.sbb.spk-berlin.de:80/han/ChinaTradePoliticsCulture1793-1980/www.china.amdigital.co.uk/Documents/Images/");
                         var link2 = pageIcon.link(doc.image_url).replace("http://www.china.amdigital.co.uk/Documents/Images/","http://www.china.amdigital.co.uk/Documents/Images/");
-                         $('a[href^="http://"]')
+                        $('a[href^="http://"]')
                             .attr('target','_blank');
 
                         if (doc.text!=null) {
@@ -325,11 +223,11 @@
                                 data_trade_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
                             }
                             if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
-                                data_trade_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title +  ', ' +data[0].response.docs[0].author+ '.  ' + data[0].response.docs[0].date+'/'+ data[0].response.docs[0].issued+ '</b>'+',  p.'+doc.position+'</span></td></tr>');
+                                data_trade_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title +  ', ' +data[0].response.docs[0].author+ '.  ' + data[0].response.docs[0].date+'/'+ data[0].response.docs[0].issued+ '</b>'+',  p.'+doc.position+'</span></td></tr>');
                             } else if (data[0].response.docs[0].date!=null) {
-                                data_trade_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title +  ', ' +data[0].response.docs[0].author+ '.  ' + data[0].response.docs[0].date+ '</b>'+',  p.'+doc.position+'</span></td></tr>');
+                                data_trade_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title +  ', ' +data[0].response.docs[0].author+ '.  ' + data[0].response.docs[0].date+ '</b>'+',  p.'+doc.position+'</span></td></tr>');
                             } else {
-                                data_trade_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title +  ', ' +data[0].response.docs[0].author+ '.  '+'</b>' + ',  p.'+doc.position+'</span></td></tr>');
+                                data_trade_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title +  ', ' +data[0].response.docs[0].author+ '.  '+'</b>' + ',  p.'+doc.position+'</span></td></tr>');
                             }
                         }
 
@@ -346,8 +244,8 @@
                             }
                         }
 
-                        data_trade_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                        //data_trade_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_trade_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_trade_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>');
                         data_trade_pages +=   $("#docs").append('<tr>' +
                             '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
                             '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + link2 + '</span></td>'+
@@ -356,7 +254,75 @@
                         pages +=data_trade_pages;
                     }
 
-                    else if (data[0].response.docs[0].collection=="Airiti") {
+                    else if (data[0].response.docs[0].collection==="Adam Matthew - Foreign Office Files China & Japan"){
+                        var link = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://erf.sbb.spk-berlin.de/han/OfficeFilesChina/www.archivesdirect.amdigital.co.uk/Documents/Images/");
+                        var link2 = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk/Documents/Images/");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+
+                        if (doc.text!=null) {
+                            if (cur_doc_highlighting_title=='') {
+                                data_ad_me_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text+"..."+'</span></th></tr>');
+                            } else {
+                                var firstvariable = "<font style=\"background:#FFFF99\">";
+                                var secondvariable = "<\/font>";
+                                data_ad_me_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title+'</span></th></tr>');
+                            }
+                        }
+
+                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
+                            data_ad_me_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued +  '</b>'+',  p.'+doc.position+'</span></td></tr>');
+                        } else if (data[0].response.docs[0].date!=null) {
+                            data_ad_me_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date +  '</b>'+',  p.'+doc.position+'</span></td></tr>');
+                        } else {
+                            data_ad_me_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + '</b>'+',  p.'+doc.position+'</span></td></tr>');
+                        }
+
+                        data_ad_me_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_ad_me_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_ad_me_pages +=   $("#docs").append('<tr>' +
+                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
+                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + link2 + '</span></td>'+
+                            '</tr>');
+
+                        pages +=data_ad_me_pages;
+                    }
+
+                    /*else if (data[0].response.docs[0].collection==="Adam Matthew FO Japan"){
+                        var link = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://erf.sbb.spk-berlin.de/han/fojapan/www.archivesdirect.amdigital.co.uk/Documents/Images/");
+                        var link2 = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.archivesdirect.amdigital.co.uk/Documents/Images/");
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+
+                        if (doc.text!=null) {
+                            if (cur_doc_highlighting_title=='') {
+                                data_japan += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text+"..."+'</span></th></tr>');
+                            } else {
+                                var firstvariable = "<font style=\"background:#FFFF99\">";
+                                var secondvariable = "<\/font>";
+                                data_japan += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title+'</span></th></tr>');
+                            }
+                        }
+
+                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
+                            data_japan =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued +  '</b>'+',  p.'+doc.position+'</span></td></tr>');
+                        } else if (data[0].response.docs[0].date!=null) {
+                            data_japan =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date +  '</b>'+',  p.'+doc.position+'</span></td></tr>');
+                        } else {
+                            data_japan =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' + '</b>'+',  p.'+doc.position+'</span></td></tr>');
+                        }
+
+                        data_japan +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_ad_me_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_japan +=   $("#docs").append('<tr>' +
+                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
+                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + link2 + '</span></td>'+
+                            '</tr>');
+
+                        pages +=data_japan;
+                    }*/
+
+                    else if (data[0].response.docs[0].collection==="Airiti") {
                         $('a[href^="http://"]')
                             .attr('target','_blank');
 
@@ -376,10 +342,10 @@
                             }
                         }
 
-                        data_airiti_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '. ' +  data[0].response.docs[0].author +', '   + data[0].response.docs[0].date+ '</b>' +',  p.'+doc.position+'</span></td></tr>');
+                        data_airiti_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + '. ' +  data[0].response.docs[0].author +', '   + data[0].response.docs[0].date+ '</b>' +',  p.'+doc.position+'</span></td></tr>');
 
-                        data_airiti_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                        //data_airiti_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_airiti_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_airiti_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>');
                         data_airiti_pages +=   $("#docs").append('<tr>' +
                             '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
                             '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + link2 + '</span></td>'+
@@ -388,49 +354,57 @@
                         pages +=data_airiti_pages;
                     }
 
-                    else if(data[0].response.docs[0].collection=="Xuxiu") {
+                    else if (data[0].response.docs[0].collection==="China Comprehensive Gazetteers") {
+
                         $('a[href^="http://"]')
                             .attr('target','_blank');
+                        $('a[href^="https://"]')
+                            .attr('target','_blank');
 
-                        var vor_link1 = (data[0].response.docs[0].identifier[0]);
-                        var vor_link2 = (data[0].response.docs[0].identifier[1]);
+                        var vor_link1 = (data[0].response.docs[0].url[0]);
+                        var vor_link2 = (data[0].response.docs[0].url[1]);
 
-                        var http="type=\"CrossAsia Link\" http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!";
+                        //console.log("test2"+vor_link1+vor_link2);
 
-                        if (vor_link1.includes(http)) {
-                            var link_replace = vor_link1.replace("type=\"CrossAsia Link\" ","");
-                            var link5 = bookIcon.link(link_replace);
-                            var provider_link = vor_link1.replace("type=\"CrossAsia Link\" ","").replace("http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                            var provider_link2 = bookIcon.link(provider_link);
-                        } else {
-                            var link_replace = vor_link2.replace("type=\"CrossAsia Link\" ","");
-                            var link5 = bookIcon.link(link_replace);
-                            var provider_link = vor_link2.replace("type=\"CrossAsia Link\" ","").replace("http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                            var provider_link2 = bookIcon.link(provider_link);
-                        }
+                        /*var vor_link1 = pageIcon.link(data[0].response.docs[0].url[0]);
+                        var vor_link2 = pageIcon.link(data[0].response.docs[0].url[1]);*/
+
+
+
+                        var http="http://erf.sbb.spk-berlin.de/han/evplg/";
+                        var link5 = bookIcon.link(vor_link1);
+                        var provider_link2 = bookIcon.link(vor_link2);
+
 
                         if (doc.text!=null) {
                             if (cur_doc_highlighting_title=='') {
-                                data_xuxiu_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
+                                data_ccg += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
                             }
                             else {
-                                data_xuxiu_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
+                                data_ccg += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
                             }
                         }
+                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
+                            data_ccg += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" ><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].responsibility + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else if (data[0].response.docs[0].date!=null) {
+                            data_ccg += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" class="textlenght" ><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].responsibility + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else if (data[0].response.docs[0].responsibility!=null && data[0].response.docs[0].date!=null) {
+                            data_ccg += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" ><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else {
+                            data_ccg +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + ""+ '</b>,  p.'+doc.position+'</span></td></tr>');
+                        }
+                        //data_dl_shiliao =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
 
+                        data_ccg +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
 
-                        data_xuxiu_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].author+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
-
-                        data_xuxiu_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ data[0].response.docs[0]["series_title"]+'</span></td></tr>');
-                        //data_xuxiu_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
-                        data_xuxiu_pages +=   $("#docs").append('<tr>' +
+                        data_ccg +=   $("#docs").append('<tr>' +
                             '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link5 + '</span>&nbsp;&nbsp;&nbsp;' +
                             '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link2 + '</span></td>'+
                             '</tr>');
-                        pages +=data_xuxiu_pages;
+                        pages +=data_ccg;
                     }
 
-                    else if(data[0].response.docs[0].collection=="Local Gazetteer (Diaolong)") {
+                    else if (data[0].response.docs[0].collection==="Classical Works of Japan") {
                         $('a[href^="http://"]')
                             .attr('target','_blank');
 
@@ -440,37 +414,48 @@
                         var http="http://hunteq.com/ancientc/ancientkm?!!";
 
                         if (vor_link1.includes(http)) {
-                            var link_replace = vor_link1.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/zhongguodifangzhiyiji/hunteq.com/ancientc/ancientkm?!!");
+                            var link_replace = vor_link1.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!");
                             var link5 = bookIcon.link(link_replace);
-                            var provider_link = vor_link1.replace("","").replace("http://erf.sbb.spk-berlin.de/han/zhongguodifangzhiyiji/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
+                            var provider_link = vor_link1.replace("","").replace("http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
                             var provider_link2 = bookIcon.link(provider_link);
-                        } else {
-                            var link_replace = vor_link2.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/zhongguodifangzhiyiji/hunteq.com/ancientc/ancientkm?!!");
+                        } else  {
+                            var link_replace = vor_link2.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!");
                             var link5 = bookIcon.link(link_replace);
-                            var provider_link = vor_link2.replace("","").replace("http://erf.sbb.spk-berlin.de/han/zhongguodifangzhiyiji/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
+                            var provider_link = vor_link2.replace("","").replace("http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
                             var provider_link2 = bookIcon.link(provider_link);
                         }
 
                         if (doc.text!=null) {
                             if (cur_doc_highlighting_title=='') {
-                                data_dfz_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
+                                data_clasic_japan += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
                             }
                             else {
-                                data_dfz_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
+                                data_clasic_japan += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
                             }
                         }
-                        data_dfz_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].author+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
 
-                        data_dfz_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                        //data_dfz_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
-                        data_dfz_pages +=   $("#docs").append('<tr>' +
+                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
+                            data_clasic_japan += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else if (data[0].response.docs[0].date!=null) {
+                            data_clasic_japan += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else if (data[0].response.docs[0].author!=null && data[0].response.docs[0].date!=null) {
+                            data_clasic_japan += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else {
+                            data_clasic_japan +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + ""+ '</b>,  p.'+doc.position+'</span></td></tr>');
+                        }
+
+                        //data_clasic_japan =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
+
+                        data_clasic_japan +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_clasic_japan +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_clasic_japan +=   $("#docs").append('<tr>' +
                             '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link5 + '</span>&nbsp;&nbsp;&nbsp;' +
                             '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link2 + '</span></td>'+
                             '</tr>');
-                        pages +=data_dfz_pages;
+                        pages +=data_clasic_japan;
                     }
 
-                    else if(data[0].response.docs[0].collection=="CNKI_eBooks") {
+                    else if (data[0].response.docs[0].collection==="CNKI_eBooks") {
                         $('a[href^="http://"]')
                             .attr('target','_blank');
 
@@ -493,16 +478,16 @@
                         }
 
                         if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null && data[0].response.docs[0].alternative!=null && data[0].response.docs[0].responsibility!=null) {
-                            data_cnki_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ':  '+ data[0].response.docs[0].alternative+', '+ data[0].response.docs[0].responsibility+'(' +  data[0].response.docs[0].date+','+ data[0].response.docs[0].issued+ ')</b>'+',  p.'+doc.position+'</span></td></tr>');
+                            data_cnki_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + ':  '+ data[0].response.docs[0].alternative+', '+ data[0].response.docs[0].responsibility+'(' +  data[0].response.docs[0].date+','+ data[0].response.docs[0].issued+ ')</b>'+',  p.'+doc.position+'</span></td></tr>');
                         } else if (data[0].response.docs[0].date!=null) {
-                            data_cnki_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' +'</b>'+ data[0].response.docs[0].date+  ',  p.'+doc.position+'</span></td></tr>');
+                            data_cnki_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' +'</b>'+ data[0].response.docs[0].date+  ',  p.'+doc.position+'</span></td></tr>');
                         } else {
-                            data_cnki_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' +'</b>'+   ',  p.'+doc.position+'</span></td></tr>');
+                            data_cnki_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + '.  ' +'</b>'+   ',  p.'+doc.position+'</span></td></tr>');
                         }
-                        data_cnki_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">author: </span></td><td colspan="2"><span class="text2"> '+ data[0].response.docs[0].author+'</span></td></tr>');
-                        data_cnki_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">issued: </span></td><td colspan="2"><span class="text2"> '+ data[0].response.docs[0].issued+'</span></td></tr>');
-                        data_cnki_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                        //data_cnki_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_cnki_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">author: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ data[0].response.docs[0].author+'</span></td></tr>');
+                        data_cnki_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">issued: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ data[0].response.docs[0].issued+'</span></td></tr>');
+                        data_cnki_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_cnki_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>');
                         data_cnki_pages +=   $("#docs").append('<tr>' +
                             '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link1 + '</span>&nbsp;&nbsp;&nbsp;' +
                             '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + link2 + '</span></td>'+
@@ -510,7 +495,7 @@
                         pages +=data_cnki_pages;
                     }
 
-                    else if(data[0].response.docs[0].collection=="Daozang jiyao") {
+                    else if (data[0].response.docs[0].collection==="Daozang jiyao") {
                         $('a[href^="http://"]')
                             .attr('target','_blank');
 
@@ -542,19 +527,19 @@
                         }
 
                         if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
-                            data_dl_jiyao += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
+                            data_dl_jiyao += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
                         } else if (data[0].response.docs[0].date!=null) {
-                            data_dl_jiyao += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                            data_dl_jiyao += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
                         } else if (data[0].response.docs[0].author!=null && data[0].response.docs[0].date!=null) {
-                            data_dl_jiyao += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                            data_dl_jiyao += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
                         } else {
-                            data_dl_jiyao +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ""+ '</b>,  p.'+doc.position+'</span></td></tr>');
+                            data_dl_jiyao +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + ""+ '</b>,  p.'+doc.position+'</span></td></tr>');
                         }
 
-                        //data_dl_jiyao =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
+                        //data_dl_jiyao =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
 
-                        data_dl_jiyao +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                        //data_dl_jiyao +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_dl_jiyao +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_dl_jiyao +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>');
                         data_dl_jiyao +=   $("#docs").append('<tr>' +
                             '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link5 + '</span>&nbsp;&nbsp;&nbsp;' +
                             '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link2 + '</span></td>'+
@@ -562,7 +547,49 @@
                         pages +=data_dl_jiyao;
                     }
 
-                    else if(data[0].response.docs[0].collection=="Classical Works of Japan") {
+                    else if(data[0].response.docs[0].collection==="Fulltext search in print books") {
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+
+                        var vor_link1 = (data[0].response.docs[0].identifier[0]);
+                        var http="http://gso.gbv.de/DB=1.97/PPNSET?PPN=";
+
+                        if (vor_link1.includes(http)) {
+                            var link_replace = vor_link1.replace("http://gso.gbv.de/DB=1.97/PPNSET?PPN=","http://erf.sbb.spk-berlin.de/han/cibtc/gso.gbv.de/DB=1.97/PPNSET?PPN=");
+                            var link5 = bookIcon.link(link_replace);
+                            var provider_link = vor_link1.replace("","").replace("http://erf.sbb.spk-berlin.de/han/cibtc/gso.gbv.de/DB=1.97/PPNSET?PPN=","http://gso.gbv.de/DB=1.97/PPNSET?PPN=");
+                            var provider_link2 = bookIcon.link(provider_link);
+                        }
+
+                        if (doc.text!=null) {
+                            if (cur_doc_highlighting_title=='') {
+                                data_cibtc += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
+                            }
+                            else {
+                                data_cibtc += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
+                            }
+                        }
+                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
+                            data_cibtc += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else if (data[0].response.docs[0].date!=null) {
+                            data_cibtc += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else if (data[0].response.docs[0].author!=null && data[0].response.docs[0].date!=null) {
+                            data_cibtc += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                        } else {
+                            data_cibtc +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + ""+ '</b>,  p.'+doc.position+'</span></td></tr>');
+                        }
+                        //data_dl_shiliao =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
+
+                        data_cibtc +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_dl_shiliao +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_cibtc +=   $("#docs").append('<tr>' +
+                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link5 + '</span>&nbsp;&nbsp;&nbsp;' +
+                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link2 + '</span></td>'+
+                            '</tr>');
+                        pages +=data_cibtc;
+                    }
+
+                    else if (data[0].response.docs[0].collection==="Local Gazetteer (Diaolong)") {
                         $('a[href^="http://"]')
                             .attr('target','_blank');
 
@@ -572,48 +599,71 @@
                         var http="http://hunteq.com/ancientc/ancientkm?!!";
 
                         if (vor_link1.includes(http)) {
-                            var link_replace = vor_link1.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!");
+                            var link_replace = vor_link1.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/zhongguodifangzhiyiji/hunteq.com/ancientc/ancientkm?!!");
                             var link5 = bookIcon.link(link_replace);
-                            var provider_link = vor_link1.replace("","").replace("http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
+                            var provider_link = vor_link1.replace("","").replace("http://erf.sbb.spk-berlin.de/han/zhongguodifangzhiyiji/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
                             var provider_link2 = bookIcon.link(provider_link);
-                        } else  {
-                            var link_replace = vor_link2.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!");
+                        } else {
+                            var link_replace = vor_link2.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/zhongguodifangzhiyiji/hunteq.com/ancientc/ancientkm?!!");
                             var link5 = bookIcon.link(link_replace);
-                            var provider_link = vor_link2.replace("","").replace("http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
+                            var provider_link = vor_link2.replace("","").replace("http://erf.sbb.spk-berlin.de/han/zhongguodifangzhiyiji/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
                             var provider_link2 = bookIcon.link(provider_link);
                         }
 
                         if (doc.text!=null) {
                             if (cur_doc_highlighting_title=='') {
-                                data_clasic_japan += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
+                                data_dfz_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
                             }
                             else {
-                                data_clasic_japan += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
+                                data_dfz_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
+                            }
+                        }
+                        data_dfz_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].author+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
+
+                        data_dfz_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_dfz_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_dfz_pages +=   $("#docs").append('<tr>' +
+                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link5 + '</span>&nbsp;&nbsp;&nbsp;' +
+                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link2 + '</span></td>'+
+                            '</tr>');
+                        pages +=data_dfz_pages;
+                    }
+
+                    else if (data[0].response.docs[0].collection==="Local Gazetteer"){
+                        $('a[href^="http://"]')
+                            .attr('target','_blank');
+
+                        if (doc.text!=null) {
+                            if (cur_doc_highlighting_title=='') {
+                                data_loc_gaz_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text +"..."+'</span></th></tr>');
+                            }else {
+                                data_loc_gaz_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title+"..."+'</span></th></tr>');
                             }
                         }
 
                         if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
-                            data_clasic_japan += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
+                            data_loc_gaz_pages += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
                         } else if (data[0].response.docs[0].date!=null) {
-                            data_clasic_japan += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                            data_loc_gaz_pages += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
                         } else if (data[0].response.docs[0].author!=null && data[0].response.docs[0].date!=null) {
-                            data_clasic_japan += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                            data_loc_gaz_pages += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
                         } else {
-                            data_clasic_japan +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ""+ '</b>,  p.'+doc.position+'</span></td></tr>');
+                            data_loc_gaz_pages +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ,"+ '</b>,  p.'+doc.position+'</span></td></tr>');
                         }
 
-                        //data_clasic_japan =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
+                        data_loc_gaz_chapter +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_loc_gaz_chapter +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>');
 
-                        data_clasic_japan +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                        //data_clasic_japan +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
-                        data_clasic_japan +=   $("#docs").append('<tr>' +
-                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link5 + '</span>&nbsp;&nbsp;&nbsp;' +
-                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link2 + '</span></td>'+
+                        data_loc_gaz_chapter +=   $("#docs").append('<tr>' +
+                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link_locgaz + '</span>&nbsp;&nbsp;&nbsp;' +
+                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + link_locgaz2 + '</span></td>'+
                             '</tr>');
-                        pages +=data_clasic_japan;
+
+                        pages +=data_loc_gaz_pages;
+
                     }
 
-                    else if(data[0].response.docs[0].collection=="Qingdai shiliao") {
+                    else if (data[0].response.docs[0].collection==="Qingdai shiliao") {
                         $('a[href^="http://"]')
                             .attr('target','_blank');
 
@@ -649,18 +699,18 @@
                             }
                         }
                         if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
-                            data_dl_shiliao += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
+                            data_dl_shiliao += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
                         } else if (data[0].response.docs[0].date!=null) {
-                            data_dl_shiliao += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                            data_dl_shiliao += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
                         } else if (data[0].response.docs[0].author!=null && data[0].response.docs[0].date!=null) {
-                            data_dl_shiliao += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
+                            data_dl_shiliao += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
                         } else {
-                            data_dl_shiliao +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ""+ '</b>,  p.'+doc.position+'</span></td></tr>');
+                            data_dl_shiliao +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + ""+ '</b>,  p.'+doc.position+'</span></td></tr>');
                         }
-                        //data_dl_shiliao =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
+                        //data_dl_shiliao =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
 
-                        data_dl_shiliao +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                        //data_dl_shiliao +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_dl_shiliao +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                        //data_dl_shiliao +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>');
                         data_dl_shiliao +=   $("#docs").append('<tr>' +
                             '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link5 + '</span>&nbsp;&nbsp;&nbsp;' +
                             '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link2 + '</span></td>'+
@@ -668,87 +718,46 @@
                         pages +=data_dl_shiliao;
                     }
 
-                    else if(data[0].response.docs[0].collection=="China Comprehensive Gazetteers") {
+                    else if (data[0].response.docs[0].collection==="Xuxiu") {
                         $('a[href^="http://"]')
                             .attr('target','_blank');
 
                         var vor_link1 = (data[0].response.docs[0].identifier[0]);
                         var vor_link2 = (data[0].response.docs[0].identifier[1]);
 
-
-                        var http="http://erf.sbb.spk-berlin.de/han/evplg/";
-                        var link5 = bookIcon.link(vor_link2);
-                        var provider_link2 = bookIcon.link(vor_link1);
-
-
-                        if (doc.text!=null) {
-                            if (cur_doc_highlighting_title=='') {
-                                data_ccg += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
-                            }
-                            else {
-                                data_ccg += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
-                            }
-                        }
-                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
-                            data_ccg += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
-                        } else if (data[0].response.docs[0].date!=null) {
-                            data_ccg += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
-                        } else if (data[0].response.docs[0].author!=null && data[0].response.docs[0].date!=null) {
-                            data_ccg += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
-                        } else {
-                            data_ccg +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ""+ '</b>,  p.'+doc.position+'</span></td></tr>');
-                        }
-                        //data_dl_shiliao =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
-
-                        data_ccg +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                        //data_dl_shiliao +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
-                        data_ccg +=   $("#docs").append('<tr>' +
-                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link5 + '</span>&nbsp;&nbsp;&nbsp;' +
-                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link2 + '</span></td>'+
-                            '</tr>');
-                        pages +=data_ccg;
-                    }
-
-                    else if(data[0].response.docs[0].collection=="Fulltext search in print books") {
-                        $('a[href^="http://"]')
-                            .attr('target','_blank');
-
-                        var vor_link1 = (data[0].response.docs[0].identifier[0]);
-                        var http="http://gso.gbv.de/DB=1.97/PPNSET?PPN=";
+                        var http="type=\"CrossAsia Link\" http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!";
 
                         if (vor_link1.includes(http)) {
-                            var link_replace = vor_link1.replace("http://gso.gbv.de/DB=1.97/PPNSET?PPN=","http://erf.sbb.spk-berlin.de/han/cibtc/gso.gbv.de/DB=1.97/PPNSET?PPN=");
+                            var link_replace = vor_link1.replace("type=\"CrossAsia Link\" ","");
                             var link5 = bookIcon.link(link_replace);
-                            var provider_link = vor_link1.replace("","").replace("http://erf.sbb.spk-berlin.de/han/cibtc/gso.gbv.de/DB=1.97/PPNSET?PPN=","http://gso.gbv.de/DB=1.97/PPNSET?PPN=");
+                            var provider_link = vor_link1.replace("type=\"CrossAsia Link\" ","").replace("http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
+                            var provider_link2 = bookIcon.link(provider_link);
+                        } else {
+                            var link_replace = vor_link2.replace("type=\"CrossAsia Link\" ","");
+                            var link5 = bookIcon.link(link_replace);
+                            var provider_link = vor_link2.replace("type=\"CrossAsia Link\" ","").replace("http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
                             var provider_link2 = bookIcon.link(provider_link);
                         }
 
                         if (doc.text!=null) {
                             if (cur_doc_highlighting_title=='') {
-                                data_cibtc += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
+                                data_xuxiu_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
                             }
                             else {
-                                data_cibtc += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
+                                data_xuxiu_pages += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
                             }
                         }
-                        if (data[0].response.docs[0].date!=null && data[0].response.docs[0].issued!=null) {
-                            data_cibtc += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date +'/'+ data[0].response.docs[0].issued + '</b>,  p.' + doc.position + '</span></td></tr>');
-                        } else if (data[0].response.docs[0].date!=null) {
-                            data_cibtc += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].author + '.  ' + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
-                        } else if (data[0].response.docs[0].author!=null && data[0].response.docs[0].date!=null) {
-                            data_cibtc += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + " ," + data[0].response.docs[0].date  + '</b>,  p.' + doc.position + '</span></td></tr>');
-                        } else {
-                            data_cibtc +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ""+ '</b>,  p.'+doc.position+'</span></td></tr>');
-                        }
-                        //data_dl_shiliao =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
 
-                        data_cibtc +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                        //data_dl_shiliao +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
-                        data_cibtc +=   $("#docs").append('<tr>' +
+
+                        data_xuxiu_pages =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].author+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
+
+                        data_xuxiu_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ data[0].response.docs[0]["series_title"]+'</span></td></tr>');
+                        //data_xuxiu_pages +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>');
+                        data_xuxiu_pages +=   $("#docs").append('<tr>' +
                             '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link5 + '</span>&nbsp;&nbsp;&nbsp;' +
                             '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link2 + '</span></td>'+
                             '</tr>');
-                        pages +=data_cibtc;
+                        pages +=data_xuxiu_pages;
                     }
 
                     else {
@@ -772,28 +781,28 @@
                     } else {
                         snippet_rmrb += ('<table class="books"><tr><th colspan="3"><span class="texttitle">' + "..." + cur_doc_highlighting_title + "..." + ' </span></th></tr>');
                     }
-                    snippet_rmrb += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' + ",  p." + doc.page + '</span></td></tr>';
+                    snippet_rmrb += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' + ",  p." + doc.page + '</span></td></tr>';
 
                     /*if (cur_doc_highlighting_title=='') {
 
                     } else {
-                        snippet_rmrb += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + cur_doc_highlighting_title +'</b>' + ",  p."+doc.page+'</span></td></tr>';
+                        snippet_rmrb += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + cur_doc_highlighting_title +'</b>' + ",  p."+doc.page+'</span></td></tr>';
                     }*/
 
                     if (doc.author != null) {
-                        snippet_rmrb += '<tr><td colspan="1"><span class="text">' + 'author: </span></td><td colspan="2"><span class="text2">' + doc.author;
+                        snippet_rmrb += '<tr><td colspan="1"><span class="text">' + 'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.author;
                         +'</span></td></tr>'
                     }
 
-                    snippet_rmrb += '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + rightDate + '</span></td></tr>';
+                    snippet_rmrb += '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + rightDate + '</span></td></tr>';
 
                     if (doc.description != null) {
-                        snippet_rmrb += '<tr><td colspan="1"><span class="text">' + 'note: </span></td><td colspan="2"><span class="text2">' + doc.description + '</span></td></tr>';
+                        snippet_rmrb += '<tr><td colspan="1"><span class="text">' + 'note: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.description + '</span></td></tr>';
                     }
 
 
-                    snippet_rmrb += '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> ' + doc.collection + '</span></td></tr>';
-                    //snippet_rmrb += '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">' + doc.score + '</span></td></tr>';
+                    snippet_rmrb += '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> ' + doc.collection + '</span></td></tr>';
+                    //snippet_rmrb += '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.score + '</span></td></tr>';
 
                     snippet_rmrb += '<tr>' +
                         '<td width="145"><span class="text" id="link">' + 'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link2 + '</span>&nbsp;&nbsp;&nbsp;' +
@@ -814,38 +823,38 @@
                         snippet_gale += ('<table class="books"><tr><th colspan="3"><span class="texttitle">' + "..." + cur_doc_highlighting_title + "..." + ' </span></th></tr>');
                     }
                     if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null && doc["publication-volume"]!=null && doc["volume-number"]!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+" ,vol."+doc["publication-volume"]+", no."+doc["volume-number"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+" ,vol."+doc["publication-volume"]+", no."+doc["volume-number"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
                     } else if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null && doc["publication-volume"]!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+" ,vol."+doc["publication-volume"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+" ,vol."+doc["publication-volume"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
                     } else if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null && doc["volume-number"]!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+", no."+doc["volume-number"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+", no."+doc["volume-number"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
                     } else if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+ '</span></td></tr>';
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+ '</span></td></tr>';
                     }else if (doc.title!=null && doc.author!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+ '</span></td></tr>';
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+ '</span></td></tr>';
                     } else if (doc.title!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2"><b>' + doc.title +  '</span></td></tr>';
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title +  '</span></td></tr>';
                     }else if (doc.author!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2">' +doc.author+'.'+")"+ '</span></td></tr>';
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2">' +doc.author+'.'+")"+ '</span></td></tr>';
                     } else {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2"><span class="text2">In:'+doc["journal-title"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
+                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2">In:'+doc["journal-title"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
                     }
 
                     if (doc.date != null) {
-                        snippet_gale += '<tr><td colspan="1"><span class="text">' + 'date: </span></td><td colspan="2"><span class="text2">' + doc.date;
+                        snippet_gale += '<tr><td colspan="1"><span class="text">' + 'date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date;
                         +'</span></td></tr>'
                     }
 
                     if (doc["format"] != null) {
-                        snippet_gale += '<tr><td colspan="1"><span class="text">' + 'format: </span></td><td colspan="2"><span class="text2">' + doc["format"] + '</span></td></tr>';
+                        snippet_gale += '<tr><td colspan="1"><span class="text">' + 'format: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc["format"] + '</span></td></tr>';
                     }
 
                     if (doc["description"] != null) {
-                        snippet_gale += '<tr><td colspan="1"><span class="text">' + 'note: </span></td><td colspan="2"><span class="text2">' + doc["description"] + '</span></td></tr>';
+                        snippet_gale += '<tr><td colspan="1"><span class="text">' + 'note: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc["description"] + '</span></td></tr>';
                     }
 
-                    snippet_gale += '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> ' + doc.collection + '</span></td></tr>';
-                    //snippet_gale += '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">' + doc.score + '</span></td></tr>';
+                    snippet_gale += '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> ' + doc.collection + '</span></td></tr>';
+                    //snippet_gale += '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.score + '</span></td></tr>';
 
                     snippet_gale += '<tr>' +
                         '<td width="145"><span class="text" id="link">' + 'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link2 + '</span>&nbsp;&nbsp;&nbsp;' +
@@ -861,7 +870,7 @@
             else if (doc.hasModel=='Book') {
                 if (doc.responsibility!==undefined && doc.author!=null && doc.date!=null) {
                     if  (cur_doc_highlighting_title=='') {
-                        var output = '<table class="books"><tr><th colspan="3"><span class="texttitle">' + doc.title + ", " +  doc.responsibility + ", "+ doc.author+ ", "+ doc.date+'</span></th></tr>';
+                        var output = '<table class="books"><tr><th colspan="3"><span class="texttitle">' + doc.title + ", " +  doc.responsibility + ", "+ /*doc.author+ ", "+ */ doc.date+'</span></th></tr>';
                     } else {
                         //var output = '<table class="books"><th colspan="3"><span class="texttitle">' + cur_doc_highlighting_title + ", " + doc.responsibility +", "+  doc.author+ ", " +doc.date +'</span></th></tr>';
                     }
@@ -910,28 +919,28 @@
                 if (doc.collection=="Local Gazetteer"){
 
 
-                    if (doc.author!=null) {snippet_loc_gaz +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.author; + '</span></td></tr>'}
-                    if (doc.publisher!=null) {snippet_loc_gaz +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
+                    if (doc.author!=null) {snippet_loc_gaz +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.author; + '</span></td></tr>'}
+                    if (doc.publisher!=null) {snippet_loc_gaz +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
                     if (doc.publication_name!=null) {snippet_loc_gaz +=  ','+ doc.publication_name+'</td></tr>';}
-                    if (doc.edition!=null) {snippet_loc_gaz +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
+                    if (doc.edition!=null) {snippet_loc_gaz +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.edition; + '</span></td></tr>'}
 
 
-                    if (doc.date!=null && doc.issued!=null) {snippet_loc_gaz +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'/'+doc.issued+'</span></td></tr>';}
-                    if (doc.date==null) {snippet_loc_gaz +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
-                    if (doc.issued==null) {snippet_loc_gaz +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'</span></td></tr>';}
+                    if (doc.date!=null && doc.issued!=null) {snippet_loc_gaz +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date+'/'+doc.issued+'</span></td></tr>';}
+                    if (doc.date==null) {snippet_loc_gaz +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.issued+'</span></td></tr>';}
+                    if (doc.issued==null) {snippet_loc_gaz +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date+'</span></td></tr>';}
 
 
-                    if (doc.series_title!=null) {snippet_loc_gaz +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.series_title+'</span></td></tr>';
+                    if (doc.series_title!=null) {snippet_loc_gaz +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.series_title+'</span></td></tr>';
                         if (doc.source!=null) {snippet_loc_gaz +=  '/' + doc.source+'</span></td></tr>';}
                     }
 
                     if (doc.series_title==null) {
-                        if (doc.source!=null) {snippet_loc_gaz += '<tr><td  colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.source+'</span></td></tr>';}
+                        if (doc.source!=null) {snippet_loc_gaz += '<tr><td  colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.source+'</span></td></tr>';}
                     }
 
 
-                    snippet_loc_gaz +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
-                    //snippet_loc_gaz +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+                    snippet_loc_gaz +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_loc_gaz +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     snippet_loc_gaz +=  '<tr>' +
                         '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link_locgaz + '</span>&nbsp;&nbsp;&nbsp;' +
@@ -943,22 +952,22 @@
 
                 else if (doc.collection=="Xuxiu") {
 
-                    if (doc.creator!=null) {snippet_xuxiu +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.creator; + '</span></td></tr>'}
+                    if (doc.creator!=null) {snippet_xuxiu +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.creator; + '</span></td></tr>'}
 
-                    if (doc.issued!=null) {snippet_xuxiu +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
+                    if (doc.issued!=null) {snippet_xuxiu +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.issued+'</span></td></tr>';}
 
-                    if (doc.edition!=null) {snippet_xuxiu +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
-                    if (doc.series_title!=null) {snippet_xuxiu +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
-                    if (doc.publisher!=null) {snippet_xuxiu +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
+                    if (doc.edition!=null) {snippet_xuxiu +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.edition; + '</span></td></tr>'}
+                    if (doc.series_title!=null) {snippet_xuxiu +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
+                    if (doc.publisher!=null) {snippet_xuxiu +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
 
                     if (doc.note!=null) {
                         var note = doc.note.toString();
                         var note2 = note.replace("type=\"statement of responsibility\"","").replace("[","").replace("]","");
-                        snippet_xuxiu +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2"><span class="text2">' + note2; + '</span></td></tr>'
+                        snippet_xuxiu +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2" class="textlenght"><span class="text2">' + note2; + '</span></td></tr>'
                     }
 
-                    snippet_xuxiu +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc["series_title"]+'</span></td></tr>';
-                    //snippet_xuxiu +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+                    snippet_xuxiu +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc["series_title"]+'</span></td></tr>';
+                    //snippet_xuxiu +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     if (doc.identifier!=null) {
                         $('a[href^="http://"]')
@@ -992,19 +1001,19 @@
 
                 else if (doc.collection=="Local Gazetteer (Diaolong)") {
 
-                    if (doc.creator!=null) {snippet_dfz +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.creator; + '</span></td></tr>'}
-                    if (doc.issued!=null) {snippet_dfz +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
-                    if (doc.edition!=null) {snippet_dfz +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
-                    if (doc.series_title!=null) {snippet_dfz +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
-                    if (doc.publisher!=null) {snippet_dfz +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
+                    if (doc.creator!=null) {snippet_dfz +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.creator; + '</span></td></tr>'}
+                    if (doc.issued!=null) {snippet_dfz +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.issued+'</span></td></tr>';}
+                    if (doc.edition!=null) {snippet_dfz +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.edition; + '</span></td></tr>'}
+                    if (doc.series_title!=null) {snippet_dfz +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
+                    if (doc.publisher!=null) {snippet_dfz +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
                     if (doc.note!=null) {
                         var note = doc.note.toString();
                         var note2 = note.replace("type=\"statement of responsibility\"","").replace("[","").replace("]","");
-                        snippet_dfz +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2"><span class="text2">' + note2; + '</span></td></tr>'
+                        snippet_dfz +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2" class="textlenght"><span class="text2">' + note2; + '</span></td></tr>'
                     }
 
-                    snippet_dfz +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
-                    //snippet_dfz +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+                    snippet_dfz +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_dfz +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     if (doc.identifier!=null) {
                         $('a[href^="http://"]')
@@ -1034,18 +1043,18 @@
                     output +=  snippet_dfz + '</table><hr class="line"></div>';
                 }
 
-                else if (doc.collection=="Adam Matthew FO China") {
+                else if (doc.collection=="Adam Matthew - Foreign Office Files China & Japan") {
 
-                    if (doc.date!=null && doc.issued!=null) {snippet_ad_me +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'/'+doc.issued+'</span></td></tr>';}
-                    if (doc.date==null) {snippet_ad_me +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
-                    if (doc.issued==null) {snippet_ad_me +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'</span></td></tr>';}
+                    if (doc.date!=null && doc.issued!=null) {snippet_ad_me +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date+'/'+doc.issued+'</span></td></tr>';}
+                    if (doc.date==null) {snippet_ad_me +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.issued+'</span></td></tr>';}
+                    if (doc.issued==null) {snippet_ad_me +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date+'</span></td></tr>';}
 
-                    if (doc.edition!=null) {snippet_ad_me +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
-                    if (doc.series_title!=null) {snippet_ad_me +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
-                    if (doc.publisher!=null) {snippet_ad_me +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
+                    if (doc.edition!=null) {snippet_ad_me +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.edition; + '</span></td></tr>'}
+                    if (doc.series_title!=null) {snippet_ad_me +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
+                    if (doc.publisher!=null) {snippet_ad_me +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
 
-                    snippet_ad_me +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
-                    //snippet_ad_me +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+                    snippet_ad_me +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_ad_me +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     if (doc.identifier!=null) {
                         var link = bookIcon.link(doc.identifier).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Details/","http://erf.sbb.spk-berlin.de/han/OfficeFilesChina/www.archivesdirect.amdigital.co.uk/Documents/Details/");
@@ -1060,18 +1069,19 @@
                     output +=  snippet_ad_me + '</table><hr class="line"></div>';
                 }
 
+                /*
                 else if (doc.collection=="Adam Matthew FO Japan") {
 
-                    if (doc.date!=null && doc.issued!=null) {snippet_japan +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'/'+doc.issued+'</span></td></tr>';}
-                    if (doc.date==null) {snippet_japan +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
-                    if (doc.issued==null) {snippet_japan +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'</span></td></tr>';}
+                    if (doc.date!=null && doc.issued!=null) {snippet_japan +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date+'/'+doc.issued+'</span></td></tr>';}
+                    if (doc.date==null) {snippet_japan +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.issued+'</span></td></tr>';}
+                    if (doc.issued==null) {snippet_japan +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date+'</span></td></tr>';}
 
-                    if (doc.edition!=null) {snippet_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
-                    if (doc.series_title!=null) {snippet_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
-                    if (doc.publisher!=null) {snippet_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
+                    if (doc.edition!=null) {snippet_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.edition; + '</span></td></tr>'}
+                    if (doc.series_title!=null) {snippet_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
+                    if (doc.publisher!=null) {snippet_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
 
-                    snippet_japan +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
-                    //snippet_japan +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+                    snippet_japan +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_japan +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     if (doc.identifier!=null) {
 
@@ -1086,20 +1096,21 @@
                     }
                     output +=  snippet_japan + '</table><hr class="line"></div>';
                 }
+                */
 
                 else if (doc.collection=="Adam Matthew - China America Pacific") {
 
-                    if (doc.publication_name!=null) {snippet_pacific +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.publication_name; + '</span></td></tr>'}
+                    if (doc.publication_name!=null) {snippet_pacific +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.publication_name; + '</span></td></tr>'}
 
-                    if (doc.date!=null && doc.issued!=null) {snippet_pacific +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'/'+doc.issued+'</span></td></tr>';}
-                    if (doc.date==null) {snippet_pacific +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
-                    if (doc.issued==null) {snippet_pacific +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'</span></td></tr>';}
-                    if (doc.edition!=null) {snippet_pacific +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
-                    if (doc.publication_place!=null) {snippet_pacific +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2"><span class="text2">' + doc.publication_place; + '</span></td></tr>'}
-                    if (doc.description!=null) {snippet_pacific +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">note: </td><td colspan="2"><span class="text2">' + doc.description + '</span></td></tr>';}
+                    if (doc.date!=null && doc.issued!=null) {snippet_pacific +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date+'/'+doc.issued+'</span></td></tr>';}
+                    if (doc.date==null) {snippet_pacific +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.issued+'</span></td></tr>';}
+                    if (doc.issued==null) {snippet_pacific +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date+'</span></td></tr>';}
+                    if (doc.edition!=null) {snippet_pacific +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.edition; + '</span></td></tr>'}
+                    if (doc.publication_place!=null) {snippet_pacific +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.publication_place; + '</span></td></tr>'}
+                    if (doc.description!=null) {snippet_pacific +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">note: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.description + '</span></td></tr>';}
 
-                    snippet_pacific +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
-                    //snippet_pacific +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+                    snippet_pacific +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_pacific +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     if (doc.identifier!=null) {
                         var link = bookIcon.link(doc.identifier).replace("http://www.cap.amdigital.co.uk/Documents/Details/","http://erf.sbb.spk-berlin.de/han/ChinaAmericaPacific/www.cap.amdigital.co.uk/Documents/Details/");
@@ -1116,16 +1127,16 @@
 
                 else if (doc.collection=="Adam Matthew - China Trade & Politics") {
 
-                    if (doc.author!=null) {snippet_trade +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.author; + '</span></td></tr>'}
+                    if (doc.author!=null) {snippet_trade +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.author; + '</span></td></tr>'}
 
-                    if (doc.date!=null && doc.issued!=null) {snippet_trade +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'/'+doc.issued+'</span></td></tr>';}
-                    if (doc.date==null) {snippet_trade +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
-                    if (doc.issued==null) {snippet_trade +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'</span></td></tr>';}
+                    if (doc.date!=null && doc.issued!=null) {snippet_trade +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date+'/'+doc.issued+'</span></td></tr>';}
+                    if (doc.date==null) {snippet_trade +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.issued+'</span></td></tr>';}
+                    if (doc.issued==null) {snippet_trade +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date+'</span></td></tr>';}
 
-                    if (doc.description!=null) {snippet_trade +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">note:</td><td colspan="2"><span class="text2">' + doc.description + '</span></td></tr>';}
-                    if (doc.medium!=null) {snippet_trade +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">medium:</td><td colspan="2"><span class="text2">' + doc.medium + '</span></td></tr>';}
-                    snippet_trade +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
-                    //snippet_trade +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+                    if (doc.description!=null) {snippet_trade +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">note:</td><td colspan="2" class="textlenght"><span class="text2">' + doc.description + '</span></td></tr>';}
+                    if (doc.medium!=null) {snippet_trade +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">medium:</td><td colspan="2" class="textlenght"><span class="text2">' + doc.medium + '</span></td></tr>';}
+                    snippet_trade +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_trade +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     if (doc.identifier!=null) {
                         var link = bookIcon.link(doc.identifier).replace("http://www.china.amdigital.co.uk/Documents/Details/","http://erf.sbb.spk-berlin.de:80/han/ChinaTradePoliticsCulture1793-1980/www.china.amdigital.co.uk/Documents/Details/");
@@ -1142,14 +1153,14 @@
 
                 else if (doc.collection=="Adam Matthew - Meiji Japan") {
 
-                    if (doc.date!=null) {snippet_meiji +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'</span></td></tr>';}
+                    if (doc.date!=null) {snippet_meiji +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date+'</span></td></tr>';}
 
-                    if (doc.edition!=null) {snippet_meiji +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
-                    if (doc.medium!=null) {snippet_meiji +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">medium: </td><td colspan="2"><span class="text2">' + doc.medium; + '</span></td></tr>'}
+                    if (doc.edition!=null) {snippet_meiji +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.edition; + '</span></td></tr>'}
+                    if (doc.medium!=null) {snippet_meiji +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">medium: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.medium; + '</span></td></tr>'}
 
 
-                    snippet_meiji +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
-                    //snippet_meiji +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+                    snippet_meiji +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_meiji +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     if (doc.identifier!=null) {
                         var link = bookIcon.link(doc.identifier).replace("http://www.aap.amdigital.co.uk/Contents/document-details.aspx","http://erf.sbb.spk-berlin.de:80/han/AmericaAsiaandthePacific/www.aap.amdigital.co.uk/Contents/document-details.aspx");
@@ -1166,15 +1177,15 @@
 
                 else if (doc.collection=="CNKI_eBooks") {
 
-                    if (doc.author!=null) {snippet_cnki +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.author; + '</span></td></tr>'}
-                    if (doc.alternative!=null) {snippet_cnki +=  '<tr><td colspan="1"><span class="text">'+'alternative: </span></td><td colspan="2"><span class="text2">' + doc.alternative; + '</span></td></tr>'}
-                    if (doc.date!=null) {snippet_cnki +=  '<tr><td colspan="1"><span class="text">'+'date: </span></td><td colspan="2"><span class="text2">' + doc.date; + '</span></td></tr>'}
-                    if (doc.series_title!=null) {snippet_cnki +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
-                    if (doc.publisher!=null) {snippet_cnki +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
-                    if (doc.alternative!=null) {snippet_cnki +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">alternative: </td><td colspan="2"><span class="text2">' + doc.alternative; + '</span></td></tr>'}
-                    if (doc.responsibility!=null) {snippet_cnki +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">responsibility: </td><td colspan="2"><span class="text2">' + doc.responsibility; + '</span></td></tr>'}
-                    snippet_cnki +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
-                    //snippet_cnki +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+                    if (doc.author!=null) {snippet_cnki +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.author; + '</span></td></tr>'}
+                    if (doc.alternative!=null) {snippet_cnki +=  '<tr><td colspan="1"><span class="text">'+'alternative: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.alternative; + '</span></td></tr>'}
+                    if (doc.date!=null) {snippet_cnki +=  '<tr><td colspan="1"><span class="text">'+'date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date; + '</span></td></tr>'}
+                    if (doc.series_title!=null) {snippet_cnki +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
+                    if (doc.publisher!=null) {snippet_cnki +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
+                    if (doc.alternative!=null) {snippet_cnki +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">alternative: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.alternative; + '</span></td></tr>'}
+                    if (doc.responsibility!=null) {snippet_cnki +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">responsibility: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.responsibility; + '</span></td></tr>'}
+                    snippet_cnki +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_cnki +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     if (doc.identifier!=null) {
                         //var link = str2.link(doc.identifier).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Details/","http://www.archivesdirect.amdigital.co.uk.officefileschina.erf.sbb.spk-berlin.de/Documents/Details/");
@@ -1198,14 +1209,14 @@
                 }
 
                 else if (doc.collection=="Airiti") {
-                    if (doc.author!=null) {snippet_airiti +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.author; + '</span></td></tr>'}
-                    if (doc.date!=null) {snippet_airiti +=  '<tr><td colspan="1"><span class="text">' +'date: </span></td><td colspan="2"><span class="text2">' + doc.date + '</span></td></tr>';}
-                    if (doc.publisher!=null) {snippet_airiti +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2"><span class="text2">' + doc.publisher+', '+doc.publication_place + '</span></td></tr>';}
-                    if (doc.series_title!=null) {snippet_airiti +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.series_title + '</span></td></tr>';}
-                    if (doc.description!=null) {snippet_airiti +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">note: </td><td colspan="2"><span class="text2">' + doc.description + '</span></td></tr>';}
+                    if (doc.author!=null) {snippet_airiti +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.author; + '</span></td></tr>'}
+                    if (doc.date!=null) {snippet_airiti +=  '<tr><td colspan="1"><span class="text">' +'date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date + '</span></td></tr>';}
+                    if (doc.publisher!=null) {snippet_airiti +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.publisher+', '+doc.publication_place + '</span></td></tr>';}
+                    if (doc.series_title!=null) {snippet_airiti +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.series_title + '</span></td></tr>';}
+                    if (doc.description!=null) {snippet_airiti +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">note: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.description + '</span></td></tr>';}
 
-                    snippet_airiti +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
-                    //snippet_airiti +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+                    snippet_airiti +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_airiti +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     if (doc.identifier!=null) {
                         var link = bookIcon.link(doc.identifier).replace("http://www.airitibooks.com/detail.aspx?","http://erf.sbb.spk-berlin.de/han/airiti/www.airitibooks.com/Detail/Detail?");
@@ -1222,19 +1233,19 @@
 
                 else if (doc.collection=="Daozang jiyao"){
 
-                    if (doc.creator!=null) {snippet_jiyao +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.creator; + '</span></td></tr>'}
-                    if (doc.issued!=null) {snippet_jiyao +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
-                    if (doc.edition!=null) {snippet_jiyao +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
-                    if (doc.series_title!=null) {snippet_jiyao +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
-                    if (doc.publisher!=null) {snippet_jiyao +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
+                    if (doc.creator!=null) {snippet_jiyao +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.creator; + '</span></td></tr>'}
+                    if (doc.issued!=null) {snippet_jiyao +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.issued+'</span></td></tr>';}
+                    if (doc.edition!=null) {snippet_jiyao +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.edition; + '</span></td></tr>'}
+                    if (doc.series_title!=null) {snippet_jiyao +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
+                    if (doc.publisher!=null) {snippet_jiyao +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
                     if (doc.note!=null) {
                         var note = doc.note.toString();
                         var note2 = note.replace("type=\"statement of responsibility\"","").replace("[","").replace("]","");
-                        snippet_jiyao +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2"><span class="text2">' + note2; + '</span></td></tr>'
+                        snippet_jiyao +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2" class="textlenght"><span class="text2">' + note2; + '</span></td></tr>'
                     }
 
-                    snippet_jiyao +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
-                    //snippet_jiyao +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+                    snippet_jiyao +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_jiyao +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     if (doc.identifier!=null) {
                         $('a[href^="http://"]')
@@ -1270,19 +1281,19 @@
 
                 else if (doc.collection=="Qingdai shiliao"){
 
-                    if (doc.creator!=null) {snippet_shiliao +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.creator; + '</span></td></tr>'}
-                    if (doc.issued!=null) {snippet_shiliao +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
-                    if (doc.edition!=null) {snippet_shiliao +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
-                    if (doc.series_title!=null) {snippet_shiliao +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
-                    if (doc.publisher!=null) {snippet_shiliao +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
+                    if (doc.creator!=null) {snippet_shiliao +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.creator; + '</span></td></tr>'}
+                    if (doc.issued!=null) {snippet_shiliao +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.issued+'</span></td></tr>';}
+                    if (doc.edition!=null) {snippet_shiliao +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.edition; + '</span></td></tr>'}
+                    if (doc.series_title!=null) {snippet_shiliao +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
+                    if (doc.publisher!=null) {snippet_shiliao +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
                     if (doc.note!=null) {
                         var note = doc.note.toString();
                         var note2 = note.replace("type=\"statement of responsibility\"","").replace("[","").replace("]","");
-                        snippet_shiliao +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2"><span class="text2">' + note2; + '</span></td></tr>'
+                        snippet_shiliao +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2" class="textlenght"><span class="text2">' + note2; + '</span></td></tr>'
                     }
 
-                    snippet_shiliao +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
-                    //snippet_shiliao +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+                    snippet_shiliao +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_shiliao +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     if (doc.identifier!=null) {
                         $('a[href^="http://"]')
@@ -1323,19 +1334,19 @@
 
                 else if (doc.collection=="Classical Works of Japan"){
 
-                    if (doc.creator!=null) {snippet_clasic_japan +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.creator; + '</span></td></tr>'}
-                    if (doc.issued!=null) {snippet_clasic_japan +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.issued+'</span></td></tr>';}
-                    if (doc.edition!=null) {snippet_clasic_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
-                    if (doc.series_title!=null) {snippet_clasic_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
-                    if (doc.publisher!=null) {snippet_clasic_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
+                    if (doc.creator!=null) {snippet_clasic_japan +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.creator; + '</span></td></tr>'}
+                    if (doc.issued!=null) {snippet_clasic_japan +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.issued+'</span></td></tr>';}
+                    if (doc.edition!=null) {snippet_clasic_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.edition; + '</span></td></tr>'}
+                    if (doc.series_title!=null) {snippet_clasic_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">series: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.series_title; + '</span></td></tr>'}
+                    if (doc.publisher!=null) {snippet_clasic_japan +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">publisher: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.publisher; + '</span></td></tr>'}
                     if (doc.note!=null) {
                         var note = doc.note.toString();
                         var note2 = note.replace("type=\"statement of responsibility\"","").replace("[","").replace("]","");
-                        snippet_clasic_japan +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2"><span class="text2">' + note2; + '</span></td></tr>'
+                        snippet_clasic_japan +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2" class="textlenght"><span class="text2">' + note2; + '</span></td></tr>'
                     }
 
-                    snippet_clasic_japan +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
-                    //snippet_clasic_japan +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+                    snippet_clasic_japan +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_clasic_japan +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     if (doc.identifier!=null) {
                         $('a[href^="http://"]')
@@ -1366,34 +1377,38 @@
                 }
 
                 else if (doc.collection=="China Comprehensive Gazetteers"){
+                        $('a[href^="http://"]')
+                        .attr('target','_blank');
 
-                    if (doc.author!=null) {snippet_ccg +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.author; + '</span></td></tr>'}
-                    if (doc.date!=null) {snippet_ccg +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2"><span class="text2">' + doc.date+'</span></td></tr>';}
-                    if (doc.edition!=null) {snippet_ccg +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2"><span class="text2">' + doc.edition; + '</span></td></tr>'}
-                    if (doc.subject!=null) {snippet_ccg +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">subject: </td><td colspan="2"><span class="text2">' + doc.subject; + '</span></td></tr>'}
-                    if (doc.temporal!=null) {snippet_ccg +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">temporal: </td><td colspan="2"><span class="text2">' + doc.temporal; + '</span></td></tr>'}
+                        $('a[href^="https://"]')
+                        .attr('target','_blank');
+
+                    if (doc.author!=null) {snippet_ccg +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.author; + '</span></td></tr>'}
+                    if (doc.date!=null) {snippet_ccg +=  '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date+'</span></td></tr>';}
+                    if (doc.edition!=null) {snippet_ccg +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.edition; + '</span></td></tr>'}
+                    /*if (doc.subject!=null) {snippet_ccg +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">subject: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.subject; + '</span></td></tr>'}
+                    if (doc.temporal!=null) {snippet_ccg +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">temporal: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.temporal; + '</span></td></tr>'}*/
                     if (doc.note!=null) {
                         var note = doc.note.toString();
                         var note2 = note.replace("type=\"statement of responsibility\"","").replace("[","").replace("]","");
-                        snippet_ccg +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2"><span class="text2">' + note2; + '</span></td></tr>'
+                        snippet_ccg +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2" class="textlenght"><span class="text2">' + note2; + '</span></td></tr>'
                     }
 
-                    snippet_ccg +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
-                    //snippet_clasic_japan +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>';
+                    snippet_ccg +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    //snippet_clasic_japan +=   '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>';
 
                     if (doc.identifier!=null) {
-                        $('a[href^="http://"]')
-                            .attr('target','_blank');
-                        var vor_link1 = doc.identifier[0];
-                        var vor_link2 = doc.identifier[1];
+
+                        var vor_link1 = doc.url[0];
+                        var vor_link2 = doc.url[1];
 
                         var http="http://erf.sbb.spk-berlin.de/han/evplg/";
                         var provider_link = bookIcon.link(vor_link1);
                         var provider_link2 = bookIcon.link(vor_link2);
-                            snippet_ccg +=  '<tr>' +
-                                '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + provider_link2 + '</span>&nbsp;&nbsp;&nbsp;' +
-                                '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link + '</span></td>'+
-                                '</tr>';
+                        snippet_ccg +=  '<tr>' +
+                            '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + provider_link2 + '</span>&nbsp;&nbsp;&nbsp;' +
+                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link + '</span></td>'+
+                            '</tr>';
 
 
                     }
@@ -1402,15 +1417,15 @@
 
                 else if (doc.collection=="Fulltext search in print books"){
 
-                    if (doc.creator!=null) {snippet_cibtc +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2"><span class="text2">' + doc.creator +', '+ doc.extent+'pp.' +'</span></td></tr>'}
+                    if (doc.creator!=null) {snippet_cibtc +=  '<tr><td colspan="1"><span class="text">'+'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.creator +', '+ doc.extent+'pp.' +'</span></td></tr>'}
 
                     if (doc.note!=null) {
                         var note = doc.note.toString();
                         var note2 = note.replace("type=\"statement of responsibility\"","").replace("[","").replace("]","");
-                        snippet_cibtc +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2"><span class="text2">' + note2; + '</span></td></tr>'
+                        snippet_cibtc +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2" class="textlenght"><span class="text2">' + note2; + '</span></td></tr>'
                     }
 
-                    snippet_cibtc +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>';
+                    snippet_cibtc +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
 
                     if (doc.identifier!=null) {
                         $('a[href^="http://"]')
@@ -1441,7 +1456,7 @@
                     //data_loc_gaz_chapter += $("#docs").append('<hr class="line">');
                     data_loc_gaz_chapter += $("#docs").append("<tr><th colspan='3'><hr class='line3'><span class='texttitle'>"+doc.title+"</span></th></tr>");
                     data_loc_gaz_chapter += $("#docs").append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' +
-                        '<td colspan="2"><span class="text2">' + data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date + ', '+" " + data[0].response.docs[0].author + ', ' + doc.pageStart + '-' + doc.pageEnd + ' p. </span></td></tr>'
+                        '<td colspan="2" class="textlenght"><span class="text2">' + data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date + ', '+" " + data[0].response.docs[0].author + ', ' + doc.pageStart + '-' + doc.pageEnd + ' p. </span></td></tr>'
                     );
 
                     /*if (cur_doc_highlighting_title=='') {
@@ -1456,12 +1471,12 @@
 
                     } else {
                         data_loc_gaz_chapter += $("#docs").append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' +
-                            '<td colspan="2"><span class="text2">' + cur_doc_highlighting_title + '.  ' + data[0].response.docs[0].date + ', ' + doc.pageStart + '-' + doc.pageEnd + ' p. </span></td></tr>'
+                            '<td colspan="2" class="textlenght"><span class="text2">' + cur_doc_highlighting_title + '.  ' + data[0].response.docs[0].date + ', ' + doc.pageStart + '-' + doc.pageEnd + ' p. </span></td></tr>'
                         );
                     }*/
 
-                    data_loc_gaz_chapter +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                    //data_loc_gaz_chapter +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2"><span class="text2">'+doc.score +'</span></td></tr>');
+                    data_loc_gaz_chapter +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                    //data_loc_gaz_chapter +=   $("#docs").append('<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">'+doc.score +'</span></td></tr>');
                     data_loc_gaz_chapter +=   $("#docs").append('<tr>' +
                         '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link_locgaz + '</span>&nbsp;&nbsp;&nbsp;' +
                         '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + link_locgaz2 + '</span></td>'+

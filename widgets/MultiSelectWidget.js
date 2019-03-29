@@ -14,7 +14,7 @@ Manager.addWidget(new AjaxSolr.MultiSelectWidget({
                                 sort_type: 'count' //possible values: 'range', 'lex', 'count'
                                }));
 
-Notes:
+                               Notes:
 
 This widget also allows users to search all possible facet values via a Jquery UI autocomplete. If a value for 'autocomplete_field' is given, that
 field will be searched by the Jquery UI autocomplete (i.e. it will issue Solr JSONP requests against that field). This can simply be the same value
@@ -324,7 +324,7 @@ left side of the range
 
                     if (this.field==='collection' && cur_facet_count != 0) {
                         //console.log(facet);
-                        if (facet ==="Renmin Ribao" ) {
+                        if (facet==="Renmin Ribao" ) {
                             $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo\');" onmouseover="" style="cursor: pointer;">' +
                                 '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);">' +
                                 '<path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
@@ -341,22 +341,24 @@ left side of the range
                                 '<br><b>NOTE:</b> To see your hit page, please follow the link provided next to the fulltext hit. Due to the licence agreement it is only possible to open one double-page (window) per book at the same time. If you can\'t find the hit on the pages shown, please check the previous or subsequent pages, or perform a search within the book.\n</div>'));
 
                         }
-                        if (facet==="Adam Matthew FO China") {
-                            $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo3\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                        if (facet==="Adam Matthew - Foreign Office Files China & Japan") {
+                            $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo3\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                '<path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
-                                '<div class="menu" id="foo3" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo3\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Foreign Office Files China </b>\n' +
-                                '<br><b>CONTENT:</b> Collection of files held by The National Archives, Kew, the official archive of the United Kingdom. It contains diplomatic correspondence, letters, reports, surveys, material from newspapers, statistical analyses, published pamphlets, ephemera, military papers, profiles of prominent individuals, maps and many other types of document. \n' +
-                                'The collection is divided into the six parts: \n' +
+                                '<div class="menu" id="foo3" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo3\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                '<path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Adam Matthew - Foreign Office Files China & Japan </b>\n' +
+                                '<br><b>CONTENT:</b> The collection of Foreign Office Files for China is based on the holdings of the National Archives, Kew, the official archive of the United Kingdom; that for Japan is sourced from the rich FO 371 and FO 262 series at The National Archives, UK, including some formerly restricted Japan-specific documents, and is further enhanced by the addition of a selection of FO 371 Far Eastern General sub-series, and Western and American Department papers. The Foreign Office Files contain diplomatic correspondence, letters, reports, surveys, material from newspapers, statistical analyses, published pamphlets, ephemera, military papers, profiles of prominent individuals, maps and many other types of document. The China and Japan series are subdivided into time segments of specific political interest. \n' +
+                                /*'The collection is divided into the six parts: \n' +
                                 '<br>1919-1929: Kuomintang, CCP and the Third International \n' +
                                 '<br>1930-1937: The Long March, civil war in China and the Manchurian Crisis \n' +
                                 '<br>1938-1948: Open Door, Japanese war and the seeds of communist victory \n' +
                                 '<br>1949-1956: The Communist revolution \n' +
                                 '<br>1957-1966: The Great Leap Forward \n' +
-                                '<br>1967-1980: The Cultural Revolution\n' +
+                                '<br>1967-1980: The Cultural Revolution\n' +*/
                                 '<br><b>NOTE:</b> The full text was done by OCR from partly handwritten material, thus the text is often of minor quality.</div>'));
 
                         }
-                        if (facet==="Adam Matthew FO Japan") {
+                        /*if (facet==="Adam Matthew FO Japan") {
                             $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo35\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
                                 '<div class="menu" id="foo35" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo35\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Foreign Office Files China </b>\n' +
@@ -367,7 +369,7 @@ left side of the range
                                 '<br>The fulltext search currently covers the first two sections with 2399 titles. \n' +
                                 '<br><b>NOTE:</b> The full text was done by OCR from partly handwritten material, thus the text is often of minor quality.</div>'));
 
-                        }
+                        }*/
                         if (facet==="Local Gazetteer") {
                             $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo4\');" onmouseover="" style="cursor: pointer;"> ' +
                                 '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);">' +
@@ -601,10 +603,14 @@ left side of the range
                     if (cur_facet_count != 0) {
                         if  (this.field==='more_collection') {
                             console.log("test4");
-                            ///$('#' + 'collection').append($('<a class="click" id="airiti2" onclick="show_hidePopUpWindow(\'foo1\');" onmouseover="" style="cursor: pointer;"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></i></a>'));
+                            //$('#' + 'collection').append($('<a class="click" id="airiti2" onclick="show_hidePopUpWindow(\'foo1\');" onmouseover="" style="cursor: pointer;"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></i></a>'));
                         }
 
                         if  (this.field==='collection') {
+                            if  (this.field==='more_collection') {
+                                console.log("test4");
+                                $('#' + 'collection').append($('<a class="click" id="airiti2" onclick="show_hidePopUpWindow(\'foo1\');" onmouseover="" style="cursor: pointer;"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></i></a>'));
+                            }
                             //$('.' + 'click').append($('<span></span><a class="click" id="airiti2" onclick="show_hidePopUpWindow(\'foo1\');" onmouseover="" style="cursor: pointer;"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></i></a>'));
                         }
 
@@ -612,6 +618,7 @@ left side of the range
                         if (this.field!='title_facet') {
                             $(this.target).append($('<span class="text_facet" style="padding-left: 2px; font-size: small;"></span>').text(facet));
                         }
+
                         $(this.target).append($('<span id="number" style="font-size: x-small"></span>').text(' (' + cur_facet_count + ')'));
                         $(this.target).append($('<br>'));
                     }

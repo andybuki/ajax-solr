@@ -542,3 +542,7 @@ p {
   border-radius: 6px;
   border: 1px solid #ccc;
 }
+
+.textlenght {
+  max-width: 450px;
+}
