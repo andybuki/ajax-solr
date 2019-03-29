@@ -393,7 +393,8 @@
                         } else {
                             data_ccg +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ data[0].response.docs[0].title + ""+ '</b>,  p.'+doc.position+'</span></td></tr>');
                         }
-                        //data_dl_shiliao =  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation:  </td>' + '<td colspan="2"><span class="text2"><b>'+ data[0].response.docs[0].title + ', ' +data[0].response.docs[0].creator+ ' ' +  '</b>' +',  p.'+doc.position+'</span></td></tr>');
+
+                        data_ccg +=   $("#docs").append('<tr><td colspan="1"><span class="text">Running title (版心): </span></td><td colspan="2"><span class="text2"> '+ doc.running_title+'</span></td></tr>');
 
                         data_ccg +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
 
