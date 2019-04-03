@@ -372,8 +372,8 @@
 
 
                         var http="http://erf.sbb.spk-berlin.de/han/evplg/";
-                        var link5 = bookIcon.link(vor_link1);
-                        var provider_link2 = bookIcon.link(vor_link2);
+                        var link5 = bookIcon.link(vor_link2);
+                        var provider_link2 = bookIcon.link(vor_link1);
 
 
                         if (doc.text!=null) {
