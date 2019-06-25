@@ -293,7 +293,8 @@ p {
 
 .ui-widget-content {
   border: 1px solid #aaaaaa;
-  background: #ffffff url(/fileadmin/misc/ajax-solr_repositoryB/images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x;
+  //background: #ffffff url(/fileadmin/misc/ajax-solr_repositoryB/images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x;
+  //background: #ffffff url(/fileadmin/misc/ajax-solr_repositoryB/images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x;
   color: #222222;
 }
 
@@ -374,7 +375,7 @@ p {
 .books {
   border-collapse: collapse;
   position:relative;
-  top:10px;
+  bottom:4px;
 }
 
 .books  tr:hover {background-color: #ddd;}
@@ -407,6 +408,8 @@ p {
 }
 
 
+
+
 .text {
   padding-left: 10px;
   width: 100px;
@@ -435,6 +438,7 @@ p {
   position: relative;
   vertical-align: text-top;
   overflow-wrap: break-word;
+  display: inline-block;
 }
 
 .text3 {
@@ -546,3 +550,4 @@ p {
 .textlenght {
   max-width: 450px;
 }
+

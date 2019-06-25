@@ -4,11 +4,12 @@ var Manager;
 
     $(function () {
         Manager = new AjaxSolr.Manager({
-            //solrUrl: '/solr/ajax-loc-gaz/select?shards=localhost:8995/solr/ajax-loc-gaz,localhost:8995/solr/ajax-amd&indent=true&'
-            solrUrl: '/solr/ajax-loc-gaz/select?shards=localhost:8995/solr/ajax-loc-gaz,localhost:8995/solr/ajax-fo-china-japan,localhost:8995/solr/ajax-xuxiu,localhost:8995/solr/ajax-rmrb,localhost:8995/solr/ajax-airiti,localhost:8995/solr/ajax-china-trade,localhost:8995/solr/ajax-china-pacific,localhost:8995/solr/ajax-meiji-japan,localhost:8995/solr/ajax-dfz,localhost:8995/solr/ajax-gale-cfer,localhost:8995/solr/ajax-cnki,localhost:8995/solr/ajax-dl-jiyao,localhost:8995/solr/ajax-cibtc,localhost:8995/solr/ajax-riben,localhost:8995/solr/ajax-eastview-ccg,localhost:8995/solr/ajax-dl-shiliao&indent=true&rows=20&'
-            //solrUrl: '/solr/ajax-china-pacific/,localhost:8995/solr/ajax-gale-cfer'
-            //solrUrl: 'http://10.46.3.100:8982/solr/LocGaz/select?shards=10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/Xuxiu,10.46.3.100:8982/solr/airiti_nested,10.46.3.100:8982/solr/RMRB&indent=true&'
+            solrUrl: 'http://b-app66:8995/solr/ajax-loc-gaz/select?shards=http://b-app66:8995/solr/ajax-loc-gaz,http://b-app66:8995/solr/ajax-fo-china-japan,http://b-app66:8995/solr/ajax-rmrb,http://b-app66:8995/solr/ajax-airiti,http://b-app66:8995/solr/ajax-china-trade,http://b-app66:8995/solr/ajax-china-pacific,http://b-app66:8995/solr/ajax-meiji-japan,http://b-app66:8995/solr/ajax-dfz,http://b-app66:8995/solr/ajax-gale-cfer,http://b-app66:8995/solr/ajax-gale-cfer2,http://b-app66:8995/solr/ajax-cnki,http://b-app66:8995/solr/ajax-dl-jiyao,http://b-app66:8995/solr/ajax-cibtc,http://b-app66:8995/solr/ajax-riben,http://b-app66:8995/solr/ajax-eastview-ccg,http://b-app66:8995/solr/ajax-minguo,http://b-app66:8995/solr/ajax-dl-shiliao&indent=true&rows=20&'
+            //solrUrl: '/solr/ajax-loc-gaz/select?shards=localhost:8995/solr/ajax-loc-gaz,localhost:8995/solr/ajax-fo-china-japan,localhost:8995/solr/ajax-xuxiu,localhost:8995/solr/ajax-rmrb,localhost:8995/solr/ajax-airiti,localhost:8995/solr/ajax-china-trade,localhost:8995/solr/ajax-china-pacific,localhost:8995/solr/ajax-meiji-japan,localhost:8995/solr/ajax-dfz,localhost:8995/solr/ajax-gale-cfer,localhost:8995/solr/ajax-cnki,localhost:8995/solr/ajax-dl-jiyao,localhost:8995/solr/ajax-cibtc,localhost:8995/solr/ajax-riben,localhost:8995/solr/ajax-eastview-ccg,localhost:8995/solr/ajax-dl-shiliao&indent=true&rows=20&'
+            //solrUrl: 'http://b-app66:8995/solr/ajax-eastview-ccg/select?shards=localhost:8995/solr/ajax-eastview-ccg,localhost:8995/solr/ajax-rmrb,localhost:8995/solr/ajax-airiti&indent=true&rows=20&'
             //solrUrl: 'http://10.46.3.100:8982/solr/AMD_FOChina/select?shards=10.46.3.100:8982/solr/AMD_FOChina,10.46.3.100:8982/solr/LocGaz,10.46.3.100:8982/solr/Xuxiu,10.46.3.100:8982/solr/airiti_nested,10.46.3.100:8982/solr/RMRB,10.46.3.100:8982/solr/China_Trade,10.46.3.100:8982/solr/ChinaAmericaPacific,10.46.3.100:8982/solr/MeijiJapan_small,10.46.3.100:8982/solr/CNKI&indent=true&'
+            //solrUrl: '/solr/ajax-loc-gaz/select?shards=localhost:8995/solr/ajax-loc-gaz,localhost:8995/solr/ajax-rmrb,localhost:8995/solr/ajax-china-pacific,localhost:8995/solr/ajax-eastview-ccg&indent=true&rows=20&'
+            //solrUrl: 'http://b-app66:8995/solr/ajax-loc-gaz/select?shards=http://b-app66:8995/solr/ajax-loc-gaz,http://b-app66:8995/solr/ajax-airiti&indent=true&rows=10&'
         });
         Manager.addWidget(new AjaxSolr.ResultWidget({
             id: 'result',
@@ -70,13 +71,14 @@ var Manager;
             var params = {
                 facet: true,
                 'facet.field': ['hasModel','medium_facet','edition_facet', 'person_facet', 'spatial_facet' ,'author_facet', 'title_facet','collection', 'date','language'],
-                'facet.limit': 1600,
+                'facet.limit': 1000,
                 'facet.mincount': 1,
-                'f.date.facet.limit': 400,
-                'f.author_facet.facet.limit': 800,
-                'f.person_facet.facet.limit': 400,
-                'f.spatial_facet.facet.limit': 400,
+                'f.date.facet.limit': 200,
+                'f.author_facet.facet.limit': 400,
+                'f.person_facet.facet.limit': 200,
+                'f.spatial_facet.facet.limit': 200,
                 'json.nl': 'map',
+                'fl':['id','book_id','url','author','creator','edition','title','position','position_vol','volume','hasModel','collection','date','publisher','series_title','description','text','pageStart','pageEnd','chapter_id','language','issued','note','responsibility','extent','running_title','page','wholeDate','image_url','identifier','electronic-url','journal-title','page-range','electronic_url'],
                 'hl':true,
                 'hl.fl':'text',
                 'f.text.hl.alternateField':'text',
@@ -113,6 +115,7 @@ var Manager;
                 //'fq':'hasModel:Book',
                 //'fl':'hits:[subquery]',
                 //'hits.q':'{!terms f=book_id v=$row.book_id}',
+                'fl':['id','book_id','url','author','creator','title','edition','position','volume','position_vol','hasModel','collection','date','publisher','series_title','description','text','pageStart','pageEnd','chapter_id','language','issued','note','responsibility','extent','running_title','page','wholeDate','image_url','identifier','electronic-url','journal-title','page-range','electronic_url'],
                 //'sort':'id asc',
                 'hl':true,
                 //'fl':'hits:[subquery]&hits.q={!terms%20f=book_id%20&v=$row.book_id}',
