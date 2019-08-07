@@ -86,72 +86,60 @@
             var databaseIcon = '<svg data-v-114fcf88="" title="Go to database"  version="1.1" role="presentation" width="13.714285714285714" height="16" viewBox="0 0 1536 1792" class="fa-icon"><path d="M768 768q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1536q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 1152q237 0 443-43t325-127v170q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-170q119 84 325 127t443 43zM768 0q208 0 385 34.5t280 93.5 103 128v128q0 69-103 128t-280 93.5-385 34.5-385-34.5-280-93.5-103-128v-128q0-69 103-128t280-93.5 385-34.5z"></path>';
             var bookIcon = '<svg data-v-114fcf88="" version="1.1" title="Go to book" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon"><path d="M1639 478q40 57 18 129l-275 906q-19 64-76.5 107.5t-122.5 43.5h-923q-77 0-148.5-53.5t-99.5-131.5q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5 16.5-23.5q23-38 45-91.5t30-91.5q3-10 0.5-30t-0.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t0.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5t27.5-96.5q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5 47.5 5.5l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5t-128.5 34.5h-869q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zM575 480q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5zM492 736q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5t16.5-22.5l21-64q4-13-2-22.5t-20-9.5h-608q-13 0-25.5 9.5t-16.5 22.5z"></path>  <!----></svg>';
             var pageIcon = '<svg data-v-564ce0ae="" version="1.1" role="presentation" width="13.714285714285714" height="16" viewBox="0 0 1536 1792" class="fa-icon"><path d="M1024 512v-472q22 14 36 28l408 408q14 14 28 36h-472zM896 544q0 40 28 68t68 28h544v1056q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h800v544z"></path>  <!----></svg>'
-            var link_locgaz = databaseIcon.link("http://erf.sbb.spk-berlin.de/han/fangzhiku");
-            var link_locgaz2 = databaseIcon.link("http://server.wenzibase.com");
             var snippet = '';
-            //var snippet2 = '';
 
-            //var snippet_loc_gaz = '';
-            //var snippet_ad_me = '';
-            //var snippet_xuxiu = '';
-            //var snippet_dfz = '';
-            //var snippet_pacific = '';
-            //var snippet_trade = '';
-            //var snippet_airiti = '';
-            //var snippet_meiji = '';
             var snippet_rmrb = '';
             var snippet_gale = '';
-            //var snippet_cnki = '';
-            //var snippet_shiliao = '';
-            //var snippet_jiyao = '';
-            //var snippet_cibtc = '';
-            //var snippet_japan = '';
-            //var snippet_ccg = '';
-            //var snippet_clasic_japan = '';
-            //var data_ad_me_pages ="";
-            //var data_loc_gaz_pages ="";
-            //var data_xuxiu_pages ="";
-            //var data_dfz_pages ="";
-            //var data_pacific_pages ="";
-            //var data_trade_pages ="";
-            //var data_airiti_pages ="";
-            var data_loc_gaz_chapter ='';
-            var data_cnki_pages ="";
-            var data_dl_shiliao ="";
-            var data_dl_jiyao ="";
-            var data_cibtc ="";
-            var data_japan ="";
-            var data_ccg ="";
-            var data_clasic_japan ="";
-            var data_loc_gaz_chapter2 ="";
-            var data ="";
+            var chapter ='';
 
+            var data ="";
             var cur_doc_highlighting_title='';
             var output ='';
             var output2 =doc.book_id;
-            var page="";
-            var book ="";
-            var book_f ="";
+
             var pages ='';
-            var url_book = '';
+            var articles ='';
 
             var url =  this.manager.solrUrl+"select?fq=hasModel:Book&q=hasModel:Book&book_id:"+output2+"&wt=json&json.wrf=?&callback=?";
             var url2 = this.manager.solrUrl+"select?fq=book_id="+doc.book_id+"&q=hasModel:Page&wt=json&json.wrf=?&callback=?";
             if (this.highlighting && highlighting) {
                 cur_doc_highlighting_title = this.getDocSnippets(highlighting,doc);
             }
+
             if (doc.hasModel=="Page") {
 
-                    $('a[href^="http://"]')
-                        .attr('target','_blank');
+                $('a[href^="http://"]')
+                    .attr('target','_blank');
 
-                    if (doc.text!=null) {
-                        if (cur_doc_highlighting_title=='') {
-                            data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
+                if (doc.text!=null) {
+                    if (cur_doc_highlighting_title=='') {
+                        data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
+                    }
+                    else {
+                        data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
+                    }
+
+
+                    if (doc.collection=='Xuxiu Siku quanshu' || doc.collection=='Siku quanshu') {
+                        if (doc.title!=null && doc.responsibility!=null && doc.author!=null && doc.date!=null && doc.volume!=null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top; width: 190px;">citation: </td><td colspan="2" class="textlenght"  style="vertical-align: top; max-width: 550px;"><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + doc.author +', ' + doc.date  + '</b>,  p.' + doc.position + " (vol. "+doc.volume+", p. "+doc.position_vol +")"+'</span></td></tr>');
+                        } else if (doc.title!=null && doc.responsibility!=null && doc.author!=null && doc.date!=null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;  width: 190px;">citation: </td><td colspan="2" class="textlenght" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  '+ doc.author+' ' + doc.date  + '</b>,  p.' + doc.position + "<span class='smallText'>("+ doc.id.split('_')[2]+")</span>"+" "+ '</span></td></tr>');
+                        } else if (doc.title!=null && doc.responsibility!=null && doc.author!=null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;  width: 190px;">citation: </td><td colspan="2" class="textlenght" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + doc.date  + '</b>,  p.' + doc.position + "<span class='smallText'>("+ doc.id.split('_')[2]+")</span>"+" "+ '</span></td></tr>');
+                        } else if (doc.title!=null && doc.responsibility!=null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;  width: 190px;">citation: </td><td colspan="2" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' +  '</b>,  p.' + doc.position +  "<span class='smallText'>("+ doc.id.split('_')[2]+")</span>"+" "+ '</span></td></tr>');
+                        }  else  if (doc.title!=null && doc.author!=null &&  doc.date!=null) {
+                            data +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;  width: 190px;">citation: </td><td colspan="2" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>'+ doc.title + " ," + doc.author + '.  '+ doc.date + '</b>,  p.'+doc.position+ "<span class='smallText'>("+ doc.id.split('_')[2]+")</span>"+" "+'</span></td></tr>');
+                        } else  if (doc.title!=null && doc.author!=null) {
+                            data +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;  width: 190px;">citation: </td><td colspan="2" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>'+ doc.title + " ," + doc.author + '.  ' + '</b>,  p.'+doc.position+ "<span class='smallText'>("+ doc.id.split('_')[2]+")</span>"+" "+'</span></td></tr>');
+                        } else  if (doc.title!=null && doc.date!=null) {
+                            data +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top; width: 190px;">citation: </td><td colspan="2" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>'+ doc.title + " ," + doc.date + '.  ' + '</b>,  p.'+doc.position+ "<span class='smallText'>("+ doc.id.split('_')[2]+")</span>"+" "+'</span></td></tr>');
+                        } else  if (doc.title!=null) {
+                            data +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top; width: 190px;">citation: </td><td colspan="2" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>'+ doc.title + '.  ' + '</b>,  p.'+doc.position+ "<span class='smallText'>("+ doc.id.split('_')[2]+")</span>"+ " "+'</span></td></tr>');
                         }
-                        else {
-                            data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
-                        }
+
+                    } else {
                         if (doc.title!=null && doc.responsibility!=null && doc.author!=null && doc.date!=null && doc.volume!=null) {
                             data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top; width: 190px;">citation: </td><td colspan="2" class="textlenght"  style="vertical-align: top; max-width: 550px;"><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + doc.author +', ' + doc.date  + '</b>,  p.' + doc.position + " (vol. "+doc.volume+", p. "+doc.position_vol +")"+'</span></td></tr>');
                         } else if (doc.title!=null && doc.responsibility!=null && doc.author!=null && doc.date!=null) {
@@ -169,334 +157,232 @@
                         } else  if (doc.title!=null) {
                             data +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top; width: 190px;">citation: </td><td colspan="2" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>'+ doc.title + '.  ' + '</b>,  p.'+doc.position+ " "+'</span></td></tr>');
                         }
-
-                        if(doc.running_title!=null) {
-                            data += $("#docs").append('<tr><td colspan="1"><span class="text">Running title (版心): </span></td><td colspan="2"><span class="text2"> ' + doc.running_title + '</span></td></tr>');
-                        }
                     }
 
-                    if (doc.text==null) {
-                        if (doc.date!=null &&  doc.author!=null && doc.volume!=null) {
-                            data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
-                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" ><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + doc.author +', ' + doc.date  + '</b>,  p.' + doc.position + " (vol. "+doc.volume+", p. "+doc.position_vol +")"+'</span></td></tr>');
-                        }
-                        else if (doc.date!=null &&  doc.author!=null) {
-                            data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
-                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" ><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + doc.author +', ' + doc.date  + '</b>,  p.' + doc.position + ""+'</span></td></tr>');
-                        }
-                        else if (doc.date!=null) {
-                            data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
-                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" class="textlenght" ><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + doc.date  + '</b>,  p.' + doc.position + ""+ '</span></td></tr>');
-                        } else if (doc.author!=null ) {
-                            data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
-                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" ><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + " ," + doc.author  + '</b>,  p.' + doc.position + ""+ '</span></td></tr>');
-                        }  else  {
-                            data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
-                            data +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + '</b>,  p.'+doc.position+ ""+'</span></td></tr>');
-                        }
-                        if(doc.running_title!=null) {
-                            data += $("#docs").append('<tr><td colspan="1"><span class="text">Running title (版心): </span></td><td colspan="2"><span class="text2"> ' + doc.running_title + '</span></td></tr>');
-                        }
+                    if(doc.running_title!=null) {
+                        data += $("#docs").append('<tr><td colspan="1"><span class="text">Running title (版心): </span></td><td colspan="2"><span class="text2"> ' + doc.running_title + '</span></td></tr>');
                     }
+                }
 
-                    data +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-
-                    var link ="";
-                    var provider_link ="";
-                    if (doc.collection==="China Comprehensive Gazetteers") {
-                        if (doc.url!=null) {
-                            var vor_link1 = doc.url[0];
-                            var vor_link2 = doc.url[1];
-
-                            var http = "http://erf.sbb.spk-berlin.de/han/evplg/";
-                            link = bookIcon.link(vor_link2);
-                            provider_link = bookIcon.link(vor_link1);
-                        }
+                if (doc.text==null) {
+                    if (doc.date!=null &&  doc.author!=null && doc.volume!=null) {
+                        data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
+                        data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" ><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + doc.author +', ' + doc.date  + '</b>,  p.' + doc.position + " (vol. "+doc.volume+", p. "+doc.position_vol +")"+'</span></td></tr>');
                     }
-                    else if (doc.collection==="Local Gazetteer") {
-                        link = link_locgaz;
-                        provider_link = link_locgaz2;
+                    else if (doc.date!=null &&  doc.author!=null) {
+                        data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
+                        data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" ><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + doc.author +', ' + doc.date  + '</b>,  p.' + doc.position + ""+'</span></td></tr>');
                     }
-                    else if (doc.collection==="Local Gazetteer (Diaolong)") {
-                        var vor_link1 = doc.identifier[0];
-                        var vor_link2 = doc.identifier[1];
-                        var http="http://hunteq.com/ancientc/ancientkm?!!";
-                        if (vor_link1.includes(http)) {
-                            var link_replace = vor_link1.replace("http://hunteq.com/ancientc/ancientkm?!!" ,"http://erf.sbb.spk-berlin.de/han/zhongguodifangzhiyiji/hunteq.com/ancientc/ancientkm?!!");
-                            var link = bookIcon.link(link_replace);
-                            var provider_link = bookIcon.link(vor_link1);
-                        } else if (vor_link2.includes(http)) {
-                            var link_replace = vor_link2.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/zhongguodifangzhiyiji/hunteq.com/ancientc/ancientkm?!!");
-                            var link = bookIcon.link(link_replace);
-                            var provider_link = bookIcon.link(vor_link2);
-                        }
+                    else if (doc.date!=null) {
+                        data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
+                        data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" class="textlenght" ><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + doc.date  + '</b>,  p.' + doc.position + ""+ '</span></td></tr>');
+                    } else if (doc.author!=null ) {
+                        data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
+                        data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" ><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + " ," + doc.author  + '</b>,  p.' + doc.position + ""+ '</span></td></tr>');
+                    }  else  {
+                        data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
+                        data +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ doc.title  + '</b>,  p.'+doc.position+ ""+'</span></td></tr>');
                     }
-                    else if (doc.collection==="Adam Matthew - China America Pacific") {
-                        var link = pageIcon.link(doc.image_url).replace("http://www.cap.amdigital.co.uk/Documents/Images/","http://erf.sbb.spk-berlin.de/han/ChinaAmericaPacific/www.cap.amdigital.co.uk/Documents/Images/");
-                        var provider_link = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.cap.amdigital.co.uk/Documents/Images/");
-
+                    if(doc.running_title!=null) {
+                        data += $("#docs").append('<tr><td colspan="1"><span class="text">Running title (版心): </span></td><td colspan="2"><span class="text2"> ' + doc.running_title + '</span></td></tr>');
                     }
-                    else if (doc.collection==="Adam Matthew - China Trade & Politics") {
-                        var link = pageIcon.link(doc.image_url).replace("http://www.china.amdigital.co.uk/Documents/Images","http://erf.sbb.spk-berlin.de:80/han/ChinaTradePoliticsCulture1793-1980/www.china.amdigital.co.uk/Documents/Images/");
-                        var provider_link = pageIcon.link(doc.image_url).replace("http://www.china.amdigital.co.uk/Documents/Images/","http://www.china.amdigital.co.uk/Documents/Images/");
-                    }
-                    else if (doc.collection==="Early Twentieth Century Chinese Books (1912-1949)") {
-                        var http="http://erf.sbb.spk-berlin.de/han/NLCminguo/";
-                        var vor_link = (doc.url);
-                        var vor_link2 = vor_link.replace(vor_link,http+vor_link.replace("http://",""));
-                        var link = pageIcon.link(vor_link);
-                        var provider_link = pageIcon.link(vor_link2);
-                    }
-                    else if (doc.collection==="Adam Matthew - Foreign Office Files China & Japan") {
-                        var link = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/", "http://erf.sbb.spk-berlin.de/han/OfficeFilesChina/www.archivesdirect.amdigital.co.uk/Documents/Images/");
-                        var provider_link = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/", "http://www.archivesdirect.amdigital.co.uk/Documents/Images/");
-                    }
-                    else if (doc.collection==="Airiti") {
-                            var page = parseInt(doc.position);
-                            var combineLink = '&GoToPage=' + page;
-                            var link_airiri = (doc.url);
-                            var newLink_airiti = link_airiri.replace('http://www.airitibooks.com/detail.aspx?', 'http://www.airitibooks.com.airiti.erf.sbb.spk-berlin.de/pdfViewer/index.aspx?');
-                            var newLink2_airiti = link_airiri.replace('http://www.airitibooks.com/detail.aspx?', 'http://www.airitibooks.com/pdfViewer/index.aspx?');
-                            var link = pageIcon.link(newLink_airiti + combineLink);
-                            var provider_link = pageIcon.link(newLink2_airiti + combineLink);
+                }
 
-                    }
-                    else if (doc.collection==="China Comprehensive Gazetteers") {
-                        var vor_link1 = (doc.url[0]);
-                        var vor_link2 = (doc.url[1]);
+                data +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2"><span class="text2"> '+ doc.collection+'</span></td></tr>');
 
-                        var http="http://erf.sbb.spk-berlin.de/han/evplg/";
-                        var link = bookIcon.link(vor_link2);
-                        var provider_link = bookIcon.link(vor_link1);
-                    }
-                    else if (doc.collection==="Classical Works of Japan") {
-                        var vor_link1 = (doc.identifier[0]);
-                        var vor_link2 = (doc.identifier[1]);
-                        var http="http://hunteq.com/ancientc/ancientkm?!!";
 
-                        if (vor_link1.includes(http)) {
-                            var link_replace = vor_link1.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!");
-                            var link = bookIcon.link(link_replace);
-                            var provider_link2 = vor_link1.replace("","").replace("http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                            var provider_link = bookIcon.link(provider_link2);
-                        } else  {
-                            var link_replace = vor_link2.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!");
-                            var link = bookIcon.link(link_replace);
-                            var provider_link2 = vor_link2.replace("","").replace("http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                            var provider_link = bookIcon.link(provider_link2);
-                        }
-                    }
-                    else if (doc.collection==="CNKI_eBooks") {
-                        var vor_link = (doc.identifier[1]);
-                        var nach_link= vor_link.replace("http://","");
-                        var erf ="http://erf.sbb.spk-berlin.de/han/cnki-books/";
-                        var new_link = erf+nach_link;
-                        var link = pageIcon.link(new_link.replace("Detail","OnlineView")+"?page="+doc.position);
-                        var provider_link = pageIcon.link(vor_link.replace("Detail","OnlineView")+"?page="+doc.position);
-                    }
-                    else if (doc.collection==="Daozang jiyao") {
-                        var vor_link1 = (doc.identifier[0]);
-                        var vor_link2 = (doc.identifier[1]);
-
-                        var http="type=\"CrossAsia Link\" http://erf.sbb.spk-berlin.de/han/daozangjiyao/hunteq.com/ancientc/ancientkm?!!";
-
-                        if (vor_link1.includes(http)) {
-
-                            var link_replace = vor_link1.replace("type=\"CrossAsia Link\" ","");
-                            var link = bookIcon.link(link_replace);
-                            var provider_link2 = vor_link1.replace("type=\"CrossAsia Link\" ","").replace("http://erf.sbb.spk-berlin.de/han/daozangjiyao/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                            var provider_link = bookIcon.link(provider_link2);
-                        } else {
-                            var link_replace = vor_link1.replace("type=\"CrossAsia Link\" ","");
-                            var link = bookIcon.link(link_replace);
-                            var provider_link2 = vor_link1.replace("type=\"CrossAsia Link\" ","").replace("http://erf.sbb.spk-berlin.de/han/daozangjiyao/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                            var provider_link = bookIcon.link(provider_link2);
-                        }
-                    }
-                    else if (doc.collection==="Fulltext search in print books") {
-                        var vor_link1 = (doc.identifier[0]);
-                        var http="http://gso.gbv.de/DB=1.97/PPNSET?PPN=";
-
-                        if (vor_link1.includes(http)) {
-                            var link_replace = vor_link1.replace("http://gso.gbv.de/DB=1.97/PPNSET?PPN=","http://erf.sbb.spk-berlin.de/han/cibtc/gso.gbv.de/DB=1.97/PPNSET?PPN=");
-                            var link = bookIcon.link(link_replace);
-                            var provider_link2 = vor_link1.replace("","").replace("http://erf.sbb.spk-berlin.de/han/cibtc/gso.gbv.de/DB=1.97/PPNSET?PPN=","http://gso.gbv.de/DB=1.97/PPNSET?PPN=");
-                            var provider_link = bookIcon.link(provider_link2);
-                        }
-                    }
-                    else if (doc.collection==="Qingdai shiliao") {
-                        var http="http://hunteq.com/ancientc/ancientkm?!!";
-
-                        if (doc.identifier[0]!=null){
-                            var vor_link1 = (doc.identifier[0]);
-                            if (vor_link1.includes(http)) {
-                                var link_replace = vor_link1.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!");
-                                var link = bookIcon.link(link_replace);
-                                var provider_link2 = vor_link1.replace("","").replace("http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                                var provider_link = bookIcon.link(provider_link2);
-                            }
-
-                        }
-                        if (doc.identifier[1]!=null){
-                            var vor_link2 = (doc.identifier[1]);
-                            if (vor_link2.includes(http)) {
-                                var link_replace = vor_link2.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!");
-                                var link = bookIcon.link(link_replace);
-                                var provider_link2 = vor_link2.replace("","").replace("http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                                var provider_link = bookIcon.link(provider_link2);
-                            }
-
-                        }
-                        if (doc.identifier[2]!=null){
-                            var vor_link3 = (doc.identifier[2]);
-                            if (vor_link3.includes(http)) {
-                                var link_replace = vor_link3.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!");
-                                var link = bookIcon.link(link_replace);
-                                var provider_link2 = vor_link3.replace("","").replace("http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                                var provider_link = bookIcon.link(provider_link2);
-                            }
-
-                        }
-                    }
-                    else if (doc.collection==="China and the Modern World: Records of the Maritime Customs Service of China (1854-1949)") {
-                        var vor_link1 = (doc.image_url);
-
-                        var http="http://erf.sbb.spk-berlin.de/han/galecfer/";
-                        var vor_link2 = vor_link1.replace("http://link.galegroup.com/apps/doc/","http://erf.sbb.spk-berlin.de/han/galecfer/link.galegroup.com/apps/doc/");
-                        var link = bookIcon.link(vor_link1);
-                        var provider_link = bookIcon.link(vor_link2);
-                    }
-                    else if (doc.collection==="Xuxiu") {
-
-                        var vor_link1 = (doc.identifier[0]);
-                        var vor_link2 = (doc.identifier[1]);
-
-                        var http="type=\"CrossAsia Link\" http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!";
-
-                        if (vor_link1.includes(http)) {
-                            var link_replace = vor_link1.replace("type=\"CrossAsia Link\" ","");
-                            var link = bookIcon.link(link_replace);
-                            var provider_link2 = vor_link1.replace("type=\"CrossAsia Link\" ","").replace("http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                            var provider_link = bookIcon.link(provider_link2);
-                        } else {
-                            var link_replace = vor_link2.replace("type=\"CrossAsia Link\" ","");
-                            var link = bookIcon.link(link_replace);
-                            var provider_link2 = vor_link2.replace("type=\"CrossAsia Link\" ","").replace("http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                            var provider_link = bookIcon.link(provider_link2);
-                        }
-                    }
-
-                    data +=   $("#docs").append('<tr>' +
-                        '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
-                        '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link + '</span></td>'+
+                if (doc.collection==="Local Gazetteer") {
+                    var  link = databaseIcon.link(doc.url);
+                    var provider_link = databaseIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="China Comprehensive Gazetteers") {
+                    var    link = bookIcon.link(doc.url);
+                    var    provider_link = bookIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="Airiti") {
+                    var link = pageIcon.link(doc.url);
+                    var provider_link = pageIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="Local Gazetteer (Diaolong)") {
+                    var link = bookIcon.link(doc.url);
+                    var provider_link = bookIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="Adam Matthew - China America Pacific") {
+                    var link = pageIcon.link(doc.url);
+                    var provider_link = pageIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="Adam Matthew - China Trade & Politics") {
+                    var link = pageIcon.link(doc.url);
+                    var provider_link = pageIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="Early Twentieth Century Chinese Books (1912-1949)") {
+                    var url = doc.url;
+                    var http="http://erf.sbb.spk-berlin.de/han/NLCminguo/";
+                    var vor_link2 = url.replace(url,http+url.replace("http://",""));
+                    var link = pageIcon.link(doc.url);
+                    var provider_link = pageIcon.link(vor_link2);
+                }
+                else if (doc.collection==="Adam Matthew - Foreign Office Files China & Japan") {
+                    var link = pageIcon.link(doc.url);
+                    var provider_link = pageIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="Classical Works of Japan") {
+                    var    link = bookIcon.link(doc.url);
+                    var    provider_link = bookIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="Siku quanshu") {
+                    var    link = bookIcon.link(doc.url);
+                    var    provider_link = bookIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="CNKI_eBooks") {
+                    var link = pageIcon.link(doc.url);
+                    var provider_link = pageIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="Xuxiu Siku quanshu") {
+                    var    link = bookIcon.link(doc.url);
+                    var    provider_link = bookIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="Daozang jiyao") {
+                    var    link = bookIcon.link(doc.url);
+                    var    provider_link = bookIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="Fulltext search in print books") {
+                    var    link = bookIcon.link(doc.url);
+                    var    provider_link = bookIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="Qingdai shiliao") {
+                    var    link = bookIcon.link(doc.url);
+                    var    provider_link = bookIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="China and the Modern World: Records of the Maritime Customs Service of China (1854-1949)") {
+                    var    link = bookIcon.link(doc.url);
+                    var    provider_link = bookIcon.link(doc.erflink);
+                }
+                else if (doc.collection==="Xuxiu") {
+                    var    link = bookIcon.link(doc.url);
+                    var    provider_link = bookIcon.link(doc.erflink);
+                }
+                if (doc.collection==="Western language East Asia Collection (SBB Digital Collection)") {
+                    var link = pageIcon.link(doc.url);
+                    data += $("#docs").append('<tr>' +
+                        '<td width="145"><span class="text" id="link">' + 'Digital SBB: </span></td><td width="145"><span class="textlink3">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
+                        '</span></td>' + '</tr>');
+                }
+                else {
+                    data += $("#docs").append('<tr>' +
+                        '<td width="145"><span class="text" id="link">' + 'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
+                        '<span id="link" class="text">' + 'provider link: </span><td><span class="textlink2">' + provider_link + '</span></td>' +
                         '</tr>');
+                }
 
-                    pages +=data;
+                pages +=data;
 
             }
 
             else if (doc.hasModel=='Article') {
                 $('a[href^="http://"]')
                     .attr('target','_blank');
-                if (doc.collection=="Renmin Ribao") {
+
+                if (doc.wholeDate!=null) {
                     var rightDate = moment(doc.wholeDate.toString()).format("DD.MM.YYYY");
-
-                    var link = databaseIcon.link("http://rmrb.egreenapple.com/");
-                    var link2 = databaseIcon.link("http://erf.sbb.spk-berlin.de/han/RenminRibao1/");
-
-                    if (cur_doc_highlighting_title == '') {
-                        snippet_rmrb += ('<table class="books2"><tr><th colspan="3"><span class="texttitle">' + "..." + doc.text + "..." + ' </span></th></tr>');
-                    } else {
-                        snippet_rmrb += ('<table class="books2"><tr><th colspan="3"><span class="texttitle">' + "..." + cur_doc_highlighting_title + "..." + ' </span></th></tr>');
-                    }
-                    snippet_rmrb += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' + ",  p." + doc.page + '</span></td></tr>';
-
-                    /*if (cur_doc_highlighting_title=='') {
-
-                    } else {
-                        snippet_rmrb += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + cur_doc_highlighting_title +'</b>' + ",  p."+doc.page+'</span></td></tr>';
-                    }*/
-
-                    if (doc.author != null) {
-                        snippet_rmrb += '<tr><td colspan="1"><span class="text">' + 'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.author;
-                        +'</span></td></tr>'
-                    }
-
-                    snippet_rmrb += '<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + rightDate + '</span></td></tr>';
-
-                    if (doc.description != null) {
-                        snippet_rmrb += '<tr><td colspan="1"><span class="text">' + 'note: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.description + '</span></td></tr>';
-                    }
-
-
-                    snippet_rmrb += '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> ' + doc.collection + '</span></td></tr>';
-                    //snippet_rmrb += '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.score + '</span></td></tr>';
-
-                    snippet_rmrb += '<tr>' +
-                        '<td width="145"><span class="text" id="link">' + 'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link2 + '</span>&nbsp;&nbsp;&nbsp;' +
-                        '<span id="link" class="text">' + 'provider link: </span><td><span class="textlink2">' + link + '</span></td>' +
-                        '</tr>';
-
-                    output += snippet_rmrb + '</table><hr class="line"></div>';
                 }
-                else if (doc.collection=="Missionary, Sinology, and Literary Periodicals (1817-1949)") {
-                    var range = doc["page-range"];
-                    var link = pageIcon.link(doc["electronic-url"]);
-                    if (doc["electronic-url"]) {
-                        var transform = doc["electronic-url"];
-                        var transform = doc["electronic-url"].replace("http://","")
-                        var link2 =  pageIcon.link("http://erf.sbb.spk-berlin.de/han/galecfer/"+transform);
+                if (doc.text!=null) {
+                    if (cur_doc_highlighting_title=='') {
+                        data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+doc.text + "..."+'</span></th></tr>');
                     }
-
-
-                    if (cur_doc_highlighting_title == '') {
-                        snippet_gale += ('<table class="books2"><tr><th colspan="3"><span class="texttitle">' + "..." + doc.text + "..." + ' </span></th></tr>');
-                    } else {
-                        snippet_gale += ('<table class="books2"><tr><th colspan="3"><span class="texttitle">' + "..." + cur_doc_highlighting_title + "..." + ' </span></th></tr>');
+                    else {
+                        data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+cur_doc_highlighting_title + "..."+'</span></th></tr>');
                     }
-                    if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null && doc["publication-volume"]!=null && doc["volume-number"]!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+" ,vol."+doc["publication-volume"]+", no."+doc["volume-number"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
-                    } else if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null && doc["publication-volume"]!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+" ,vol."+doc["publication-volume"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
-                    } else if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null && doc["volume-number"]!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+", no."+doc["volume-number"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>';
-                    } else if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+ '</span></td></tr>';
-                    }else if (doc.title!=null && doc.author!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+ '</span></td></tr>';
-                    } else if (doc.title!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title +  '</span></td></tr>';
-                    }else if (doc.author!=null) {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2">' +doc.author+'.'+")"+ '</span></td></tr>';
-                    } else {
-                        snippet_gale += '<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2">In:'+doc["journal-title"]+ ", p." + doc["page-range"] +" ("+doc["date"]+")"+ '</span></td></tr>';
+                    if (doc.collection==="Renmin Ribao") {
+                        if (doc.title != null && doc.responsibility != null && doc.author != null && doc.date != null && doc.volume != null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top; width: 190px;">citation: </td><td colspan="2" class="textlenght"  style="vertical-align: top; max-width: 550px;"><span class="text2"><b>' + doc.title + " ," + doc.responsibility + '.  ' + doc.author + ', ' + doc.date + '</b>,  p.' + doc.page + " (vol. " + doc.volume + ", p. " + doc.position_vol + ")" + '</span></td></tr>');
+                        } else if (doc.title != null && doc.responsibility != null && doc.author != null && doc.date != null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;  width: 190px;">citation: </td><td colspan="2" class="textlenght" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>' + doc.title + " ," + doc.responsibility + '.  ' + doc.author + ' ' + doc.date + '</b>,  p.' + doc.page + " " + '</span></td></tr>');
+                        } else if (doc.title != null && doc.responsibility != null && doc.author != null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;  width: 190px;">citation: </td><td colspan="2" class="textlenght" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>' + doc.title + " ," + doc.responsibility + '.  ' + doc.date + '</b>,  p.' + doc.page + " " + '</span></td></tr>');
+                        } else if (doc.title != null && doc.responsibility != null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;  width: 190px;">citation: </td><td colspan="2" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>' + doc.title + " ," + doc.responsibility + '.  ' + '</b>,  p.' + doc.page + " " + '</span></td></tr>');
+                        } else if (doc.title != null && doc.author != null && doc.date != null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;  width: 190px;">citation: </td><td colspan="2" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>' + doc.title + " ," + doc.author + '.  ' + doc.date + '</b>,  p.' + doc.page + " " + '</span></td></tr>');
+                        } else if (doc.title != null && doc.author != null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;  width: 190px;">citation: </td><td colspan="2" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>' + doc.title + " ," + doc.author + '.  ' + '</b>,  p.' + doc.page + " " + '</span></td></tr>');
+                        } else if (doc.title != null && doc.date != null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top; width: 190px;">citation: </td><td colspan="2" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>' + doc.title + " ," + doc.date + '.  ' + '</b>,  p.' + doc.page + " " + '</span></td></tr>');
+                        } else if (doc.title != null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top; width: 190px;">citation: </td><td colspan="2" class="textlenght" style="vertical-align: top; max-width: 550px;"><span class="text2"><b>' + doc.title + '.  ' + '</b>,  p.' + doc.page + " " + '</span></td></tr>');
+                        }
+                    } else if (doc.collection==="Missionary, Sinology, and Literary Periodicals (1817-1949)") {
+                        var range = doc["page-range"];
+                        if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null && doc["publication-volume"]!=null && doc["volume-number"]!=null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+" ,vol."+doc["publication-volume"]+", no."+doc["volume-number"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>');
+                        } else if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null && doc["publication-volume"]!=null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+" ,vol."+doc["publication-volume"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>');
+                        } else if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null && doc["volume-number"]!=null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+", no."+doc["volume-number"]+ ", p." + doc["page-range"] +" ("+doc["date-original"]+")"+ '</span></td></tr>');
+                        } else if (doc.title!=null && doc.author!=null && doc["journal-title"] !=null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+" In: "+doc["journal-title"]+ '</span></td></tr>');
+                        }else if (doc.title!=null && doc.author!=null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title + '</b>' +", "+doc.author+'.'+ '</span></td></tr>');
+                        } else if (doc.title!=null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>' + doc.title +  '</span></td></tr>');
+                        }else if (doc.author!=null) {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2">' +doc.author+'.'+")"+ '</span></td></tr>');
+                        } else {
+                            data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2">In:'+doc["journal-title"]+ ", p." + doc["page-range"] +" ("+doc["date"]+")"+ '</span></td></tr>');
+                        }
                     }
-
-                    if (doc.date != null) {
-                        snippet_gale += '<tr><td colspan="1"><span class="text">' + 'date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.date;
-                        +'</span></td></tr>'
-                    }
-
-                    if (doc["format"] != null) {
-                        snippet_gale += '<tr><td colspan="1"><span class="text">' + 'format: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc["format"] + '</span></td></tr>';
-                    }
-
-                    if (doc["description"] != null) {
-                        snippet_gale += '<tr><td colspan="1"><span class="text">' + 'note: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc["description"] + '</span></td></tr>';
-                    }
-
-                    snippet_gale += '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> ' + doc.collection + '</span></td></tr>';
-                    //snippet_gale += '<tr><td colspan="1"><span class="text">score: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.score + '</span></td></tr>';
-
-                    snippet_gale += '<tr>' +
-                        '<td width="145"><span class="text" id="link">' + 'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link2 + '</span>&nbsp;&nbsp;&nbsp;' +
-                        '<span id="link" class="text">' + 'provider link: </span><td><span class="textlink2">' + link + '</span></td>' +
-                        '</tr>';
-
-
-                    output += snippet_gale + '</table><hr class="line"></div>';
                 }
 
+                if (doc.text==null) {
+                    if (doc.date!=null &&  doc.author!=null && doc.volume!=null) {
+                        data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
+                        data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" ><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + doc.author +', ' + doc.date  + '</b>,  p.' + doc.page + " (vol. "+doc.volume+", p. "+doc.position_vol +")"+'</span></td></tr>');
+                    }
+                    else if (doc.date!=null &&  doc.author!=null) {
+                        data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
+                        data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" ><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + doc.author +', ' + doc.date  + '</b>,  p.' + doc.page + ""+'</span></td></tr>');
+                    }
+                    else if (doc.date!=null) {
+                        data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
+                        data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" class="textlenght" ><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + doc.date  + '</b>,  p.' + doc.page + ""+ '</span></td></tr>');
+                    } else if (doc.author!=null ) {
+                        data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
+                        data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght" ><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + " ," + doc.author  + '</b>,  p.' + doc.page + ""+ '</span></td></tr>');
+                    }  else  {
+                        data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><td>');
+                        data +=  $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td><td colspan="2" class="textlenght"><span class="text2"><b>'+ doc.title + " ," + doc.responsibility + '.  ' + '</b>,  p.'+doc.page+ ""+'</span></td></tr>');
+                    }
+                }
+                if (doc.author != null) {
+                    data += $('#docs').append('<tr><td colspan="1"><span class="text">' + 'author: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.author +'</span></td></tr>');
+                }
+                if (doc.wholeDate!= null) {
+                    data += $('#docs').append('<tr><td colspan="1"><span class="text"> date: </span></td><td colspan="2" class="textlenght"><span class="text2">' + rightDate + '</span></td></tr>');
+                }
+
+                if (doc.description != null) {
+                        data += $('#docs').append('<tr><td colspan="1"><span class="text">' + 'note: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.description + '</span></td></tr>');
+                }
+
+                if (doc.format != null) {
+                    data += $('#docs').append('<tr><td colspan="1"><span class="text">' + 'format: </span></td><td colspan="2" class="textlenght"><span class="text2">' + doc.format + '</span></td></tr>');
+                }
+                data += $('#docs').append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> ' + doc.collection + '</span></td></tr>');
+
+                if (doc.collection==="Renmin Ribao") {
+                    var  link = databaseIcon.link(doc.url);
+                    var provider_link = databaseIcon.link(doc.erflink);
+                } else if (doc.collection==="Missionary, Sinology, and Literary Periodicals (1817-1949)") {
+                    var link = pageIcon.link(doc.url);
+                    var provider_link = pageIcon.link(doc.erflink);
+                }
+
+                data += $("#docs").append('<tr>' +
+                        '<td width="145"><span class="text" id="link">' + 'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
+                        '<span id="link" class="text">' + 'provider link: </span><td><span class="textlink2">' + provider_link + '</span></td>' +
+                        '</tr>');
+
+                articles +=data;
             }
 
             else if (doc.hasModel=='Book') {
@@ -552,208 +438,109 @@
                 if (doc.edition!=null) {snippet +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">edition: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.edition; + '</span></td></tr>'}
                 if (doc.subject!=null) {snippet +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">subject: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.subject; + '</span></td></tr>'}
                 if (doc.temporal!=null) {snippet +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">temporal: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.temporal; + '</span></td></tr>'}
+                if (doc.medium!=null) {snippet +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">medium: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.medium; + '</span></td></tr>'}
+                if (doc.description!=null) {snippet +=  '<tr><td colspan="1" class="text" style="vertical-align: top;">description: </td><td colspan="2" class="textlenght"><span class="text2">' + doc.description; + '</span></td></tr>'}
 
                 if (doc.note!=null) {
-                        var note = doc.note.toString();
-                        var note2 = note.replace("type=\"statement of responsibility\"","").replace("[","").replace("]","");
+                    var note = doc.note.toString();
+                    var note2 = note.replace("type=\"statement of responsibility\"","").replace("[","").replace("]","");
                     snippet +=  '<tr><td colspan="1"><span class="text">'+'note: </span></td><td colspan="2" class="textlenght"><span class="text2">' + note2; + '</span></td></tr>'
                 }
-
                 snippet +=   '<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>';
-                    if (doc.identifier!=null || doc.url) {
-                        $('a[href^="http://"]')
-                            .attr('target','_blank');
-                        if (doc.collection==="China Comprehensive Gazetteers") {
-                            if (doc.url!=null) {
-                                var vor_link1 = doc.url[0];
-                                var vor_link2 = doc.url[1];
+                if (doc.identifier!=null || doc.url) {
+                    $('a[href^="http://"]')
+                        .attr('target','_blank');
+                    if (doc.collection==="China Comprehensive Gazetteers") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="Local Gazetteer") {
+                        var link = databaseIcon.link(doc.url);
+                        var provider_link = databaseIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="Local Gazetteer (Diaolong)") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="Western language East Asia Collection (SBB Digital Collection)"){
+                        var link = bookIcon.link(doc.url);
+                    }
+                    else if (doc.collection==="Adam Matthew - China America Pacific") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="Adam Matthew - China Trade & Politics") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="Adam Matthew - Foreign Office Files China & Japan") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="Airiti") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="Xuxiu Siku quanshu") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="China and the Modern World: Records of the Maritime Customs Service of China (1854-1949)") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="Classical Works of Japan") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="CNKI_eBooks") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="Siku quanshu") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="Daozang jiyao") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="Fulltext search in print books") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="Early Twentieth Century Chinese Books (1912-1949)") {
+                        var link = bookIcon.link(doc.url);
+                        var url = doc.url;
+                        var http="http://erf.sbb.spk-berlin.de/han/NLCminguo/";
+                        var vor_link2 = url.replace(url,http+url.replace("http://",""));
+                        var provider_link = bookIcon.link(vor_link2);
+                    }
+                    else if (doc.collection==="Qingdai shiliao") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
+                    else if (doc.collection==="Xuxiu") {
+                        var    link = bookIcon.link(doc.url);
+                        var    provider_link = bookIcon.link(doc.erflink);
+                    }
 
-                                var http = "http://erf.sbb.spk-berlin.de/han/evplg/";
-                                link = bookIcon.link(vor_link2);
-                                provider_link = bookIcon.link(vor_link1);
-                            }
-                        }
-                        else if (doc.collection==="Local Gazetteer") {
-                            link = link_locgaz;
-                            provider_link = link_locgaz2;
-                        }
-                        else if (doc.collection==="Local Gazetteer (Diaolong)") {
-                            var vor_link1 = doc.identifier[0];
-                            var vor_link2 = doc.identifier[1];
-                            var http="http://hunteq.com/ancientc/ancientkm?!!";
-                            if (vor_link1.includes(http)) {
-                                var link_replace = vor_link1.replace("http://hunteq.com/ancientc/ancientkm?!!" ,"http://erf.sbb.spk-berlin.de/han/zhongguodifangzhiyiji/hunteq.com/ancientc/ancientkm?!!");
-                                var link = bookIcon.link(link_replace);
-                                var provider_link = bookIcon.link(vor_link1);
-                            } else if (vor_link2.includes(http)) {
-                                var link_replace = vor_link2.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/zhongguodifangzhiyiji/hunteq.com/ancientc/ancientkm?!!");
-                                var link = bookIcon.link(link_replace);
-                                var provider_link = bookIcon.link(vor_link2);
-                            }
-                        }
-                        else if (doc.collection==="Adam Matthew - China America Pacific") {
-                            var link = pageIcon.link(doc.image_url).replace("http://www.cap.amdigital.co.uk/Documents/Images/","http://erf.sbb.spk-berlin.de/han/ChinaAmericaPacific/www.cap.amdigital.co.uk/Documents/Images/");
-                            var provider_link = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/","http://www.cap.amdigital.co.uk/Documents/Images/");
-
-                        }
-                        else if (doc.collection==="Adam Matthew - China Trade & Politics") {
-                            var link = pageIcon.link(doc.image_url).replace("http://www.china.amdigital.co.uk/Documents/Images","http://erf.sbb.spk-berlin.de:80/han/ChinaTradePoliticsCulture1793-1980/www.china.amdigital.co.uk/Documents/Images/");
-                            var provider_link = pageIcon.link(doc.image_url).replace("http://www.china.amdigital.co.uk/Documents/Images/","http://www.china.amdigital.co.uk/Documents/Images/");
-                        }
-                        else if (doc.collection==="Adam Matthew - Foreign Office Files China & Japan") {
-                            var link = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/", "http://erf.sbb.spk-berlin.de/han/OfficeFilesChina/www.archivesdirect.amdigital.co.uk/Documents/Images/");
-                            var provider_link = pageIcon.link(doc.image_url).replace("http://www.archivesdirect.amdigital.co.uk/Documents/Images/", "http://www.archivesdirect.amdigital.co.uk/Documents/Images/");
-                        }
-                        else if (doc.collection==="Airiti") {
-                            var page = parseInt(doc.position);
-                            var combineLink = '&GoToPage=' + page;
-                            var link_airiri = (doc.identifier);
-                            var newLink_airiti = link_airiri.replace('http://www.airitibooks.com/detail.aspx?', 'http://www.airitibooks.com.airiti.erf.sbb.spk-berlin.de/pdfViewer/index.aspx?');
-                            var newLink2_airiti = link_airiri.replace('http://www.airitibooks.com/detail.aspx?', 'http://www.airitibooks.com/pdfViewer/index.aspx?');
-                            var link = pageIcon.link(newLink_airiti + combineLink);
-                            var provider_link = pageIcon.link(newLink2_airiti + combineLink);
-
-                        }
-                        else if (doc.collection==="China Comprehensive Gazetteers") {
-                            var vor_link1 = (doc.url[0]);
-                            var vor_link2 = (doc.url[1]);
-
-                            var http="http://erf.sbb.spk-berlin.de/han/evplg/";
-                            var link = bookIcon.link(vor_link2);
-                            var provider_link = bookIcon.link(vor_link1);
-                        }
-                        else if (doc.collection==="China and the Modern World: Records of the Maritime Customs Service of China (1854-1949)") {
-                            var vor_link1 = (doc.electronic_url);
-
-                            var http="http://erf.sbb.spk-berlin.de/han/galecfer/";
-                            var vor_link2 = vor_link1.replace("http://link.galegroup.com/apps/doc/","http://erf.sbb.spk-berlin.de/han/galecfer/link.galegroup.com/apps/doc/");
-                            var link = bookIcon.link(vor_link1);
-                            var provider_link = bookIcon.link(vor_link2);
-                        }
-                        else if (doc.collection==="Classical Works of Japan") {
-                            var vor_link1 = (doc.identifier[0]);
-                            var vor_link2 = (doc.identifier[1]);
-                            var http="http://hunteq.com/ancientc/ancientkm?!!";
-
-                            if (vor_link1.includes(http)) {
-                                var link_replace = vor_link1.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!");
-                                var link = bookIcon.link(link_replace);
-                                var provider_link2 = vor_link1.replace("","").replace("http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                                var provider_link = bookIcon.link(provider_link2);
-                            } else  {
-                                var link_replace = vor_link2.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!");
-                                var link = bookIcon.link(link_replace);
-                                var provider_link2 = vor_link2.replace("","").replace("http://erf.sbb.spk-berlin.de/han/ribengudianshujiku/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                                var provider_link = bookIcon.link(provider_link2);
-                            }
-                        }
-                        else if (doc.collection==="CNKI_eBooks") {
-                            var vor_link = (doc.identifier[1]);
-                            var nach_link= vor_link.replace("http://","");
-                            var erf ="http://erf.sbb.spk-berlin.de/han/cnki-books/";
-                            var new_link = erf+nach_link;
-                            var link = pageIcon.link(new_link.replace("Detail","OnlineView")+"?page="+doc.position);
-                            var provider_link = pageIcon.link(vor_link.replace("Detail","OnlineView")+"?page="+doc.position);
-                        }
-                        else if (doc.collection==="Daozang jiyao") {
-                            var vor_link1 = (doc.identifier[0]);
-                            var vor_link2 = (doc.identifier[1]);
-
-                            var http="type=\"CrossAsia Link\" http://erf.sbb.spk-berlin.de/han/daozangjiyao/hunteq.com/ancientc/ancientkm?!!";
-
-                            if (vor_link1.includes(http)) {
-
-                                var link_replace = vor_link1.replace("type=\"CrossAsia Link\" ","");
-                                var link = bookIcon.link(link_replace);
-                                var provider_link2 = vor_link1.replace("type=\"CrossAsia Link\" ","").replace("http://erf.sbb.spk-berlin.de/han/daozangjiyao/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                                var provider_link = bookIcon.link(provider_link2);
-                            } else {
-                                var link_replace = vor_link1.replace("type=\"CrossAsia Link\" ","");
-                                var link = bookIcon.link(link_replace);
-                                var provider_link2 = vor_link1.replace("type=\"CrossAsia Link\" ","").replace("http://erf.sbb.spk-berlin.de/han/daozangjiyao/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                                var provider_link = bookIcon.link(provider_link2);
-                            }
-                        }
-                        else if (doc.collection==="Fulltext search in print books") {
-                            var vor_link1 = (doc.identifier[0]);
-                            var http="http://gso.gbv.de/DB=1.97/PPNSET?PPN=";
-
-                            if (vor_link1.includes(http)) {
-                                var link_replace = vor_link1.replace("http://gso.gbv.de/DB=1.97/PPNSET?PPN=","http://erf.sbb.spk-berlin.de/han/cibtc/gso.gbv.de/DB=1.97/PPNSET?PPN=");
-                                var link = bookIcon.link(link_replace);
-                                var provider_link2 = vor_link1.replace("","").replace("http://erf.sbb.spk-berlin.de/han/cibtc/gso.gbv.de/DB=1.97/PPNSET?PPN=","http://gso.gbv.de/DB=1.97/PPNSET?PPN=");
-                                var provider_link = bookIcon.link(provider_link2);
-                            }
-                        }
-                        else if (doc.collection==="Early Twentieth Century Chinese Books (1912-1949)") {
-                            var http="http://erf.sbb.spk-berlin.de/han/NLCminguo/";
-                            var vor_link = (doc.url);
-                            var vor_link2 = vor_link.replace(vor_link,http+vor_link.replace("http://",""));
-                            var link = bookIcon.link(vor_link);
-                            var provider_link = bookIcon.link(vor_link2);
-                        }
-                        else if (doc.collection==="Qingdai shiliao") {
-                            var http="http://hunteq.com/ancientc/ancientkm?!!";
-
-                            if (doc.identifier[0]!=null){
-                                var vor_link1 = (doc.identifier[0]);
-                                if (vor_link1.includes(http)) {
-                                    var link_replace = vor_link1.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!");
-                                    var link = bookIcon.link(link_replace);
-                                    var provider_link2 = vor_link1.replace("","").replace("http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                                    var provider_link = bookIcon.link(provider_link2);
-                                }
-
-                            }
-                            if (doc.identifier[1]!=null){
-                                var vor_link2 = (doc.identifier[1]);
-                                if (vor_link2.includes(http)) {
-                                    var link_replace = vor_link2.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!");
-                                    var link = bookIcon.link(link_replace);
-                                    var provider_link2 = vor_link2.replace("","").replace("http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                                    var provider_link = bookIcon.link(provider_link2);
-                                }
-
-                            }
-                            if (doc.identifier[2]!=null){
-                                var vor_link3 = (doc.identifier[2]);
-                                if (vor_link3.includes(http)) {
-                                    var link_replace = vor_link3.replace("http://hunteq.com/ancientc/ancientkm?!!","http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!");
-                                    var link = bookIcon.link(link_replace);
-                                    var provider_link2 = vor_link3.replace("","").replace("http://erf.sbb.spk-berlin.de/han/qingdaishilio/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                                    var provider_link = bookIcon.link(provider_link2);
-                                }
-
-                            }
-                        }
-                        else if (doc.collection==="Xuxiu") {
-
-                            var vor_link1 = (doc.identifier[0]);
-                            var vor_link2 = (doc.identifier[1]);
-
-                            var http="type=\"CrossAsia Link\" http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!";
-
-                            if (vor_link1.includes(http)) {
-                                var link_replace = vor_link1.replace("type=\"CrossAsia Link\" ","");
-                                var link = bookIcon.link(link_replace);
-                                var provider_link2 = vor_link1.replace("type=\"CrossAsia Link\" ","").replace("http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                                var provider_link = bookIcon.link(provider_link2);
-                            } else {
-                                var link_replace = vor_link2.replace("type=\"CrossAsia Link\" ","");
-                                var link = bookIcon.link(link_replace);
-                                var provider_link2 = vor_link2.replace("type=\"CrossAsia Link\" ","").replace("http://erf.sbb.spk-berlin.de/han/xuxiu/hunteq.com/ancientc/ancientkm?!!","http://hunteq.com/ancientc/ancientkm?!!");
-                                var provider_link = bookIcon.link(provider_link2);
-                            }
-                        }
-
+                    if (doc.collection==="Western language East Asia Collection (SBB Digital Collection)") {
+                        var link = bookIcon.link(doc.url);
+                        snippet +=  '<tr>' +
+                            '<td width="145"><span class="text" id="link">'+'Digital SBB: </span></td><td width="145"><span class="textlink3">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
+                            '</span></td>'+
+                            '</tr>';
+                    }
+                    else {
                         snippet +=  '<tr>' +
                             '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link + '</span>&nbsp;&nbsp;&nbsp;' +
                             '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + provider_link + '</span></td>'+
                             '</tr>';
-
                     }
-                snippet =  snippet + '</table></div>';
 
+                }
+                snippet =  snippet + '</table></div>';
             }
 
             else if (doc.hasModel=="Chapter") {
@@ -761,31 +548,31 @@
                     $('a[href^="http://"]')
                         .attr('target','_blank');
 
-                    data_loc_gaz_chapter += $("#docs").append("<tr><th colspan='3'><hr class='line3'><span class='texttitle'>"+doc.title+"</span></th></tr>");
+                    chapter += $("#docs").append("<tr><th colspan='3'><hr class='line3'><span class='texttitle'>"+doc.title+"</span></th></tr>");
                     if (data[0].response.docs[0].date!=null && data[0].response.docs[0].author!=null) {
-                        data_loc_gaz_chapter += $("#docs").append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' +
+                        chapter += $("#docs").append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' +
                             '<td colspan="2" class="textlenght"><span class="text2">' + data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date + ', ' + " " + data[0].response.docs[0].author + ', ' + doc.pageStart + '-' + doc.pageEnd + ' p. </span></td></tr>');
                     } else if (data[0].response.docs[0].date!=null) {
-                        data_loc_gaz_chapter += $("#docs").append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' +
+                        chapter += $("#docs").append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' +
                             '<td colspan="2" class="textlenght"><span class="text2">' + data[0].response.docs[0].title + '.  ' +  ', ' + " " + data[0].response.docs[0].author + ', ' + doc.pageStart + '-' + doc.pageEnd + ' p. </span></td></tr>');
                     } else if (data[0].response.docs[0].author!=null) {
-                        data_loc_gaz_chapter += $("#docs").append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' +
+                        chapter += $("#docs").append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' +
                             '<td colspan="2" class="textlenght"><span class="text2">' + data[0].response.docs[0].title + '.  ' + data[0].response.docs[0].date + ', ' + " " +  ', ' + doc.pageStart + '-' + doc.pageEnd + ' p. </span></td></tr>');
                     } else {
-                        data_loc_gaz_chapter += $("#docs").append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' +
+                        chapter += $("#docs").append('<tr><td colspan="1" class="text" style="vertical-align: top;">citation: </td>' +
                             '<td colspan="2" class="textlenght"><span class="text2">' + data[0].response.docs[0].title + '.  ' +  ', ' + doc.pageStart + '-' + doc.pageEnd + ' p. </span></td></tr>');
                     }
 
-
-                    data_loc_gaz_chapter +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
-                    data_loc_gaz_chapter +=   $("#docs").append('<tr>' +
-                        '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + link_locgaz + '</span>&nbsp;&nbsp;&nbsp;' +
-                        '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + link_locgaz2 + '</span></td>'+
+                    chapter +=   $("#docs").append('<tr><td colspan="1"><span class="text">collection: </span></td><td colspan="2" class="textlenght"><span class="text2"> '+ doc.collection+'</span></td></tr>');
+                    chapter +=   $("#docs").append('<tr>' +
+                        '<td width="145"><span class="text" id="link">'+'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + databaseIcon.link(doc.url) + '</span>&nbsp;&nbsp;&nbsp;' +
+                        '<span id="link" class="text">'+'provider link: </span><td><span class="textlink2">' + databaseIcon.link(doc.erflink) + '</span></td>'+
                         '</tr>');
                 });
 
-                output += data_loc_gaz_chapter;
+                output += chapter;
             }
+
             else {
                 if (doc.id!=null) { snippet += doc.id;}
             }
