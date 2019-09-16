@@ -457,7 +457,7 @@ left side of the range
                                 '</div>'));
 
                         }
-                        if (facet==='CNKI_eBooks') {
+                        if (facet==='CNKI eBooks') {
                             $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo9\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
                                 '<div class="menu" id="foo9" style="display:none"><a onclick="show_hidePopUpWindow(\'foo9\');"> ' +
@@ -564,6 +564,21 @@ left side of the range
 
                         }
 
+                        if (facet==='Gujin tushu jicheng') {
+                            $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo810\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                '' +
+                                '<div class="menu" id="foo810" style="display:none"><a onclick="show_hidePopUpWindow(\'foo810\');"> ' +
+                                '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                '<path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg>' +
+                                '</a>' +
+                                '<b>Qing Imperial Encyclopedia (Gujin tushu jicheng) \n' +
+                                '古今圖書集成\n </b>' +
+                                '<br><b>CONTENT:</b> With 6,117 topical sections on over 800,000 pages, the Gujin tushu jicheng 古今圖書集成 is the largest still extent encyclopedic compilation of Chinese history. Started by Chen Menglei 陳夢雷under the imperial order of the Kangxi emperor 康熙 (r. 1661-1722) between 1701 und 1706 it was published and printed with moveable copper type in 1726 under the supervision of Jiang Tingxi 蔣廷錫.Each section assembles excerpts from a great variety of sources from early writings up to the 17th century.\n' +
+                                '\n' +
+                                '<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to click the \'book\' link that will open the respective section and then go to the page number given in the page hit.\n'+
+                                '</div>'));
+
+                        }
                     }
 
                     if (this.field==='title_facet' && cur_facet_count != 0) {
@@ -646,6 +661,7 @@ left side of the range
                         if (this.field==='spatial_facet'){document.getElementById('spatialHide').style.display = "block";}
                         if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "block";}
                         if (this.field==='edition_facet'){document.getElementById('editionHide').style.display = "block";}
+                        if (this.field==='subject_facet'){document.getElementById('subjectHide').style.display = "block";}
                         if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "block";}
                         if (this.field==='date'){document.getElementById('dateHide').style.display = "block";}
                         if (this.field==='language'){document.getElementById('languageHide').style.display = "block";}
@@ -656,6 +672,7 @@ left side of the range
                         if (this.field==='date'){document.getElementById('dateHide').style.display = "none";}
                         if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "none";}
                         if (this.field==='edition_facet'){document.getElementById('editionHide').style.display = "none";}
+                        if (this.field==='subject_facet'){document.getElementById('subjectHide').style.display = "none";}
                         if (this.field==='language'){document.getElementById('languageHide').style.display = "none";}
                     }
 
@@ -666,6 +683,7 @@ left side of the range
                         if (this.field==='date'){document.getElementById('date_all_extra').style.display = "none";}
                         if (this.field==='author_facet'){document.getElementById('author_facet_all_extra').style.display = "none";}
                         if (this.field==='edition_facet'){document.getElementById('edition_facet_all_extra').style.display = "none";}
+                        if (this.field==='subject_facet'){document.getElementById('subject_facet_all_extra').style.display = "none";}
                         if (this.field==='language'){document.getElementById('language_all_extra').style.display = "none";}
                     }
 
@@ -705,7 +723,16 @@ left side of the range
                                     '<br><b>CONTENT:</b> The resource contains the main English-language periodicals published in or about China covering the period from 1817 until the founding of the People’s Republic of China in 1949. The journals feature photographs and articles the on the founding and development of Christian higher education in China. \n' +
                                     '<br><b>NOTE:</b> The fulltexts are not split into the actual pages, but contain the whole article. The links provided thus open the article at the start page and the search term may appear only on a later page. To get to the correct page please use the “Search within – Article” to left of the article display in the database. \n</div>'));
                             }
-                            if (facet==='CNKI_eBooks') {
+                            if (facet==='Qingdai shiliao') {
+                                //console.log(facet);
+                                $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo41\');" onmouseover="" style="cursor: pointer;"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                    '' +
+                                    '<div class="menu" id="foo41" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo41\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>清代史料 </b>\n' +
+                                    '<br><b>CONTENT:</b> The collection contains historical sources of the Qing dynasty published by the Qing state. They belong to five types of documents: Veritable Records (實錄), Collected Statutes (會典), Records of Officials (缙绅錄), different editions of  the Guide to the Qing board of war (大清中樞備覽) as well as the Qing Essentials for Governance (大清輔政要覽全書), and  finally materials closely related to the emperor such as the Court Diaries (起居注, currently only Tongzhi 同治). \n' +
+                                    '<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the \'book\' link in the title data) and then go to the page number given in the page hit.\n</div>'));
+
+                            }
+                            if (facet==='CNKI eBooks') {
                                 $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo9\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                     '' +
                                     '<div class="menu" id="foo9" style="display:none"><a onclick="show_hidePopUpWindow(\'foo9\');"> ' +
@@ -763,11 +790,11 @@ left side of the range
                                     '</div>'));
 
                             }
-                            if (facet==='Western language East Asia Collection (SBB Digital Collection)') {
+                            if (facet==='SBB digital : Western language Asia collection') {
                                 //console.log(facet);
                                 $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo401\');" onmouseover="" style="cursor: pointer;"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                     '' +
-                                    '<div class="menu" id="foo401" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo401\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Western language East Asia Collection (SBB Digital Collection) </b>\n' +
+                                    '<div class="menu" id="foo401" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo401\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>SBB digital : Western language Asia collection </b>\n' +
                                     '<br><b>CONTENT:</b> In the current version the dataset contains the OCR  fulltexts of 4653 titles of the East Asia Collection (Ostasiatica) digitized in the “SSG 6.25 digital“ project funded by the DFG. The titles were selected according to their allocation as materials concerning East and Southeast Asia in the “Alte Realkatalog”  <a href="http://ark.staatsbibliothek-berlin.de">(http://ark.staatsbibliothek-berlin.de)</a>. The material is mainly in Dutch, English, German and French, but does also contain texts in Spanish, Italian, Latin, Russian and Portuguese. \n' +
                                     '<br><b>NOTE:</b> The fulltext is produced by OCR. For the hits we provide links to the book or journal and the individual page display in the Digital Collection of the SBB. The material is in the public domain.\n</div>'));
 
@@ -799,6 +826,21 @@ left side of the range
                                     '<br><b>CONTENT:</b> The collection contains the diaries and correspondence of Edward S Morse (1838-1925), one of the first Americans to live in Japan for a longer period while teaching science at the Imperial University of Tokyo. A polymath especially interested in the fields natural history, ethnography and art history, he was an accomplished draughtsman and his drawings and sketches enliven his diaries and letters. In addition to preserving the household records of a samurai family and many accounts of the tea ceremony, Morse made notes on subjects as diverse as shop signs, fireworks, hairpins, agricultural tools, artists’ studios, music, games, printing, carpentry, the Ainu, gardens, household construction, art and architecture. His correspondence include exchanges with Alexander and Louis Agassiz, William Sturgis Bigelow, Charles Darwin, Ernest Fenollosa, Yukichi Fukuzawa, Isabella Stewart Gardner, John M Gould, Oliver Wendell Holmes, Ernest Ingersoll, Hiroyuki Kato, Percival Lowell, The Museum of Fine Arts in Boston, Charles Eliot Norton, Frederick Putnam, Hideo Takamine, Seiichi Tejima, Charles Townsend, Charles Weld and Yu Kil-chun.\n' +
                                     '\n' +
                                     '<br><b>NOTE:</b> As all items in this collection are either handwritten or images, none of them has provided fulltext yet. Thus only the metadata can be searched.\n'+
+                                    '</div>'));
+
+                            }
+                            if (facet==='Gujin tushu jicheng') {
+                                $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo810\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                    '' +
+                                    '<div class="menu" id="foo810" style="display:none"><a onclick="show_hidePopUpWindow(\'foo810\');"> ' +
+                                    '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                    '<path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg>' +
+                                    '</a>' +
+                                    '<b>Qing Imperial Encyclopedia (Gujin tushu jicheng) \n' +
+                                    '古今圖書集成\n </b>' +
+                                    '<br><b>CONTENT:</b> With 6,117 topical sections on over 800,000 pages, the Gujin tushu jicheng 古今圖書集成 is the largest still extent encyclopedic compilation of Chinese history. Started by Chen Menglei 陳夢雷under the imperial order of the Kangxi emperor 康熙 (r. 1661-1722) between 1701 und 1706 it was published and printed with moveable copper type in 1726 under the supervision of Jiang Tingxi 蔣廷錫.Each section assembles excerpts from a great variety of sources from early writings up to the 17th century.\n' +
+                                    '\n' +
+                                    '<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to click the \'book\' link that will open the respective section and then go to the page number given in the page hit.\n'+
                                     '</div>'));
 
                             }
