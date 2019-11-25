@@ -39,16 +39,18 @@
 </div>
 
 <div id="wrap">
+
     <div class="left col-md-4 col-lg-4">
         <div class="title2">Current Selection</div>
         <ul id="selection"></ul>
+
         <div class="title2">Search</div>
         <!--<span id="search_help">(press ESC to close suggestions)</span>-->
         <ul id="search">
 
             <input data-v-1a31d9e4="" type="text" id="query" name="query" autocomplete="off" class="searchline">
 
-            <button onclick="searchButton();"  id="query2" name="query" class="ui-autocomplete-input" value="send">
+            <button onclick="search();"  id="query2" name="query" class="ui-autocomplete-input" value="send">
                 <svg data-v-78d1bf6c="" version="1.1" role="presentation" width="14.857142857142858" height="16" viewBox="0 0 1664 1792" class="fa-icon">
                     <path d="M1152 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zM1664 1664q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"></path>  <!----></svg>
             </button>
@@ -58,13 +60,35 @@
             </a>
 
             <script type="text/javascript">
+                //var queryValue=window.location.search.split("query=")[1].split("&")[0];
+                //console.log(1+url);
+                function sleep(milliseconds) {
+                    var start = new Date().getTime();
+                    for (var i = 0; i < 1e7; i++) {
+                        if ((new Date().getTime() - start) > milliseconds){
+                            break;
+                        }
+                    }
+                }
 
-                function searchButton(){
+                function search(){
                     var queryValue = $('#query').val();
                     var value = decodeURI(queryValue);
+                    console.log(value);
                     Manager.store.addByValue('q', value);
+                    sleep(5000);
                     Manager.doRequest();
                 }
+                $(document).ready(function() {
+                    if (window.location.search.indexOf("query")===7) {
+                        var url =window.location.search.split("query=")[1].split("&")[0];
+                        $('#query').val(decodeURI(url));
+                        search();
+                        window.history.pushState({}, document.title, "/index.php?id=94" + "");
+                    } else {
+                        console.log("xaxa");
+                    }
+                });
 
             </script>
             <script>
@@ -76,7 +100,6 @@
                         x.style.display = "none";
                     }
                 }
-
             </script>
         </ul>
 
@@ -136,8 +159,6 @@
             <br>- searching metadata and fulltext at the same time
             <br>- ranking of search hits by Solr score (note: be aware that if you do not enclose your search term in "" texts with a high frequency of one word/character of your search term will score higher than those where your two search words/characters appear next to each other)
             <br>- for each hit two types of link are provided: one - in red - for authenticated CrossAsia users, another one - in grey - for all other users who will then need to enter their individual authorization or access the ressource from within a subscriber's IP range. Please note that not all databases provide links to directly call-up a specific page of a ressource, some even do not have direct links to an item in their database (for example Erudition Local Gazetteers or Renmin ribao).
-            <br>
-            <br>This version is currently not compatible with IExplorer lower than Edge.
             <br>
             <br>For feedback, questions etc. please contact: <a href="mailto:x-asia@sbb.spk-berlin.de">x-asia@sbb.spk-berlin.de</a>
 

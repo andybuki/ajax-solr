@@ -396,11 +396,11 @@ left side of the range
                                 '<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the \'book\' link in the title data) and then go to the page number given in the page hit.\n</div>'));
 
                         }
-                        if (facet==='Western language East Asia Collection (SBB Digital Collection)') {
+                        if (facet==='SBB digital : Western language Asia collection') {
                             //console.log(facet);
                             $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo401\');" onmouseover="" style="cursor: pointer;"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
-                                '<div class="menu" id="foo401" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo401\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Western language East Asia Collection (SBB Digital Collection) </b>\n' +
+                                '<div class="menu" id="foo401" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo401\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>SBB digital : Western language Asia collection </b>\n' +
                                 '<br><b>CONTENT:</b> In the current version the dataset contains the OCR  fulltexts of 4653 titles of the East Asia Collection (Ostasiatica) digitized in the “SSG 6.25 digital“ project funded by the DFG. The titles were selected according to their allocation as materials concerning East and Southeast Asia in the “Alte Realkatalog”  <a href="http://ark.staatsbibliothek-berlin.de">(http://ark.staatsbibliothek-berlin.de)</a>. The material is mainly in Dutch, English, German and French, but does also contain texts in Spanish, Italian, Latin, Russian and Portuguese. \n' +
                                 '<br><b>NOTE:</b> The fulltext is produced by OCR. For the hits we provide links to the book or journal and the individual page display in the Digital Collection of the SBB. The material is in the public domain.\n</div>'));
 
@@ -457,7 +457,7 @@ left side of the range
                                 '</div>'));
 
                         }
-                        if (facet==='CNKI_eBooks') {
+                        if (facet==='CNKI eBooks') {
                             $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo9\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
                                 '<div class="menu" id="foo9" style="display:none"><a onclick="show_hidePopUpWindow(\'foo9\');"> ' +
@@ -513,6 +513,22 @@ left side of the range
                                 '</div>'));
 
                         }
+
+                        if (facet==='Siku quanshu') {
+                            $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo920\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                '' +
+                                '<div class="menu" id="foo920" style="display:none"><a onclick="show_hidePopUpWindow(\'foo920\');"> ' +
+                                '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                '<path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg>' +
+                                '</a>' +
+                                '<b>Siku quanshu 四庫全書 </b>' +
+                                '<br><b>CONTENT:</b> This famous collecting and editing project of the Qianlong emperor (reg. 1735-1796/1799) contains 3540 titles. The books in this project all went through an editing and “correcting” process by the Qing compilation team and seven neat manuscript copies were produced to be displayed at different locations of the empire. The one digitized here is the Wenyuan pavilion 文淵閣 today housed at the Taiwan Palace Museum. \n' +
+                                '\n' +
+                                '<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the \'book\' link in the title data) and then go to the page number given in the page hit. \n'+
+                                '</div>'));
+
+                        }
+
                         if (facet==='China and the Modern World: Records of the Maritime Customs Service of China (1854-1949)') {
                             $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo94\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                 '' +
@@ -547,7 +563,51 @@ left side of the range
                                 '</div>'));
 
                         }
+                        if (facet==='Gujin tushu jicheng') {
+                            $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo810\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                '' +
+                                '<div class="menu" id="foo810" style="display:none"><a onclick="show_hidePopUpWindow(\'foo810\');"> ' +
+                                '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                '<path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg>' +
+                                '</a>' +
+                                '<b>Qing Imperial Encyclopedia (Gujin tushu jicheng) \n' +
+                                '古今圖書集成\n </b>' +
+                                '<br><b>CONTENT:</b> With 6,117 topical sections on over 800,000 pages, the Gujin tushu jicheng 古今圖書集成 is the largest still extent encyclopedic compilation of Chinese history. Started by Chen Menglei 陳夢雷under the imperial order of the Kangxi emperor 康熙 (r. 1661-1722) between 1701 und 1706 it was published and printed with moveable copper type in 1726 under the supervision of Jiang Tingxi 蔣廷錫.Each section assembles excerpts from a great variety of sources from early writings up to the 17th century.\n' +
+                                '\n' +
+                                '<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to click the \'book\' link that will open the respective section and then go to the page number given in the page hit.\n'+
+                                '</div>'));
 
+                        }
+                        if (facet==='Sibu beiyao') {
+                            $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo811\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                '' +
+                                '<div class="menu" id="foo811" style="display:none"><a onclick="show_hidePopUpWindow(\'foo811\');"> ' +
+                                '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                '<path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg>' +
+                                '</a>' +
+                                '<b>Sibu beiyao 四部備要 \n' +
+                                ' </b>' +
+                                '<br><b>CONTENT:</b> The Sibu beiyao 四部備要 ("Essentials of the Four Branches of Literature"), published between 1924 and 1931 by Zhonghua shuju, assembles 364 titles (or 336 depending on how to count) of Chinese literary tradition of all “four branches”, i.e. classics and their commentaries, history, monographs, literature collections. The Sibu beiyao focusses on commented and annotated versions of the works selected that were then edited and newly printed with the aim to provide scholars with “better” versions of texts. \n' +
+                                'The Diaolong portal includes the corpora under the title Xu Sibu congkan 續四部叢刊 (“Sequel to the Sibu congkan”). The Sibu congkan is a competing collection published slightly earlier by Commercial Press (also included in the Diaolong portal).\n' +
+                                '\n' +
+                                '<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the \'book\' link in the title data) and then go to the page number given in the page hit.\n'+
+                                '</div>'));
+
+                        }
+                        if (facet==='Mobilizing East Asia, 1931-1954') {
+                            $(this.target).append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo820\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                '' +
+                                '<div class="menu" id="foo820" style="display:none"><a onclick="show_hidePopUpWindow(\'foo820\');"> ' +
+                                '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                '<path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg>' +
+                                '</a>' +
+                                '<b>Mobilizing East Asia (1931-1954) </b><br>\n' +
+                                '<br><b>CONTENT:</b> The Collection offers access to extremely rare, many times even unique English-language newspapers, magazines and pamphlets published inside Asia, following the descent into war in East and South-East Asia from the turn of the twentieth century to the 1950s. Included are several Manchuria and Japan newspapers and selection of 20 book titles related to the period and area.\n' +
+                                '\n' +
+                                '<br><b>NOTE:</b> Links to the issue or book are provided with the search hits; no links to the individual pages in the database are possible. To find the page use “Open reader” for the object and go the respective page (or search again within the object to highlight your find). The full text was done by automated OCR without correcting routines. Wrong identification of characters and layout are frequent. \n'+
+                                '</div>'));
+
+                        }
                     }
 
                     if (this.field==='title_facet' && cur_facet_count != 0) {
@@ -630,6 +690,7 @@ left side of the range
                         if (this.field==='spatial_facet'){document.getElementById('spatialHide').style.display = "block";}
                         if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "block";}
                         if (this.field==='edition_facet'){document.getElementById('editionHide').style.display = "block";}
+                        if (this.field==='subject_facet'){document.getElementById('subjectHide').style.display = "block";}
                         if (this.field==='title_facet'){document.getElementById('titleHide').style.display = "block";}
                         if (this.field==='date'){document.getElementById('dateHide').style.display = "block";}
                         if (this.field==='language'){document.getElementById('languageHide').style.display = "block";}
@@ -640,6 +701,7 @@ left side of the range
                         if (this.field==='date'){document.getElementById('dateHide').style.display = "none";}
                         if (this.field==='author_facet'){document.getElementById('authorHide').style.display = "none";}
                         if (this.field==='edition_facet'){document.getElementById('editionHide').style.display = "none";}
+                        if (this.field==='subject_facet'){document.getElementById('subjectHide').style.display = "none";}
                         if (this.field==='language'){document.getElementById('languageHide').style.display = "none";}
                     }
 
@@ -650,12 +712,21 @@ left side of the range
                         if (this.field==='date'){document.getElementById('date_all_extra').style.display = "none";}
                         if (this.field==='author_facet'){document.getElementById('author_facet_all_extra').style.display = "none";}
                         if (this.field==='edition_facet'){document.getElementById('edition_facet_all_extra').style.display = "none";}
+                        if (this.field==='subject_facet'){document.getElementById('subject_facet_all_extra').style.display = "none";}
                         if (this.field==='language'){document.getElementById('language_all_extra').style.display = "none";}
                     }
 
                     if (cur_facet_count != 0) {
                         if ( this.field=='collection') {
-
+                            if (facet==="Renmin Ribao" ) {
+                                $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo\');" onmouseover="" style="cursor: pointer;">' +
+                                    '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                    '<path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                    '' +
+                                    '<div class="menu" id="foo" style="display:none"><a onclick="show_hidePopUpWindow(\'foo\');"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>人民日报 : People\'s Daily </b>\n' +
+                                    '<br><b>CONTENT:</b> Fulltexts of all articles from the inception of the People\'s Daily in 1946 to end of August 2009. Articles will be shown as individual hits of the issue of a certain day.\n' +
+                                    '<br><b>NOTE:</b> To see the image-PDF of the issue you will have go to the database (http://erf.sbb.spk-berlin.de/han/RenminRibao1/) and open the issue via the calendar browse function provided in the database.\n</div>'));
+                            }
                             if (facet==="Airiti") {
                                 $('#' + 'more_collection').append($('<span> </span> <a class="airiti2" onclick="show_hidePopUpWindow(\'foo2\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></i></a>' +
                                     '' +
@@ -681,7 +752,16 @@ left side of the range
                                     '<br><b>CONTENT:</b> The resource contains the main English-language periodicals published in or about China covering the period from 1817 until the founding of the People’s Republic of China in 1949. The journals feature photographs and articles the on the founding and development of Christian higher education in China. \n' +
                                     '<br><b>NOTE:</b> The fulltexts are not split into the actual pages, but contain the whole article. The links provided thus open the article at the start page and the search term may appear only on a later page. To get to the correct page please use the “Search within – Article” to left of the article display in the database. \n</div>'));
                             }
-                            if (facet==='CNKI_eBooks') {
+                            if (facet==='Qingdai shiliao') {
+                                //console.log(facet);
+                                $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo41\');" onmouseover="" style="cursor: pointer;"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                    '' +
+                                    '<div class="menu" id="foo41" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo41\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>清代史料 </b>\n' +
+                                    '<br><b>CONTENT:</b> The collection contains historical sources of the Qing dynasty published by the Qing state. They belong to five types of documents: Veritable Records (實錄), Collected Statutes (會典), Records of Officials (缙绅錄), different editions of  the Guide to the Qing board of war (大清中樞備覽) as well as the Qing Essentials for Governance (大清輔政要覽全書), and  finally materials closely related to the emperor such as the Court Diaries (起居注, currently only Tongzhi 同治). \n' +
+                                    '<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the \'book\' link in the title data) and then go to the page number given in the page hit.\n</div>'));
+
+                            }
+                            if (facet==='CNKI eBooks') {
                                 $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo9\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                     '' +
                                     '<div class="menu" id="foo9" style="display:none"><a onclick="show_hidePopUpWindow(\'foo9\');"> ' +
@@ -693,6 +773,20 @@ left side of the range
                                     '\n' +
                                     '<br><b>NOTE:</b> To see the complete text of a hit page, please follow the link provided next to the fulltext hit. After login the page will open in the database.\n'+
                                     '</div>'));
+                            }
+                            if (facet==='Classical Works of Japan') {
+                                $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo92\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                    '' +
+                                    '<div class="menu" id="foo92" style="display:none"><a onclick="show_hidePopUpWindow(\'foo92\');"> ' +
+                                    '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                    '<path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg>' +
+                                    '</a>' +
+                                    '<b>日本古典書籍 : Classical  Works of Japan </b>' +
+                                    '<br><b>CONTENT:</b> The collection contains a selection of important historical and literary compilations, as well as the encyclopedia  Koji ruien 古事類苑 (compiled between 1896 and 1914) and two dictionaries, namely the Wamyô ruijushô 倭名類聚抄 of the 10th and the Shinsen jikyô 新撰字鏡 of the late 9th century. The historical collections included are the collection of historical resources Kokushi taikei 国史大系 with its sequel (both compiled between 1897 and 1904) and the Rikkokushi  六国史,the six national histories of Japan; the literary collections consist of the Honchô monzui 本朝文粹  presenting Chinese prose and poetry for a Japanese audience compiled in the 11th century and of various collections with Japanese poems in Chinese style covering the period from 7th to the 20th centuries (segment called: Nihon kanshi 日本漢詩). \n' +
+                                    '\n' +
+                                    '<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the \'book\' link in the title data) and then go to the page number given in the page hit. \n'+
+                                    '</div>'));
+
                             }
                             if (facet==='Daozang jiyao') {
                                 $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo42\');" onmouseover="" style="cursor: pointer;"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
@@ -714,15 +808,42 @@ left side of the range
                                     '<br><b>NOTE:</b> To see your full hit page you have to borrow the book (via the link to our OPAC provided with the title) and find the correct page. Please note that the "page number" given for your search hit is the "image number", so you have to add a certain number to find the correct printed page. But the idea is to help you find books of interest for your research of general interest.\n'+
                                     '</div>'));
                             }
-                            if (facet==='Western language East Asia Collection (SBB Digital Collection)') {
+                            if (facet==='Adam Matthew - China America Pacific') {
+                                $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo6\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                    '' +
+                                    '<div class="menu" id="foo6" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo6\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Adam Matthew - China America Pacific </b>\n'
+                                    +
+                                    '<br><b>CONTENT:</b> Collection of archival material held by different American institutions and libraries like the American Philosophical Society Library, Boston Athenæum, Bridgeman Art Library, California Historical Society, Hagley Museum and Library, Massachusetts Historical Society, Hawaiian Historical Society etc. It contains material related to the trading and cultural relationships that emerged between China, America and the Pacific region between the 18th and early 20th centuries like manuscript sources, rare printed texts, visual images, objects and maps.\n' +
+                                    '\n' +
+                                    '<br><b>NOTE:</b> The full text was done by OCR from partly handwritten material, thus the text is often of minor quality. For each hit in the search links to the bibliographical unit and to the individual page are provided.\n'+
+                                    '</div>'));
+
+                            }
+                            if (facet==='SBB digital : Western language Asia collection') {
                                 //console.log(facet);
                                 $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo401\');" onmouseover="" style="cursor: pointer;"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                     '' +
-                                    '<div class="menu" id="foo401" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo401\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>Western language East Asia Collection (SBB Digital Collection) </b>\n' +
+                                    '<div class="menu" id="foo401" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo401\');"><svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a><b>SBB digital : Western language Asia collection </b>\n' +
                                     '<br><b>CONTENT:</b> In the current version the dataset contains the OCR  fulltexts of 4653 titles of the East Asia Collection (Ostasiatica) digitized in the “SSG 6.25 digital“ project funded by the DFG. The titles were selected according to their allocation as materials concerning East and Southeast Asia in the “Alte Realkatalog”  <a href="http://ark.staatsbibliothek-berlin.de">(http://ark.staatsbibliothek-berlin.de)</a>. The material is mainly in Dutch, English, German and French, but does also contain texts in Spanish, Italian, Latin, Russian and Portuguese. \n' +
                                     '<br><b>NOTE:</b> The fulltext is produced by OCR. For the hits we provide links to the book or journal and the individual page display in the Digital Collection of the SBB. The material is in the public domain.\n</div>'));
 
                             }
+
+                            if (facet==='China and the Modern World: Records of the Maritime Customs Service of China (1854-1949)') {
+                                $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo94\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                    '' +
+                                    '<div class="menu" id="foo94" style="display:none"><a onclick="show_hidePopUpWindow(\'foo94\');"> ' +
+                                    '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                    '<path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg>' +
+                                    '</a>' +
+                                    '<b>Records of the Maritime Customs Service of China (1854-1949) </b>' +
+                                    '<br><b>CONTENT:</b> The resource contains official correspondence, despatches, reports, memoranda, as well as private and confidential  letter of the Maritime Customs Service of China, an international, although predominantly British-staffed bureaucracy (at senior levels) under the control of successive Chinese central governments from its founding in 1854 until January 1950. With 720 documents and almost 300.000 pages it provides evidence Chinese life, the economy and politics of of late Qing and Republican times until the founding of the People’s Republic of China in 1949. \n' +
+                                    '\n' +
+                                    '<br><b>NOTE:</b> The documents are scanned from microfilm and the fulltext derives from uncleaned OCR. As many documents are handwritten the text quality thus often inferior. The link provided for the individual text pages lead to the corresponding scan unfortunately without the document’s context. \n'+
+                                    '</div>'));
+
+                            }
+
                             if (facet==='Adam Matthew - Meiji Japan') {
                                 $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo8\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
                                     '' +
@@ -737,7 +858,52 @@ left side of the range
                                     '</div>'));
 
                             }
+                            if (facet==='Gujin tushu jicheng') {
+                                $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo810\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                    '' +
+                                    '<div class="menu" id="foo810" style="display:none"><a onclick="show_hidePopUpWindow(\'foo810\');"> ' +
+                                    '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                    '<path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg>' +
+                                    '</a>' +
+                                    '<b>Qing Imperial Encyclopedia (Gujin tushu jicheng) \n' +
+                                    '古今圖書集成\n </b>' +
+                                    '<br><b>CONTENT:</b> With 6,117 topical sections on over 800,000 pages, the Gujin tushu jicheng 古今圖書集成 is the largest still extent encyclopedic compilation of Chinese history. Started by Chen Menglei 陳夢雷under the imperial order of the Kangxi emperor 康熙 (r. 1661-1722) between 1701 und 1706 it was published and printed with moveable copper type in 1726 under the supervision of Jiang Tingxi 蔣廷錫.Each section assembles excerpts from a great variety of sources from early writings up to the 17th century.\n' +
+                                    '\n' +
+                                    '<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to click the \'book\' link that will open the respective section and then go to the page number given in the page hit.\n'+
+                                    '</div>'));
 
+                            }
+                            if (facet==='Sibu beiyao') {
+                                $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo811\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                    '' +
+                                    '<div class="menu" id="foo811" style="display:none"><a onclick="show_hidePopUpWindow(\'foo811\');"> ' +
+                                    '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                    '<path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg>' +
+                                    '</a>' +
+                                    '<b>Sibu beiyao 四部備要 \n' +
+                                    ' </b>' +
+                                    '<br><b>CONTENT:</b> The Sibu beiyao 四部備要 ("Essentials of the Four Branches of Literature"), published between 1924 and 1931 by Zhonghua shuju, assembles 364 titles (or 336 depending on how to count) of Chinese literary tradition of all “four branches”, i.e. classics and their commentaries, history, monographs, literature collections. The Sibu beiyao focusses on commented and annotated versions of the works selected that were then edited and newly printed with the aim to provide scholars with “better” versions of texts. \n' +
+                                    'The Diaolong portal includes the corpora under the title Xu Sibu congkan 續四部叢刊 (“Sequel to the Sibu congkan”). The Sibu congkan is a competing collection published slightly earlier by Commercial Press (also included in the Diaolong portal).\n' +
+                                    '\n' +
+                                    '<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the \'book\' link in the title data) and then go to the page number given in the page hit.\n'+
+                                    '</div>'));
+
+                            }
+                            if (facet==='Mobilizing East Asia, 1931-1954') {
+                                $('#' + 'more_collection').append($('<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo820\');" onmouseover="" style="cursor: pointer;"> <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1024 1376v-160q0-14-9-23t-23-9h-96v-512q0-14-9-23t-23-9h-320q-14 0-23 9t-9 23v160q0 14 9 23t23 9h96v320h-96q-14 0-23 9t-9 23v160q0 14 9 23t23 9h448q14 0 23-9t9-23zM896 480v-160q0-14-9-23t-23-9h-192q-14 0-23 9t-9 23v160q0 14 9 23t23 9h192q14 0 23-9t9-23zM1536 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path>  <!----></svg></a>' +
+                                    '' +
+                                    '<div class="menu" id="foo820" style="display:none"><a onclick="show_hidePopUpWindow(\'foo820\');"> ' +
+                                    '<svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);">' +
+                                    '<path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg>' +
+                                    '</a>' +
+                                    '<b>Mobilizing East Asia (1931-1954) </b><br>\n' +
+
+                                    '<br><b>CONTENT:</b> The Collection offers access to extremely rare, many times even unique English-language newspapers, magazines and pamphlets published inside Asia, following the descent into war in East and South-East Asia from the turn of the twentieth century to the 1950s. Included are several Manchuria and Japan newspapers and selection of 20 book titles related to the period and area.\n' +
+                                    '\n' +
+                                    '<br><b>NOTE:</b> Links to the issue or book are provided with the search hits; no links to the individual pages in the database are possible. To find the page use “Open reader” for the object and go the respective page (or search again within the object to highlight your find). The full text was done by automated OCR without correcting routines. Wrong identification of characters and layout are frequent. \n'+
+                                    '</div>'));
+
+                            }
 
                         }
 
