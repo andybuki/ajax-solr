@@ -334,23 +334,22 @@
                                     }
                                 })
                             });
-
-                            /*$(this.target).append(
-                                $(
-                                    '<span> </span><a class="click" onclick="show_hidePopUpWindow(\'foo\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    '</a>' +
-                                    "" +
-                                    '<div class="menu" id="foo" style="display:none"><a onclick="show_hidePopUpWindow(\'foo\');">' +
-                                    close_button +
-                                    "</a><b>人民日报 : People's Daily </b>\n" +
-                                    "<br><b>CONTENT:</b> Fulltexts of all articles from the inception of the People's Daily in 1946 to end of August 2009. Articles will be shown as individual hits of the issue of a certain day.\n" +
-                                    '<br><b>NOTE:</b> To see the image-PDF of the issue you will have go to the database (<a href="http://erf.sbb.spk-berlin.de/han/RenminRibao1">http://erf.sbb.spk-berlin.de/han/RenminRibao1</a>) and open the issue via the calendar browse function provided in the database.\n</div>'
-                                )
-                            );*/
                         }
                         if (facet === "Airiti") {
-                            $(this.target).append(
+                            $(this.target).append($('<button class="click" id="btn-ajax">'+
+                                info_button+
+                                '</button> <span id="content"></span>'));
+
+                            $('#btn-ajax').click(function(e) {
+                                $.ajax({
+                                    url: 'collections/airiti.html',
+                                    type: 'get',
+                                    success: function(data) {
+                                        $('#content').html(data);
+                                    }
+                                })
+                            });
+                            /*$(this.target).append(
                                 $(
                                     '<span> </span> <a class="airiti2" onclick="show_hidePopUpWindow(\'foo2\');" onmouseover="" style="cursor: pointer;"> ' +
                                     info_button +
@@ -362,7 +361,7 @@
                                     '<br><b>CONTENT:</b>  Currently 75 titles of the Airiti eBook platform have been licenced and are available for fulltext search. The corpus of licenced titles will be update yearly. For the Airiti ebook database go to 華藝中文電子書 : airitiBooks <a href="http://erf.sbb.spk-berlin.de/han/airiti/www.airitibooks.com/">LINK</a>\n' +
                                     "<br><b>NOTE:</b> To see your hit page, please follow the link provided next to the fulltext hit. Due to the licence agreement it is only possible to open one double-page (window) per book at the same time. If you can't find the hit on the pages shown, please check the previous or subsequent pages, or perform a search within the book.\n</div>"
                                 )
-                            );
+                            );*/
                         }
                         if (facet === "Adam Matthew - Foreign Office Files China & Japan") {
                             $(this.target).append(
