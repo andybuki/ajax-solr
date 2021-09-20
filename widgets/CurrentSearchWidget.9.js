@@ -38,12 +38,15 @@
         }));
       }
 
-      if (links.length!=1 && links.length!=0) {
+      if (links.length && q!="") {
+        //if (links.length) {
         var $target = $(this.target);
         $target.empty();
+        // if (!q.empty()) {
         for (var i = 0, l = links.length; i < l; i++) {
           $target.append($('<li></li>').append(links[i]));
         }
+        //}
       }
       else {
         $(this.target).html('<li>Viewing all documents!</li>');
@@ -62,6 +65,3 @@
   });
 
 })(jQuery);
-
-
-
