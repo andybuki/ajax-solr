@@ -321,14 +321,21 @@
                     var thechosenone = "";
                     if (this.field === "collection" && cur_facet_count != 0) {
                         if (facet === "Renmin Ribao") {
-                            var rr = $(function() {
-                                $("#contento").load("/js/collection/rmrb.html")
+                            $(this.target).append($('<button class="click" id="btn-ajax">'+
+                                info_button+
+                                '</button> <span id="content"></span>'));
+
+                            $('#btn-ajax').click(function(e) {
+                                $.ajax({
+                                    url: 'collections/rmrb.html',
+                                    type: 'get',
+                                    success: function(data) {
+                                        $('#content').html(data);
+                                    }
+                                })
                             });
-                            var rr1 = $("#contento").load("../js/collection/rmrb.html");
-                            var rr2 = $(function() {
-                                $("#contento").load("js/collection/rmrb.html")
-                            });
-                            $(this.target).append(
+
+                            /*$(this.target).append(
                                 $(
                                     '<span> </span><a class="click" onclick="show_hidePopUpWindow(\'foo\');" onmouseover="" style="cursor: pointer;"> ' +
                                     info_button +
@@ -340,7 +347,7 @@
                                     "<br><b>CONTENT:</b> Fulltexts of all articles from the inception of the People's Daily in 1946 to end of August 2009. Articles will be shown as individual hits of the issue of a certain day.\n" +
                                     '<br><b>NOTE:</b> To see the image-PDF of the issue you will have go to the database (<a href="http://erf.sbb.spk-berlin.de/han/RenminRibao1">http://erf.sbb.spk-berlin.de/han/RenminRibao1</a>) and open the issue via the calendar browse function provided in the database.\n</div>'
                                 )
-                            );
+                            );*/
                         }
                         if (facet === "Airiti") {
                             $(this.target).append(
