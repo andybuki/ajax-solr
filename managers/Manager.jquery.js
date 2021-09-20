@@ -122,7 +122,7 @@
               document.getElementById("editionHide").style.display = "none";
               document.getElementById("dateHide").style.display = "none";
               document.getElementById("titleHide").style.display = "none";
-
+              document.getElementById("subjectHide").style.display = "none";
               short_string = short_string.
               replace("facet.field=medium_facet&facet.field=edition_facet&facet.field=person_facet&facet.field=spatial_facet&facet.field=author_facet&facet.field=title_facet&", "").
               replace("facet.field=date&", "").
@@ -135,7 +135,7 @@
               document.getElementById("editionHide").style.display = "none";
               document.getElementById("dateHide").style.display = "none";
               document.getElementById("titleHide").style.display = "none";
-              //document.getElementById("subjectHide").style.display = "none";
+              document.getElementById("subjectHide").style.display = "none";
               short_string = short_string.
               replace("facet.field=medium_facet&facet.field=edition_facet&facet.field=person_facet&facet.field=spatial_facet&facet.field=author_facet&facet.field=title_facet&", "").
               replace("facet.field=date&", "").
@@ -148,7 +148,7 @@
               document.getElementById("editionHide").style.display = "none";
               document.getElementById("dateHide").style.display = "none";
               document.getElementById("titleHide").style.display = "none";
-
+              document.getElementById("subjectHide").style.display = "none";
               short_string = short_string.
               replace("facet.field=medium_facet&facet.field=edition_facet&facet.field=person_facet&facet.field=spatial_facet&facet.field=author_facet&facet.field=title_facet&", "").
               replace("facet.field=date&", "").

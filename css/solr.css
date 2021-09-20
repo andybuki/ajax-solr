@@ -242,7 +242,7 @@ section.range-slider input:last-of-type::-moz-range-track {
 section.range-slider input[type=range]::-moz-focus-outer {
   border: 0;
 }
-#collection_all_extra, #hasModel_all_extra, #language_all_extra, #title_facet_all_extra, #author_facet_all_extra, #spatial_facet_all_extra,#date_all_extra, #edition_facet_all_extra,#subject_facet_all_extra, #person_facet_all_extra
+#collection_all_extra, #hasModel_all_extra, #language_all_extra, #title_facet_all_extra, #author_facet_all_extra, #spatial_facet_all_extra,#date_all_extra, #edition_facet_all_extra, #subject_facet_all_extra, #person_facet_all_extra
 { display: none;}
 
 
@@ -588,3 +588,9 @@ th.collection{width:100%;}
   background-color: #ccc;
 }
 
+.click {
+  border: none;
+  background-color: white;
+  position: relative;
+  left: 3px;
+}
