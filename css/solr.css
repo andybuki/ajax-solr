@@ -242,7 +242,7 @@ section.range-slider input:last-of-type::-moz-range-track {
 section.range-slider input[type=range]::-moz-focus-outer {
   border: 0;
 }
-#collection_all_extra, #hasModel_all_extra, #language_all_extra, #title_facet_all_extra, #author_facet_all_extra, #spatial_facet_all_extra,#date_all_extra, #edition_facet_all_extra, #person_facet_all_extra
+#collection_all_extra, #hasModel_all_extra, #language_all_extra, #title_facet_all_extra, #author_facet_all_extra, #spatial_facet_all_extra,#date_all_extra, #edition_facet_all_extra,#subject_facet_all_extra, #person_facet_all_extra
 { display: none;}
 
 
@@ -341,6 +341,15 @@ p {
 .textlink2  .fa-icon {
   color: #9D9D9D;
 }
+
+.textlink4  .fa-icon {
+  color: #9D9D9D;
+}
+
+.textlink5  .fa-icon {
+  color: #9D9D9D;
+}
+
 
 .textlink3 .fa-icon {
   color: green;
@@ -465,7 +474,7 @@ p {
 
 .collection tr { border: none; }
 
-#collection, #hasModel, #title_facet, #language, #date, #author_facet, #person_facet, #spatial_facet, #edition_facet {
+#collection, #hasModel, #title_facet, #language, #date, #author_facet, #person_facet, #spatial_facet, #edition_facet, #subject_facet {
   position: relative;
   bottom: 17px;
 }
@@ -492,7 +501,19 @@ p {
 
 .textlink2 {
   position: relative;
-  right: 10px;
+  right: 125px;
+  bottom: 0px;
+}
+
+.textlink4 {
+  position: relative;
+  right: 20px;
+  bottom: 0px;
+}
+
+.textlink5 {
+  position: relative;
+  right: 5px;
   bottom: 0px;
 }
 
@@ -553,5 +574,17 @@ p {
 
 .textlenght {
   max-width: 450px;
+}
+
+table.collection {
+  width: 100%;
+  table-layout: fixed;
+}
+
+tr.collection{width:100%;}
+th.collection{width:100%;}
+
+.ui-autocomplete {
+  background-color: #ccc;
 }
 
