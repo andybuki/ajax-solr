@@ -5,8 +5,8 @@
     <title>AJAX Solr</title>
     <link rel="stylesheet" href="css/app.css">
     <base target="_blank">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/solr.css">
@@ -28,6 +28,7 @@
     <script src="widgets/AutocompleteWidget.js"></script>
     <script src="js/jquery.jsonp.js"></script>
     <script src="js/show_hide.js"></script>
+    <script src="js/collection/rmrb.js"></script>
     <script src="widgets/CountryCodeWidget.js"></script>
     <script src="widgets/CalendarWidget.js"></script>
 
@@ -76,7 +77,7 @@
                     var value = decodeURI(queryValue);
                     console.log(value);
                     Manager.store.addByValue('q', value);
-                    sleep(5000);
+                    sleep(2000);
                     Manager.doRequest();
                 }
                 $(document).ready(function() {
@@ -142,6 +143,11 @@
             <div class="tagcloud" id="edition_facet"></div>
         </div>
 
+        <div class="subject" id="subjectHide">
+            <div class="title2">Subject</div>
+            <div class="tagcloud" id="subject_facet"></div>
+        </div>
+
 
         <div class="language" id="languageHide">
             <div class="title2">Language </div>
@@ -162,6 +168,15 @@
             <br>
             <br>For feedback, questions etc. please contact: <a href="mailto:x-asia@sbb.spk-berlin.de">x-asia@sbb.spk-berlin.de</a>
 
+        </div>
+
+        <div class="menu2" id="contento" style="display:none">
+            <a onclick="calltext();">
+                <!--<a onclick="show_hidePopUpWindow(\'foo\');">-->
+                <svg data-v-1a31d9e4="" version="1.1" role="presentation" width="20" height="20" viewBox="0 0 1536 1792" class="fa-icon" id="close_button" style="font-size: 2em; color: rgb(180, 24, 21);"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/>  <!----></svg></a>
+            <b> 人民日报 : People s Daily </b></br>
+            <br><b>CONTENT:</b> Fulltexts of all articles from the inception of the People's Daily in 1946 to end of August 2009. Articles will be shown as individual hits of the issue of a certain day. </br>
+            <br><b>NOTE:</b> To see the image-PDF of the issue you will have go to the database (http://erf.sbb.spk-berlin.de/han/RenminRibao1/) and open the issue via the calendar browse function provided in the database.</br>
         </div>
 
     </div>
