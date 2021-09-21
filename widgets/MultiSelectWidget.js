@@ -321,115 +321,110 @@
                     var thechosenone = "";
                     if (this.field === "collection" && cur_facet_count != 0) {
                         if (facet === "Renmin Ribao") {
-                            $(this.target).append($('<button class="click" id="btn-ajax">'+
+                            $(this.target).append($('<button class="click" id="btn-rmrb">'+
                                 info_button+
-                                '</button> <span id="content"></span>'));
+                                '</button> <span id="rmrb"></span>'));
 
-                            $('#btn-ajax').click(function(e) {
+                            $('#btn-rmrb').click(function(e) {
                                 $.ajax({
                                     url: 'collections/rmrb.html',
                                     type: 'get',
                                     success: function(data) {
-                                        $('#content').html(data);
+                                        $('#rmrb').html(data);
                                     }
                                 })
                             });
                         }
                         if (facet === "Airiti") {
-                            $(this.target).append($('<button class="click" id="btn-ajax">'+
+                            $(this.target).append($('<button class="click" id="btn-airiti">'+
                                 info_button+
-                                '</button> <span id="content"></span>'));
+                                '</button> <span id="airiti"></span>'));
 
-                            $('#btn-ajax').click(function(e) {
+                            $('#btn-airiti').click(function(e) {
                                 $.ajax({
                                     url: 'collections/airiti.html',
                                     type: 'get',
                                     success: function(data) {
-                                        $('#content').html(data);
+                                        $('#airiti').html(data);
+                                    }
+                                })
+                            });
+                        }
+                        if (facet === "Adam Matthew - Foreign Office Files China & Japan") {
+                            $(this.target).append($('<button class="click" id="btn-adammatthew">'+
+                                info_button+
+                                '</button> <span id="adammatthew"></span>'));
+
+                            $('#btn-adammatthew').click(function(e) {
+                                $.ajax({
+                                    url: 'collections/adammatthew.html',
+                                    type: 'get',
+                                    success: function(data) {
+                                        $('#adammatthew').html(data);
+                                    }
+                                })
+                            });
+                        }
+                        if (facet === "Early Twentieth Century Chinese Books (1912-1949)") {
+                            $(this.target).append($('<button class="click" id="btn-minguo">'+
+                                info_button+
+                                '</button> <span id="minguo"></span>'));
+
+                            $('#btn-minguo').click(function(e) {
+                                $.ajax({
+                                    url: 'collections/minguo.html',
+                                    type: 'get',
+                                    success: function(data) {
+                                        $('#minguo').html(data);
+                                    }
+                                })
+                            });
+                        }
+                        if (facet === "SBB digital : Asian language collection (selection)") {
+                            $(this.target).append($('<button class="click" id="btn-sbb-digital">'+
+                                info_button+
+                                '</button> <span id="sbb-digital"></span>'));
+
+                            $('#btn-sbb-digital').click(function(e) {
+                                $.ajax({
+                                    url: 'collections/sbb-digital.html',
+                                    type: 'get',
+                                    success: function(data) {
+                                        $('#sbb-digital').html(data);
+                                    }
+                                })
+                            });
+                        }
+                        if (facet === "Local Gazetteer") {
+                            $(this.target).append($('<button class="click" id="btn-locgaz">'+
+                                info_button+
+                                '</button> <span id="locgaz"></span>'));
+
+                            $('#btn-locgaz').click(function(e) {
+                                $.ajax({
+                                    url: 'collections/locgaz.html',
+                                    type: 'get',
+                                    success: function(data) {
+                                        $('#locgaz').html(data);
+                                    }
+                                })
+                            });
+                        }
+                        if (facet === "Missionary, Sinology, and Literary Periodicals (1817-1949)") {
+                            $(this.target).append($('<button class="click" id="btn-locgaz">'+
+                                info_button+
+                                '</button> <span id="locgaz"></span>'));
+
+                            $('#btn-locgaz').click(function(e) {
+                                $.ajax({
+                                    url: 'collections/locgaz.html',
+                                    type: 'get',
+                                    success: function(data) {
+                                        $('#locgaz').html(data);
                                     }
                                 })
                             });
                             /*$(this.target).append(
-                                $(
-                                    '<span> </span> <a class="airiti2" onclick="show_hidePopUpWindow(\'foo2\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo2" style="display:none"><a class="click" onclick="show_hidePopUpWindow(\'foo2\');">' +
-                                    close_button +
-                                    "</a><b>Airiti eBooks </b>\n" +
-                                    '<br><b>CONTENT:</b>  Currently 75 titles of the Airiti eBook platform have been licenced and are available for fulltext search. The corpus of licenced titles will be update yearly. For the Airiti ebook database go to 華藝中文電子書 : airitiBooks <a href="http://erf.sbb.spk-berlin.de/han/airiti/www.airitibooks.com/">LINK</a>\n' +
-                                    "<br><b>NOTE:</b> To see your hit page, please follow the link provided next to the fulltext hit. Due to the licence agreement it is only possible to open one double-page (window) per book at the same time. If you can't find the hit on the pages shown, please check the previous or subsequent pages, or perform a search within the book.\n</div>"
-                                )
-                            );*/
-                        }
-                        if (facet === "Adam Matthew - Foreign Office Files China & Japan") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo3\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo3" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo3\');">' +
-                                    close_button +
-                                    "</a><b>Adam Matthew - Foreign Office Files China & Japan </b>\n" +
-                                    "<br><b>CONTENT:</b> The collection of Foreign Office Files for China is based on the holdings of the National Archives, Kew, the official archive of the United Kingdom; that for Japan is sourced from the rich FO 371 and FO 262 series at The National Archives, UK, including some formerly restricted Japan-specific documents, and is further enhanced by the addition of a selection of FO 371 Far Eastern General sub-series, and Western and American Department papers. The Foreign Office Files contain diplomatic correspondence, letters, reports, surveys, material from newspapers, statistical analyses, published pamphlets, ephemera, military papers, profiles of prominent individuals, maps and many other types of document. The China and Japan series are subdivided into time segments of specific political interest. \n" +
-                                    "<br><b>NOTE:</b> The full text was done by OCR from partly handwritten material, thus the text is often of minor quality.</div>"
-                                )
-                            );
-                        }
-                        if (facet === "Early Twentieth Century Chinese Books (1912-1949)") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo4\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo4" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo4\');">' +
-                                    close_button +
-                                    "</a><b>Early Twentieth Century Book in China (1912-1949) </b>\n" +
-                                    "<br><b>CONTENT:</b> Covering the Republican Period of mainland China fulltexts (and images) of over 180,000 titles of the whole spectrum of topics are included in this resource (Early Twentieth Century Book in China (1912-1949) / 民國圖書數據庫). Books are mostly Chinese, but are actually in Japanese. Unfortunately the metadata does not provide this information.\n" +
-                                    "<br><b>NOTE:</b> Fulltext has been done with OCR, so a certain amount of mistakes are to be expected. In cases where no “meaningful” content could be produced no fulltext page exists. Links to the book and the individual pages are provided in the list of hits.</div>"
-                                )
-                            );
-                        }
-                        if (
-                            facet === "SBB digital : Asian language collection (selection)"
-                        ) {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo5\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo5" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo5\');">' +
-                                    close_button +
-                                    "</a><b>SBB digital : Asian language collection (selection)  </b>\n" +
-                                    '<br><b>CONTENT:</b> This selection of 197 Chinese titles contains a first step to create OCR fulltexts of historical prints (and manuscripts) in Asian scripts. These 100.000+ pages of text are a trial project and build the basis for further tests which will also include historical Japanese and Korean prints using Chinese characters. The digitization of the images was part of the DFG funded project “SSG 6.25 digital“; the OCR fulltext was produced by Shutongwen 书同文, Unihan. The selection of titles was guided by mainly formal criteria such as page layout and printing style and less by content. The collection of Qing “Regulations and orders [published] by season“ (<a href="https://digital.staatsbibliothek-berlin.de/suche?category%5B0%5D=Ostasiatica&queryString=%22%E5%AD%A3%E6%A2%9D%E4%BE%8B%22&fulltext=&junction=">Siji tiaoli 四季條例</a>, Libri sin. 495-534) covering the years 1752 to 1830 are an exception to this. The whole collection of digitized Asian language titles is accessible via the Digital Collection of the State Library: <a href="https://digital.staatsbibliothek-berlin.de/suche?category=Ostasiatica">https://digital.staatsbibliothek-berlin.de/suche?category=Ostasiatica</a> \n' +
-                                    "<br><b>NOTE:</b> : The fulltext is produced by OCR. For the hits we provide links to the book and the individual page display in the Digital Collection of the SBB. The image material is in the public domain. </div>"
-                                )
-                            );
-                        }
-                        if (facet === "Local Gazetteer") {
-                            $(this.target).append(
-                                $(
-                                    '<span></span><a class="click" onclick="show_hidePopUpWindow(\'foo6\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo6" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo6\');">' +
-                                    close_button +
-                                    "</a><b>Local Gazetters </b>\n" +
-                                    "<br><b>CONTENT:</b> This collection currently contains the first two batches of the Erudition database 中國方志庫 of together 3,997 local gazetteer titles with about 4,65 mio. pages. \n" +
-                                    "<br><b>NOTE:</b> For the Erudition corpus currently no link to the book title in the database is possible. To see your hit page in the database please call-up the Erudition database (link provided with the title), search for your book (title as given in the hit) and go the image/page given for your hit page.\n</div>"
-                                )
-                            );
-                        }
-                        if (
-                            facet ===
-                            "Missionary, Sinology, and Literary Periodicals (1817-1949)"
-                        ) {
-                            $(this.target).append(
                                 $(
                                     '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo7\');" onmouseover="" style="cursor: pointer;"> ' +
                                     info_button +
@@ -441,7 +436,7 @@
                                     "<br><b>CONTENT:</b> The resource contains the main English-language periodicals published in or about China covering the period from 1817 until the founding of the People’s Republic of China in 1949. The journals feature photographs and articles the on the founding and development of Christian higher education in China. \n" +
                                     "<br><b>NOTE:</b> The fulltexts are not split into the actual pages, but contain the whole article. The links provided thus open the article at the start page and the search term may appear only on a later page. To get to the correct page please use the “Search within  Article” to left of the article display in the database. \n</div>"
                                 )
-                            );
+                            );*/
                         }
                         if (facet === "Local Gazetteer (Diaolong)") {
                             $(this.target).append(
