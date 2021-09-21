@@ -591,341 +591,295 @@
                                                         });
                          }
                         if (facet === "Adam Matthew - Meiji Japan") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo19\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo19" style="display:none"><a onclick="show_hidePopUpWindow(\'foo19\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>Adam Matthew - Meiji Japan </b>\n" +
-                                    "<br><b>CONTENT:</b> The collection contains the diaries and correspondence of Edward S Morse (1838-1925), one of the first Americans to live in Japan for a longer period while teaching science at the Imperial University of Tokyo. A polymath especially interested in the fields natural history, ethnography and art history, he was an accomplished draughtsman and his drawings and sketches enliven his diaries and letters. In addition to preserving the household records of a samurai family and many accounts of the tea ceremony, Morse made notes on subjects as diverse as shop signs, fireworks, hairpins, agricultural tools, artists’ studios, music, games, printing, carpentry, the Ainu, gardens, household construction, art and architecture. His correspondence include exchanges with Alexander and Louis Agassiz, William Sturgis Bigelow, Charles Darwin, Ernest Fenollosa, Yukichi Fukuzawa, Isabella Stewart Gardner, John M Gould, Oliver Wendell Holmes, Ernest Ingersoll, Hiroyuki Kato, Percival Lowell, The Museum of Fine Arts in Boston, Charles Eliot Norton, Frederick Putnam, Hideo Takamine, Seiichi Tejima, Charles Townsend, Charles Weld and Yu Kil-chun.\n" +
-                                    "<br><b>NOTE:</b> As all items in this collection are either handwritten or images, none of them has provided fulltext yet. Thus only the metadata can be searched.\n" +
-                                    "</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-meiji-japan">'+
+                                                            info_button+
+                                                            '</button> <span id="meiji-japan"></span>'));
+
+                                                        $('#btn-meiji-japan').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/meiji-japan.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#meiji-japan').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "CNKI eBooks") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo20\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo20" style="display:none"><a onclick="show_hidePopUpWindow(\'foo20\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>CNKI eBooks </b>\n" +
-                                    '<br><b>CONTENT:</b> Currently 140 titles of the CNKI Digital Collection on China Studies (中国学术典藏图书库) are included with their full text into the CrossAsia fulltext search. This number will increase yearly with new acquisitions based on the PDA (Patron driven acquisition) model. The complete set of titles can be searched via their database portal <a href="http://erf.sbb.spk-berlin.de/han/cnki-books/">LINK</a> \n' +
-                                    "<br><b>NOTE:</b> To see the complete text of a hit page, please follow the link provided next to the fulltext hit. After login the page will open in the database.\n" +
-                                    "</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-cnki">'+
+                                                            info_button+
+                                                            '</button> <span id="cnki"></span>'));
+
+                                                        $('#btn-cnki').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/cnki.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#cnki').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "China Comprehensive Gazetteers") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo21\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo21" style="display:none"><a onclick="show_hidePopUpWindow(\'foo21\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>China Comprehensive Gazetteers : 中國綜合方誌庫 </b>\n" +
-                                    "<br><b>CONTENT:</b> The collection contains about 6600 digitized local gazetteer titles, mainly from the holdings of the National Library of China. Currently 3017 of the titles are also available in fulltext.  \n" +
-                                    "<br><b>NOTE:</b> The book can be accessed using the link provided. There is no direct link to the page. Some title searchable in fulltext here, do not have the fulltext included in the database platform yet, meaning you find more hits in the CrossAsia fulltext search than currently in the database itself.\n" +
-                                    "</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-eastview-ccg">'+
+                                                            info_button+
+                                                            '</button> <span id="eastview-ccg"></span>'));
+
+                                                        $('#btn-eastview-ccg').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/eastview-ccg.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#eastview-ccg').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "Fulltext search in print books") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo22\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo22" style="display:none"><a onclick="show_hidePopUpWindow(\'foo22\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>Fulltext search in print books </b>\n" +
-                                    "<br><b>CONTENT:</b> CrossAsia is working on bridging the gap between printed materials in our stacks and electronic full text searches. Matching our collection with Duxiu fulltexts and allowing users to search in Duxiu fulltexts to find and borrow items from our printed collection is one way. The other way is producing our own fulltexts from printed books and offer them in our fulltext search. As a test case this collection includes 15 titles prepared in this way. \n" +
-                                    '<br><b>NOTE:</b> To see your full hit page you have to borrow the book (via the link to our OPAC provided with the title) and find the correct page. Please note that the "page number" given for your search hit is the "image number", so you have to add a certain number to find the correct printed page. But the idea is to help you find books of interest for your research of general interest.\n' +
-                                    "</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-cibtc">'+
+                                                            info_button+
+                                                            '</button> <span id="cibtc"></span>'));
+
+                                                        $('#btn-cibtc').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/cibtc.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#cibtc').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "Zhengtong Daozang") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo23\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo23" style="display:none"><a onclick="show_hidePopUpWindow(\'foo23\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>Zhengtong Daozang 正統道藏 (Xu Daozang 續道藏) </b>\n" +
-                                    '<br><b>CONTENT:</b> The "Daoist Canon of the Zhengtong Reign-Period" (Zhengtong daozang 正統道藏) assembles about 1400 Daoist texts on a broad range of Daoist interests, ranging from meditation, ritual and exorcism, to medicine, astronomy, and philosophy. Many texts have only survived because of their inclusion into the Daozang. With the first version of a Daoist canon (copying the idea from the Buddhist Canon) in the early 5th century, the main corpus was finalized and printed in the Zhengtong reign in 1445. In 1607 the Wanli emperor of the Ming dynasty sponsored a "Sequel to the Daozang" (Xu Daozang 續道藏) which is also included in this electronic version. \n' +
-                                    '<br><b>NOTE:</b> : No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the "book" link) and then go to the page number given in the page hit. \n' +
-                                    "</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-daozang">'+
+                                                            info_button+
+                                                            '</button> <span id="daozang"></span>'));
+
+                                                        $('#btn-daozang').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/daozang.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#daozang').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "Classical Works of Japan") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo24\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo24" style="display:none"><a onclick="show_hidePopUpWindow(\'foo24\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>日本古典書籍 : Classical  Works of Japan </b>\n" +
-                                    "<br><b>CONTENT:</b> The collection contains a selection of important historical and literary compilations, as well as the encyclopedia  Koji ruien 古事類苑 (compiled between 1896 and 1914) and two dictionaries, namely the Wamyô ruijushô 倭名類聚抄 of the 10th and the Shinsen jikyô 新撰字鏡 of the late 9th century. The historical collections included are the collection of historical resources Kokushi taikei 国史大系 with its sequel (both compiled between 1897 and 1904) and the Rikkokushi  六国史,the six national histories of Japan; the literary collections consist of the Honchô monzui 本朝文粹  presenting Chinese prose and poetry for a Japanese audience compiled in the 11th century and of various collections with Japanese poems in Chinese style covering the period from 7th to the 20th centuries (segment called: Nihon kanshi 日本漢詩). \n" +
-                                    "<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the 'book' link in the title data) and then go to the page number given in the page hit. \n" +
-                                    "</div>"
-                                )
-                            );
+                        $(this.target).append($('<button class="click" id="btn-riben">'+
+                                                        info_button+
+                                                        '</button> <span id="riben"></span>'));
+
+                                                    $('#btn-riben').click(function(e) {
+                                                        $.ajax({
+                                                            url: 'collections/riben.html',
+                                                            type: 'get',
+                                                            success: function(data) {
+                                                                $('#riben').html(data);
+                                                            }
+                                                        })
+                                                    });
                         }
                         if (facet === "Siku quanshu") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo25\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo25" style="display:none"><a onclick="show_hidePopUpWindow(\'foo25\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>Siku quanshu 四庫全書 </b>\n" +
-                                    "<br><b>CONTENT:</b> This famous collecting and editing project of the Qianlong emperor (reg. 1735-1796/1799) contains 3540 titles. The books in this project all went through an editing and “correcting” process by the Qing compilation team and seven neat manuscript copies were produced to be displayed at different locations of the empire. The one digitized here is the Wenyuan pavilion 文淵閣 today housed at the Taiwan Palace Museum. \n" +
-                                    "<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the 'book' link in the title data) and then go to the page number given in the page hit. \n" +
-                                    "</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-siku">'+
+                                                            info_button+
+                                                            '</button> <span id="siku"></span>'));
+
+                                                        $('#btn-siku').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/siku.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#siku').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "Yongle dadian") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo26\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo26" style="display:none"><a onclick="show_hidePopUpWindow(\'foo26\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>Yongle dadian 永樂大典 </b>\n" +
-                                    "<br><b>CONTENT:</b> The Yongle dadian (Great Canon of the Yongle Reign) used to be the largest encyclopaedia of pre-modern China. Finished in 1408 it comprised of 22,937 juan in almost 12,000 volumes arranged according to rhyme. Already in the late Ming the compilation began to get dispersed or destroyed. Today only about 3% of the original are extent. But it is still highly valued because many older titles from a broad range of Chinese literature have only survived as excerpts in the Yongle dadian. \n" +
-                                    "<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the 'book' link in the title data) and then go to the page number given in the page hit. \n" +
-                                    "</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-dl-yldd">'+
+                                                        info_button+
+                                                        '</button> <span id="dl-yldd"></span>'));
+
+                                                    $('#btn-dl-yldd').click(function(e) {
+                                                        $.ajax({
+                                                            url: 'collections/dl-yldd.html',
+                                                            type: 'get',
+                                                            success: function(data) {
+                                                                $('#dl-yldd').html(data);
+                                                            }
+                                                        })
+                                                    });
                         }
-                        if (
-                            facet ===
-                            "China and the Modern World: Records of the Maritime Customs Service of China (1854-1949)"
-                        ) {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo27\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo27" style="display:none"><a onclick="show_hidePopUpWindow(\'foo27\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>Records of the Maritime Customs Service of China (1854-1949) </b>\n" +
-                                    "<br><b>CONTENT:</b> The resource contains official correspondence, despatches, reports, memoranda, as well as private and confidential  letter of the Maritime Customs Service of China, an international, although predominantly British-staffed bureaucracy (at senior levels) under the control of successive Chinese central governments from its founding in 1854 until January 1950. With 720 documents and almost 300.000 pages it provides evidence Chinese life, the economy and politics of of late Qing and Republican times until the founding of the People’s Republic of China in 1949. \n" +
-                                    "<br><b>NOTE:</b> The documents are scanned from microfilm and the fulltext derives from uncleaned OCR. As many documents are handwritten the text quality thus often inferior. The link provided for the individual text pages lead to the corresponding scan unfortunately without the document’s context. \n" +
-                                    "</div>"
-                                )
-                            );
+                        if (facet === "China and the Modern World: Records of the Maritime Customs Service of China (1854-1949)") {
+                            $(this.target).append($('<button class="click" id="btn-gale-cfer2">'+
+                                                            info_button+
+                                                            '</button> <span id="gale-cfer2"></span>'));
+
+                                                        $('#btn-gale-cfer2').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/gale-cfer2.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#gale-cfer2').html(data);
+                                                                }
+                                                            })
+                                                        });
+
                         }
                         if (facet === "Beschreibung") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo28\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo28" style="display:none"><a onclick="show_hidePopUpWindow(\'foo28\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>CrossAsia Fulltext Search (Beta version, type B)</b><br>\n" +
-                                    '<br> In this second version of the CrossAsia Fulltext Search metadata and fulltexts are searched at the same time. You can use the filter "Type of Object" to reduce your result set or presetting your search to the contents of the "Pages" or the metadata of the "Books" or "Chapters" or to the content - and metadata - of "Articles".' +
-                                    "<br>The list of resources included in this search can be viewed from the list of filters directly underneath the search slot" +
-                                    "\n" +
-                                    "<br><br><b>FEATURES:</b>" +
-                                    "<br>- searching metadata and fulltext at the same time" +
-                                    '<br>- ranking of search hits by Solr score (note: be aware that if you do not enclose your search term in "" texts with a high frequency of one word/character of your search term will score higher than those where your two search words/characters appear next to each other)' +
-                                    "<br>- for each hit two types of link are provided: one - in red - for authenticated CrossAsia users, another one - in grey - for all other users who will then need to enter their individual authorization or access the ressource from within a subscriber's IP range. Please note that not all databases provide links to directly call-up a specific page of a ressource, some even do not have direct links to an item in their database (for example Erudition Local Gazetteers or Renmin ribao).\n" +
-                                    "<br>" +
-                                    '<br>For feedback, questions etc. please contact: <a href="mailto:x-asia@sbb.spk-berlin.de">x-asia@sbb.spk-berlin.de</a>' +
-                                    "</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-beschreibung">'+
+                                                            info_button+
+                                                            '</button> <span id="beschreibung"></span>'));
+
+                                                        $('#btn-beschreibung').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/beschreibung.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#beschreibung').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "Gujin tushu jicheng") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo29\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo29" style="display:none"><a onclick="show_hidePopUpWindow(\'foo29\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>Qing Imperial Encyclopedia (Gujin tushu jicheng) \n" +
-                                    "古今圖書集成\n </b>" +
-                                    "<br><b>CONTENT:</b> With 6,117 topical sections on over 800,000 pages, the Gujin tushu jicheng 古今圖書集成 is the largest still extent encyclopedic compilation of Chinese history. Started by Chen Menglei 陳夢雷under the imperial order of the Kangxi emperor 康熙 (r. 1661-1722) between 1701 und 1706 it was published and printed with moveable copper type in 1726 under the supervision of Jiang Tingxi 蔣廷錫.Each section assembles excerpts from a great variety of sources from early writings up to the 17th century.\n" +
-                                    "<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to click the 'book' link that will open the respective section and then go to the page number given in the page hit.\n" +
-                                    "</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-gujin">'+
+                                                            info_button+
+                                                            '</button> <span id="gujin"></span>'));
+
+                                                        $('#btn-gujin').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/gujin.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#gujin').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "Sibu beiyao") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo30\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo30" style="display:none"><a onclick="show_hidePopUpWindow(\'foo30\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>Sibu beiyao 四部備要 \n" +
-                                    " </b>" +
-                                    '<br><b>CONTENT:</b> The Sibu beiyao 四部備要 ("Essentials of the Four Branches of Literature"), published between 1924 and 1931 by Zhonghua shuju, assembles 364 titles (or 336 depending on how to count) of Chinese literary tradition of all “four branches”, i.e. classics and their commentaries, history, monographs, literature collections. The Sibu beiyao focusses on commented and annotated versions of the works selected that were then edited and newly printed with the aim to provide scholars with “better” versions of texts. \n' +
-                                    "The Diaolong portal includes the corpora under the title Xu Sibu congkan 續四部叢刊 (“Sequel to the Sibu congkan”). The Sibu congkan is a competing collection published slightly earlier by Commercial Press (also included in the Diaolong portal).\n" +
-                                    "<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the 'book' link in the title data) and then go to the page number given in the page hit.\n" +
-                                    "</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-sbby">'+
+                                                            info_button+
+                                                            '</button> <span id="sbby"></span>'));
+
+                                                        $('#btn-sbby').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/sbby.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#sbby').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "The Ta Kung Pao 大公報") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo31\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo31" style="display:none"><a onclick="show_hidePopUpWindow(\'foo31\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>Ta Kung Pao 大公報 (1902-1949) \n" +
-                                    " </b>" +
-                                    "<br><b>CONTENT:</b> The Ta Kung Pao 大公報 (in its early times also known as L'Impartial) started as an independent, government critical newspaper in Tianjin in June 1902. In the wake of the Second Sino-Japanese War newspaper staff fled to Shanghai, Hankou (Wuhan), Chongqing, Guilin and Hongkong starting regional editions of the Ta Kung Pao. From 1949 on it developed into a state-owned, pro-Beijing newspaper under the Hong Kong Liaison Office. The full text contains the main and local editions up to 1949. \n" +
-                                    '<br><b>NOTE:</b> The link provided with each article opens a page listing all articles that appeared on the same page together with this article. In the database the "page" icon (lilac) opens the full text of the article, the "scissor" icon (red) displays an image cut-out of the article, the PDF icon (green) opens the complete issue.\n' +
-                                    "</div>"
-                                )
-                            );
+                        $(this.target).append($('<button class="click" id="btn-kungpao">'+
+                                                        info_button+
+                                                        '</button> <span id="kungpao"></span>'));
+
+                                                    $('#btn-kungpao').click(function(e) {
+                                                        $.ajax({
+                                                            url: 'collections/kungpao.html',
+                                                            type: 'get',
+                                                            success: function(data) {
+                                                                $('#kungpao').html(data);
+                                                            }
+                                                        })
+                                                    });
+
                         }
                         if (facet === "North China Daily News") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo32\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo32" style="display:none"><a onclick="show_hidePopUpWindow(\'foo32\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>North China Daily News (1864-1941/1946-1950)</b> \n" +
-                                    "<br><b>CONTENT:</b> The North China Daily News is a pendant to the North China Herald of the same publishing house in Shanghai. It commenced publication in 1864, 14 years after the start of the Herald, and restarted publication after a wartime break between December 1941 and January 1945 while the Herald was not continued. The Daily News appeared until March 1951. Not all issues have been available to Brill to be included in this resource. But the collection contains in addition a number of unique sources by the same publishing house: the North-China Sunday News Magazine, Sunday Magazine Supplements and Special Supplements, a significant collection of the weekly Municipal Gazette (the organ of the Shanghai Municipal Council from 1908-1940), and a selection of 30 rare books from the imprint of the North-China Daily News and its parent, the North-China Herald.\n" +
-                                    "<br><b>NOTE:</b> Links to the issue or book are provided with the search hits; no links to the individual pages in the database are possible. To find the page use “Open reader” for the object and go the respective page (or search again within the object to highlight your find). The full text was done by automated OCR without correcting routines. Wrong identification of characters and layout are frequent.\n" +
-                                    "</div>"
-                                )
-                            );
+
+                        $(this.target).append($('<button class="click" id="btn-brill-ncdn">'+
+                                                        info_button+
+                                                        '</button> <span id="brill-ncdn"></span>'));
+
+                                                    $('#btn-brill-ncdn').click(function(e) {
+                                                        $.ajax({
+                                                            url: 'collections/brill-ncdn.html',
+                                                            type: 'get',
+                                                            success: function(data) {
+                                                                $('#brill-ncdn').html(data);
+                                                            }
+                                                        })
+                                                    });
                         }
                         if (facet === "North China Standard Online") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo33\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo33" style="display:none"><a onclick="show_hidePopUpWindow(\'foo33\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>North China Standard Online (1919-1927) </b>\n" +
-                                    '<br><b>CONTENT:</b> Founded in late 1919, the North China Standard started as a semi-official organ of the Japanese Ministry of Foreign Affairs. In the highly competitive English-language news market, it aimed at counteracting negative opinions against the Japanese, but gives proof of "real" journalist\'s research of "real" news. Being mainly distributed in Tianjin and Beijing it enjoyed a wide readership in China and Japan. It ceased publication in 1930; the database covers the years 1919 to 1927 using the holdings of the Waseda University and a private collection as its basis.\n' +
-                                    "<br><b>NOTE:</b> The fulltext was produced with OCR with only minor layout recognition. The texts are thus partly jumbled with numerous wrongly identified characters. No direct links to the image page are possible. Please follow the provided link to then open the issue in the Brill reader and jump to the page number given in the hit or search the term again within the issue.\n" +
-                                    "</div>"
-                                )
-                            );
+                        $(this.target).append($('<button class="click" id="btn-brill-ncso">'+
+                                                        info_button+
+                                                        '</button> <span id="brill-ncso"></span>'));
+
+                                                    $('#btn-brill-ncso').click(function(e) {
+                                                        $.ajax({
+                                                            url: 'collections/brill-ncso.html',
+                                                            type: 'get',
+                                                            success: function(data) {
+                                                                $('#brill-ncso').html(data);
+                                                            }
+                                                        })
+                                                    });
+
                         }
                         if (facet === "Mobilizing East Asia, 1931-1954") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo34\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo34" style="display:none"><a onclick="show_hidePopUpWindow(\'foo34\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>Mobilizing East Asia (1931-1954) </b><br>\n" +
-                                    "<br><b>CONTENT:</b> The Collection offers access to extremely rare, many times even unique English-language newspapers, magazines and pamphlets published inside Asia, following the descent into war in East and South-East Asia from the turn of the twentieth century to the 1950s. Included are several Manchuria and Japan newspapers and selection of 20 book titles related to the period and area.\n" +
-                                    "<br><b>NOTE:</b> Links to the issue or book are provided with the search hits; no links to the individual pages in the database are possible. To find the page use “Open reader” for the object and go the respective page (or search again within the object to highlight your find). The full text was done by automated OCR without correcting routines. Wrong identification of characters and layout are frequent. \n" +
-                                    "</div>"
-                                )
-                            );
+
+                        $(this.target).append($('<button class="click" id="btn-brill-meao">'+
+                                                        info_button+
+                                                        '</button> <span id="brill-meao"></span>'));
+
+                                                    $('#btn-brill-meao').click(function(e) {
+                                                        $.ajax({
+                                                            url: 'collections/brill-meao.html',
+                                                            type: 'get',
+                                                            success: function(data) {
+                                                                $('#brill-meao').html(data);
+                                                            }
+                                                        })
+                                                    });
                         }
                         if (facet === "Dunhuang Historical Material") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo35\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo35" style="display:none"><a onclick="show_hidePopUpWindow(\'foo35\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>Dunhuang Historical Material 敦煌史料 </b><br>\n" +
-                                    "<br><b>CONTENT:</b> The collection assembles the holdings of Dunhuang material from the Beijing National Library (北图), the Beijing University Library (北大藏), the Dunhuang Museum and Research Institute (敦博 ， 敦研) and other Chinese libraries such as the Tianjin Art Museum (天津艺术博物馆) as well as materials now in England, France and Russia. The content is (of course!) not complete, but provides a sound corpus of Dunhuang materials concerning religion, economy, law, language, literature, science and technology, art and customs written between the 4th and 11th  century.\n" +
-                                    "<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the 'book' link) and then go to the page number given in the page hit. \n" +
-                                    "</div>"
-                                )
-                            );
+
+                        $(this.target).append($('<button class="click" id="btn-dunhuang">'+
+                                                        info_button+
+                                                        '</button> <span id="dunhuang"></span>'));
+
+                                                    $('#btn-dunhuang').click(function(e) {
+                                                        $.ajax({
+                                                            url: 'collections/dunhuang.html',
+                                                            type: 'get',
+                                                            success: function(data) {
+                                                                $('#dunhuang').html(data);
+                                                            }
+                                                        })
+                                                    });
                         }
                         if (facet === "Area Studies Japan, China, and Southeast Asia") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo36\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo36" style="display:none"><a onclick="show_hidePopUpWindow(\'foo36\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>Adam Matthew - Area Studies Japan, China, and Southeast Asia </b><br>\n" +
-                                    "<br><b>CONTENT:</b> The Area Studies resources on Japan and on China and Southeast Asia assemble a varied array of records of traders, travellers, missionaries and diplomats, from the mid-seventeenth century to the late twentieth century, offering Western perspectives on these regions. The China and Southeast Asia related part consists of the sub-series \"China through Western Eyes\", \"China Inland Mission 1865-1951\", and two series with resources on \"Asian Economic History\" concerning the opium trade and UN commission on drugs and narcotics (1945-1948) and the economic development in Brunei, Hong Kong, Malaysia, Singapore, South Korea and Taiwan, 1950-1980. The Japan related part contains sub-series on \"Japan through Western Eyes\", \"East Meets West\" with printed and manuscript material relating to Western visitors to Japan, as well as the two periodicals \"Anglo-Japanese Gazette (1902-1909)\" and \"The Eastern World (1899-1908)\".\n" +
-                                    "<br><b>NOTE:</b> The full text was done by OCR from partly handwritten material, thus the text is often of minor quality. For each hit in the search, links to the bibliographical unit and to the individual page are provided. \n" +
-                                    "</div>"
-                                )
-                            );
+                        $(this.target).append($('<button class="click" id="btn-amd-areastudies">'+
+                                                        info_button+
+                                                        '</button> <span id="amd-areastudies"></span>'));
+
+                                                    $('#btn-amd-areastudies').click(function(e) {
+                                                        $.ajax({
+                                                            url: 'collections/amd-areastudies.html',
+                                                            type: 'get',
+                                                            success: function(data) {
+                                                                $('#amd-areastudies').html(data);
+                                                            }
+                                                        })
+                                                    });
                         }
                         if (facet === "Asian Studies (ISEAS publishing)") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo37\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo37" style="display:none"><a onclick="show_hidePopUpWindow(\'foo37\');"> ' +
-                                    close_button +
-                                    "</a>" +
-                                    "<b>Asian Studies (ISEAS publishing) </b><br>\n" +
-                                    "<br><b>CONTENT:</b> The Singapore-based ISEAS - Yusof Ishak Institute is one of Southeast Asia's leading research centers and publisher of academic books and journals focusing on politics, economics, social issues and trends in social development in Southeast Asia and the Asia-Pacific region. The Asian Studies collection stored in the CrossAsia ITR currently contains 784 titles and is updated on a yearly basis.\n" +
-                                    "<br><b>NOTE:</b> No direct links to the pages are possible. Link to the books open a landing page with the title’s metadata as well as a link to download the PDF or open the book in an online reader (both only available for CrossAsia authenticated users). \n" +
-                                    "</div>"
-                                )
-                            );
+                        $(this.target).append($('<button class="click" id="btn-iseas">'+
+                                                        info_button+
+                                                        '</button> <span id="iseas"></span>'));
+
+                                                    $('#btn-iseas').click(function(e) {
+                                                        $.ajax({
+                                                            url: 'collections/iseas.html',
+                                                            type: 'get',
+                                                            success: function(data) {
+                                                                $('#iseas').html(data);
+                                                            }
+                                                        })
+                                                    });
                         }
                     }
                     if (this.field === "title_facet" && cur_facet_count != 0) {
