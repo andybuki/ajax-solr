@@ -411,200 +411,185 @@
                             });
                         }
                         if (facet === "Missionary, Sinology, and Literary Periodicals (1817-1949)") {
-                            $(this.target).append($('<button class="click" id="btn-locgaz">'+
+                            $(this.target).append($('<button class="click" id="btn-gale-cfer">'+
                                 info_button+
-                                '</button> <span id="locgaz"></span>'));
+                                '</button> <span id="gale-cfer"></span>'));
 
-                            $('#btn-locgaz').click(function(e) {
+                            $('#btn-gale-cfer').click(function(e) {
                                 $.ajax({
-                                    url: 'collections/locgaz.html',
+                                    url: 'collections/gale-cfer.html',
                                     type: 'get',
                                     success: function(data) {
-                                        $('#locgaz').html(data);
+                                        $('#gale-cfer').html(data);
                                     }
                                 })
                             });
-                            /*$(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo7\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo7" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo7\');">' +
-                                    close_button +
-                                    "</a><b>Missionary, Sinology, and Literary Periodicals (1817-1949) </b>\n" +
-                                    "<br><b>CONTENT:</b> The resource contains the main English-language periodicals published in or about China covering the period from 1817 until the founding of the People’s Republic of China in 1949. The journals feature photographs and articles the on the founding and development of Christian higher education in China. \n" +
-                                    "<br><b>NOTE:</b> The fulltexts are not split into the actual pages, but contain the whole article. The links provided thus open the article at the start page and the search term may appear only on a later page. To get to the correct page please use the “Search within  Article” to left of the article display in the database. \n</div>"
-                                )
-                            );*/
                         }
                         if (facet === "Local Gazetteer (Diaolong)") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo8\');" onmouseover="" style="cursor: pointer;">' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo8" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo8\');">' +
-                                    close_button +
-                                    "</a><b>Local Gazetteers (Diaolong) </b>\n" +
-                                    "<br><b>CONTENT:</b> Containing 2194 titles in the first and 1935 in the sequel collection this resource of historical local gazetteers covers the period from Song to Republican times grouped into 31 regional areas. The names of these areas and their sub-regions appear as subject/spatial for filtering the search results. \n" +
-                                    "<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the 'book' link) and then go to the page number given in the page hit. \n</div>"
-                                )
-                            );
+
+                            $(this.target).append($('<button class="click" id="btn-dfz">'+
+                                                            info_button+
+                                                            '</button> <span id="dfz"></span>'));
+
+                                                        $('#btn-dfz').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/dfz.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#dfz').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "Qingdai shiliao") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo9\');" onmouseover="" style="cursor: pointer;">' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo9" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo9\');">' +
-                                    close_button +
-                                    "</a><b>清代史料 </b>\n" +
-                                    "<br><b>CONTENT:</b> The collection contains historical sources of the Qing dynasty published by the Qing state. They belong to five types of documents: Veritable Records (實錄), Collected Statutes (會典), Records of Officials (缙绅錄), different editions of  the Guide to the Qing board of war (大清中樞備覽) as well as the Qing Essentials for Governance (大清輔政要覽全書), and  finally materials closely related to the emperor such as the Court Diaries (起居注, currently only Tongzhi 同治). \n" +
-                                    "<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the 'book' link in the title data) and then go to the page number given in the page hit.\n</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-dl-shiliao">'+
+                                                            info_button+
+                                                            '</button> <span id="dl-shiliao"></span>'));
+
+                                                        $('#btn-dl-shiliao').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/dl-shiliao.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#dl-shiliao').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "Sibu congkan") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo10\');" onmouseover="" style="cursor: pointer;">' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo10" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo10\');">' +
-                                    close_button +
-                                    "</a><b>Sibu congkan 四部叢刊 </b>\n" +
-                                    "<br><b>CONTENT:</b> The Sibu congkan 四部叢刊 is a collection of 472 (or 504 depending on how to count) photolithography facsimiles of authoritative editions of historical monographs published by the Commercial Press in three series between 1919 and 1936. The titles span Song, Yuan and Ming (and some Qing) dynasty editions and focus on the quality of the original text and its truthful reproduction. Its approach thus differs from the Sibu beiyao (published from 1924 to 1936), which newly typeset and corrected text errors of the original.  \n" +
-                                    '<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the "book" link in the title data) and then go to the page number given in the page hit or search your term again within the book using the “再查詢” search slot. \n</div>'
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-sbck">'+
+                                                            info_button+
+                                                            '</button> <span id="sbck"></span>'));
+
+                                                        $('#btn-sbck').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/sbck.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#sbck').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "SBB digital : Western language Asia collection") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo11\');" onmouseover="" style="cursor: pointer;">' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo11" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo11\');">' +
-                                    close_button +
-                                    "</a><b>SBB digital : Western language Asia collection </b>\n" +
-                                    '<br><b>CONTENT:</b> In the current version the dataset contains the OCR  fulltexts of 4653 titles of the East Asia Collection (Ostasiatica) digitized in the “SSG 6.25 digital“ project funded by the DFG. The titles were selected according to their allocation as materials concerning East and Southeast Asia in the “Alte Realkatalog”  <a href="http://ark.staatsbibliothek-berlin.de">(http://ark.staatsbibliothek-berlin.de)</a>. The material is mainly in Dutch, English, German and French, but does also contain texts in Spanish, Italian, Latin, Russian and Portuguese. \n' +
-                                    "<br><b>NOTE:</b> The fulltext is produced by OCR. For the hits we provide links to the book or journal and the individual page display in the Digital Collection of the SBB. The material is in the public domain.\n</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-sbb-digital">'+
+                                                            info_button+
+                                                            '</button> <span id="sbb-digital"></span>'));
+
+                                                        $('#btn-sbb-digital').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/sbb-digital.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#sbb-digital').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "The Chinese Students’ Monthly Online") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo12\');" onmouseover="" style="cursor: pointer;">' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo12" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo12\');">' +
-                                    close_button +
-                                    "</a><b>The Chinese Students’ Monthly </b>\n" +
-                                    "<br><b>CONTENT:</b> Published between 1906 to 1931 - an important turning point in Chinese history - the magazine is the first Chinese students’ magazine published in the United States and evolved into the official organ of the enlarged Chinese student organization. Amongst its contributors are many important and well-known figures such as Hu Shi and Chao Yuanren.   \n" +
-                                    "<br><b>NOTE:</b> Search hits provide links to the issue or book; no links to the individual pages in the database are possible. To find the page use “Open reader” for the object and go the respective page (or search again within the object to highlight your find). The full text was done by automated OCR without correcting routines. Wrong identification of characters and layout are frequent.\n</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-brill-csmo">'+
+                                                            info_button+
+                                                            '</button> <span id="brill-csmo"></span>'));
+
+                                                        $('#btn-brill-csmo').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/brill-csmo.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#brill-csmo').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "The North China Herald Online") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo13\');" onmouseover="" style="cursor: pointer;">' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo13" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo13\');">' +
-                                    close_button +
-                                    "</a><b>North China Herald </b>\n" +
-                                    "<br><b>CONTENT:</b> Published in Shanghai on a weekly basis from 1850 to 1940s, the North China Herald counts as the foreign newspaper press in China with the longest history. Despite its main base being Shanghai the newspaper had correspondents across the whole of China and thus contains relevant national and local news on an extensive range of topics, as well as gossip reflecting the life of the foreign settlements. Its daily pendant is the North China Daily News whose history started a bit later but continued after a war time break up until 1951.   \n" +
-                                    "<br><b>NOTE:</b> Search hits provide links to the issue or book; no links to the individual pages in the database are possible. To find the page use “Open reader” for the object and go the respective page (or search again within the object to highlight your find). The full text was done by automated OCR without correcting routines. Wrong identification of characters and layout are frequent.\n</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-brill-ncho">'+
+                                                            info_button+
+                                                            '</button> <span id="brill-ncho"></span>'));
+
+                                                        $('#btn-brill-ncho').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/brill-ncho.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#brill-ncho').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "Japan Chronicle Online") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo14\');" onmouseover="" style="cursor: pointer;">' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo14" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo14\');">' +
-                                    close_button +
-                                    "</a><b>Japan Chronicle Online </b>\n" +
-                                    "<br><b>CONTENT:</b> Covering the years 1900 to 1941 the Weekly Edition of the Japan Chronicle (or Kobe Chronicle as it was named in 1900-1901) together with the Daily Edition (1929-1949) and the Commercial Supplement (1915-1941) provide news and opinions on Japan and East Asia and builds a lively complement to the North China Herald. \n" +
-                                    "<br><b>NOTE:</b> Search hits provide links to the issue or book; no links to the individual pages in the database are possible. To find the page use “Open reader” for the object and go the respective page (or search again within the object to highlight your find). The full text was done by automated OCR without correcting routines. Wrong identification of characters and layout are frequent.\n</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-brill-jpco">'+
+                                                            info_button+
+                                                            '</button> <span id="brill-jpco"></span>'));
+
+                                                        $('#btn-brill-jpco').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/brill-jpco.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#brill-jpco').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "Daozang jiyao") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo15\');" onmouseover="" style="cursor: pointer;">' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo15" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo15\');">' +
-                                    close_button +
-                                    "</a><b>道藏輯要 </b>\n" +
-                                    '<br><b>CONTENT:</b> The "Essentials of the Daoist Canon" counts as the main collection of Daoist texts after the Daozang. Its bibliographical history is rather complicated and subject to discussion. After a first version of the "Essentials" was compiled around 1700, in the 18th and 19th century several re-editions and addition were made to the set of texts until in 1906 He Longxiang 賀龍驤 and Peng Hanran 彭瀚然 published the 重刊道藏輯要 in Chengdu. The texts of the "Essentials" chiefly derive from Zhengtong Daozang 正統到藏 edition (1445) but it also contains some additional texts or other editions of Zhengtong texts. The 299 texts and scans in this collection are those of the 1906 printed version of the Daozang jiyao. \n' +
-                                    "<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the 'book' link in the title data) and then go to the page number given in the page hit.\n</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-dl-jiyao">'+
+                                                            info_button+
+                                                            '</button> <span id="dl-jiyao"></span>'));
+
+                                                        $('#btn-dl-jiyao').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/dl-jiyao.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#dl-jiyao').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "Xuxiu Siku quanshu") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo16\');" onmouseover="" style="cursor: pointer;">' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo16" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo16\');">' +
-                                    close_button +
-                                    "</a><b>Xuxiu Siku Quanshu 續修四庫全書 </b>\n" +
-                                    "<br><b>CONTENT:</b> With over 5000 titles the 'Sequel to the Siku quanshu', continues emperor Qianlong's project of the late 18th century. The Xuxiu Siku quanshu project ran from the 1920ies on aiming to collect titles produced after the finishing of the Siku quanshu collection (SKQS) in 1782, to reproduce editions better and less corrupted than those included in the SKQS, to include novels and other literary styles considered too lowly by the SKQS editors asf. In 1942 the project came to a full stop with over 30 thousand book abstracts written. In 1949 the drafts of these abstracts went into the possession of the library of the Chinese Academy of Science (中科院) in Beijing; finally in 1996 these abstracts were published in 37 volumes under the title 续修四库全书总目提要 (稿本); between 1995 and 2002 facsimiles of over 5213 titles of the Xuxiu SKQS were published in 1800 volumes by Shanghai guji chubanshe. The publishing of a fulltext database of all titles from the Shanghai edition (and 100+ additional titles) can be considered another milestone for everyone working in one or the other way on historical China. \n" +
-                                    "<br><b>NOTE:</b> No links to the individual pages in the database are possible. To find your hit page in the database you have to open the title (follow the 'book' link in the title data) and then go to the page number given in the page hit.\n</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-xuxiu">'+
+                                                            info_button+
+                                                            '</button> <span id="xuxiu"></span>'));
+
+                                                        $('#btn-xuxiu').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/xuxiu.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#xuxiu').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "Adam Matthew - China America Pacific") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo17\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo17" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo17\');">' +
-                                    close_button +
-                                    "</a><b>Adam Matthew - China America Pacific </b>\n" +
-                                    "<br><b>CONTENT:</b> Collection of archival material held by different American institutions and libraries like the American Philosophical Society Library, Boston Athenæum, Bridgeman Art Library, California Historical Society, Hagley Museum and Library, Massachusetts Historical Society, Hawaiian Historical Society etc. It contains material related to the trading and cultural relationships that emerged between China, America and the Pacific region between the 18th and early 20th centuries like manuscript sources, rare printed texts, visual images, objects and maps.\n" +
-                                    "<br><b>NOTE:</b> The full text was done by OCR from partly handwritten material, thus the text is often of minor quality. For each hit in the search links to the bibliographical unit and to the individual page are provided.\n" +
-                                    "</div>"
-                                )
-                            );
+                            $(this.target).append($('<button class="click" id="btn-china-pacific">'+
+                                                            info_button+
+                                                            '</button> <span id="china-pacific"></span>'));
+
+                                                        $('#btn-china-pacific').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/china-pacific.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#china-pacific').html(data);
+                                                                }
+                                                            })
+                                                        });
                         }
                         if (facet === "Adam Matthew - China Trade & Politics") {
-                            $(this.target).append(
-                                $(
-                                    '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo18\');" onmouseover="" style="cursor: pointer;"> ' +
-                                    info_button +
-                                    "</a>" +
-                                    "" +
-                                    '<div class="menu" id="foo18" style="display:none"> <a onclick="show_hidePopUpWindow(\'foo18\');"> ' +
-                                    close_button +
-                                    "</a><b>Adam Matthew - China Trade & Politics </b>\n" +
-                                    "<br><b>CONTENT:</b> The collection contains a wide variety of sources in English relating to China and the West, 1793-1980, such as maps, color paintings, photographs, papers of key individuals involved in the Chinese Maritime Customs service, records of major diplomatic missions to China ranging from the late 18th to the 20th century (Macartney, Amherst to Nixon), papers of missionaries, as well as the Chinese Recorder and Missionary Journal (1867-1941) and North China Mission resp. North China Shantung Mission quarterly paper (1893-1936).\n" +
-                                    "<br><b>NOTE:</b> The full text was done by OCR from partly handwritten material, thus the text is often of minor quality. For each hit in the search links to the bibliographical unit and to the individual page are provided.\n" +
-                                    "</div>"
-                                )
-                            );
-                        }
+                            $(this.target).append($('<button class="click" id="btn-china-trade">'+
+                                                            info_button+
+                                                            '</button> <span id="china-trade"></span>'));
+                                                        $('#btn-china-trade').click(function(e) {
+                                                            $.ajax({
+                                                                url: 'collections/china-trade.html',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#china-trade').html(data);
+                                                                }
+                                                            })
+                                                        });
+                         }
                         if (facet === "Adam Matthew - Meiji Japan") {
                             $(this.target).append(
                                 $(
