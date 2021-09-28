@@ -1,33 +1,39 @@
-(function($) {
+(function ($) {
     AjaxSolr.MultiSelectWidget = AjaxSolr.AbstractFacetWidget.extend({
-        checkboxChange: function(facet) {
+        checkboxChange: function (facet) {
             var self = this;
-            var innerCheckboxChange = function() {
+            var innerCheckboxChange = function () {
                 return self.updateQueryDoRequest(facet, this.checked);
             };
             return innerCheckboxChange;
         },
-        autocompleteSelect: function() {
+
+        toggle(element){
+        if (element.style.display !== "none")
+            element.style.display = "none";
+        else element.style.display = "block";
+        },
+        autocompleteSelect: function () {
             var self = this;
-            var innerAutocompleteSelect = function(event, ui) {
+            var innerAutocompleteSelect = function (event, ui) {
                 return self.updateQueryDoRequest(ui.item.value, true);
             };
             return innerAutocompleteSelect;
         },
-        autocompleteAjaxFunction: function() {
+        autocompleteAjaxFunction: function () {
             var self = this;
-            var autocompleteDoAjax = function(req, resp) {
-                var autocompleteDoAjax_callback_gen = function(req, resp) {
-                    var autocompleteDoAjax_callback = function(data) {
+            var autocompleteDoAjax = function (req, resp) {
+                var autocompleteDoAjax_callback_gen = function (req, resp) {
+                    var autocompleteDoAjax_callback = function (data) {
                         var field_facet_counts = data.facet_counts.facet_fields[self.field];
                         var matches_arr = [];
                         var match_regex = new RegExp(req.term, "i");
-                        $.map(field_facet_counts, function(v, i) {
+                        $.map(field_facet_counts, function (v, i) {
                             if (i.match(match_regex)) {
                                 matches_arr.push(i);
                             }
                         });
-                        matches_arr.sort(function(a, b) {
+                        matches_arr.sort(function (a, b) {
                             return field_facet_counts[b] - field_facet_counts[a];
                         });
                         resp(matches_arr);
@@ -74,7 +80,7 @@
             };
             return autocompleteDoAjax;
         },
-        updateQueryDoRequest: function(facet, checked_flag) {
+        updateQueryDoRequest: function (facet, checked_flag) {
             var self = this;
             var check_state = self.check_state;
             if (typeof check_state == "undefined") {
@@ -86,7 +92,7 @@
             } else {
                 delete check_state[facet];
             }
-            var checked_facets_arr = $.map(check_state, function(v, i) {
+            var checked_facets_arr = $.map(check_state, function (v, i) {
                 return '"' + i + '"';
             });
             self.manager.store.removeByValue("fq", new RegExp("^" + self.field));
@@ -114,14 +120,14 @@
             self.doRequest();
             return false;
         },
-        sortFacets: function(objectedItems) {
+        sortFacets: function (objectedItems) {
             var sort_type = this.sort_type;
             if (typeof sort_type == "undefined") {
                 sort_type = "count";
             }
             if (sort_type == "range") {
                 //All the facet values should be like '20 TO 40', '50 TO 100', etc. or this sort type won't work
-                objectedItems.sort(function(a, b) {
+                objectedItems.sort(function (a, b) {
                     if (typeof a.start == "undefined") {
                         return 1;
                     }
@@ -132,19 +138,19 @@
                 });
             } else if (sort_type == "lex") {
                 //sort facets alphabetically
-                objectedItems.sort(function(a, b) {
+                objectedItems.sort(function (a, b) {
                     return a.facet < b.facet ? -1 : 1;
                 });
             } else if (sort_type == "count") {
                 //the count in the current result set
-                objectedItems.sort(function(a, b) {
+                objectedItems.sort(function (a, b) {
                     return b.count < a.count ? -1 : 1;
                 });
             }
         },
-        toggleExtra: function(show_more_div_id) {
+        toggleExtra: function (show_more_div_id) {
             var self = this;
-            var clickFunc = function() {
+            var clickFunc = function () {
                 var el = document.getElementById(show_more_div_id);
                 var el_txt = document.getElementById(show_more_div_id + "_txt");
                 if (el && el_txt) {
@@ -163,7 +169,7 @@
             };
             return clickFunc;
         },
-        setRangeFacetStartEnd: function(facet, facet_rec) {
+        setRangeFacetStartEnd: function (facet, facet_rec) {
             var start_matches = facet.match(/^(\d+)/);
             var end_matches = facet.match(/(\d+)$/);
             if (start_matches && start_matches.length > 1) {
@@ -173,7 +179,7 @@
                 facet_rec.end = parseInt(end_matches[1]);
             }
         },
-        afterRequest: function() {
+        afterRequest: function () {
             var returned_facets = this.manager.response.facet_counts.facet_fields[
                 this.field
                 ];
@@ -319,567 +325,569 @@
                         );
                     }
                     var thechosenone = "";
+
+                    function toggle(element){
+                        if (element.style.display !== "none")
+                            element.style.display = "none";
+                        else element.style.display = "block";
+                    }
+
                     if (this.field === "collection" && cur_facet_count != 0) {
                         if (facet === "Renmin Ribao") {
-                            $(this.target).append($('<button class="click" id="btn-rmrb">'+
-                                info_button+
-                                '</button> <span id="rmrb"></span>'));
+                            $(this.target).append($('<a class="click" id="btn-rmrb" style="cursor: pointer;">' +
+                                info_button +
+                                '</a><span id="rmrb"></span>'));
 
-                            $('#btn-rmrb').click(function(e) {
+                            $('#btn-rmrb').click(function (e) {
                                 $.ajax({
                                     url: 'collections/rmrb.html',
                                     type: 'get',
-                                    success: function(data) {
-                                        $('#rmrb').html(data);
+                                    success: function  (data) {
+                                        $('#rmrb').html(data).toggle();
                                     }
                                 })
                             });
                         }
                         if (facet === "Airiti") {
-                            $(this.target).append($('<button class="click" id="btn-airiti">'+
-                                info_button+
+                            $(this.target).append($('<button class="click" id="btn-airiti">' +
+                                info_button +
                                 '</button> <span id="airiti"></span>'));
 
-                            $('#btn-airiti').click(function(e) {
+                            $('#btn-airiti').click(function (e) {
                                 $.ajax({
                                     url: 'collections/airiti.html',
                                     type: 'get',
-                                    success: function(data) {
-                                        $('#airiti').html(data);
+                                    success: function (data) {
+                                        $('#airiti').html(data).toggle();
                                     }
                                 })
                             });
                         }
                         if (facet === "Adam Matthew - Foreign Office Files China & Japan") {
-                            $(this.target).append($('<button class="click" id="btn-adammatthew">'+
-                                info_button+
+                            $(this.target).append($('<button class="click" id="btn-adammatthew">' +
+                                info_button +
                                 '</button> <span id="adammatthew"></span>'));
 
-                            $('#btn-adammatthew').click(function(e) {
+                            $('#btn-adammatthew').click(function (e) {
                                 $.ajax({
                                     url: 'collections/adammatthew.html',
                                     type: 'get',
-                                    success: function(data) {
-                                        $('#adammatthew').html(data);
+                                    success: function (data) {
+                                        $('#adammatthew').html(data).toggle();
                                     }
                                 })
                             });
                         }
                         if (facet === "Early Twentieth Century Chinese Books (1912-1949)") {
-                            $(this.target).append($('<button class="click" id="btn-minguo">'+
-                                info_button+
+                            $(this.target).append($('<button class="click" id="btn-minguo">' +
+                                info_button +
                                 '</button> <span id="minguo"></span>'));
 
-                            $('#btn-minguo').click(function(e) {
+                            $('#btn-minguo').click(function (e) {
                                 $.ajax({
                                     url: 'collections/minguo.html',
                                     type: 'get',
-                                    success: function(data) {
-                                        $('#minguo').html(data);
+                                    success: function (data) {
+                                        $('#minguo').html(data).toggle();
                                     }
                                 })
                             });
                         }
                         if (facet === "SBB digital : Asian language collection (selection)") {
-                            $(this.target).append($('<button class="click" id="btn-sbb-digital">'+
-                                info_button+
+                            $(this.target).append($('<button class="click" id="btn-sbb-digital">' +
+                                info_button +
                                 '</button> <span id="sbb-digital"></span>'));
 
-                            $('#btn-sbb-digital').click(function(e) {
+                            $('#btn-sbb-digital').click(function (e) {
                                 $.ajax({
                                     url: 'collections/sbb-digital.html',
                                     type: 'get',
-                                    success: function(data) {
-                                        $('#sbb-digital').html(data);
+                                    success: function (data) {
+                                        $('#sbb-digital').html(data).toggle();
                                     }
                                 })
                             });
                         }
                         if (facet === "Local Gazetteer") {
-                            $(this.target).append($('<button class="click" id="btn-locgaz">'+
-                                info_button+
+                            $(this.target).append($('<button class="click" id="btn-locgaz">' +
+                                info_button +
                                 '</button> <span id="locgaz"></span>'));
 
-                            $('#btn-locgaz').click(function(e) {
+                            $('#btn-locgaz').click(function (e) {
                                 $.ajax({
                                     url: 'collections/locgaz.html',
                                     type: 'get',
-                                    success: function(data) {
-                                        $('#locgaz').html(data);
+                                    success: function (data) {
+                                        $('#locgaz').html(data).toggle();
                                     }
                                 })
                             });
                         }
                         if (facet === "Missionary, Sinology, and Literary Periodicals (1817-1949)") {
-                            $(this.target).append($('<button class="click" id="btn-gale-cfer">'+
-                                info_button+
+                            $(this.target).append($('<button class="click" id="btn-gale-cfer">' +
+                                info_button +
                                 '</button> <span id="gale-cfer"></span>'));
 
-                            $('#btn-gale-cfer').click(function(e) {
+                            $('#btn-gale-cfer').click(function (e) {
                                 $.ajax({
                                     url: 'collections/gale-cfer.html',
                                     type: 'get',
-                                    success: function(data) {
-                                        $('#gale-cfer').html(data);
+                                    success: function (data) {
+                                        $('#gale-cfer').html(data).toggle();
                                     }
                                 })
                             });
                         }
                         if (facet === "Local Gazetteer (Diaolong)") {
 
-                            $(this.target).append($('<button class="click" id="btn-dfz">'+
-                                                            info_button+
-                                                            '</button> <span id="dfz"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-dfz">' +
+                                info_button +
+                                '</button> <span id="dfz"></span>'));
 
-                                                        $('#btn-dfz').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/dfz.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#dfz').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-dfz').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/dfz.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#dfz').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Qingdai shiliao") {
-                            $(this.target).append($('<button class="click" id="btn-dl-shiliao">'+
-                                                            info_button+
-                                                            '</button> <span id="dl-shiliao"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-dl-shiliao">' +
+                                info_button +
+                                '</button> <span id="dl-shiliao"></span>'));
 
-                                                        $('#btn-dl-shiliao').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/dl-shiliao.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#dl-shiliao').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-dl-shiliao').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/dl-shiliao.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#dl-shiliao').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Sibu congkan") {
-                            $(this.target).append($('<button class="click" id="btn-sbck">'+
-                                                            info_button+
-                                                            '</button> <span id="sbck"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-sbck">' +
+                                info_button +
+                                '</button> <span id="sbck"></span>'));
 
-                                                        $('#btn-sbck').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/sbck.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#sbck').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-sbck').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/sbck.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#sbck').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "SBB digital : Western language Asia collection") {
-                            $(this.target).append($('<button class="click" id="btn-sbb-digital">'+
-                                                            info_button+
-                                                            '</button> <span id="sbb-digital"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-sbb-digital">' +
+                                info_button +
+                                '</button> <span id="sbb-digital"></span>'));
 
-                                                        $('#btn-sbb-digital').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/sbb-digital.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#sbb-digital').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-sbb-digital').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/sbb-digital.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#sbb-digital').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "The Chinese Students’ Monthly Online") {
-                            $(this.target).append($('<button class="click" id="btn-brill-csmo">'+
-                                                            info_button+
-                                                            '</button> <span id="brill-csmo"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-brill-csmo">' +
+                                info_button +
+                                '</button> <span id="brill-csmo"></span>'));
 
-                                                        $('#btn-brill-csmo').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/brill-csmo.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#brill-csmo').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-brill-csmo').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/brill-csmo.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#brill-csmo').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "The North China Herald Online") {
-                            $(this.target).append($('<button class="click" id="btn-brill-ncho">'+
-                                                            info_button+
-                                                            '</button> <span id="brill-ncho"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-brill-ncho">' +
+                                info_button +
+                                '</button> <span id="brill-ncho"></span>'));
 
-                                                        $('#btn-brill-ncho').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/brill-ncho.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#brill-ncho').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-brill-ncho').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/brill-ncho.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#brill-ncho').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Japan Chronicle Online") {
-                            $(this.target).append($('<button class="click" id="btn-brill-jpco">'+
-                                                            info_button+
-                                                            '</button> <span id="brill-jpco"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-brill-jpco">' +
+                                info_button +
+                                '</button> <span id="brill-jpco"></span>'));
 
-                                                        $('#btn-brill-jpco').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/brill-jpco.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#brill-jpco').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-brill-jpco').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/brill-jpco.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#brill-jpco').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Daozang jiyao") {
-                            $(this.target).append($('<button class="click" id="btn-dl-jiyao">'+
-                                                            info_button+
-                                                            '</button> <span id="dl-jiyao"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-dl-jiyao">' +
+                                info_button +
+                                '</button> <span id="dl-jiyao"></span>'));
 
-                                                        $('#btn-dl-jiyao').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/dl-jiyao.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#dl-jiyao').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-dl-jiyao').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/dl-jiyao.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#dl-jiyao').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Xuxiu Siku quanshu") {
-                            $(this.target).append($('<button class="click" id="btn-xuxiu">'+
-                                                            info_button+
-                                                            '</button> <span id="xuxiu"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-xuxiu">' +
+                                info_button +
+                                '</button> <span id="xuxiu"></span>'));
 
-                                                        $('#btn-xuxiu').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/xuxiu.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#xuxiu').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-xuxiu').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/xuxiu.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#xuxiu').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Adam Matthew - China America Pacific") {
-                            $(this.target).append($('<button class="click" id="btn-china-pacific">'+
-                                                            info_button+
-                                                            '</button> <span id="china-pacific"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-china-pacific">' +
+                                info_button +
+                                '</button> <span id="china-pacific"></span>'));
 
-                                                        $('#btn-china-pacific').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/china-pacific.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#china-pacific').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-china-pacific').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/china-pacific.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#china-pacific').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Adam Matthew - China Trade & Politics") {
-                            $(this.target).append($('<button class="click" id="btn-china-trade">'+
-                                                            info_button+
-                                                            '</button> <span id="china-trade"></span>'));
-                                                        $('#btn-china-trade').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/china-trade.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#china-trade').html(data);
-                                                                }
-                                                            })
-                                                        });
-                         }
+                            $(this.target).append($('<button class="click" id="btn-china-trade">' +
+                                info_button +
+                                '</button> <span id="china-trade"></span>'));
+                            $('#btn-china-trade').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/china-trade.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#china-trade').html(data).toggle();
+                                    }
+                                })
+                            });
+                        }
                         if (facet === "Adam Matthew - Meiji Japan") {
-                            $(this.target).append($('<button class="click" id="btn-meiji-japan">'+
-                                                            info_button+
-                                                            '</button> <span id="meiji-japan"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-meiji-japan">' +
+                                info_button +
+                                '</button> <span id="meiji-japan"></span>'));
 
-                                                        $('#btn-meiji-japan').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/meiji-japan.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#meiji-japan').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-meiji-japan').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/meiji-japan.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#meiji-japan').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "CNKI eBooks") {
-                            $(this.target).append($('<button class="click" id="btn-cnki">'+
-                                                            info_button+
-                                                            '</button> <span id="cnki"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-cnki">' +
+                                info_button +
+                                '</button> <span id="cnki"></span>'));
 
-                                                        $('#btn-cnki').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/cnki.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#cnki').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-cnki').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/cnki.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#cnki').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "China Comprehensive Gazetteers") {
-                            $(this.target).append($('<button class="click" id="btn-eastview-ccg">'+
-                                                            info_button+
-                                                            '</button> <span id="eastview-ccg"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-eastview-ccg">' +
+                                info_button +
+                                '</button> <span id="eastview-ccg"></span>'));
 
-                                                        $('#btn-eastview-ccg').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/eastview-ccg.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#eastview-ccg').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-eastview-ccg').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/eastview-ccg.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#eastview-ccg').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Fulltext search in print books") {
-                            $(this.target).append($('<button class="click" id="btn-cibtc">'+
-                                                            info_button+
-                                                            '</button> <span id="cibtc"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-cibtc">' +
+                                info_button +
+                                '</button> <span id="cibtc"></span>'));
 
-                                                        $('#btn-cibtc').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/cibtc.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#cibtc').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-cibtc').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/cibtc.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#cibtc').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Zhengtong Daozang") {
-                            $(this.target).append($('<button class="click" id="btn-daozang">'+
-                                                            info_button+
-                                                            '</button> <span id="daozang"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-daozang">' +
+                                info_button +
+                                '</button> <span id="daozang"></span>'));
 
-                                                        $('#btn-daozang').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/daozang.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#daozang').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-daozang').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/daozang.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#daozang').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Classical Works of Japan") {
-                        $(this.target).append($('<button class="click" id="btn-riben">'+
-                                                        info_button+
-                                                        '</button> <span id="riben"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-riben">' +
+                                info_button +
+                                '</button> <span id="riben"></span>'));
 
-                                                    $('#btn-riben').click(function(e) {
-                                                        $.ajax({
-                                                            url: 'collections/riben.html',
-                                                            type: 'get',
-                                                            success: function(data) {
-                                                                $('#riben').html(data);
-                                                            }
-                                                        })
-                                                    });
+                            $('#btn-riben').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/riben.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#riben').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Siku quanshu") {
-                            $(this.target).append($('<button class="click" id="btn-siku">'+
-                                                            info_button+
-                                                            '</button> <span id="siku"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-siku">' +
+                                info_button +
+                                '</button> <span id="siku"></span>'));
 
-                                                        $('#btn-siku').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/siku.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#siku').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-siku').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/siku.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#siku').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Yongle dadian") {
-                            $(this.target).append($('<button class="click" id="btn-dl-yldd">'+
-                                                        info_button+
-                                                        '</button> <span id="dl-yldd"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-dl-yldd">' +
+                                info_button +
+                                '</button> <span id="dl-yldd"></span>'));
 
-                                                    $('#btn-dl-yldd').click(function(e) {
-                                                        $.ajax({
-                                                            url: 'collections/dl-yldd.html',
-                                                            type: 'get',
-                                                            success: function(data) {
-                                                                $('#dl-yldd').html(data);
-                                                            }
-                                                        })
-                                                    });
+                            $('#btn-dl-yldd').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/dl-yldd.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#dl-yldd').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "China and the Modern World: Records of the Maritime Customs Service of China (1854-1949)") {
-                            $(this.target).append($('<button class="click" id="btn-gale-cfer2">'+
-                                                            info_button+
-                                                            '</button> <span id="gale-cfer2"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-gale-cfer2">' +
+                                info_button +
+                                '</button> <span id="gale-cfer2"></span>'));
 
-                                                        $('#btn-gale-cfer2').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/gale-cfer2.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#gale-cfer2').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-gale-cfer2').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/gale-cfer2.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#gale-cfer2').html(data).toggle();
+                                    }
+                                })
+                            });
 
                         }
                         if (facet === "Beschreibung") {
-                            $(this.target).append($('<button class="click" id="btn-beschreibung">'+
-                                                            info_button+
-                                                            '</button> <span id="beschreibung"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-beschreibung">' +
+                                info_button +
+                                '</button> <span id="beschreibung"></span>'));
 
-                                                        $('#btn-beschreibung').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/beschreibung.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#beschreibung').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-beschreibung').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/beschreibung.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#beschreibung').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Gujin tushu jicheng") {
-                            $(this.target).append($('<button class="click" id="btn-gujin">'+
-                                                            info_button+
-                                                            '</button> <span id="gujin"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-gujin">' +
+                                info_button +
+                                '</button> <span id="gujin"></span>'));
 
-                                                        $('#btn-gujin').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/gujin.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#gujin').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-gujin').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/gujin.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#gujin').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Sibu beiyao") {
-                            $(this.target).append($('<button class="click" id="btn-sbby">'+
-                                                            info_button+
-                                                            '</button> <span id="sbby"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-sbby">' +
+                                info_button +
+                                '</button> <span id="sbby"></span>'));
 
-                                                        $('#btn-sbby').click(function(e) {
-                                                            $.ajax({
-                                                                url: 'collections/sbby.html',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#sbby').html(data);
-                                                                }
-                                                            })
-                                                        });
+                            $('#btn-sbby').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/sbby.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#sbby').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "The Ta Kung Pao 大公報") {
-                        $(this.target).append($('<button class="click" id="btn-kungpao">'+
-                                                        info_button+
-                                                        '</button> <span id="kungpao"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-kungpao">' +
+                                info_button +
+                                '</button> <span id="kungpao"></span>'));
 
-                                                    $('#btn-kungpao').click(function(e) {
-                                                        $.ajax({
-                                                            url: 'collections/kungpao.html',
-                                                            type: 'get',
-                                                            success: function(data) {
-                                                                $('#kungpao').html(data);
-                                                            }
-                                                        })
-                                                    });
-
+                            $('#btn-kungpao').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/kungpao.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#kungpao').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "North China Daily News") {
+                            $(this.target).append($('<button class="click" id="btn-brill-ncdn">' +
+                                info_button +
+                                '</button> <span id="brill-ncdn"></span>'));
 
-                        $(this.target).append($('<button class="click" id="btn-brill-ncdn">'+
-                                                        info_button+
-                                                        '</button> <span id="brill-ncdn"></span>'));
-
-                                                    $('#btn-brill-ncdn').click(function(e) {
-                                                        $.ajax({
-                                                            url: 'collections/brill-ncdn.html',
-                                                            type: 'get',
-                                                            success: function(data) {
-                                                                $('#brill-ncdn').html(data);
-                                                            }
-                                                        })
-                                                    });
+                            $('#btn-brill-ncdn').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/brill-ncdn.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#brill-ncdn').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "North China Standard Online") {
-                        $(this.target).append($('<button class="click" id="btn-brill-ncso">'+
-                                                        info_button+
-                                                        '</button> <span id="brill-ncso"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-brill-ncso">' +
+                                info_button +
+                                '</button> <span id="brill-ncso"></span>'));
 
-                                                    $('#btn-brill-ncso').click(function(e) {
-                                                        $.ajax({
-                                                            url: 'collections/brill-ncso.html',
-                                                            type: 'get',
-                                                            success: function(data) {
-                                                                $('#brill-ncso').html(data);
-                                                            }
-                                                        })
-                                                    });
-
+                            $('#btn-brill-ncso').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/brill-ncso.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#brill-ncso').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Mobilizing East Asia, 1931-1954") {
+                            $(this.target).append($('<button class="click" id="btn-brill-meao">' +
+                                info_button +
+                                '</button> <span id="brill-meao"></span>'));
 
-                        $(this.target).append($('<button class="click" id="btn-brill-meao">'+
-                                                        info_button+
-                                                        '</button> <span id="brill-meao"></span>'));
-
-                                                    $('#btn-brill-meao').click(function(e) {
-                                                        $.ajax({
-                                                            url: 'collections/brill-meao.html',
-                                                            type: 'get',
-                                                            success: function(data) {
-                                                                $('#brill-meao').html(data);
-                                                            }
-                                                        })
-                                                    });
+                            $('#btn-brill-meao').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/brill-meao.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#brill-meao').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Dunhuang Historical Material") {
+                            $(this.target).append($('<button class="click" id="btn-dunhuang">' +
+                                info_button +
+                                '</button> <span id="dunhuang"></span>'));
 
-                        $(this.target).append($('<button class="click" id="btn-dunhuang">'+
-                                                        info_button+
-                                                        '</button> <span id="dunhuang"></span>'));
-
-                                                    $('#btn-dunhuang').click(function(e) {
-                                                        $.ajax({
-                                                            url: 'collections/dunhuang.html',
-                                                            type: 'get',
-                                                            success: function(data) {
-                                                                $('#dunhuang').html(data);
-                                                            }
-                                                        })
-                                                    });
+                            $('#btn-dunhuang').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/dunhuang.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#dunhuang').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Area Studies Japan, China, and Southeast Asia") {
-                        $(this.target).append($('<button class="click" id="btn-amd-areastudies">'+
-                                                        info_button+
-                                                        '</button> <span id="amd-areastudies"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-amd-areastudies">' +
+                                info_button +
+                                '</button> <span id="amd-areastudies"></span>'));
 
-                                                    $('#btn-amd-areastudies').click(function(e) {
-                                                        $.ajax({
-                                                            url: 'collections/amd-areastudies.html',
-                                                            type: 'get',
-                                                            success: function(data) {
-                                                                $('#amd-areastudies').html(data);
-                                                            }
-                                                        })
-                                                    });
+                            $('#btn-amd-areastudies').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/amd-areastudies.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#amd-areastudies').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                         if (facet === "Asian Studies (ISEAS publishing)") {
-                        $(this.target).append($('<button class="click" id="btn-iseas">'+
-                                                        info_button+
-                                                        '</button> <span id="iseas"></span>'));
+                            $(this.target).append($('<button class="click" id="btn-iseas">' +
+                                info_button +
+                                '</button> <span id="iseas"></span>'));
 
-                                                    $('#btn-iseas').click(function(e) {
-                                                        $.ajax({
-                                                            url: 'collections/iseas.html',
-                                                            type: 'get',
-                                                            success: function(data) {
-                                                                $('#iseas').html(data);
-                                                            }
-                                                        })
-                                                    });
+                            $('#btn-iseas').click(function (e) {
+                                $.ajax({
+                                    url: 'collections/iseas.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#iseas').html(data).toggle();
+                                    }
+                                })
+                            });
                         }
                     }
                     if (this.field === "title_facet" && cur_facet_count != 0) {
@@ -1034,7 +1042,8 @@
                                 ).text(facet)
                             );
                         }
-                    } else {}
+                    } else {
+                    }
                     if (Object.values(returned_facets).length > 0) {
                         if (this.field === "person_facet") {
                             document.getElementById("personHide").style.display = "block";
@@ -1127,7 +1136,7 @@
                     }
                     if (cur_facet_count != 0) {
                         if (this.field == "collection") {
-                            if (facet === "Renmin Ribao") {
+                            /*if (facet === "Renmin Ribao") {
                                 $("#" + "more_collection").append(
                                     $(
                                         '<span> </span><a class="click" onclick="show_hidePopUpWindow(\'foo\');" onmouseover="" style="cursor: pointer;"> ' +
@@ -1141,20 +1150,18 @@
                                         "<br><b>NOTE:</b> To see the image-PDF of the issue you will have go to the database (http://erf.sbb.spk-berlin.de/han/RenminRibao1/) and open the issue via the calendar browse function provided in the database.\n</div>"
                                     )
                                 );
-                            }
+                            }*/
                             if (facet === "Airiti") {
                                 $("#" + "more_collection").append(
-                                    $(
-                                        '<span> </span> <a class="airiti2" onclick="show_hidePopUpWindow(\'foo2\');" onmouseover="" style="cursor: pointer;"> ' +
-                                        info_button +
-                                        "</a>" +
-                                        "" +
-                                        '<div class="menu" id="foo2" style="display:none"><a class="click" onclick="show_hidePopUpWindow(\'foo2\');">' +
-                                        close_button +
-                                        "</a><b>Airiti eBooks </b>\n" +
-                                        '<br><b>CONTENT:</b>  Currently 75 titles of the Airiti eBook platform have been licenced and are available for fulltext search. The corpus of licenced titles will be update yearly. For the Airiti ebook database go to 華藝中文電子書 : airitiBooks <a href="http://erf.sbb.spk-berlin.de/han/airiti/www.airitibooks.com/">LINK</a>\n' +
-                                        "<br><b>NOTE:</b> To see your hit page, please follow the link provided next to the fulltext hit. Due to the licence agreement it is only possible to open one double-page (window) per book at the same time. If you can't find the hit on the pages shown, please check the previous or subsequent pages, or perform a search within the book.\n</div>"
-                                    )
+                                    $('<span id="airiti"> </span><a className="click" id="btn-airiti">' + info_button + '</a>').click(function (e) {
+                                        $.ajax({
+                                            url: 'collections/airiti.html',
+                                            type: 'get',
+                                            success: function (data) {
+                                                $('#airiti').html(data).toggle();
+                                            }
+                                        })
+                                    })
                                 );
                             }
                             if (
@@ -1410,7 +1417,16 @@
                             }
                             if (facet === "Adam Matthew - Meiji Japan") {
                                 $("#" + "more_collection").append(
-                                    $(
+                                    $('<span id="meiji-japan"> </span><a className="click" id="btn-meiji-japan">' + info_button + '</a>').click(function (e) {
+                                        $.ajax({
+                                            url: 'collections/meiji-japan.html',
+                                            type: 'get',
+                                            success: function (data) {
+                                                $('#meiji-japan').html(data).toggle();
+                                            }
+                                        })
+                                    })
+                                    /*$(
                                         '<span> </span> <a class="click" onclick="show_hidePopUpWindow(\'foo19\');" onmouseover="" style="cursor: pointer;"> ' +
                                         info_button +
                                         "</a>" +
@@ -1422,7 +1438,7 @@
                                         "<br><b>CONTENT:</b> The collection contains the diaries and correspondence of Edward S Morse (1838-1925), one of the first Americans to live in Japan for a longer period while teaching science at the Imperial University of Tokyo. A polymath especially interested in the fields natural history, ethnography and art history, he was an accomplished draughtsman and his drawings and sketches enliven his diaries and letters. In addition to preserving the household records of a samurai family and many accounts of the tea ceremony, Morse made notes on subjects as diverse as shop signs, fireworks, hairpins, agricultural tools, artists’ studios, music, games, printing, carpentry, the Ainu, gardens, household construction, art and architecture. His correspondence include exchanges with Alexander and Louis Agassiz, William Sturgis Bigelow, Charles Darwin, Ernest Fenollosa, Yukichi Fukuzawa, Isabella Stewart Gardner, John M Gould, Oliver Wendell Holmes, Ernest Ingersoll, Hiroyuki Kato, Percival Lowell, The Museum of Fine Arts in Boston, Charles Eliot Norton, Frederick Putnam, Hideo Takamine, Seiichi Tejima, Charles Townsend, Charles Weld and Yu Kil-chun.\n" +
                                         "<br><b>NOTE:</b> As all items in this collection are either handwritten or images, none of them has provided fulltext yet. Thus only the metadata can be searched.\n" +
                                         "</div>"
-                                    )
+                                    )*/
                                 );
                             }
                             if (facet === "CNKI eBooks") {
@@ -1787,7 +1803,8 @@
                 $("#" + show_more_div_id + "_txt").click(
                     this.toggleExtra(show_more_div_id)
                 );
-            } else {}
+            } else {
+            }
             if (Object.values(returned_facets).length < 10) {
                 var more_or_less_txt = this.display_style == "none" ? "" : "";
                 $(this.target).append(

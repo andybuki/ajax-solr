@@ -20,3 +20,9 @@ function show_hidePopUpSearch(thechosenone) {
     });
 }
 
+function toggle2(element){
+    if (element.style.display !== "none")
+        element.style.display = "none";
+    else element.style.display = "block";
+}
+
