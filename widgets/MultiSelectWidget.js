@@ -340,7 +340,7 @@
 
                             $('#btn-rmrb').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/rmrb.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/rmrb.html',
                                     type: 'get',
                                     success: function  (data) {
                                         $('#rmrb').html(data);
@@ -356,7 +356,7 @@
 
                             $('#btn-airiti').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/airiti.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/airiti.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#airiti').html(data);
@@ -372,7 +372,7 @@
 
                             $('#btn-adammatthew').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/adammatthew.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/adammatthew.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#adammatthew').html(data);
@@ -387,7 +387,7 @@
 
                             $('#btn-minguo').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/minguo.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/minguo.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#minguo').html(data);
@@ -402,7 +402,7 @@
 
                             $('#btn-sbb-digital').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/sbb-digital.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/sbb-digital.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#sbb-digital').html(data);
@@ -417,7 +417,7 @@
 
                             $('#btn-locgaz').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/locgaz.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/locgaz.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#locgaz').html(data);
@@ -432,7 +432,7 @@
 
                             $('#btn-gale-cfer').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/gale-cfer.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/gale-cfer.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#gale-cfer').html(data);
@@ -448,7 +448,7 @@
 
                             $('#btn-dfz').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/dfz.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dfz.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#dfz').html(data);
@@ -463,7 +463,7 @@
 
                             $('#btn-dl-shiliao').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/dl-shiliao.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dl-shiliao.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#dl-shiliao').html(data);
@@ -478,7 +478,7 @@
 
                             $('#btn-sbck').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/sbck.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/sbck.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#sbck').html(data);
@@ -493,7 +493,7 @@
 
                             $('#btn-sbb-digital').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/sbb-digital.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/sbb-digital.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#sbb-digital').html(data);
@@ -508,7 +508,7 @@
 
                             $('#btn-brill-csmo').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/brill-csmo.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-csmo.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#brill-csmo').html(data);
@@ -523,7 +523,7 @@
 
                             $('#btn-brill-ncho').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/brill-ncho.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-ncho.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#brill-ncho').html(data);
@@ -538,7 +538,7 @@
 
                             $('#btn-brill-jpco').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/brill-jpco.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-jpco.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#brill-jpco').html(data);
@@ -553,7 +553,7 @@
 
                             $('#btn-dl-jiyao').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/dl-jiyao.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dl-jiyao.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#dl-jiyao').html(data);
@@ -568,7 +568,7 @@
 
                             $('#btn-xuxiu').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/xuxiu.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/xuxiu.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#xuxiu').html(data);
@@ -583,7 +583,7 @@
 
                             $('#btn-china-pacific').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/china-pacific.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/china-pacific.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#china-pacific').html(data);
@@ -597,7 +597,7 @@
                                 '</button> <span id="china-trade"></span>'));
                             $('#btn-china-trade').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/china-trade.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/china-trade.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#china-trade').html(data);
@@ -612,7 +612,7 @@
 
                             $('#btn-meiji-japan').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/meiji-japan.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/meiji-japan.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#meiji-japan').html(data);
@@ -627,7 +627,7 @@
 
                             $('#btn-cnki').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/cnki.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/cnki.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#cnki').html(data);
@@ -642,7 +642,7 @@
 
                             $('#btn-eastview-ccg').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/eastview-ccg.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/eastview-ccg.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#eastview-ccg').html(data);
@@ -657,7 +657,7 @@
 
                             $('#btn-cibtc').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/cibtc.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/cibtc.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#cibtc').html(data);
@@ -672,7 +672,7 @@
 
                             $('#btn-daozang').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/daozang.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/daozang.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#daozang').html(data);
@@ -687,7 +687,7 @@
 
                             $('#btn-riben').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/riben.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/riben.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#riben').html(data);
@@ -702,7 +702,7 @@
 
                             $('#btn-siku').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/siku.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/siku.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#siku').html(data);
@@ -717,7 +717,7 @@
 
                             $('#btn-dl-yldd').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/dl-yldd.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dl-yldd.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#dl-yldd').html(data);
@@ -732,7 +732,7 @@
 
                             $('#btn-gale-cfer2').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/gale-cfer2.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/gale-cfer2.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#gale-cfer2').html(data);
@@ -748,7 +748,7 @@
 
                             $('#btn-beschreibung').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/beschreibung.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/beschreibung.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#beschreibung').html(data);
@@ -763,7 +763,7 @@
 
                             $('#btn-gujin').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/gujin.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/gujin.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#gujin').html(data);
@@ -778,7 +778,7 @@
 
                             $('#btn-sbby').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/sbby.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/sbby.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#sbby').html(data);
@@ -793,7 +793,7 @@
 
                             $('#btn-kungpao').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/kungpao.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/kungpao.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#kungpao').html(data);
@@ -808,7 +808,7 @@
 
                             $('#btn-brill-ncdn').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/brill-ncdn.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-ncdn.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#brill-ncdn').html(data);
@@ -823,7 +823,7 @@
 
                             $('#btn-brill-ncso').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/brill-ncso.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-ncso.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#brill-ncso').html(data);
@@ -838,7 +838,7 @@
 
                             $('#btn-brill-meao').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/brill-meao.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-meao.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#brill-meao').html(data);
@@ -853,7 +853,7 @@
 
                             $('#btn-dunhuang').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/dunhuang.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dunhuang.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#dunhuang').html(data);
@@ -868,7 +868,7 @@
 
                             $('#btn-amd-areastudies').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/amd-areastudies.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/amd-areastudies.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#amd-areastudies').html(data);
@@ -883,7 +883,7 @@
 
                             $('#btn-iseas').click(function (e) {
                                 $.ajax({
-                                    url: 'collections/iseas.html',
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/iseas.html',
                                     type: 'get',
                                     success: function (data) {
                                         $('#iseas').html(data);
@@ -1144,7 +1144,7 @@
                                         info_button +
                                         '</button> <span id="rmrb" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/rmrb.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/rmrb.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#rmrb').css('display') =="none") {
@@ -1166,7 +1166,7 @@
                                         info_button +
                                         '</button> <span id="airiti" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/airiti.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/airiti.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#airiti').css('display') =="none") {
@@ -1189,7 +1189,7 @@
                                         info_button +
                                         '</button> <span id="adammatthew" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/adammatthew.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/adammatthew.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#adammatthew').css('display') =="none") {
@@ -1210,7 +1210,7 @@
                                         info_button +
                                         '</button> <span id="minguo" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/minguo.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/minguo.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#minguo').css('display') =="none") {
@@ -1231,7 +1231,7 @@
                                         info_button +
                                         '</button> <span id="sbb-digital" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/sbb-digital.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/sbb-digital.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#sbb-digital').css('display') =="none") {
@@ -1252,7 +1252,7 @@
                                         info_button +
                                         '</button> <span id="locgaz" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/locgaz.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/locgaz.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#locgaz').css('display') =="none") {
@@ -1273,7 +1273,7 @@
                                         info_button +
                                         '</button> <span id="gale-cfer" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/gale-cfer.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/gale-cfer.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#gale-cfer').css('display') =="none") {
@@ -1294,7 +1294,7 @@
                                         info_button +
                                         '</button> <span id="dfz" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/dfz.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dfz.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#dfz').css('display') =="none") {
@@ -1315,7 +1315,7 @@
                                         info_button +
                                         '</button> <span id="dl-shiliao" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/dl-shiliao.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dl-shiliao.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#dl-shiliao').css('display') =="none") {
@@ -1336,7 +1336,7 @@
                                         info_button +
                                         '</button> <span id="sbck" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/sbck.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/sbck.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#sbck').css('display') =="none") {
@@ -1357,7 +1357,7 @@
                                         info_button +
                                         '</button> <span id="sbb-digital" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/sbb-digital.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/sbb-digital.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#sbb-digital').css('display') =="none") {
@@ -1378,7 +1378,7 @@
                                         info_button +
                                         '</button> <span id="brill-csmo" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/brill-csmo.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-csmo.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#brill-csmo').css('display') =="none") {
@@ -1399,7 +1399,7 @@
                                         info_button +
                                         '</button> <span id="brill-ncho" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/brill-ncho.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-ncho.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#brill-ncho').css('display') =="none") {
@@ -1420,7 +1420,7 @@
                                         info_button +
                                         '</button> <span id="brill-jpco" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/brill-jpco.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-jpco.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#brill-jpco').css('display') =="none") {
@@ -1441,7 +1441,7 @@
                                         info_button +
                                         '</button> <span id="dl-jiyao" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/dl-jiyao.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dl-jiyao.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#dl-jiyao').css('display') =="none") {
@@ -1462,7 +1462,7 @@
                                         info_button +
                                         '</button> <span id="xuxiu" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/xuxiu.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/xuxiu.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#xuxiu').css('display') =="none") {
@@ -1483,7 +1483,7 @@
                                         info_button +
                                         '</button> <span id="china-pacific" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/china-pacific.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/china-pacific.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#china-pacific').css('display') =="none") {
@@ -1504,7 +1504,7 @@
                                         info_button +
                                         '</button> <span id="china-trade" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/china-trade.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/china-trade.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#china-trade').css('display') =="none") {
@@ -1525,7 +1525,7 @@
                                         info_button +
                                         '</button> <span id="meiji-japan" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/meiji-japan.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/meiji-japan.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#meiji-japan').css('display') =="none") {
@@ -1546,7 +1546,7 @@
                                         info_button +
                                         '</button> <span id="cnki" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/cnki.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/cnki.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#cnki').css('display') =="none") {
@@ -1567,7 +1567,7 @@
                                         info_button +
                                         '</button> <span id="eastview-ccg" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/eastview-ccg.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/eastview-ccg.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#eastview-ccg').css('display') =="none") {
@@ -1588,7 +1588,7 @@
                                         info_button +
                                         '</button> <span id="cibtc" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/cibtc.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/cibtc.html',
                                             type: 'get',
                                             success: function (data) {
                                                 $('#cibtc').html(data);
@@ -1610,7 +1610,7 @@
                                         info_button +
                                         '</button> <span id="daozang" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/daozang.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/daozang.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#daozang').css('display') =="none") {
@@ -1631,7 +1631,7 @@
                                         info_button +
                                         '</button> <span id="riben" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/riben.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/riben.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#riben').css('display') =="none") {
@@ -1652,7 +1652,7 @@
                                         info_button +
                                         '</button> <span id="siku" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/siku.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/siku.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#siku').css('display') =="none") {
@@ -1673,7 +1673,7 @@
                                         info_button +
                                         '</button> <span id="dl-yldd" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/dl-yldd.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dl-yldd.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#dl-yldd').css('display') =="none") {
@@ -1694,7 +1694,7 @@
                                         info_button +
                                         '</button> <span id="gale-cfer2" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/gale-cfer2.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/gale-cfer2.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#gale-cfer2').css('display') =="none") {
@@ -1715,7 +1715,7 @@
                                         info_button +
                                         '</button> <span id="beschreibung" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/beschreibung.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/beschreibung.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#beschreibung').css('display') =="none") {
@@ -1736,7 +1736,7 @@
                                         info_button +
                                         '</button> <span id="gujin" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/gujin.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/gujin.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#gujin').css('display') =="none") {
@@ -1757,7 +1757,7 @@
                                         info_button +
                                         '</button> <span id="sbby" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/sbby.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/sbby.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#sbby').css('display') =="none") {
@@ -1778,7 +1778,7 @@
                                         info_button +
                                         '</button> <span id="kungpao" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/kungpao.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/kungpao.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#kungpao').css('display') =="none") {
@@ -1799,7 +1799,7 @@
                                         info_button +
                                         '</button> <span id="brill-ncdn" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/brill-ncdn.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-ncdn.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#brill-ncdn').css('display') =="none") {
@@ -1820,7 +1820,7 @@
                                         info_button +
                                         '</button> <span id="brill-ncso" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/brill-ncso.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-ncso.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#brill-ncso').css('display') =="none") {
@@ -1841,7 +1841,7 @@
                                         info_button +
                                         '</button> <span id="brill-meao" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/brill-meao.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-meao.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#brill-meao').css('display') =="none") {
@@ -1862,7 +1862,7 @@
                                         info_button +
                                         '</button> <span id="dunhuang" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/dunhuang.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dunhuang.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#dunhuang').css('display') =="none") {
@@ -1883,7 +1883,7 @@
                                         info_button +
                                         '</button> <span id="amd-areastudies" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/amd-areastudies.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/amd-areastudies.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#amd-areastudies').css('display') =="none") {
@@ -1904,7 +1904,7 @@
                                         info_button +
                                         '</button> <span id="iseas" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
-                                            url: 'collections/iseas.html',
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/iseas.html',
                                             type: 'get',
                                             success: function (data) {
                                                 if ($('#iseas').css('display') =="none") {
