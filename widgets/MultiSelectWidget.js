@@ -334,9 +334,9 @@
 
                     if (this.field === "collection" && cur_facet_count != 0) {
                         if (facet === "Renmin Ribao") {
-                            $(this.target).append($('<button class="click" id="btn-rmrb" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-rmrb" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="rmrb"></span>'));
+                                '</a> <span id="rmrb"></span>'));
 
                             $('#btn-rmrb').click(function (e) {
                                 $.ajax({
@@ -350,9 +350,9 @@
                             });
                         }
                         if (facet === "Airiti") {
-                            $(this.target).append($('<button class="click" id="btn-airiti" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-airiti" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="airiti"></span>'));
+                                '</a> <span id="airiti"></span>'));
 
                             $('#btn-airiti').click(function (e) {
                                 $.ajax({
@@ -366,9 +366,9 @@
                             });
                         }
                         if (facet === "Adam Matthew - Foreign Office Files China & Japan") {
-                            $(this.target).append($('<button class="click" id="btn-adammatthew" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-adammatthew" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="adammatthew"></span>'));
+                                '</a> <span id="adammatthew"></span>'));
 
                             $('#btn-adammatthew').click(function (e) {
                                 $.ajax({
@@ -381,9 +381,9 @@
                             });
                         }
                         if (facet === "Early Twentieth Century Chinese Books (1912-1949)") {
-                            $(this.target).append($('<button class="click" id="btn-minguo" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-minguo" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="minguo"></span>'));
+                                '</a> <span id="minguo"></span>'));
 
                             $('#btn-minguo').click(function (e) {
                                 $.ajax({
@@ -396,9 +396,9 @@
                             });
                         }
                         if (facet === "SBB digital : Asian language collection (selection)") {
-                            $(this.target).append($('<button class="click" id="btn-sbb-digital" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-sbb-digital" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="sbb-digital"></span>'));
+                                '</a> <span id="sbb-digital"></span>'));
 
                             $('#btn-sbb-digital').click(function (e) {
                                 $.ajax({
@@ -411,9 +411,9 @@
                             });
                         }
                         if (facet === "Local Gazetteer") {
-                            $(this.target).append($('<button class="click" id="btn-locgaz" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-locgaz" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="locgaz"></span>'));
+                                '</a> <span id="locgaz"></span>'));
 
                             $('#btn-locgaz').click(function (e) {
                                 $.ajax({
@@ -426,9 +426,9 @@
                             });
                         }
                         if (facet === "Missionary, Sinology, and Literary Periodicals (1817-1949)") {
-                            $(this.target).append($('<button class="click" id="btn-gale-cfer" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-gale-cfer" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="gale-cfer"></span>'));
+                                '</a> <span id="gale-cfer"></span>'));
 
                             $('#btn-gale-cfer').click(function (e) {
                                 $.ajax({
@@ -442,9 +442,9 @@
                         }
                         if (facet === "Local Gazetteer (Diaolong)") {
 
-                            $(this.target).append($('<button class="click" id="btn-dfz" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-dfz" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="dfz"></span>'));
+                                '</a> <span id="dfz"></span>'));
 
                             $('#btn-dfz').click(function (e) {
                                 $.ajax({
@@ -457,9 +457,9 @@
                             });
                         }
                         if (facet === "Qingdai shiliao") {
-                            $(this.target).append($('<button class="click" id="btn-dl-shiliao" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-dl-shiliao" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="dl-shiliao"></span>'));
+                                '</a> <span id="dl-shiliao"></span>'));
 
                             $('#btn-dl-shiliao').click(function (e) {
                                 $.ajax({
@@ -472,9 +472,9 @@
                             });
                         }
                         if (facet === "Sibu congkan") {
-                            $(this.target).append($('<button class="click" id="btn-sbck" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-sbck" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="sbck"></span>'));
+                                '</a> <span id="sbck"></span>'));
 
                             $('#btn-sbck').click(function (e) {
                                 $.ajax({
@@ -487,9 +487,9 @@
                             });
                         }
                         if (facet === "SBB digital : Western language Asia collection") {
-                            $(this.target).append($('<button class="click" id="btn-sbb-digital" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-sbb-digital" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="sbb-digital"></span>'));
+                                '</a> <span id="sbb-digital"></span>'));
 
                             $('#btn-sbb-digital').click(function (e) {
                                 $.ajax({
@@ -502,9 +502,9 @@
                             });
                         }
                         if (facet === "The Chinese Students’ Monthly Online") {
-                            $(this.target).append($('<button class="click" id="btn-brill-csmo" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-brill-csmo" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="brill-csmo"></span>'));
+                                '</a> <span id="brill-csmo"></span>'));
 
                             $('#btn-brill-csmo').click(function (e) {
                                 $.ajax({
@@ -517,9 +517,9 @@
                             });
                         }
                         if (facet === "The North China Herald Online") {
-                            $(this.target).append($('<button class="click" id="btn-brill-ncho" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-brill-ncho" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="brill-ncho"></span>'));
+                                '</a> <span id="brill-ncho"></span>'));
 
                             $('#btn-brill-ncho').click(function (e) {
                                 $.ajax({
@@ -532,9 +532,9 @@
                             });
                         }
                         if (facet === "Japan Chronicle Online") {
-                            $(this.target).append($('<button class="click" id="btn-brill-jpco" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-brill-jpco" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="brill-jpco"></span>'));
+                                '</a> <span id="brill-jpco"></span>'));
 
                             $('#btn-brill-jpco').click(function (e) {
                                 $.ajax({
@@ -547,9 +547,9 @@
                             });
                         }
                         if (facet === "Daozang jiyao") {
-                            $(this.target).append($('<button class="click" id="btn-dl-jiyao" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-dl-jiyao" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="dl-jiyao"></span>'));
+                                '</a> <span id="dl-jiyao"></span>'));
 
                             $('#btn-dl-jiyao').click(function (e) {
                                 $.ajax({
@@ -562,9 +562,9 @@
                             });
                         }
                         if (facet === "Xuxiu Siku quanshu") {
-                            $(this.target).append($('<button class="click" id="btn-xuxiu" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-xuxiu" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="xuxiu"></span>'));
+                                '</a> <span id="xuxiu"></span>'));
 
                             $('#btn-xuxiu').click(function (e) {
                                 $.ajax({
@@ -577,9 +577,9 @@
                             });
                         }
                         if (facet === "Adam Matthew - China America Pacific") {
-                            $(this.target).append($('<button class="click" id="btn-china-pacific" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-china-pacific" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="china-pacific"></span>'));
+                                '</a> <span id="china-pacific"></span>'));
 
                             $('#btn-china-pacific').click(function (e) {
                                 $.ajax({
@@ -592,9 +592,9 @@
                             });
                         }
                         if (facet === "Adam Matthew - China Trade & Politics") {
-                            $(this.target).append($('<button class="click" id="btn-china-trade" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-china-trade" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="china-trade"></span>'));
+                                '</a> <span id="china-trade"></span>'));
                             $('#btn-china-trade').click(function (e) {
                                 $.ajax({
                                     url: 'fileadmin/misc/ajax-solr_repositoryB/collections/china-trade.html',
@@ -606,9 +606,9 @@
                             });
                         }
                         if (facet === "Adam Matthew - Meiji Japan") {
-                            $(this.target).append($('<button class="click" id="btn-meiji-japan" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-meiji-japan" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="meiji-japan"></span>'));
+                                '</a> <span id="meiji-japan"></span>'));
 
                             $('#btn-meiji-japan').click(function (e) {
                                 $.ajax({
@@ -621,9 +621,9 @@
                             });
                         }
                         if (facet === "CNKI eBooks") {
-                            $(this.target).append($('<button class="click" id="btn-cnki" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-cnki" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="cnki"></span>'));
+                                '</a> <span id="cnki"></span>'));
 
                             $('#btn-cnki').click(function (e) {
                                 $.ajax({
@@ -636,9 +636,9 @@
                             });
                         }
                         if (facet === "China Comprehensive Gazetteers") {
-                            $(this.target).append($('<button class="click" id="btn-eastview-ccg" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-eastview-ccg" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="eastview-ccg"></span>'));
+                                '</a> <span id="eastview-ccg"></span>'));
 
                             $('#btn-eastview-ccg').click(function (e) {
                                 $.ajax({
@@ -651,9 +651,9 @@
                             });
                         }
                         if (facet === "Fulltext search in print books") {
-                            $(this.target).append($('<button class="click" id="btn-cibtc" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-cibtc" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="cibtc"></span>'));
+                                '</a> <span id="cibtc"></span>'));
 
                             $('#btn-cibtc').click(function (e) {
                                 $.ajax({
@@ -666,9 +666,9 @@
                             });
                         }
                         if (facet === "Zhengtong Daozang") {
-                            $(this.target).append($('<button class="click" id="btn-daozang" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-daozang" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="daozang"></span>'));
+                                '</a> <span id="daozang"></span>'));
 
                             $('#btn-daozang').click(function (e) {
                                 $.ajax({
@@ -681,9 +681,9 @@
                             });
                         }
                         if (facet === "Classical Works of Japan") {
-                            $(this.target).append($('<button class="click" id="btn-riben" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-riben" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="riben"></span>'));
+                                '</a> <span id="riben"></span>'));
 
                             $('#btn-riben').click(function (e) {
                                 $.ajax({
@@ -696,9 +696,9 @@
                             });
                         }
                         if (facet === "Siku quanshu") {
-                            $(this.target).append($('<button class="click" id="btn-siku" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-siku" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="siku"></span>'));
+                                '</a> <span id="siku"></span>'));
 
                             $('#btn-siku').click(function (e) {
                                 $.ajax({
@@ -711,9 +711,9 @@
                             });
                         }
                         if (facet === "Yongle dadian") {
-                            $(this.target).append($('<button class="click" id="btn-dl-yldd" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-dl-yldd" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="dl-yldd"></span>'));
+                                '</a> <span id="dl-yldd"></span>'));
 
                             $('#btn-dl-yldd').click(function (e) {
                                 $.ajax({
@@ -726,9 +726,9 @@
                             });
                         }
                         if (facet === "China and the Modern World: Records of the Maritime Customs Service of China (1854-1949)") {
-                            $(this.target).append($('<button class="click" id="btn-gale-cfer2" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-gale-cfer2" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="gale-cfer2"></span>'));
+                                '</a> <span id="gale-cfer2"></span>'));
 
                             $('#btn-gale-cfer2').click(function (e) {
                                 $.ajax({
@@ -742,9 +742,9 @@
 
                         }
                         if (facet === "Beschreibung") {
-                            $(this.target).append($('<button class="click" id="btn-beschreibung" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-beschreibung" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="beschreibung"></span>'));
+                                '</a> <span id="beschreibung"></span>'));
 
                             $('#btn-beschreibung').click(function (e) {
                                 $.ajax({
@@ -757,9 +757,9 @@
                             });
                         }
                         if (facet === "Gujin tushu jicheng") {
-                            $(this.target).append($('<button class="click" id="btn-gujin" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-gujin" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="gujin"></span>'));
+                                '</a> <span id="gujin"></span>'));
 
                             $('#btn-gujin').click(function (e) {
                                 $.ajax({
@@ -772,9 +772,9 @@
                             });
                         }
                         if (facet === "Sibu beiyao") {
-                            $(this.target).append($('<button class="click" id="btn-sbby" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-sbby" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="sbby"></span>'));
+                                '</a> <span id="sbby"></span>'));
 
                             $('#btn-sbby').click(function (e) {
                                 $.ajax({
@@ -787,9 +787,9 @@
                             });
                         }
                         if (facet === "The Ta Kung Pao 大公報") {
-                            $(this.target).append($('<button class="click" id="btn-kungpao" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-kungpao" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="kungpao"></span>'));
+                                '</a> <span id="kungpao"></span>'));
 
                             $('#btn-kungpao').click(function (e) {
                                 $.ajax({
@@ -802,9 +802,9 @@
                             });
                         }
                         if (facet === "North China Daily News") {
-                            $(this.target).append($('<button class="click" id="btn-brill-ncdn" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-brill-ncdn" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="brill-ncdn"></span>'));
+                                '</a> <span id="brill-ncdn"></span>'));
 
                             $('#btn-brill-ncdn').click(function (e) {
                                 $.ajax({
@@ -817,9 +817,9 @@
                             });
                         }
                         if (facet === "North China Standard Online") {
-                            $(this.target).append($('<button class="click" id="btn-brill-ncso" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-brill-ncso" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="brill-ncso"></span>'));
+                                '</a> <span id="brill-ncso"></span>'));
 
                             $('#btn-brill-ncso').click(function (e) {
                                 $.ajax({
@@ -832,9 +832,9 @@
                             });
                         }
                         if (facet === "Mobilizing East Asia, 1931-1954") {
-                            $(this.target).append($('<button class="click" id="btn-brill-meao" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-brill-meao" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="brill-meao"></span>'));
+                                '</a> <span id="brill-meao"></span>'));
 
                             $('#btn-brill-meao').click(function (e) {
                                 $.ajax({
@@ -847,9 +847,9 @@
                             });
                         }
                         if (facet === "Dunhuang Historical Material") {
-                            $(this.target).append($('<button class="click" id="btn-dunhuang" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-dunhuang" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="dunhuang"></span>'));
+                                '</a> <span id="dunhuang"></span>'));
 
                             $('#btn-dunhuang').click(function (e) {
                                 $.ajax({
@@ -862,9 +862,9 @@
                             });
                         }
                         if (facet === "Area Studies Japan, China, and Southeast Asia") {
-                            $(this.target).append($('<button class="click" id="btn-amd-areastudies" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-amd-areastudies" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="amd-areastudies"></span>'));
+                                '</a> <span id="amd-areastudies"></span>'));
 
                             $('#btn-amd-areastudies').click(function (e) {
                                 $.ajax({
@@ -877,9 +877,9 @@
                             });
                         }
                         if (facet === "Asian Studies (ISEAS publishing)") {
-                            $(this.target).append($('<button class="click" id="btn-iseas" style="cursor: pointer;">' +
+                            $(this.target).append($('<a class="click" id="btn-iseas" style="cursor: pointer;">' +
                                 info_button +
-                                '</button> <span id="iseas"></span>'));
+                                '</a> <span id="iseas"></span>'));
 
                             $('#btn-iseas').click(function (e) {
                                 $.ajax({
@@ -1140,9 +1140,9 @@
                         if (this.field == "collection") {
                             if (facet === "Renmin Ribao") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'rmrb\');" id="btn-rmrb" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'rmrb\');" id="btn-rmrb" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="rmrb" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="rmrb" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/rmrb.html',
                                             type: 'get',
@@ -1162,9 +1162,9 @@
 
                             if (facet === "Airiti" && this.field == "collection") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'airiti\');" id="btn-airiti" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'airiti\');" id="btn-airiti" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="airiti" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="airiti" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/airiti.html',
                                             type: 'get',
@@ -1185,9 +1185,9 @@
                                 facet === "Adam Matthew - Foreign Office Files China & Japan"
                             ) {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'adammatthew\');" id="btn-adammatthew" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'adammatthew\');" id="btn-adammatthew" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="adammatthew" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="adammatthew" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/adammatthew.html',
                                             type: 'get',
@@ -1206,9 +1206,9 @@
                             }
                             if (facet === "Early Twentieth Century Chinese Books (1912-1949)") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'minguo\');" id="btn-minguo" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'minguo\');" id="btn-minguo" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="minguo" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="minguo" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/minguo.html',
                                             type: 'get',
@@ -1227,9 +1227,9 @@
                             }
                             if (facet === "SBB digital : Asian language collection (selection)") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'sbb-digital\');" id="btn-sbb-digital" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'sbb-digital\');" id="btn-sbb-digital" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="sbb-digital" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="sbb-digital" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/sbb-digital.html',
                                             type: 'get',
@@ -1248,9 +1248,9 @@
                             }
                             if (facet === "Local Gazetteer") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'locgaz\');" id="btn-locgaz" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'locgaz\');" id="btn-locgaz" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="locgaz" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="locgaz" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/locgaz.html',
                                             type: 'get',
@@ -1269,9 +1269,9 @@
                             }
                             if (facet === "Missionary, Sinology, and Literary Periodicals (1817-1949)") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'gale-cfer\');" id="btn-gale-cfer" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'gale-cfer\');" id="btn-gale-cfer" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="gale-cfer" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="gale-cfer" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/gale-cfer.html',
                                             type: 'get',
@@ -1290,9 +1290,9 @@
                             }
                             if (facet === "Local Gazetteer (Diaolong)") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'dfz\');" id="btn-dfz" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'dfz\');" id="btn-dfz" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="dfz" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="dfz" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dfz.html',
                                             type: 'get',
@@ -1311,9 +1311,9 @@
                             }
                             if (facet === "Qingdai shiliao") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'dl-shiliao\');" id="btn-dl-shiliao" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'dl-shiliao\');" id="btn-dl-shiliao" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="dl-shiliao" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="dl-shiliao" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dl-shiliao.html',
                                             type: 'get',
@@ -1332,9 +1332,9 @@
                             }
                             if (facet === "Sibu congkan") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'sbck\');" id="btn-sbck" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'sbck\');" id="btn-sbck" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="sbck" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="sbck" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/sbck.html',
                                             type: 'get',
@@ -1353,9 +1353,9 @@
                             }
                             if (facet === "SBB digital : Western language Asia collection") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'sbb-digital\');" id="btn-sbb-digital" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'sbb-digital\');" id="btn-sbb-digital" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="sbb-digital" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="sbb-digital" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/sbb-digital.html',
                                             type: 'get',
@@ -1374,9 +1374,9 @@
                             }
                             if (facet === "The Chinese Students’ Monthly Online") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'brill-csmo\');" id="btn-brill-csmo" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'brill-csmo\');" id="btn-brill-csmo" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="brill-csmo" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="brill-csmo" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-csmo.html',
                                             type: 'get',
@@ -1395,9 +1395,9 @@
                             }
                             if (facet === "The North China Herald Online") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'brill-ncho\');" id="btn-brill-ncho" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'brill-ncho\');" id="btn-brill-ncho" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="brill-ncho" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="brill-ncho" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-ncho.html',
                                             type: 'get',
@@ -1416,9 +1416,9 @@
                             }
                             if (facet === "Japan Chronicle Online") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'brill-jpco\');" id="btn-brill-jpco" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'brill-jpco\');" id="btn-brill-jpco" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="brill-jpco" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="brill-jpco" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-jpco.html',
                                             type: 'get',
@@ -1437,9 +1437,9 @@
                             }
                             if (facet === "Daozang jiyao") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'dl-jiyao\');" id="btn-dl-jiyao" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'dl-jiyao\');" id="btn-dl-jiyao" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="dl-jiyao" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="dl-jiyao" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dl-jiyao.html',
                                             type: 'get',
@@ -1458,9 +1458,9 @@
                             }
                             if (facet === "Xuxiu Siku quanshu") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'xuxiu\');" id="btn-xuxiu" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'xuxiu\');" id="btn-xuxiu" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="xuxiu" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="xuxiu" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/xuxiu.html',
                                             type: 'get',
@@ -1479,9 +1479,9 @@
                             }
                             if (facet === "Adam Matthew - China America Pacific") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'china-pacific\');" id="btn-china-pacific" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'china-pacific\');" id="btn-china-pacific" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="china-pacific" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="china-pacific" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/china-pacific.html',
                                             type: 'get',
@@ -1500,9 +1500,9 @@
                             }
                             if (facet === "Adam Matthew - China Trade & Politics") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'china-trade\');" id="btn-china-trade" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'china-trade\');" id="btn-china-trade" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="china-trade" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="china-trade" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/china-trade.html',
                                             type: 'get',
@@ -1521,9 +1521,9 @@
                             }
                             if (facet === "Adam Matthew - Meiji Japan") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'meiji-japan\');" id="btn-meiji-japan" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'meiji-japan\');" id="btn-meiji-japan" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="meiji-japan" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="meiji-japan" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/meiji-japan.html',
                                             type: 'get',
@@ -1542,9 +1542,9 @@
                             }
                             if (facet === "CNKI eBooks") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'cnki\');" id="btn-cnki" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'cnki\');" id="btn-cnki" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="cnki" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="cnki" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/cnki.html',
                                             type: 'get',
@@ -1563,9 +1563,9 @@
                             }
                             if (facet === "China Comprehensive Gazetteers") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'eastview-ccg\');" id="btn-eastview-ccg" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'eastview-ccg\');" id="btn-eastview-ccg" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="eastview-ccg" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="eastview-ccg" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/eastview-ccg.html',
                                             type: 'get',
@@ -1584,9 +1584,9 @@
                             }
                             if (facet === "Fulltext search in print books") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'cibtc\');" id="btn-cibtc" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'cibtc\');" id="btn-cibtc" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="cibtc" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="cibtc" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/cibtc.html',
                                             type: 'get',
@@ -1606,9 +1606,9 @@
                             }
                             if (facet === "Zhengtong Daozang") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'daozang\');" id="btn-daozang" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'daozang\');" id="btn-daozang" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="daozang" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="daozang" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/daozang.html',
                                             type: 'get',
@@ -1627,9 +1627,9 @@
                             }
                             if (facet === "Classical Works of Japan") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'riben\');" id="btn-riben" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'riben\');" id="btn-riben" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="riben" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="riben" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/riben.html',
                                             type: 'get',
@@ -1648,9 +1648,9 @@
                             }
                             if (facet === "Siku quanshu") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'siku\');" id="btn-siku" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'siku\');" id="btn-siku" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="siku" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="siku" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/siku.html',
                                             type: 'get',
@@ -1669,9 +1669,9 @@
                             }
                             if (facet === "Yongle dadian") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'dl-yldd\');" id="btn-dl-yldd" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'dl-yldd\');" id="btn-dl-yldd" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="dl-yldd" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="dl-yldd" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dl-yldd.html',
                                             type: 'get',
@@ -1690,9 +1690,9 @@
                             }
                             if (facet === "China and the Modern World: Records of the Maritime Customs Service of China (1854-1949)") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'gale-cfer2\');" id="btn-gale-cfer2" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'gale-cfer2\');" id="btn-gale-cfer2" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="gale-cfer2" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="gale-cfer2" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/gale-cfer2.html',
                                             type: 'get',
@@ -1711,9 +1711,9 @@
                             }
                             if (facet === "Beschreibung") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'beschreibung\');" id="btn-beschreibung" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'beschreibung\');" id="btn-beschreibung" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="beschreibung" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="beschreibung" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/beschreibung.html',
                                             type: 'get',
@@ -1732,9 +1732,9 @@
                             }
                             if (facet === "Gujin tushu jicheng") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'gujin\');" id="btn-gujin" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'gujin\');" id="btn-gujin" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="gujin" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="gujin" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/gujin.html',
                                             type: 'get',
@@ -1753,9 +1753,9 @@
                             }
                             if (facet === "Sibu beiyao") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'sbby\');" id="btn-sbby" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'sbby\');" id="btn-sbby" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="sbby" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="sbby" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/sbby.html',
                                             type: 'get',
@@ -1774,9 +1774,9 @@
                             }
                             if (facet === "The Ta Kung Pao 大公報") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'kungpao\');" id="btn-kungpao" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'kungpao\');" id="btn-kungpao" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="kungpao" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="kungpao" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/kungpao.html',
                                             type: 'get',
@@ -1795,9 +1795,9 @@
                             }
                             if (facet === "North China Daily News") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'brill-ncdn\');" id="btn-brill-ncdn" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'brill-ncdn\');" id="btn-brill-ncdn" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="brill-ncdn" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="brill-ncdn" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-ncdn.html',
                                             type: 'get',
@@ -1816,9 +1816,9 @@
                             }
                             if (facet === "North China Standard Online") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'brill-ncso\');" id="btn-brill-ncso" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'brill-ncso\');" id="btn-brill-ncso" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="brill-ncso" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="brill-ncso" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-ncso.html',
                                             type: 'get',
@@ -1837,9 +1837,9 @@
                             }
                             if (facet === "Mobilizing East Asia, 1931-1954") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'brill-meao\');" id="btn-brill-meao" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'brill-meao\');" id="btn-brill-meao" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="brill-meao" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="brill-meao" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/brill-meao.html',
                                             type: 'get',
@@ -1858,9 +1858,9 @@
                             }
                             if (facet === "Dunhuang Historical Material") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'dunhuang\');" id="btn-dunhuang" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'dunhuang\');" id="btn-dunhuang" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="dunhuang" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="dunhuang" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/dunhuang.html',
                                             type: 'get',
@@ -1879,9 +1879,9 @@
                             }
                             if (facet === "Area Studies Japan, China, and Southeast Asia") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'amd-areastudies\');" id="btn-amd-areastudies" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'amd-areastudies\');" id="btn-amd-areastudies" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="amd-areastudies" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="amd-areastudies" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/amd-areastudies.html',
                                             type: 'get',
@@ -1900,9 +1900,9 @@
                             }
                             if (facet === "Asian Studies (ISEAS publishing)") {
                                 $("#" + "more_collection").append(
-                                    $('<button class="click" onclick="show_hidePopUpWindow(\'iseas\');" id="btn-iseas" style="cursor: pointer;">' +
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'iseas\');" id="btn-iseas" style="cursor: pointer;">' +
                                         info_button +
-                                        '</button> <span id="iseas" style="display:none"> </span>').click(function (e) {
+                                        '</a> <span id="iseas" style="display:none"> </span>').click(function (e) {
                                         $.ajax({
                                             url: 'fileadmin/misc/ajax-solr_repositoryB/collections/iseas.html',
                                             type: 'get',
