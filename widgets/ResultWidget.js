@@ -212,8 +212,8 @@
                         html_tags3 );
                 } else {
                     $('a[href^="http://"]').attr('target','_blank');
-                    data += $("#docs").append(html_tags6 + 'CrossAsia licence: </span></td><td width="145"><span class="textlink">' + provider_link + '</span>&nbsp;&nbsp;&nbsp;' +
-                        '<span id="link" class="text">' + 'provider link: </span><td><span class="textlink5">' + link + html_tags3);
+                    data += $("#docs").append(html_tags6 + 'CrossAsia licence: ' + provider_link + '&nbsp;&nbsp;&nbsp;&nbsp;' +
+                        'provider link: ' + '<span class="textlink5">' + link +'</span>' + html_tags3);
                 }
                 pages +=data;
             }
@@ -298,8 +298,8 @@
                     var provider_link = pageIcon.link(doc.erflink);
                 }
 
-                data += $("#docs").append(html_tags6 + 'CrossAsia licence:' +  '</span></td><td width="145"><span class="textlink">' + provider_link + '</span>&nbsp;&nbsp;&nbsp;' +
-                    '<span id="link" class="text">' + 'provider link:' + '</span><td><span class="textlink2">' + link + html_tags3);
+                data += $("#docs").append(html_tags6 + 'CrossAsia licence:&nbsp;' +   provider_link + '&nbsp;&nbsp;&nbsp;' +
+                     'provider link: ' + '<span class="textlink5">' + link +'</span>' + html_tags3);
 
                 articles +=data;
             }
@@ -379,8 +379,8 @@
                     }
                     else {
                         $('a[href^="http://"]').attr('target','_blank');
-                        snippet +=  html_tags6 +'CrossAsia licence:' + '</span></td><td width="145"><span class="textlink">' + provider_link + '</span>&nbsp;&nbsp;&nbsp;' +
-                            '<span id="link" class="text">'+'provider link: </span><td><span class="textlink4">' + link + html_tags3;
+                        snippet +=  html_tags6 +'CrossAsia licence: ' + provider_link + '&nbsp;&nbsp;&nbsp;' +
+                            'provider link: ' + '<span class="textlink5">' + link +'</span>' + html_tags3;
                     }
                 }
                 snippet =  snippet + '</table></div>';
@@ -404,8 +404,8 @@
 
                 data +=   $("#docs").append(html_tags4 + 'citation:'+ html_tags5 + doc.title + ', ' + author + date  +  'p.' + doc.pageStart + '-' + doc.pageEnd + html_tags3);
                 data +=   $("#docs").append(html_tags +  'collection:'+html_tags2+doc.collection+html_tags3);
-                data +=   $("#docs").append(html_tags6 +'CrossAsia licence:' + '</span></td><td width="145"><span class="textlink">' + databaseIcon.link(doc.erflink) + '</span>&nbsp;&nbsp;&nbsp;' +
-                    '<span id="link" class="text">'+'provider link:' + '</span><td><span class="textlink2">' + databaseIcon.link(doc.url) + html_tags3);
+                data +=   $("#docs").append(html_tags6 +'CrossAsia licence: &nbsp;' + databaseIcon.link(doc.erflink) + '&nbsp;&nbsp;&nbsp;' +
+                   'provider link: ' +  '<span class="textlink5">' +databaseIcon.link(doc.url) + '</span>'+ html_tags3);
                 chapter +=data;
             }
             else {
