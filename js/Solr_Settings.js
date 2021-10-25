@@ -39,6 +39,7 @@ var Manager;
                 'localhost:8995/solr/ajax-daozang,' +
                 'localhost:8995/solr/ajax-dunhuang,' +
                 'localhost:8995/solr/ajax-iseas,' +
+                'localhost:8995/solr/ajax-maoistlegacy-db,' +
                 'localhost:8995/solr/ajax-gujin&indent=true&rows=20&'
         });
         Manager.addWidget(new AjaxSolr.ResultWidget({

@@ -36,6 +36,7 @@ var Manager;
                 'http://solr-master-test.sbb.spk-berlin.de:8995/solr/ajax-amd-areastudies,' +
                 'http://solr-master-test.sbb.spk-berlin.de:8995/solr/ajax-daozang,' +
                 'http://solr-master-test.sbb.spk-berlin.de:8995/solr/ajax-dunhuang,' +
+                'http://solr-master-test.sbb.spk-berlin.de:8995/solr/ajax-maoistlegacy-db,' +
                 'http://solr-master-test.sbb.spk-berlin.de:8995/solr/ajax-gujin&indent=true&rows=20&',
             solrUrl2: 'http://solr-master-test.sbb.spk-berlin.de:8995/solr/ajax-loc-gaz/ajax?shards=http://solr-master-test.sbb.spk-berlin.de:8995/solr/ajax-loc-gaz,'+
                 'http://solr-master-test.sbb.spk-berlin.de:8995/solr/ajax-gujin&indent=true&rows=20&'

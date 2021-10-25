@@ -221,11 +221,11 @@
                 $('a[href^="http://"]')
                     .attr('target','_blank');
 
-                if (doc.wholeDate!=null) {
+                /*if (doc.wholeDate!=null) {
                     //var rightDate = moment(doc.wholeDate.toString()).format("DD.MM.YYYY");
                     var d = new Date(parseInt(doc.wholeDate));
                     var rightDate = d.toDateString();
-                }
+                }*/
 
                 var title ="";
                 var author ="";
@@ -266,7 +266,7 @@
                     data += $('#docs').append(html_tags + 'author:' + html_tags2 + doc.author + html_tags3);
                 }
                 if (doc.wholeDate!= null) {
-                    data += $('#docs').append(html_tags + 'date:' + html_tags2 + rightDate + html_tags3);
+                    data += $('#docs').append(html_tags + 'date:' + html_tags2 + doc.wholeDate + html_tags3);
                 }
 
                 if (doc.date_original!= null) {

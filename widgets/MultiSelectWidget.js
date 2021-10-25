@@ -891,6 +891,21 @@
                                 })
                             });
                         }
+                        if (facet === "The Maoist Legacy Database") {
+                            $(this.target).append($('<a class="click" id="btn-maoist" style="cursor: pointer;">' +
+                                info_button +
+                                '</a> <span id="maoist"></span>'));
+
+                            $('#btn-maoist').click(function (e) {
+                                $.ajax({
+                                    url: 'fileadmin/misc/ajax-solr_repositoryB/collections/maoist.html',
+                                    type: 'get',
+                                    success: function (data) {
+                                        $('#maoist').html(data);
+                                    }
+                                })
+                            });
+                        }
                     }
                     if (this.field === "title_facet" && cur_facet_count != 0) {
                         if (facet.length > 40) {
@@ -1913,6 +1928,27 @@
                                                 } else {
                                                     $('#iseas').html(data).hide();
                                                     $('#iseas').css("display","none");
+                                                }
+                                            }
+                                        })
+                                    })
+                                );
+                            }
+                            if (facet === "The Maoist Legacy Database") {
+                                $("#" + "more_collection").append(
+                                    $('<a class="click" onclick="show_hidePopUpWindow(\'maoist\');" id="btn-maoist" style="cursor: pointer;">' +
+                                        info_button +
+                                        '</a> <span id="maoist" style="display:none"> </span>').click(function (e) {
+                                        $.ajax({
+                                            url: 'fileadmin/misc/ajax-solr_repositoryB/collections/maoist.html',
+                                            type: 'get',
+                                            success: function (data) {
+                                                if ($('#maoist').css('display') =="none") {
+                                                    $('#maoist').html(data).show();
+                                                    $('#maoist').css("display","inline");
+                                                } else {
+                                                    $('#maoist').html(data).hide();
+                                                    $('#maoist').css("display","none");
                                                 }
                                             }
                                         })
