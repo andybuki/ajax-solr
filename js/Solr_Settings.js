@@ -57,7 +57,7 @@ var Manager;
                 $('#pager-header').html($('<span></span>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
             }
         }));
-        var fields = ['text','hasModel','medium','edition','person','spatial','author','title','collection', 'date','language','medium_facet','edition_facet','person_facet','spatial_facet','author_facet','title_facet','subject_facet','subject','chapter_title','date-original','date_original','journal-title', 'volume-number','publication-volume', 'page-range', 'xml_file','publication_place','publication_name','publication_volume'];
+        var fields = ['text','hasModel','medium','edition','person','spatial','author','title','collection', 'date','language','medium_facet','edition_facet','person_facet','spatial_facet','author_facet','title_facet','subject_facet','subject','chapter_title','date-original','date_original','journal-title', 'volume-number','publication-volume', 'page-range', 'xml_file','publication_place','publication_name','publication_volume','bibliographicCitation'];
         for (var i = 0, l = fields.length; i < l; i++) {
             Manager.addWidget(new AjaxSolr.MultiSelectWidget({ //MultiSelectWidget instead of Tagcloudwidget
                 id: fields[i],

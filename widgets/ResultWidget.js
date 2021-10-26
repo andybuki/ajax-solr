@@ -242,6 +242,7 @@
                 if (doc["publication_volume"]!=null) {publication_volume ='<span><b>'+ " vol."+doc["publication_volume"]+ ", </b></span>";}
                 if (doc["publication_name"]!=null) {publication_name = "<b> "+doc["publication_name"]+ ", </b>";}
                 if (doc["date_original"]!=null) {date_original= '<span>' + " ("+doc["date_original"] +"), </span>";}
+                if (doc.bibliographicCitation!=null) {bibliographicCitation= '<span>' + " ("+doc.bibliographicCitation +"), </span>";}
 
                 if (doc.text!=null) {
                     if (cur_doc_highlighting_title=='') {
@@ -265,6 +266,14 @@
 
                 if (doc.date_original!= null) {
                     data += $('#docs').append(html_tags + 'date:' + html_tags2 + doc["date_original"] + html_tags3);
+                }
+
+                if (doc.edition!= null) {
+                    data += $('#docs').append(html_tags + 'edition:' + html_tags2 + doc.edition + html_tags3);
+                }
+
+                if (doc.bibliographicCitation!= null) {
+                    data += $('#docs').append(html_tags + 'bibliographicCitation:' + html_tags2 + doc.bibliographicCitation + html_tags3);
                 }
 
                 if (doc.publication_place!= null) {

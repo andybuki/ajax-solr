@@ -56,7 +56,7 @@ var Manager;
                 $('#pager-header').html($('<span></span>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
             }
         }));
-        var fields = ['text','hasModel','medium','edition','person','spatial','author','title','collection', 'date','date_original','language','medium_facet','edition_facet','person_facet','spatial_facet','author_facet','title_facet','subject_facet','subject','chapter_title','date-original','journal-title', 'volume-number','publication-volume', 'page-range', 'xml_file','publication_name','publication_place','publication_volume'];
+        var fields = ['text','hasModel','medium','edition','person','spatial','author','title','collection', 'date','date_original','language','medium_facet','edition_facet','person_facet','spatial_facet','author_facet','title_facet','subject_facet','subject','chapter_title','date-original','journal-title', 'volume-number','publication-volume', 'page-range', 'xml_file','publication_name','publication_place','publication_volume','bibliographicCitation'];
         for (var i = 0, l = fields.length; i < l; i++) {
             Manager.addWidget(new AjaxSolr.MultiSelectWidget({ //MultiSelectWidget instead of Tagcloudwidget
                 id: fields[i],
@@ -116,7 +116,7 @@ var Manager;
             'f.spatial_facet.facet.limit': 30,
             'json.nl': 'map',
             'fl':'title',
-            'fl':['id','book_id','medium','url','format','erflink','author','creator','publication_name','publication_place','publication_volume','edition','title','position','position_vol','volume','hasModel','collection','date','publisher','series_title','description','textXXX','pageStart','pageEnd','chapter_id','language','issued','note','responsibility','extent','running_title','page','wholeDate','image_url','identifier','electronic-url','journal-title','page-range','electronic_url','chapter_title','keywords','noOfpages', 'date-original','date_original','journal-title', 'volume-number','publication-volume','title_chapter', 'xml_file'],
+            'fl':['id','book_id','medium','url','format','erflink','author','creator','publication_name','publication_place','publication_volume','edition','title','position','position_vol','volume','hasModel','collection','date','publisher','series_title','description','textXXX','pageStart','pageEnd','chapter_id','language','issued','note','responsibility','extent','running_title','page','wholeDate','image_url','identifier','electronic-url','journal-title','page-range','electronic_url','chapter_title','keywords','noOfpages', 'date-original','date_original','journal-title', 'volume-number','publication-volume','title_chapter', 'xml_file','bibliographicCitation'],
             'hl':true,
             'hl.fl':'text',
             //'f.text.hl.alternateField':'text',
