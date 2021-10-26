@@ -221,12 +221,6 @@
                 $('a[href^="http://"]')
                     .attr('target','_blank');
 
-                /*if (doc.wholeDate!=null) {
-                    //var rightDate = moment(doc.wholeDate.toString()).format("DD.MM.YYYY");
-                    var d = new Date(parseInt(doc.wholeDate));
-                    var rightDate = d.toDateString();
-                }*/
-
                 var title ="";
                 var author ="";
                 var date ="";
@@ -239,7 +233,7 @@
                 var publication_place="";
                 var publication_name="";
                 var date_original ="";
-
+                var provider_link ='';
                 if (doc.title !=null) { title = '<b>' + doc.title + ", " + '</b>'; }
                 if (doc.author !=null) {author = '<b>' + doc.author + ". " + '</b>'; }
                 if (doc.date !=null) { date = '<span><b>' + doc.date + "</b></span>" + '';}
@@ -292,13 +286,23 @@
 
                 if (doc.collection==="Renmin Ribao") {
                     var link = databaseIcon.link(doc.url);
-                    var provider_link = databaseIcon.link(doc.erflink);
+                    provider_link = 'CrossAsia licence:&nbsp;' + databaseIcon.link(doc.erflink)+ '&nbsp;&nbsp;&nbsp;';
                 } else {
-                    var link = pageIcon.link(doc.url);
-                    var provider_link = pageIcon.link(doc.erflink);
-                }
+                    if (doc.url !=null) {
+                        var link = pageIcon.link(doc.url);
+                    }
+                    if (doc.erflink !=null) {
+                        var provider_link = 'CrossAsia licence:&nbsp;' + pageIcon.link(doc.erflink)+ '&nbsp;&nbsp;&nbsp;';
+                    }
+                    if (doc.erflink == 'undefined') {
+                        var provider_link ='';
+                    }
 
-                data += $("#docs").append(html_tags6 + 'CrossAsia licence:&nbsp;' +   provider_link + '&nbsp;&nbsp;&nbsp;' +
+                    if (doc.link == 'undefined') {
+                        var link ='';
+                    }
+                }
+                data += $("#docs").append(html_tags6 +  provider_link  +
                      'provider link: ' + '<span class="textlink5">' + link +'</span>' + html_tags3);
 
                 articles +=data;
