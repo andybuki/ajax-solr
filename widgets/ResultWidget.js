@@ -252,11 +252,15 @@
                         data += $('#docs').append('<tr><th colspan="3"><hr class="line3"><span class="texttitle">'+"..."+highlighting[doc.id].text + "..."+'</span></th></tr>');
                     }
                 }
-
-                data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top; width: 190px;">citation: </td>'+
-                    '<td colspan="2" class="textlenght"  style="vertical-align: top; max-width: 550px;"><span class="text2">'
-                    + title + author +  publication_name + volume + publication_volume + date_original + position +  html_tags3);
-
+                if (collection =='The Maoist Legacy Database') {
+                    data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top; width: 190px;">citation: </td>' +
+                        '<td colspan="2" class="textlenght"  style="vertical-align: top; max-width: 550px;"><span class="text2">'
+                        + title + html_tags3);
+                } else {
+                    data += $('#docs').append('<tr><td colspan="1" class="text" style="vertical-align: top; width: 190px;">citation: </td>' +
+                        '<td colspan="2" class="textlenght"  style="vertical-align: top; max-width: 550px;"><span class="text2">'
+                        + title + author + publication_name + volume + publication_volume + date_original + position + html_tags3);
+                }
                 if (doc.author != null) {
                     data += $('#docs').append(html_tags + 'author:' + html_tags2 + doc.author + html_tags3);
                 }
